@@ -1,0 +1,12 @@
+# GitHub Pages 配置
+theme: null
+plugins: []
+include:
+  - .nojekyll
+  - _config.yml
+exclude:
+  - .git/
+  - .github/
+  - node_modules/
+  - README.md
+  - .gitignore
