@@ -1,0 +1,2858 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 1: 森林的入口｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 1 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的入口</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[4.76%] h-2 bg-forest-green rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>你好，旅人。</p>
+            <p>今天下了一場午後雷雨，我剛巡完園子回來。空氣聞起來有種乾淨又清甜的味道，這是雨水、泥土和斷裂的枝葉混合在一起的氣味。我想透過文字，與你分享此刻的寧靜。</p>
+            <p>首先，恭喜你找到了這裡。在入口處，你遇見了你的靈魂嚮導。請記得，牠不是你要成為的目標，而是一面鏡子，映照出你此刻內在最珍貴的力量。**牠將陪伴你走過這片森林，直到你找到自己的路。**</p>
+            <p>未來21天，我會與你分享我的森居日記。無需急躁，只需跟隨。歡迎你的到來。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">這是來自森林、專屬於你的第一份祝福。它將透過聲音，直接與你的內心對話。請找一個舒服的姿勢，戴上耳機，按下播放。</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <!-- TODO: 後端請根據用戶嚮導動物，動態替換音檔標題 -->
+          <!-- 範例1 (神秘鹿): 《神秘鹿的療癒之泉》 -->
+          <!-- 範例2 (獅子): 《獅子騎士的勇氣心跳》 -->
+          <!-- 範例3 (貓頭鷹): 《貓頭鷹戰士的靜謐凝視》 -->
+          <p class="font-semibold forest-green" id="audio-title">你的專屬祝福音</p>
+          <span class="text-sm text-forest-text-light">3:10</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 微小行動 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的森林練習</h2>
+      <div class="prose max-w-none text-forest-text-light">
+        <p>為了讓這趟旅程的體驗更深刻，我們邀請你，為自己準備一個小小的**「寧靜角落」**。</p>
+        <p>它不需要很特別，也許只是窗邊的一張椅子、書桌上的一個角落，甚至是你車上的駕駛座。在接下來的日子裡，當你聆聽祝福音時，可以試著來到這個專屬於你的角落。</p>
+        <p>這個簡單的儀式，是一個溫柔的提醒：<strong>你值得擁有這段不被打擾的、與自己獨處的時光。</strong></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">旅程的第一天，你已做得很好。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    // 簡單的客戶端腳本，用於演示
+    document.addEventListener('DOMContentLoaded', function() {
+      // 模擬從後端獲取用戶數據
+      const userData = {
+        animalGuide: '神秘鹿', // '獅子', '貓頭鷹' 等
+      };
+
+      const audioTitle = document.getElementById('audio-title');
+      if (userData.animalGuide === '神秘鹿') {
+        audioTitle.textContent = '《神秘鹿的療癒之泉》';
+      } else if (userData.animalGuide === '獅子') {
+        audioTitle.textContent = '《獅子騎士的勇氣心跳》';
+      } else if (userData.animalGuide === '貓頭鷹') {
+        audioTitle.textContent = '《貓頭鷹戰士的靜謐凝視》';
+      }
+      // ...可擴展至所有12種動物
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 2: 石縫中的蕨類｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 2 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">石縫中的蕨類</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[4.76%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>早安。</p>
+            <p>今天在整理石階時，停下來看了這株從石縫中奮力長出的小蕨類很久。它沒有向陽大樹的挺拔，也沒有豔麗花朵的芬芳，但它那份安靜的韌性，卻深深打動了我。</p>
+            <p>森林教會我，看見那些不張揚的美好。我們常常習慣放大自己的不足，卻忽略了那些早已存在、如同蕨類般堅韌的美好特質。</p>
+            <p>**這份美好，如同森林中的光影，不是一個需要用力抓住的東西，而是一個需要時常回頭看看的風景。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">今天的聲音練習，將引導你進入一段溫柔的回顧。在「森林的低語」的陪伴下，讓我們一起，重新發掘那些被遺忘的、閃閃發光的自己。</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <p class="font-semibold forest-green">通用音頻《晨間的喚醒》</p>
+          <span class="text-sm text-forest-text-light">3:15</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">今天的日誌，讓我們來練習「稱讚自己」。請溫柔地回想，並回答下方的問題。你的回覆，將是滋養你內在森林的珍貴養分。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「回想一件最近讓你為自己感到驕傲的事。你當時展現了什麼美好的特質？」</p>
+        </div>
+        <!-- TODO: 後端請根據用戶嚮導動物，動態替換 placeholder 文字 -->
+        <!-- 範例1 (神秘鹿): 「寫下那件事，以及你欣賞自己的地方... 例如：我很有同理心、我很溫柔...」 -->
+        <!-- 範例2 (獅子): 「寫下那件事，以及你欣賞自己的地方... 例如：我很有勇氣、我保護了...」 -->
+        <!-- 範例3 (蝙蝠): 「寫下那件事，以及你欣賞自己的地方... 例如：我敢於面對改變、我...」 -->
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="寫下那件事，以及你欣賞自己的地方..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">看見自己的美好，本身就是一件值得驕傲的事。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">今天的練習，是給自己的一份溫柔肯定。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 3: 森林的奇遇｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    .mystery-box { cursor: pointer; }
+    .mystery-box .answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+    .mystery-box.revealed .answer { max-height: 100px; /* or a suitable max-height */ }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 3 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的奇遇</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[9.52%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>今天被窗外的騷動吵醒，原來是兩隻松鼠在吵架，為了一顆橡實。看著牠們氣沖沖的樣子，覺得好笑又熟悉。</p>
+            <p>我們內心也一樣，時常有各種聲音在爭吵：渴望、擔憂、喜悅、悲傷。或許我們無需壓抑任何一種，只需學習像森林一樣，靜靜地看著，允許它們存在。</p>
+            <p>森林裡，萬物共存，相安無事，也時有紛擾。這份生機勃勃的混亂，本身就是一種智慧。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 森林的奇遇 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">森林的奇遇</h2>
+      <p class="text-forest-text-light mb-6">今天，你在林間小徑上，遇見了「學者．兔子」。牠眨了眨眼，向你提出一個謎題。這不是考驗，而是一份邀請，邀請你去看見一些平時忽略的事。</p>
+
+      <div id="mystery" class="mystery-box bg-forest-green/5 p-6 rounded-lg">
+        <div class="question">
+          <p class="font-semibold forest-green text-lg text-center">「我跑得快，卻從不離開原地；<br>我有耳朵，卻聽不見你的聲音。<br>當你凝視我時，我會變大。<br><br>我是什麼？」</p>
+          <button id="reveal-btn" class="mt-6 w-full bg-white text-forest-cta font-semibold py-3 px-6 rounded-lg border-2 border-forest-cta hover:bg-forest-cta/10 transition-colors">
+            輕觸這裡，傾聽兔子的答案
+          </button>
+        </div>
+        <div class="answer text-center pt-4">
+          <p class="text-lg font-bold forest-text-dark">答案是：**恐懼**。</p>
+          <p class="mt-2 text-forest-text-light">兔子說：「它只是你內心的一個影子，旅人。你看見它，它就不再神秘。」</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">遇見兔子之後，請溫柔地問自己，並將答案記錄下來。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「此刻，你內心最大的那個『恐懼』，它的名字是什麼？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="試著為它命名，不帶評判，只是單純地看見..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">看見，是穿越一切的開始。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你看見自己的恐懼，也看見自己的勇氣。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mysteryBox = document.getElementById('mystery');
+        const revealBtn = document.getElementById('reveal-btn');
+        
+        if (revealBtn) {
+            revealBtn.addEventListener('click', function() {
+                mysteryBox.classList.add('revealed');
+                this.style.display = 'none'; // 隱藏按鈕
+            });
+        }
+
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 4: 大地的定錨｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 4 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">大地的定錨</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[14.28%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>我們的思緒，時常像天上的浮雲，飄忽不定。我書桌上總放著一顆從溪邊撿來的鵝卵石。我並**不擁有**它，只是暫時邀請它來我的空間作伴。</p>
+            <p>當心煩時，我會把它握在手心，感受它不言不語的真實。這份連結的奇妙之處在於，**真正的定錨，不是那顆石頭，而是『連結』這個動作本身。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+        <p class="text-forest-text-light mb-6">今天的聲音練習，將引導你將注意力從頭腦，帶回到你的身體與雙手。讓我們透過感受，體驗此刻的真實。</p>
+        
+        <div class="bg-forest-green/5 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="font-semibold forest-green">通用音頻《大地的觸感》</p>
+            <span class="text-sm text-forest-text-light">3:05</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            </button>
+            <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+              <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- 微小行動 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的森林練習：「借與還」的儀式</h2>
+      <div class="prose max-w-none text-forest-text-light">
+        <p>今天的練習，是一個關於連結與放手的微小儀式：</p>
+        <ol class="list-decimal pl-5 space-y-2">
+            <li>**借一份安穩**：走到戶外，向大地「借」一樣能握在你手心的自然物。它可以是一顆石頭、一片落葉或一截枯枝。</li>
+            <li>**真實的連結**：將它帶回你的寧靜角落。花一分鐘，閉上眼睛，純粹地用你的感官去探索它——它的質地、溫度與重量。</li>
+            <li>**溫柔的歸還**：練習結束後，**請將這個物品放回你找到它的地方，或任何一片屬於自然的土地**。在心中，輕輕地對它說一聲「謝謝」。</li>
+        </ol>
+        <p>這個練習沒有對錯，你無須記錄任何事。只需去體驗，這份短暫卻深刻的、**不帶佔有的連結**。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">讓一份真實的觸感，成為你內心的定錨。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 5: 流動的溪水｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 5 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">流動的溪水</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[19.04%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>今天下午，我坐在溪邊很久，看著水流沖刷著石頭，帶走細小的沙粒和枯葉。</p>
+            <p>溪水從不停留，也不執著。它不會試圖抓住任何一片流經的葉子，只是允許它們來，也允許它們走。正因為如此，溪水才能永遠保持清澈。</p>
+            <p>**或許我們的心，也像一條溪流。我們需要的不是抓住更多美好的事物，而是學習如何溫柔地放手，讓那些不再服務於我們的思緒與情緒，如落葉般，順著水流而去。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">第一次聆聽，像是初次見面；第二次，像是與老朋友重逢。今天，讓我們再次回到專屬於你的祝福音。請試著留意，這次的感受和第一天有什麼不同？有沒有新的發現？</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <!-- TODO: 後端請根據用戶嚮導動物，動態替換音檔標題 -->
+          <p class="font-semibold forest-green">你的專屬祝福音 (複習)</p>
+          <span class="text-sm text-forest-text-light">3:10</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">今天的練習，是關於「放流」。在聆聽完祝福音後，請安靜地問自己，並將答案記錄下來。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「此刻，你最想從內心『放流』的雜物是什麼？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="它可以是一個念頭、一份擔憂、一個不再合適的期待..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">允許它流走，心才能回歸清澈。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你的心，如溪水般流動而澄淨。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 6: 週末的贈禮｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    .gift-card {
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform-style: preserve-3d;
+    }
+    .gift-card.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 6 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">週末的贈禮</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[23.8%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>週末愉快，旅人。</p>
+            <p>森林裡的週末，沒有特別的區分，但步調似乎會不自覺地更慢一些。我喜歡在這樣的日子裡，什麼也不做，只是單純地存在。允許自己無所事事，是我在森林裡學到的、最重要的休息方式。</p>
+            <p>今天，森林裡的朋友也為你捎來了一份週末的祝福。它提醒我們，有時最好的前進，就是停下來。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 森林的贈禮 -->
+    <section class="p-6 sm:p-8">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4 text-center">一份來自森林的祝福</h2>
+      <p class="text-forest-text-light mb-8 text-center">輕觸下方的牌卡，看看今天森林想對你說些什麼。</p>
+
+      <div id="gift-card-container" class="w-full max-w-sm mx-auto perspective-1000">
+        <div id="gift-card" class="gift-card relative w-full h-64 sm:h-72">
+          <!-- Card Front -->
+          <div class="card-face card-front absolute w-full h-full p-6 bg-white rounded-xl2 border-2 border-forest-cta shadow-soft-lg flex flex-col justify-center items-center text-center cursor-pointer">
+            <svg class="w-16 h-16 forest-cta mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a8.25 8.25 0 01-16.5 0v-8.25a8.25 8.25 0 0116.5 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75a3.75 3.75 0 003.75-3.75V4.5a3.75 3.75 0 00-7.5 0v7.5A3.75 3.75 0 0012 15.75z" /></svg>
+            <h3 class="text-xl font-bold forest-text-dark">來自「水母遊俠」的祝福</h3>
+            <p class="mt-2 text-forest-text-light">輕觸以翻開</p>
+          </div>
+          <!-- Card Back -->
+          <div class="card-face card-back absolute w-full h-full p-8 bg-forest-green rounded-xl2 shadow-soft-lg flex flex-col justify-center items-center text-center text-white">
+            <p class="text-2xl leading-relaxed">「順應而非抗拒。<br>水母從不對抗洋流，<br>只是信任它會被帶到<br>該去的地方。」</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你享受這份無所事事的寧靜。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const card = document.getElementById('gift-card');
+        if (card) {
+            card.addEventListener('click', function() {
+                this.classList.toggle('is-flipped');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 7: 第一週的回顧｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 7 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">第一週的足跡</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[28.56%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，週末愉快。</p>
+            <p>第一週的旅程即將告一段落。今天，我沒有特別的分享，只是想邀請你，和我一起，靜靜地回顧這幾天我們共同走過的路。</p>
+            <p>從找到入口，建立寧靜角落，到學習像森林一樣看見、聆聽、連結與放流。這些看似微小的練習，都是在為你的內在森林，打下穩固的地基。</p>
+            <p>**我們建造的一切，都是為了更認識這位，叫做『自己』的建築師。**</p>
+            <p>感謝你的同行。下週，我們將開始探索如何將這份內在的寧靜，延伸到與他人的關係中。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">今天的聲音練習，是一段安頓的呼吸。讓它陪伴你，溫柔地回顧這一週的點滴。</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <p class="font-semibold forest-green">通用音頻《安頓的呼吸》</p>
+          <span class="text-sm text-forest-text-light">3:45</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">第一週的足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">在結束第一週的探索之前，讓我們為自己做一次溫柔的總結。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「回顧這一週，你對自己有了什麼新的發現或感受？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="它可以是一個小小的改變、一個新的看見，或是一個更深的理解..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存本週回顧
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">每一份看見，都是成長的證明。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">好好休息，我們下週見。</p>
+      <p class="text-forest-text-light mt-2">靜謐森林，一直都在。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 8: 地底下的網絡｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 8 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">地底下的網絡</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[33.32%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>旅程來到第二週。這一週，我想邀請你，將目光從自身，稍微轉向我們與周遭的連結。</p>
+            <p>森林裡的樹木看似獨立，但在我們看不見的地底下，它們的根系彼此交織，形成一張巨大的網絡。科學家說，它們會透過這張網，分享養分、傳遞警訊。這種連結，不是為了索取，而是為了支持整個群體的存續。</p>
+            <p>人與人之間，或許也存在著這樣看不見的網絡。**一座好的橋，承載來往，但不綑綁任何人。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">今天的聲音練習，將引導你將第一週安頓自身的力量，化為一份溫柔的祝福，延伸給你心中的某個人。</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <p class="font-semibold forest-green">通用音頻《慈心練習》</p>
+          <span class="text-sm text-forest-text-light">4:10</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">在練習之後，讓我們將這份祝福化為文字。請回答下方的問題。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「今天，你想將一份不求回報的祝福，在心中默默地送給誰？為什麼是他/她？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="寫下那個人的名字，以及你想給予他的祝福..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">祝福已送達</h3>
+        <p class="mt-2 text-forest-text-light">當你給予祝福時，最先被滋養的，是自己的心。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你的溫暖，如林間光點，照亮他人。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 9: 森林的奇遇｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 9 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的奇遇</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[38.08%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>森林裡最迷人的，莫過於那些不期而遇的時刻。今天清晨，我在林間小徑上，看見了一頭鹿。不是那種在觀光區習慣人群的鹿，而是一頭真正的、屬於森林的野生鹿。牠靜靜地站在晨霧中，眼神清澈而警覺，我們對望了幾秒，然後牠便優雅地轉身，消失在樹林深處。</p>
+            <p>那個瞬間沒有言語，卻充滿了力量。它提醒我，有些連結，無須言語，只需一份相互的尊重與看見。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 森林的奇遇 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">森林的奇遇</h2>
+      <p class="text-forest-text-light mb-6">今天，你在森林中遇見了「騎士．獅子」。牠並非猛獸，而是一位沉穩的守護者。牠看著你，用低沉的聲音，給了你一份今日的練習。</p>
+
+      <div class="bg-forest-green/5 p-6 rounded-lg">
+          <p class="font-semibold forest-green text-lg text-center">獅子說：「真正的力量，不是向外咆哮，而是向內歸因。今天，請練習在與他人的互動中，不急著指責或抱怨，而是先問自己一個問題：『**在這件事中，我能為自己負責的部分是什麼？**』」</p>
+      </div>
+    </section>
+
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">在聆聽完獅子的教導後，請回想最近一次與人發生的小摩擦或誤會，並試著回答牠的問題。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「回想那件事，我能為自己負起責任的部分是什麼？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="這不是要你自責，而是一份溫柔的內觀..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">當我們收回向外指責的手指，力量便開始向內匯聚。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你找到那份，源於自身的沉穩力量。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 10: 共生的智慧｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 10 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">共生的智慧</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[42.84%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，日安。</p>
+            <p>雨後，我總喜歡去看看那些從腐木上長出的蘑菇。它們與樹木之間，有著奇妙的共生關係。蘑菇的菌絲網絡幫助樹木吸收水分和養分，而樹木則回報糖分給蘑菇。</p>
+            <p>這種互惠關係提醒我：在人際關係中，最美好的連結不是單向的給予或索取，而是彼此滋養、共同成長。**它們連結，但不佔有。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+        <p class="text-forest-text-light mb-6">今天的聲音練習，將引導你感受萬物之間那份看不見的連結，並從中找到支持的力量。</p>
+        
+        <div class="bg-forest-green/5 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="font-semibold forest-green">通用音頻《萬物互聯的呼吸》</p>
+            <span class="text-sm text-forest-text-light">3:50</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            </button>
+            <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+              <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- 森林的智慧 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">森林的智慧</h2>
+      <div class="prose max-w-none text-forest-text-light">
+        <h3 class="text-xl font-bold forest-text-dark !mb-2">共生關係的三種樣貌</h3>
+        <p>在森林中，共生關係不只有一種。這三種樣貌，或許也能映照出我們在人際關係中的不同狀態：</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>互利共生</strong>：像樹木與蘑菇，彼此都從關係中獲益，共同成長。這是最理想的狀態。</li>
+          <li><strong>片利共生</strong>：像蘭花附生在樹上，蘭花獲益（得到陽光），但樹木不受影響。這段關係對一方是必要的，對另一方則不然。</li>
+          <li><strong>偏害共生</strong>：像菟絲子纏繞在植物上，吸取其養分，導致對方衰弱。這是一種消耗性的關係。</li>
+        </ul>
+        <p>今天的練習，不是要去評判任何關係的好壞，而是單純地、不帶批判地**看見**我們與他人之間，能量是如何流動的。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你所有的連結，都能彼此滋養。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 11: 森林的奇遇｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 11 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的奇遇</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[47.6%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>雨後的清晨，森林裡處處是藝術品。今天，我在一株倒下的枯木上，看見了一張沾滿露水、閃閃發光的蜘蛛網。每一根絲線都那麼纖細，卻共同構成了一個如此堅韌、複雜又美麗的結構。</p>
+            <p>看著這張網，我領悟到，有意義的連結，都需要耐心與智慧去創造。而且，我還發現了一個有趣的秘密：**網的中心，總是空的。** 或許，在所有關係的中心，我們都需要為自己，留下一點不被打擾的，神聖的空白。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 森林的奇遇 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">森林的奇遇</h2>
+      <p class="text-forest-text-light mb-6">今天，你在林間遇見了「拓能術士．蜘蛛」。牠停下手中的工作，轉向你，提出了一個關於「空間」的問題。</p>
+
+      <div class="bg-forest-green/5 p-6 rounded-lg">
+          <p class="font-semibold forest-green text-lg text-center">蜘蛛問：「你正在編織你的人際網絡。在網的中心，那個最重要的位置，你為誰（或為什麼）而留白？」</p>
+      </div>
+    </section>
+
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">蜘蛛的問題，邀請我們去思考關係中的「界線」與「自我空間」。請將你的答案記錄下來。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「在我的關係網絡中，我如何為自己保留一份神聖的空間？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="這份空間，可能是獨處的時間、一個不容妥協的原則，或是一個純粹的興趣..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">健康的界線，是所有美好關係的開始。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你的網絡堅韌而美麗，中心安穩而寧靜。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 12: 週末的贈禮｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    .gift-card {
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform-style: preserve-3d;
+    }
+    .gift-card.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 12 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">週末的贈禮</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[52.36%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>週末愉快，旅人。</p>
+            <p>森林裡的週末，沒有特別的區分，但步調似乎會不自覺地更慢一些。我喜歡在這樣的日子裡，什麼也不做，只是單純地存在。允許自己無所事事，是我在森林裡學到的、最重要的休息方式。</p>
+            <p>今天，森林裡的朋友也為你捎來了一份週末的祝福。它提醒我們，有時最好的前進，就是停下來。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 森林的贈禮 -->
+    <section class="p-6 sm:p-8">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4 text-center">一份來自森林的祝福</h2>
+      <p class="text-forest-text-light mb-8 text-center">輕觸下方的牌卡，看看今天森林想對你說些什麼。</p>
+
+      <div id="gift-card-container" class="w-full max-w-sm mx-auto perspective-1000">
+        <div id="gift-card" class="gift-card relative w-full h-64 sm:h-72">
+          <!-- Card Front -->
+          <div class="card-face card-front absolute w-full h-full p-6 bg-white rounded-xl2 border-2 border-forest-cta shadow-soft-lg flex flex-col justify-center items-center text-center cursor-pointer">
+            <svg class="w-16 h-16 forest-cta mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a8.25 8.25 0 01-16.5 0v-8.25a8.25 8.25 0 0116.5 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75a3.75 3.75 0 003.75-3.75V4.5a3.75 3.75 0 00-7.5 0v7.5A3.75 3.75 0 0012 15.75z" /></svg>
+            <h3 class="text-xl font-bold forest-text-dark">來自「大地行者．巨象」的祝福</h3>
+            <p class="mt-2 text-forest-text-light">輕觸以翻開</p>
+          </div>
+          <!-- Card Back -->
+          <div class="card-face card-back absolute w-full h-full p-8 bg-forest-green rounded-xl2 shadow-soft-lg flex flex-col justify-center items-center text-center text-white">
+            <p class="text-2xl leading-relaxed">「慢慢走，比較快。<br>記得回頭看看，<br>那些支持著你的、<br>堅實的腳印。」</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">週末，讓我們再次回到專屬於你的祝福音。這一次，試著不帶任何期待，只是單純地聆聽與感受。</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <!-- TODO: 後端請根據用戶嚮導動物，動態替換音檔標題 -->
+          <p class="font-semibold forest-green">你的專屬祝福音 (複習)</p>
+          <span class="text-sm text-forest-text-light">3:10</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你享受這份無所事事的寧靜。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const card = document.getElementById('gift-card');
+        if (card) {
+            card.addEventListener('click', function() {
+                this.classList.toggle('is-flipped');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 13: 森林的奇遇｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 13 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的奇遇</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[57.12%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>傍晚時分，我坐在山坡上，看著遠方的雲。它們的形狀千變萬化，有時像奔騰的野馬，有時像沉睡的巨鯨。那一刻，我感覺到一種開闊的自由。</p>
+            <p>我們常常被各種無形的線牽絆著——他人的期待、自己的標準、過去的習慣。但森林總在提醒我，生命本質上是自由的，像天上的雲，像林間的風。有時候，我們需要的，只是給自己一點掙脫束縛的勇氣。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 森林的奇遇 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">森林的奇遇</h2>
+      <p class="text-forest-text-light mb-6">今天，你在雲霧繚繞的山頂，遇見了「烈士．飛馬」。牠展開雙翼，邀請你一同感受那份掙脫重力的自由。牠給了你一份今日的練習。</p>
+
+      <div class="bg-forest-green/5 p-6 rounded-lg">
+          <p class="font-semibold forest-green text-lg text-center">飛馬說：「自由，不是沒有疆界，而是知道你的疆界由你定義。今天，請練習辨識出一個正在消耗你能量的『無形束縛』，並溫柔地、在心中與它告別。」</p>
+      </div>
+    </section>
+
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">在聆聽完飛馬的教導後，請誠實地問自己，並將答案記錄下來。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「在我的生活中，是哪一個『我應該...』或『我必須...』的念頭，最讓我感到疲憊？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="誠實地寫下那個束縛你的念頭，單純地看見它，就是掙脫的第一步..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">當你看見了牢籠，你便已身在籠外。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你擁有，定義自己天空的自由。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 14: 池塘的倒影｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 14 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">池塘的倒影</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[61.88%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，週末愉快。</p>
+            <p>第二週的旅程即將告一段落。今天，我坐在池塘邊，看著水面倒映著天空。當水面平靜時，倒影清晰無比；但只要一顆小石子落下，或一陣風吹過，倒影就會扭曲、破碎。</p>
+            <p>關係也是如此。他人就像一面鏡子，映照出我們的內在。當我們內心平靜時，關係自然和諧；當內在起了波瀾，我們看見的，也只是自己被擾動的心緒。</p>
+            <p>**我們無需改變鏡子，只需靜待自己內心的波瀾平息，倒影自會清晰。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+      <p class="text-forest-text-light mb-6">今天的聲音練習，將引導你溫柔地觀照在關係中的自己，並從中找到安頓的力量。</p>
+      
+      <div class="bg-forest-green/5 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <p class="font-semibold forest-green">通用音頻《關係的迴響》</p>
+          <span class="text-sm text-forest-text-light">4:00</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+            <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">第二週的足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">在結束第二週的探索之前，讓我們為自己做一次溫柔的總結。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「總結這一週，你為自己搭建了許多與他人的『橋樑』。哪一座讓你感覺最自在？哪一座又讓你感覺，橋上的自己，有點不像『原本的你』？」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="誠實地寫下你的感受，這份看見，將是通往更真實關係的地圖..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存本週回顧
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">當你看清了倒影，便離真實的自己更近了一步。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">好好休息，我們下週見。</p>
+      <p class="text-forest-text-light mt-2">靜謐森林，一直都在。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 15: 落葉的智慧｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 15 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">落葉的智慧</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[66.64%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，我們進入最後一週了。</p>
+            <p>森林裡的秋天，從來都不是蕭瑟的。滿地的落葉，看似結束，其實是大地正在準備的一場盛宴。它們將自己還給土壤，化為養分，去滋養明年春天的第一株嫩芽。</p>
+            <p>森林教會我，生命是一個不斷循環的過程。**每一個結束，都溫柔地孕育著下一個嶄新的開始。**</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+        <p class="text-forest-text-light mb-6">今天的聲音練習，將引導你感受生命中自然的流動與循環，從中找到安定的力量。</p>
+        
+        <div class="bg-forest-green/5 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="font-semibold forest-green">通用音頻《大地的呼吸》</p>
+            <span class="text-sm text-forest-text-light">4:20</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            </button>
+            <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+              <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- 微小行動 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的森林練習</h2>
+      <div class="prose max-w-none text-forest-text-light">
+        <p>今天的練習，是關於「觀看流動」。</p>
+        <p>請找一扇窗，花一分鐘的時間，只是單純地看看天上的雲。不需要分析，不需要尋找形狀，只是靜靜地看著它們聚集，也看著它們散去。</p>
+        <p>感受那份不費力的、恆常的變化。這就是自然，這也是生命。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你信任生命中的每一個循環。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 16: 森林的奇遇｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 16 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的奇遇</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[71.4%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>有時，我會從森林的至高點，眺望遠方的海洋。那份無垠的開闊，總能讓心中那些瑣碎的煩惱，顯得微不足道。</p>
+            <p>海洋教會我，生命中有些方向，不是靠地圖尋找的，而是靠內心的羅盤去感受。當你不知道該往哪走的時候，或許只需靜下來，聆聽內心深處，那如鯨魚般沉穩而古老的歌聲。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 森林的奇遇 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">森林的奇遇</h2>
+      <p class="text-forest-text-light mb-6">今天，在森林的邊緣，你感覺到了一股來自遠方的、深沉的呼喚。你遇見了「長老．鯨魚」。牠不给你任務，只是溫柔地，向你提出一個關於方向的問題。</p>
+
+      <div class="bg-forest-green/5 p-6 rounded-lg">
+          <p class="font-semibold forest-green text-lg text-center">鯨魚問：「如果拋開所有人的期待與社會的框架，你內心那個最簡單、最純粹的渴望，是什麼？」</p>
+      </div>
+    </section>
+
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">鯨魚的問題，邀請我們去聆聽自己靈魂的聲音。請將你的答案記錄下來。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「我內心那個最簡單、最純粹的渴望是...」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="無需思考它是否可行，只需誠實地寫下第一個浮現的念頭..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">當你聽見了內心的聲音，羅盤便已校準。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你永遠能聽見，來自靈魂深處的歌聲。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 17: 雨後的森林｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    .canvas-container { border: 1px solid #EAE5E0; cursor: crosshair; touch-action: none; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 17 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">雨後的森林</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[76.16%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，日安。</p>
+            <p>昨夜下了一場紮實的雨。今早，我走在林間，空氣裡滿是泥土與青草混合的、煥然一新的氣息。陽光穿透濕潤的葉片，灑下斑駁的光點，所有顏色都好像被洗過一樣，變得特別鮮亮。</p>
+            <p>森林從不害怕雨水。它知道，每一場雨，都是一次洗滌與重生。那些積累的塵埃、枯萎的枝葉，都會被帶走，為新的生長，騰出最乾淨的空間。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 創意活動 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的森林練習</h2>
+      <p class="text-forest-text-light mb-6">今天，讓我們也來為內心做一次溫柔的洗滌。下方的畫布，是一片雨後的寧靜。請選擇一種顏色，畫下一個在這趟旅程中，你已準備好**釋放**的記憶或情緒。讓它被這片畫布溫柔地承接，然後，隨著想像中的雨水，流回大地。</p>
+      
+      <div class="canvas-container w-full h-64 sm:h-80 bg-white rounded-lg relative overflow-hidden">
+        <canvas id="drawing-canvas"></canvas>
+      </div>
+      <div class="flex items-center justify-between mt-4">
+        <div class="flex gap-2">
+          <button class="color-swatch w-8 h-8 rounded-full bg-blue-300 border-2 border-blue-500" data-color="#93c5fd"></button>
+          <button class="color-swatch w-8 h-8 rounded-full bg-gray-400" data-color="#9ca3af"></button>
+          <button class="color-swatch w-8 h-8 rounded-full bg-yellow-300" data-color="#fde047"></button>
+          <button class="color-swatch w-8 h-8 rounded-full bg-red-400" data-color="#f87171"></button>
+        </div>
+        <button id="clear-canvas" class="text-sm text-forest-text-light hover:text-forest-text-dark underline">清空畫布</button>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">每一次溫柔的釋放，都是為了更清澈的看見。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('drawing-canvas');
+      const ctx = canvas.getContext('2d');
+      const container = canvas.parentElement;
+      let drawing = false;
+      let currentColor = '#93c5fd';
+
+      function resizeCanvas() {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      function getPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        if (event.touches) {
+          return {
+            x: event.touches[0].clientX - rect.left,
+            y: event.touches[0].clientY - rect.top
+          };
+        }
+        return {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top
+        };
+      }
+
+      function startDrawing(e) {
+        drawing = true;
+        draw(e);
+      }
+      function stopDrawing() {
+        drawing = false;
+        ctx.beginPath();
+      }
+      function draw(e) {
+        if (!drawing) return;
+        e.preventDefault();
+        const pos = getPosition(e);
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = currentColor;
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      }
+
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('touchstart', startDrawing);
+      canvas.addEventListener('touchend', stopDrawing);
+      canvas.addEventListener('touchmove', draw);
+
+      const colorSwatches = document.querySelectorAll('.color-swatch');
+      colorSwatches.forEach(swatch => {
+        swatch.addEventListener('click', function() {
+          currentColor = this.dataset.color;
+          colorSwatches.forEach(s => s.style.borderColor = 'transparent');
+          this.style.borderColor = this.dataset.color === '#93c5fd' ? '#3b82f6' : this.dataset.color;
+        });
+      });
+      // Initial active color
+      document.querySelector('.color-swatch').style.borderColor = '#3b82f6';
+
+
+      document.getElementById('clear-canvas').addEventListener('click', function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 18: 感謝的練習｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 18 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">感謝的練習</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[80.92%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，日安。</p>
+            <p>你的嚮導動物已陪伴你走了很長一段路。牠映照出你內在的光，也陪伴你走過幽暗的角落。</p>
+            <p>森林教會我，每一次相遇，最終都會迎來告別。而告別不是失去，而是一份深刻的感謝，感謝對方讓我們更認識了自己。</p>
+            <p>**真正的感謝，是將一份指引，內化為自己的力量。** 今天，讓我們練習這份感謝。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+        <p class="text-forest-text-light mb-6">這是一段感恩的冥想。讓聲音引導你，在心中與你的嚮導對話，並感受那份深刻的連結與祝福。</p>
+        
+        <div class="bg-forest-green/5 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="font-semibold forest-green">通用音頻《感恩的迴響》</p>
+            <span class="text-sm text-forest-text-light">4:15</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            </button>
+            <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+              <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">今天的練習，是關於「感謝」與「提煉」。請在心中想像你的嚮導，並回答下方的問題。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6 space-y-4">
+          <p class="font-semibold forest-green text-lg">1. 在牠消失前，你最想對牠說的一句感謝是什麼？</p>
+          <p class="font-semibold forest-green text-lg">2. 如果拿掉這個動物形象，牠教給你的那個「核心品質」，你會如何命名它？</p>
+        </div>
+        <textarea id="journal-input" rows="5" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="寫下你的感謝，以及你提煉出的那個核心品質..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">當你認出了那份品質，它便永遠屬於你了。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願感恩之心，化為你內在不息的光。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 19: 森林的奇遇｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    .gift-card {
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform-style: preserve-3d;
+    }
+    .gift-card.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 19 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">森林的奇遇</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[85.68%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>前幾天，一場大雨沖垮了通往後山的一段小路。昨天，我花了一整個下午，搬開石頭，清理泥濘，重新鋪設了步道。過程很累，汗流浹背，但當我完成時，看著那條重新暢通的小徑，心中充滿了一種難以言喻的、紮實的滿足感。</p>
+            <p>森林教會我，突破不是驚天動地的奇蹟，它往往只是汗水與堅持的累積。而那份親手創造改變的力量，一直都在我們自己身上。</p>
+            <div class="text-right mt-6">
+              <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+              <p class="text-sm">寫於靜謐森林的小屋</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 森林的贈禮 -->
+    <section class="p-6 sm:p-8">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4 text-center">森林的奇遇</h2>
+      <p class="text-forest-text-light mb-8 text-center">今天，在你的小徑上，你遇見了「聖獸．龍」。牠的出現，不是為了給予挑戰，而是一份力量的祝福。</p>
+
+      <div id="gift-card-container" class="w-full max-w-sm mx-auto perspective-1000">
+        <div id="gift-card" class="gift-card relative w-full h-64 sm:h-72">
+          <!-- Card Front -->
+          <div class="card-face card-front absolute w-full h-full p-6 bg-white rounded-xl2 border-2 border-forest-cta shadow-soft-lg flex flex-col justify-center items-center text-center cursor-pointer">
+            <svg class="w-16 h-16 forest-cta mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.62a8.983 8.983 0 013.362-3.848 8.454 8.454 0 005.996-1.564z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z" /></svg>
+            <h3 class="text-xl font-bold forest-text-dark">來自「聖獸．龍」的祝福</h3>
+            <p class="mt-2 text-forest-text-light">輕觸以翻開</p>
+          </div>
+          <!-- Card Back -->
+          <div class="card-face card-back absolute w-full h-full p-8 bg-forest-green rounded-xl2 shadow-soft-lg flex flex-col justify-center items-center text-center text-white">
+            <p class="text-2xl leading-relaxed">「你所經歷的一切，<br>都已化為你鱗甲下的光。<br>你，就是你一直在尋找的<br>那份力量。」</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+        <p class="text-forest-text-light mb-6">今天，讓我們再次回到專屬於你的祝福音。這是倒數第二次的聆聽，試著從中聽見那份早已存在於你內心的、沉穩的力量。</p>
+        
+        <div class="bg-forest-green/5 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <!-- TODO: 後端請根據用戶嚮導動物，動態替換音檔標題 -->
+            <p class="font-semibold forest-green">你的專屬祝福音 (複習)</p>
+            <span class="text-sm text-forest-text-light">3:10</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            </button>
+            <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+              <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你認出自己的力量，並溫柔地使用它。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const card = document.getElementById('gift-card');
+        if (card) {
+            card.addEventListener('click', function() {
+                this.classList.toggle('is-flipped');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 20: 風的聲音｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 20 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">風的聲音</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-[90.44%] h-2 bg-forest-green rounded-full"></div>
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+      <div class="flex items-start gap-4">
+        <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold forest-text-dark mb-4">主理人的森居日記</h2>
+          <div class="prose max-w-none text-forest-text-light">
+            <p>旅人，你好。</p>
+            <p>旅程即將抵達終點。今天，我沒有特別的分享，只是想邀請你，和我一起，靜靜地聽風的聲音。風，是森林的呼吸。它沒有形體，看不見也抓不著，但我們卻能透過搖曳的樹梢、拂過臉頰的涼意，清晰地感受到它的存在。</p>
+            <p>或許，我們內在最核心的本質，也像風一樣。它不是一個標籤，不是一段記憶，也不是一份成就。它無法被定義，卻能透過我們的每一個善意、每一次呼吸、每一個溫柔的選擇，而被真實地感受到。</p>
+            <p>**旅程的終點，不是要找到一個答案，而是要回歸那個，比所有答案都更真實的、最純粹的自己。**</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聲音引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <h2 class="text-2xl font-bold forest-text-dark mb-2">森林的低語</h2>
+        <p class="text-forest-text-light mb-6">這是旅程中最後一段通用音頻。讓它引導你，穿越所有思緒的迷霧，回到內心最寧靜的核心。</p>
+        
+        <div class="bg-forest-green/5 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="font-semibold forest-green">通用音頻《寧靜的延續》</p>
+            <span class="text-sm text-forest-text-light">4:30</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+            </button>
+            <div class="w-full bg-white rounded-full h-2 border border-gray-200">
+              <div class="bg-forest-green h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    <!-- 內在探索 -->
+    <section id="journal-section" class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <h2 class="text-2xl font-bold forest-text-dark mb-4">今日的心靈足跡</h2>
+      
+      <div id="journal-prompt">
+        <p class="mb-6 text-forest-text-light">這是我們最後一次的日誌練習，也是為明天的最終儀式，所做的溫柔準備。</p>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+          <p class="font-semibold forest-green text-lg">「回顧這20天，你最大的收穫是什麼？請試著用**『一個詞』**來總結它。」</p>
+        </div>
+        <textarea id="journal-input" rows="4" class="w-full p-3 border forest-border rounded-lg focus:outline-none transition" placeholder="相信你的直覺，寫下第一個浮現腦海的詞語..."></textarea>
+        <button id="save-journal-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+          儲存今日紀錄
+        </button>
+      </div>
+
+      <div id="journal-success" class="hidden text-center py-8">
+         <svg class="w-16 h-16 forest-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h3 class="text-2xl font-bold forest-text-dark">紀錄已珍藏</h3>
+        <p class="mt-2 text-forest-text-light">明天，我們將帶著這份提煉後的純粹，回家。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">旅程即將抵達終點，但探索從未停止。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('save-journal-btn');
+        const journalPrompt = document.getElementById('journal-prompt');
+        const journalSuccess = document.getElementById('journal-success');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                // TODO: 在此加入將 journal-input.value 儲存至後端的程式碼
+                journalPrompt.classList.add('hidden');
+                journalSuccess.classList.remove('hidden');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 21: 唯一的行囊｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F5F5F3; color: #333333; }
+    h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2F4858; }
+    /* 靜態資源 Aesthetic */
+    .forest-green { color: #2F4858; }
+    .bg-forest-green { background-color: #2F4858; }
+    .forest-cta { color: #C87D54; }
+    .bg-forest-cta { background-color: #C87D54; }
+    .hover\:bg-forest-cta-dark:hover { background-color: #B56A40; }
+    .forest-bg { background-color: #F5F5F3; }
+    .forest-card-bg { background-color: #FFFFFF; }
+    .forest-text-dark { color: #3A3A3A; }
+    .forest-text-light { color: #6B6B6B; }
+    .forest-border { border-color: #EAE5E0; }
+    .shadow-soft-lg { box-shadow: 0 10px 30px rgba(46, 79, 79, 0.08); }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    textarea:focus { box-shadow: 0 0 0 2px #C87D54; border-color: #C87D54; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header -->
+    <header class="space-y-6 text-center">
+      <p class="text-lg forest-green font-semibold">Day 21 / 21</p>
+      <h1 class="text-3xl sm:text-4xl font-bold forest-text-dark">唯一的行囊</h1>
+      <!-- Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border forest-border shadow-soft-lg flex items-center gap-2">
+        <div class="w-full h-2 bg-forest-green rounded-full"></div>
+      </div>
+    </header>
+
+    <div id="final-ritual">
+        <!-- 主理人筆記 -->
+        <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border forest-border shadow-soft-lg">
+        <div class="flex items-start gap-4">
+            <img src="https://placehold.co/80x80/8B7E74/F5F5F3?text=Steward" alt="主理人頭像" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0">
+            <div class="w-full">
+            <h2 class="text-2xl font-bold forest-text-dark mb-4">最後一封信</h2>
+            <div class="prose max-w-none text-forest-text-light">
+                <p>親愛的旅人，</p>
+                <p>恭喜你走到了這裡。你的內在森林已經歷了四季，此刻，它將回歸大地，化為沃土。你的嚮導、你收集的一切、你建造的一切，都已完成它們的使命。</p>
+                <p>現在，森林的門即將為你開啟，你要回到你的世界了。**你不能帶走森林的任何一片葉子，但你可以帶走你自己的根。**</p>
+                <p>旅程的意義，不是獲得，而是憶起。憶起你本自具足的、那個最純粹的核心。</p>
+                <div class="text-right mt-6">
+                <p class="font-semibold forest-text-dark !-mb-1">森林主理人</p>
+                <p class="text-sm">寫於靜謐森林的小屋</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- 最終儀式 -->
+        <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg mt-10">
+        <h2 class="text-2xl font-bold forest-text-dark mb-4 text-center">最終的儀式</h2>
+        <div class="bg-forest-green/5 p-4 rounded-lg text-center mb-6">
+            <p class="font-semibold forest-green text-lg">「你離開森林，只帶走最重要的一件東西。<br>那是什麼？」</p>
+        </div>
+        <input type="text" id="final-word" class="w-full p-3 text-center text-lg border forest-border rounded-lg focus:outline-none transition" placeholder="在這裡，寫下那個唯一的詞語...">
+        <button id="go-home-btn" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+            帶著它，回家
+        </button>
+        </section>
+    </div>
+
+    <!-- 畢業贈禮 -->
+    <div id="graduation-gift" class="hidden text-center py-8">
+        <svg class="w-20 h-20 forest-green mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" /></svg>
+        <h2 class="text-3xl font-bold forest-text-dark">你的「內在森林日誌」</h2>
+        <p class="mt-4 text-lg text-forest-text-light">這是在你找到「<span id="display-word" class="font-bold forest-cta"></span>」之前，<br>所走過的全部風景。</p>
+        <button class="mt-8 bg-forest-green text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-forest-green/80 transition-colors">
+            下載你的日誌
+        </button>
+
+        <div class="mt-16 bg-white p-8 rounded-xl2 border forest-border shadow-soft-lg">
+            <h3 class="text-2xl font-bold forest-text-dark">一份溫柔的邀請</h3>
+            <p class="mt-4 text-forest-text-light">旅程並未結束，只是換了一種方式繼續。</p>
+            <p class="mt-2 text-forest-text-light">歡迎你帶著這份純粹，來到真實的靜謐森林，回家。</p>
+            <a href="#" class="mt-6 inline-block bg-forest-cta text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+                探索真實的森林
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px forest-border bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">這不是結束，而是一個新的開始。</p>
+      <p class="text-forest-text-light mt-2">靜謐森林，永遠都在。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const goHomeBtn = document.getElementById('go-home-btn');
+        const finalRitual = document.getElementById('final-ritual');
+        const graduationGift = document.getElementById('graduation-gift');
+        const finalWordInput = document.getElementById('final-word');
+        const displayWord = document.getElementById('display-word');
+
+        if (goHomeBtn) {
+            goHomeBtn.addEventListener('click', function() {
+                const finalWord = finalWordInput.value.trim();
+                if (finalWord) {
+                    displayWord.textContent = finalWord;
+                    // TODO: 在此加入將 finalWord 儲存至後端的程式碼
+                    finalRitual.classList.add('hidden');
+                    graduationGift.classList.remove('hidden');
+                } else {
+                    alert('請寫下那個唯一的詞語。');
+                }
+            });
+        }
+    });
+  </script>
+</body>
+</html>
