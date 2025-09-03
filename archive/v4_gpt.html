@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐森林 · 內在平靜的現代儀式</title>
+    <meta name="description" content="以自然為師的現代療癒：60 秒測驗、專屬祝福音、21 天內在重建。">
+    <meta name="theme-color" content="#2F4A3A">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:title" content="靜謐森林 · 內在平靜的現代儀式">
+    <meta property="og:description" content="以自然為師的現代療癒：60 秒測驗、專屬祝福音、21 天內在重建。">
+    <meta property="og:image" content="media/image/big5/21_百川族長熊_10100.jpg">
+    <meta property="og:image:alt" content="靜謐森林品牌影像">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pine': '#2F4A3A',
+                        'pine-ink': '#263C2F',
+                        'moss': '#4A5C43',
+                        'sand': '#F5F3EF',
+                        'stone': '#EAE6DE',
+                        'clay': '#7A6E61',
+                        'gold': '#C9A46A',
+                        'gold-deep': '#B1864A'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter','Noto Sans TC',sans-serif; background: #F5F3EF; color: #374151; }
+        h1,h2,h3,.serif { font-family: 'Noto Serif TC','Noto Sans TC','Inter',serif; letter-spacing: -0.01em; color: #2F4A3A; }
+
+        /* Subtle brand grain */
+        .grain { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMScgaGVpZ2h0PScxJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjZpIGZpbGw9J2JsYWNrJyBvcGFjaXR5PScwLjAzJy8+PC9zdmc+"); background-repeat: repeat; }
+
+        /* Header */
+        #site-header { transition: all 300ms ease; }
+        #site-header.scrolled { background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(234,230,222,0.9); box-shadow: 0 8px 22px rgba(0,0,0,0.05); }
+
+        /* Hero decorative */
+        .hero-bg { position: relative; overflow: hidden; background:
+            radial-gradient(90% 60% at 0% 0%, rgba(201,164,106,0.16) 0%, rgba(201,164,106,0) 50%),
+            radial-gradient(70% 50% at 100% 0%, rgba(47,74,58,0.18) 0%, rgba(47,74,58,0.05) 35%, rgba(245,243,239,0) 60%);
+        }
+        .hero-glow { position: absolute; inset: -20% -10% auto -10%; height: 70%; background: radial-gradient(closest-side, rgba(201,164,106,0.22), rgba(201,164,106,0)); filter: blur(36px); pointer-events: none; }
+        .hero-circle { position: absolute; width: 720px; height: 720px; right: -220px; top: -160px; background: radial-gradient(circle at 30% 30%, rgba(168,213,186,0.18), rgba(168,213,186,0) 60%); filter: blur(24px); pointer-events: none; }
+
+        /* Glass card */
+        .glass { background: rgba(255,255,255,0.55); backdrop-filter: blur(10px); border: 1px solid rgba(234,230,222,0.9); }
+
+        /* Focus and motion */
+        :focus-visible { outline: 3px solid #A8D5BA; outline-offset: 3px; border-radius: 8px; }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    </style>
+</head>
+
+<body class="grain">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-white focus:text-pine focus:px-4 focus:py-2 focus:rounded-lg focus:shadow">跳到主要內容</a>
+
+    <!-- Header -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-5">
+                <a href="#" class="flex items-center gap-3">
+                    <span class="w-9 h-9 rounded-xl bg-pine text-white grid place-items-center shadow-sm">森</span>
+                    <span class="text-pine text-lg font-semibold tracking-wide">靜謐森林</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-9 text-sm text-clay">
+                    <a href="#value" class="hover:text-pine">價值</a>
+                    <a href="#proof" class="hover:text-pine">轉化</a>
+                    <a href="#how" class="hover:text-pine">步驟</a>
+                    <a href="#faq" class="hover:text-pine">FAQ</a>
+                </nav>
+                <div class="hidden md:block">
+                    <button class="text-white font-semibold py-2.5 px-5 rounded-xl bg-gradient-to-r from-gold to-gold-deep shadow-sm" onclick="joinLINE('nav')">立即開始</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="main" class="hero-bg pt-40 pb-20 relative">
+        <div class="hero-glow"></div>
+        <div class="hero-circle"></div>
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                <div class="lg:col-span-6 order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 bg-white/70 border border-stone rounded-full px-4 py-2 text-sm text-clay shadow-sm mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        1000+ 都市人已經找回內在平靜
+                    </div>
+                    <h1 class="serif text-4xl lg:text-6xl font-bold leading-tight mb-5">
+                        內在平靜，
+                        <span class="text-clay">成為你的日常儀式</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-gray-600 mb-8 max-w-xl">
+                        60 秒測驗找到你的森林角色，接收專屬祝福音，每天 3 分鐘，
+                        在 21 天內重建你與自己、他人、與自然的連結。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-pine text-white font-semibold py-4 px-7 rounded-xl hover:bg-pine-ink transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-3 group" onclick="joinLINE('hero-primary')">
+                            立即免費開始
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <a href="#how" class="bg-white text-pine font-semibold py-4 px-7 rounded-xl border border-stone hover:border-pine transition-all duration-300 text-center">看看怎麼運作</a>
+                    </div>
+                    <div class="mt-6 flex flex-wrap items-center gap-5 text-sm text-gray-500">
+                        <div class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 完全免費</div>
+                        <div class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 即時開始</div>
+                        <div class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 隨時退出</div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 order-1 lg:order-2">
+                    <div class="relative">
+                        <img src="media/image/big5/21_百川族長熊_10100.jpg" alt="森林角色影像" class="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/70">
+                        <div class="absolute -bottom-6 -left-6 right-auto w-[70%] glass rounded-2xl p-5 shadow-md">
+                            <div class="text-sm text-clay mb-2">你的今日祝福音</div>
+                            <div class="flex items-center gap-3">
+                                <button class="flex-1 bg-pine text-white text-sm py-2.5 rounded-lg hover:bg-pine-ink transition-colors">🎵 森林晨光（3:12）</button>
+                                <button class="w-9 h-9 bg-white rounded-lg grid place-items-center border border-stone"><svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-hidden="true" class="absolute left-0 right-0 bottom-[-1px] text-sand">
+            <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path fill="#F5F3EF" d="M0,64L48,80C96,96,192,128,288,133.3C384,139,480,117,576,117.3C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,0L0,0Z"/></svg>
+        </div>
+    </section>
+
+    <!-- Value - glass cards -->
+    <section id="value" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-14">
+                <h2 class="serif text-3xl lg:text-4xl font-bold mb-3">重建三種連結 · 完整而溫潤</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">不止於冥想。我們以儀式化、可持續的微行動，讓平靜能被日常實踐。</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="glass rounded-2xl p-8">
+                    <div class="w-12 h-12 rounded-xl bg-white grid place-items-center shadow mb-5"><svg class="w-6 h-6 text-pine" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+                    <h3 class="serif text-xl font-semibold mb-3">與自我的連結</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>每週個人化祝福音（30-60 秒）</li>
+                        <li>專屬森林角色分析</li>
+                        <li>日常覺察提醒</li>
+                    </ul>
+                </div>
+                <div class="glass rounded-2xl p-8">
+                    <div class="w-12 h-12 rounded-xl bg-white grid place-items-center shadow mb-5"><svg class="w-6 h-6 text-pine" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+                    <h3 class="serif text-xl font-semibold mb-3">與他人的連結</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>夥伴相容性小測驗</li>
+                        <li>專屬線上社群支持</li>
+                        <li>分享卡自動生成</li>
+                    </ul>
+                </div>
+                <div class="glass rounded-2xl p-8">
+                    <div class="w-12 h-12 rounded-xl bg-white grid place-items-center shadow mb-5"><svg class="w-6 h-6 text-pine" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div>
+                    <h3 class="serif text-xl font-semibold mb-3">與自然的連結</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>靜謐森林護照系統</li>
+                        <li>園區限定印記收集</li>
+                        <li>森林屋沉浸式體驗</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof - metrics and testimonials -->
+    <section id="proof" class="py-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 glass rounded-2xl p-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2" data-counter="1000">0</div>
+                    <div class="text-gray-600">位使用者</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">40%</div>
+                    <div class="text-gray-600">壓力指數下降</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">93%</div>
+                    <div class="text-gray-600">睡眠品質改善</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">87%</div>
+                    <div class="text-gray-600">7 天內感受平靜</div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-10">
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-stone">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Sarah Chen" class="w-12 h-12 rounded-full">
+                        <div>
+                            <div class="font-semibold text-gray-800">Sarah Chen</div>
+                            <div class="text-sm text-gray-600">產品經理 • 使用 28 天</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">「每天 3 分鐘的祝福音，讓我在忙碌後重新找回節奏。睡眠改善幅度超出預期。」</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-stone">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="David Liu" class="w-12 h-12 rounded-full">
+                        <div>
+                            <div class="font-semibold text-gray-800">David Liu</div>
+                            <div class="text-sm text-gray-600">創業者 • 使用 45 天</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">「個人化體驗大幅降低我的選擇疲勞。它很安靜、很精準，也很可持續。」</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-stone">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="Emily Wu" class="w-12 h-12 rounded-full">
+                        <div>
+                            <div class="font-semibold text-gray-800">Emily Wu</div>
+                            <div class="text-sm text-gray-600">設計師 • 使用 60 天</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">「和伴侶做了相容性小測驗，關係對話更順了。後來一起去了森林屋，超療癒。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-14">
+                <h2 class="serif text-3xl lg:text-4xl font-bold mb-3">簡單三步 · 沒有額外負擔</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我們為你設計好了節奏與內容，你只需說「是」。</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="relative bg-white border border-stone rounded-2xl p-8">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-pine grid place-items-center font-bold">1</div>
+                    <h3 class="serif text-xl font-semibold mt-5 mb-3">完成 60 秒測驗</h3>
+                    <p class="text-gray-600">10 道直覺題，獲得你的森林角色與專屬建議。</p>
+                    <div class="absolute hidden lg:block right-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 text-stone">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+                <div class="relative bg-white border border-stone rounded-2xl p-8">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-pine grid place-items-center font-bold">2</div>
+                    <h3 class="serif text-xl font-semibold mt-5 mb-3">每天接收 3 分鐘祝福音</h3>
+                    <p class="text-gray-600">在你設定的時間自動送達，不用打開 App、不用選擇。</p>
+                    <div class="absolute hidden lg:block right-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 text-stone">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+                <div class="bg-white border border-stone rounded-2xl p-8">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-pine grid place-items-center font-bold">3</div>
+                    <h3 class="serif text-xl font-semibold mt-5 mb-3">21 天後走向真實森林</h3>
+                    <p class="text-gray-600">帶上你的護照印記，體驗森林屋與限定小禮。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center glass rounded-3xl p-10 lg:p-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-7 bg-amber-100/60 text-amber-900 border border-amber-200">
+                    今天已有 <span id="today-joined" class="font-bold">127</span> 人開始轉化之旅
+                </div>
+                <h2 class="serif text-3xl lg:text-4xl font-bold mb-4">準備好開始你的現代療癒儀式了嗎？</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">免費開始，立即獲得你的專屬祝福音。</p>
+                <button class="bg-pine text-white font-semibold py-4 px-8 rounded-xl hover:bg-pine-ink transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-3 group" onclick="joinLINE('final-cta')">
+                    立即免費開始
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <div class="text-sm text-gray-500 mt-4">每月限額 500 位新成員 • 目前剩餘 <span id="remaining-spots" class="font-semibold text-clay">247</span> 位</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8 text-sm text-gray-600">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-9 h-9 rounded-xl bg-pine text-white grid place-items-center">森</span>
+                        <span class="text-pine font-semibold">靜謐森林</span>
+                    </div>
+                    <p>以自然為師，設計能被日常堅持的療癒節奏。</p>
+                </div>
+                <div>
+                    <div class="text-clay font-semibold mb-3">服務</div>
+                    <ul class="space-y-2">
+                        <li><a href="#value" class="hover:text-pine">我們的價值</a></li>
+                        <li><a href="#proof" class="hover:text-pine">轉化故事</a></li>
+                        <li><a href="#how" class="hover:text-pine">如何運作</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="text-clay font-semibold mb-3">聯絡</div>
+                    <ul class="space-y-2">
+                        <li><a href="mailto:hello@foresthouse.tw" class="hover:text-pine">hello@foresthouse.tw</a></li>
+                        <li><a href="#" onclick="joinLINE('footer')" class="hover:text-pine">加入 LINE</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="text-clay font-semibold mb-3">聲明</div>
+                    <p>本服務僅提供身心舒緩之用途，非醫療建議或治療。</p>
+                </div>
+            </div>
+            <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <div>© <span id="year"></span> 靜謐森林 Forest House</div>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-pine">隱私權政策</a>
+                    <a href="#" class="hover:text-pine">使用條款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // shim
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0; const increment = target / (duration / 16); let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) { current = target; clearInterval(timer); }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        function initCounters() {
+            const counters = document.querySelectorAll('[data-counter]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-counter'));
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) { animateCounter(counter, target); observer.unobserve(counter); }
+                    });
+                });
+                observer.observe(counter);
+            });
+        }
+
+        function updateDynamicCounters() {
+            const now = new Date();
+            const hour = now.getHours();
+            const baseCount = 80 + Math.floor(Math.random() * 60);
+            const dailyCount = baseCount + hour * 2;
+            const todayEl = document.getElementById('today-joined'); if (todayEl) todayEl.textContent = dailyCount;
+            const remainEl = document.getElementById('remaining-spots'); if (remainEl) remainEl.textContent = Math.max(500 - (dailyCount * 2), 150);
+        }
+
+        function joinLINE(source) {
+            gtag('event','cta_click',{ source });
+            window.open('https://lin.ee/your_line_link', '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // header scroll
+            const headerEl = document.getElementById('site-header');
+            const onScroll = () => { if (window.scrollY > 8) headerEl.classList.add('scrolled'); else headerEl.classList.remove('scrolled'); };
+            onScroll(); window.addEventListener('scroll', onScroll);
+
+            // counters
+            initCounters();
+            updateDynamicCounters();
+            setInterval(updateDynamicCounters, 5 * 60 * 1000);
+
+            // footer year
+            const yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
+
+

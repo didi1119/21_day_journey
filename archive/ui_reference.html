@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>你的森林人格 - 無憂石熊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid #EAE3D4;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4A5C43;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            height: 90vh;
+            min-height: 500px;
+            max-height: 850px;
+        }
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .carousel-nav.prev { left: 15px; }
+        .carousel-nav.next { right: 15px; }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        /* Passport Styles */
+        .passport-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://placehold.co/800x400/A8D5BA/FFFFFF?text=Forest+Pattern');
+            background-size: cover;
+        }
+        .imprint-slot {
+            aspect-ratio: 1/1;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px dashed #B8A99A;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #B8A99A;
+            transition: all 0.3s ease;
+        }
+        .imprint-slot.unlocked {
+            filter: grayscale(0%);
+            opacity: 1;
+            background-color: #E2D9C8;
+            color: #6B5F51;
+        }
+        .imprint-slot span { font-size: 24px; }
+        .imprint-slot p { font-size: 10px; margin-top: 2px; font-weight: 500;}
+
+    </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-8">
+
+    <div class="report-container space-y-8">
+
+        <!-- Section 1: Hero Carousel -->
+        <div class="carousel-container shadow-lg" id="characterCarousel">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <!-- Slides will be injected here by JS -->
+            </div>
+            
+            <!-- Navigation -->
+            <button class="carousel-nav prev" id="prevBtn">‹</button>
+            <button class="carousel-nav next" id="nextBtn">›</button>
+
+            <!-- Gradient Overlay & Info -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-6 left-4 right-4 sm:left-6 sm:right-6 text-white pointer-events-none">
+                <div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 leading-tight" id="characterName"></h1>
+                    <p class="text-sm sm:text-base lg:text-lg opacity-90 leading-relaxed" id="characterSubtitle"></p>
+                </div>
+            </div>
+            
+            <!-- Indicators -->
+            <div class="carousel-indicators" id="indicators"></div>
+        </div>
+
+        <!-- Section 2: Core Self Analysis -->
+        <div class="card">
+            <h2 class="section-title">你的核心特質</h2>
+            <blockquote class="text-center italic text-gray-500 border-l-4 border-[#A8D5BA] pl-4 py-2 max-w-2xl mx-auto mb-8">
+                "你的溫柔，如森林厚實的苔蘚，無聲地承接一切，讓萬物得以安歇。"
+            </blockquote>
+            <p class="text-center text-gray-700 max-w-2xl mx-auto mb-10">
+                如同棲息在寧靜森林深處的石熊，你擁有穩定而溫和的內心。你看重和諧與平靜，總能給周遭帶來安定的力量。對你而言，最舒適的狀態便是在熟悉的環境中，享受簡單而純粹的快樂。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-[#6B5F51] mb-4">石熊的天賦</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-[#4A5C43] mr-2">✓</span> <strong>情緒穩定：</strong> 像大地一樣穩固，不容易被外界的風雨動搖。</li>
+                        <li class="flex items-start"><span class="text-[#4A5C43] mr-2">✓</span> <strong>高度親和：</strong> 溫暖而富有同理心，是森林中值得信賴的夥伴。</li>
+                    </ul>
+                    <h3 class="text-xl font-bold text-[#6B5F51] mt-6 mb-4">適合的森林夥伴</h3>
+                    <p class="text-gray-700">與充滿好奇心的「尋路靈狐」或目標明確的「築巢河狸」同行，能為彼此帶來啟發與支持。</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-center text-[#6B5F51] mb-2">森林五維特質</h3>
+                    <canvas id="personalityChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Inner World -->
+        <div class="card">
+            <h2 class="section-title">你的專屬療癒時刻</h2>
+            <div class="max-w-md mx-auto text-center">
+                <p class="font-semibold text-gray-700">《石熊的大地呼吸》</p>
+                <p class="text-sm text-gray-500 mb-4">閉上眼，讓聲音引導你回歸內在的安穩。</p>
+                <audio controls class="w-full">
+                    <source src="" type="audio/mpeg">
+                    您的瀏覽器不支援音訊播放。
+                </audio>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">探索你的內在森林</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-3">成長的課題</h3>
+                    <p class="text-gray-700">有時可能會過於安於現狀，嘗試走出舒適圈，探索森林中未知的風景，或許會有新的發現。</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-3">給安於現狀的你：</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li><strong>走一條新的小徑：</strong> 週末去一個從未去過的地方散步。</li>
+                        <li><strong>嚐嚐陌生的漿果：</strong> 學習一項簡單的新技能，例如一道新菜。</li>
+                        <li><strong>聆聽風的聲音：</strong> 每天留出10分鐘，不帶目的地靜坐。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card text-center">
+             <h2 class="section-title">森林的祝福</h2>
+             <p class="text-gray-700 max-w-xl mx-auto">願你總能找到屬於你的那塊安穩的岩石，安然入睡。你的幸運物是「圓潤的溪石」，它提醒你，溫和的力量足以抵擋時間的洪流。</p>
+        </div>
+
+        <!-- Section 4: Outer World (Passport & Park) -->
+        <div class="card passport-bg">
+            <h2 class="section-title">你的靜謐森林護照</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                <!-- Left Side: Passport Info -->
+                <div class="lg:col-span-3 bg-white/80 p-6 rounded-2xl border border-white">
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <img src="media/image/big5/01_無憂石熊_00000.jpg" alt="石熊頭像" class="w-24 h-24 rounded-lg object-cover flex-shrink-0">
+                        <div class="text-center sm:text-left">
+                           <p><strong>姓名:</strong> 無憂石熊</p>
+                           <p><strong>森林ID:</strong> <span id="forest-id"></span></p>
+                           <p><strong>首次入境:</strong> <span id="entry-date"></span></p>
+                        </div>
+                         <img src="https://placehold.co/80x80/FFFFFF/000000?text=QR" alt="友誼碼" class="w-20 h-20 rounded-lg ml-auto hidden sm:block">
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-dashed border-[#D1C7B3]">
+                         <p class="text-sm text-center text-gray-600 mb-3"><b>森林夥伴關係圖鑑</b>: 邀請朋友測驗，解鎖你們的關係洞察！</p>
+                         <a href="partner_atlas.html" class="w-full block text-center bg-[#9A6A4D] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#835A40] transition-colors duration-300 text-sm">
+                            查看我的夥伴圖鑑 (已解鎖 1/32)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Park Imprints -->
+                <div class="lg:col-span-2 bg-white/80 p-6 rounded-2xl border border-white">
+                    <h3 class="font-bold text-md text-center text-gray-800 mb-3">園區限定印記</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="imprint-slot unlocked"><span>😴</span><p>休憩</p></div>
+                        <div class="imprint-slot"><span>🍯</span><p>進食</p></div>
+                        <div class="imprint-slot"><span>🚶</span><p>漫步</p></div>
+                        <div class="imprint-slot"><span>🧘</span><p>沉思</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">石熊的寧靜午後 (建議行程)</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <img src="media/image/map/B3A700DA-6EFB-4A9B-9126-9F4DBEB17014.PNG" alt="園區地圖" class="w-full h-auto rounded-lg">
+                <ul class="space-y-3">
+                    <li><strong>14:00 | 露台午茶：</strong> 在小屋露台下方，享用溫暖的花草茶與點心。</li>
+                    <li><strong>15:30 | 池畔時光：</strong> 漫步到寧靜的池塘邊，坐下看著水面倒影。</li>
+                    <li><strong>17:00 | 熱水浴放鬆：</strong> 讓溫熱的水流洗去疲憊，為身體充電。</li>
+                    <li><strong>19:00 | 營火邊的溫暖：</strong> 感受火焰的跳動，享受最純粹的平靜。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 5: Call to Action -->
+        <div class="card text-center bg-amber-50/50">
+            <h2 class="section-title">一份來自森林的贈禮</h2>
+            <p class="text-gray-600">親愛的無憂石熊，感謝你為世界帶來穩定與溫暖。憑此報告畫面來到「靜謐森林屋」，我們將為您獻上：</p>
+            <p class="my-3 font-semibold text-lg text-[#4A5C43]">「幸運溪石一顆 & 手沖暖心花草茶一杯」</p>
+            <p class="text-sm text-gray-500">讓森林的禮物，陪伴你度過寧靜的午後。</p>
+            <div class="mt-6">
+                <button id="shareButton" class="bg-[#4A5C43] text-white font-bold py-3 px-8 rounded-full hover:bg-[#3A4A35] transition-colors duration-300">
+                    分享我的森林人格
+                </button>
+                <p id="copyMessage" class="text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-300">報告連結已複製！</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Your existing JavaScript for Carousel, Chart, and Passport Info
+            const characters = [
+                { name: '無憂石熊', subtitle: 'Grounded Guardian | 沉穩的守護者', image: 'media/image/big5/01_無憂石熊_00000.jpg' },
+                { name: '符文拾荒貓', subtitle: 'Mystical Scavenger | 神秘的拾荒者', image: 'media/image/big5/02_符文拾荒貓_00001.jpg' },
+                { name: '穴居偏執狐', subtitle: 'Paranoid Dweller | 偏執的居者', image: 'media/image/big5/03_穴居偏執狐_00010.jpg' },
+                { name: '幽影頑狐', subtitle: 'Shadow Trickster | 陰影的玩家', image: 'media/image/big5/04_幽影頑狐_00011.jpg' },
+                { name: '蟻工隱狐', subtitle: 'Worker Fox | 工作的狐狸', image: 'media/image/big5/05_蟻工隱狐_00100.jpg' },
+                { name: '玄鐵智梟', subtitle: 'Iron Wise Owl | 鋼鐵智者', image: 'media/image/big5/06_玄鐵智梟_00101.jpg' },
+                { name: '盔甲工蟻熊', subtitle: 'Armored Worker | 裝甲工作者', image: 'media/image/big5/07_盔甲工蟻熊_00110.jpg' },
+                { name: '秘儀巧熊', subtitle: 'Mystical Artisan | 神秘工匠', image: 'media/image/big5/08_秘儀巧熊_00111.jpg' },
+                { name: '靜心龜象', subtitle: 'Tranquil Sage | 寧靜智者', image: 'media/image/big5/09_靜心龜象_01000.jpg' },
+                { name: '觀星智象', subtitle: 'Star Gazer | 觀星者', image: 'media/image/big5/10_觀星智象_01001.jpg' },
+                { name: '含羞樹懶', subtitle: 'Shy Sloth | 害羞的樹懶', image: 'media/image/big5/11_含羞樹懶_01010.jpg' },
+                { name: '奇想隱士鹿', subtitle: 'Whimsical Hermit | 奇想隱士', image: 'media/image/big5/12_奇想隱士鹿_01011.jpg' },
+                { name: '星河織壩狸', subtitle: 'Cosmic Weaver | 宇宙織者', image: 'media/image/big5/13_星河織壩狸_01100.jpg' },
+                { name: '靜溪靈海狸', subtitle: 'Stream Spirit | 溪流精靈', image: 'media/image/big5/14_靜溪靈海狸_01101.jpg' },
+                { name: '靜默園丁鹿', subtitle: 'Silent Gardener | 靜默園丁', image: 'media/image/big5/15_靜默園丁鹿_01110.jpg' },
+                { name: '書庫螢兔', subtitle: 'Library Keeper | 圖書管理員', image: 'media/image/big5/16_書庫螢兔_01111.jpg' },
+                { name: '孤岩歌鳥', subtitle: 'Lone Songbird | 孤獨歌者', image: 'media/image/big5/17_孤岩歌鳥_10000.jpg' },
+                { name: '狂想畫猴', subtitle: 'Fantasy Artist | 幻想藝術家', image: 'media/image/big5/18_狂想畫猴_10001.jpg' },
+                { name: '躁衛亂雀', subtitle: 'Restless Guardian | 不安的守衛', image: 'media/image/big5/19_躁衛亂雀_10010.jpg' },
+                { name: '風羽智鴉', subtitle: 'Wind Sage | 風之智者', image: 'media/image/big5/20_風羽智鴉_10011.jpg' },
+                { name: '百川族長熊', subtitle: 'River Chief | 河流族長', image: 'media/image/big5/21_百川族長熊_10100.jpg' },
+                { name: '領航巨熊', subtitle: 'Navigator Giant | 領航巨人', image: 'media/image/big5/22_領航巨熊_10101.jpg' },
+                { name: '壁壘築巢松鼠', subtitle: 'Fortress Builder | 堡壘建造者', image: 'media/image/big5/23_壁壘築巢松鼠_10110.jpg' },
+                { name: '蒼穹巨匠鳥', subtitle: 'Sky Craftsman | 天空工匠', image: 'media/image/big5/24_蒼穹巨匠鳥_10111.jpg' },
+                { name: '慶典樂猴', subtitle: 'Festival Celebrant | 慶典慶祝者', image: 'media/image/big5/25_慶典樂猴_11000.jpg' },
+                { name: '尋奇靈猴', subtitle: 'Wonder Seeker | 奇蹟尋求者', image: 'media/image/big5/26_尋奇靈猴_11001.jpg' },
+                { name: '光塵絨兔', subtitle: 'Stardust Rabbit | 星塵兔', image: 'media/image/big5/27_光塵絨兔_11010.jpg' },
+                { name: '絮語風猴', subtitle: 'Whispering Wind | 細語之風', image: 'media/image/big5/28_絮語風猴_11011.jpg' },
+                { name: '磐石社鹿', subtitle: 'Rock Community | 磐石社群', image: 'media/image/big5/29_磐石社鹿_11100.jpg' },
+                { name: '社群酋長鹿', subtitle: 'Community Chief | 社群酋長', image: 'media/image/big5/30_社群酋長鹿_11101.jpg' },
+                { name: '築巢守衛松鼠', subtitle: 'Nest Guardian | 巢穴守衛', image: 'media/image/big5/31_築巢守衛松鼠_11110.jpg' },
+                { name: '萬華晶鹿', subtitle: 'Crystal Monarch | 水晶君主', image: 'media/image/big5/32_萬華晶鹿_11111.jpg' }
+            ];
+
+            const wrapper = document.getElementById('carouselWrapper');
+            const indicatorsContainer = document.getElementById('indicators');
+            const characterNameEl = document.getElementById('characterName');
+            const characterSubtitleEl = document.getElementById('characterSubtitle');
+            
+            // Populate Carousel
+            characters.forEach((char, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `<img src="${char.image}" alt="${char.name}">`;
+                wrapper.appendChild(slide);
+
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator';
+                indicator.dataset.index = index;
+                indicatorsContainer.appendChild(indicator);
+            });
+
+            let currentSlide = 0; // Assuming the user is the first character
+            const totalSlides = characters.length;
+            const indicators = document.querySelectorAll('.carousel-indicator');
+
+            function updateCarousel() {
+                wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+                characterNameEl.textContent = characters[currentSlide].name;
+                characterSubtitleEl.textContent = characters[currentSlide].subtitle;
+            }
+
+            function goToSlide(index) {
+                currentSlide = (index + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+            document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', (e) => goToSlide(parseInt(e.target.dataset.index)));
+            });
+            
+            updateCarousel(); // Initial setup
+
+             const data = {
+                labels: ['開放性', '盡責性', '外向性', '親和性', '情緒穩定'],
+                datasets: [{
+                    label: '人格特質分數',
+                    data: [30, 75, 40, 85, 20], 
+                    backgroundColor: 'rgba(74, 92, 67, 0.2)',
+                    borderColor: 'rgb(74, 92, 67)',
+                    pointBackgroundColor: 'rgb(74, 92, 67)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(74, 92, 67)'
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: { r: { min: 0, max: 100, pointLabels: { font: { size: 12 } }, ticks: { stepSize: 25 } } },
+                    plugins: { legend: { display: false } }
+                }
+            };
+            
+            new Chart(document.getElementById('personalityChart'), config);
+
+            const today = new Date();
+            const dateString = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            document.getElementById('entry-date').textContent = dateString;
+            
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const forestId = `SB-${today.getFullYear().toString().slice(-2)}${String(today.getMonth() + 1).padStart(2, '0')}-${randomNum}`;
+            document.getElementById('forest-id').textContent = forestId;
+
+            const shareButton = document.getElementById('shareButton');
+            const copyMessage = document.getElementById('copyMessage');
+            shareButton.addEventListener('click', () => {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    copyMessage.style.opacity = '1';
+                    setTimeout(() => { copyMessage.style.opacity = '0'; }, 2000);
+                }).catch(err => console.error('無法複製連結: ', err));
+            });
+        });
+    </script>
+</body>
+</html>

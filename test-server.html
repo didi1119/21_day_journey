@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統測試 - 靜謐森林</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">🧪 系統測試頁面</h1>
+        
+        <div class="space-y-4">
+            <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h2 class="font-semibold text-blue-800 mb-2">測試 1：檔案載入測試</h2>
+                <button id="test-fetch" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                    測試載入 day1.html
+                </button>
+                <div id="fetch-result" class="mt-2 text-sm"></div>
+            </div>
+            
+            <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <h2 class="font-semibold text-green-800 mb-2">測試 2：協議檢查</h2>
+                <div id="protocol-check" class="text-sm"></div>
+            </div>
+            
+            <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <h2 class="font-semibold text-yellow-800 mb-2">建議解決方案</h2>
+                <div id="solution" class="text-sm space-y-2"></div>
+            </div>
+        </div>
+        
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-semibold text-gray-800 mb-2">快速啟動本機伺服器：</h3>
+            <div class="space-y-2 text-sm font-mono bg-gray-800 text-green-400 p-3 rounded">
+                <div># 使用 Python 3</div>
+                <div>python -m http.server 8000</div>
+                <div class="text-gray-400"># 然後開啟 http://localhost:8000</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查當前協議
+            const protocol = window.location.protocol;
+            const protocolCheck = document.getElementById('protocol-check');
+            const solution = document.getElementById('solution');
+            
+            if (protocol === 'file:') {
+                protocolCheck.innerHTML = `
+                    <span class="text-red-600">❌ 當前使用 file:// 協議</span><br>
+                    <span class="text-gray-600">這會導致 fetch 請求被瀏覽器阻止</span>
+                `;
+                
+                solution.innerHTML = `
+                    <p class="text-red-600">⚠️ 需要使用本機伺服器</p>
+                    <p>1. 安裝 VS Code 的 Live Server 擴展</p>
+                    <p>2. 或使用 Python: <code>python -m http.server 8000</code></p>
+                    <p>3. 然後在瀏覽器開啟 <code>http://localhost:8000</code></p>
+                `;
+            } else if (protocol === 'http:' || protocol === 'https:') {
+                protocolCheck.innerHTML = `
+                    <span class="text-green-600">✅ 當前使用 ${protocol} 協議</span><br>
+                    <span class="text-gray-600">可以正常載入檔案</span>
+                `;
+                
+                solution.innerHTML = `
+                    <p class="text-green-600">✅ 協議正確！如果仍有問題請檢查：</p>
+                    <p>1. days/ 資料夾是否存在</p>
+                    <p>2. dayX.html 檔案是否存在</p>
+                    <p>3. 瀏覽器控制台是否有其他錯誤</p>
+                `;
+            }
+            
+            // 測試 fetch 功能
+            document.getElementById('test-fetch').addEventListener('click', async function() {
+                const resultDiv = document.getElementById('fetch-result');
+                resultDiv.innerHTML = '<span class="text-gray-600">🔄 測試中...</span>';
+                
+                try {
+                    const response = await fetch('./days/day1.html');
+                    
+                    if (response.ok) {
+                        const content = await response.text();
+                        const size = Math.round(content.length / 1024);
+                        resultDiv.innerHTML = `
+                            <span class="text-green-600">✅ 成功載入 day1.html</span><br>
+                            <span class="text-gray-600">檔案大小: ${size}KB</span>
+                        `;
+                    } else {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                } catch (error) {
+                    resultDiv.innerHTML = `
+                        <span class="text-red-600">❌ 載入失敗</span><br>
+                        <span class="text-gray-600">錯誤: ${error.message}</span>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

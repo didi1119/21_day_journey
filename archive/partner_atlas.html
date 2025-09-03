@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森林夥伴關係圖鑑</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+        }
+        .atlas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1.25rem;
+        }
+        .animal-card {
+            aspect-ratio: 1 / 1.2;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            border: 1px solid #EAE3D4;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .animal-card.locked {
+            background-color: #F0EBE4;
+            color: #C9BDB0;
+        }
+        .animal-card.unlocked:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        }
+        .animal-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+         .animal-card .placeholder-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #E0D9CE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .animal-card p {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        .animal-card.unlocked p {
+             color: #6B5F51;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-container {
+            position: relative;
+            background: #FDFBF5;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        #closeModal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-8">
+    <main class="w-full max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">森林夥伴關係圖鑑</h1>
+            <p class="mt-2 text-md text-gray-500">你與朋友們的獨特連結</p>
+            <div class="mt-6">
+                <button class="bg-[#4A5C43] text-white font-bold py-3 px-8 rounded-full hover:bg-[#3A4A35] transition-colors duration-300">
+                    邀請更多夥伴
+                </button>
+            </div>
+        </header>
+
+        <div id="atlas-grid" class="atlas-grid">
+            <!-- Animal cards will be generated here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal for showing friends -->
+    <div id="friendsModal" class="modal-overlay">
+        <div class="modal-container">
+            <button id="closeModal" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            <div class="text-center mb-4">
+                <img id="modal-image" src="" alt="夥伴圖片" class="w-24 h-24 object-cover rounded-full mx-auto mb-3 border-4 border-white shadow-lg">
+                <h2 id="modal-title" class="text-2xl font-bold text-gray-800"></h2>
+            </div>
+            <div id="modal-content" class="space-y-4">
+                <!-- Friend relationship reports will be generated here -->
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- DATA ---
+            // This would come from your database in a real application.
+            const allAnimals = [
+                { id: 'stone-bear', name: '無憂石熊', imageUrl: 'media/image/big5/01_無憂石熊_00000.jpg' },
+                { id: 'pathfinder-fox', name: '符文拾荒貓', imageUrl: 'media/image/big5/02_符文拾荒貓_00001.jpg' },
+                { id: 'builder-beaver', name: '穴居偏執狐', imageUrl: 'media/image/big5/03_穴居偏執狐_00010.jpg' },
+                { id: 'mountain-eagle', name: '幽影頑狐', imageUrl: 'media/image/big5/04_幽影頑狐_00011.jpg' },
+                { id: 'wise-turtle', name: '蟻工隱狐', imageUrl: 'media/image/big5/05_蟻工隱狐_00100.jpg' },
+                { id: 'guardian-owl', name: '玄鐵智梟', imageUrl: 'media/image/big5/06_玄鐵智梟_00101.jpg' },
+                { id: 'playful-otter', name: '盔甲工蟻熊', imageUrl: 'media/image/big5/07_盔甲工蟻熊_00110.jpg' },
+                { id: 'solitary-wolf', name: '秘儀巧熊', imageUrl: 'media/image/big5/08_秘儀巧熊_00111.jpg' },
+                { id: 'dawn-deer', name: '靜心龜象', imageUrl: 'media/image/big5/09_靜心龜象_01000.jpg' },
+                { id: 'snow-leopard', name: '觀星智象', imageUrl: 'media/image/big5/10_觀星智象_01001.jpg' },
+                { id: 'leaping-trout', name: '含羞樹懶', imageUrl: 'media/image/big5/11_含羞樹懶_01010.jpg' },
+                { id: 'light-spider', name: '奇想隱士鹿', imageUrl: 'media/image/big5/12_奇想隱士鹿_01011.jpg' },
+                { id: 'bard-frog', name: '星河織壩狸', imageUrl: 'media/image/big5/13_星河織壩狸_01100.jpg' },
+                { id: 'earth-boar', name: '靜溪靈海狸', imageUrl: 'media/image/big5/14_靜溪靈海狸_01101.jpg' },
+                { id: 'whisper-squirrel', name: '靜默園丁鹿', imageUrl: 'media/image/big5/15_靜默園丁鹿_01110.jpg' },
+                { id: 'navigator-bat', name: '書庫螢兔', imageUrl: 'media/image/big5/16_書庫螢兔_01111.jpg' },
+                { id: 'flower-hummingbird', name: '孤岩歌鳥', imageUrl: 'media/image/big5/17_孤岩歌鳥_10000.jpg' },
+                { id: 'silent-snake', name: '狂想畫猴', imageUrl: 'media/image/big5/18_狂想畫猴_10001.jpg' },
+                { id: 'dream-lizard', name: '躁衛亂雀', imageUrl: 'media/image/big5/19_躁衛亂雀_10010.jpg' },
+                { id: 'dream-ant', name: '風羽智鴉', imageUrl: 'media/image/big5/20_風羽智鴉_10011.jpg' },
+                { id: 'root-hedgehog', name: '百川族長熊', imageUrl: 'media/image/big5/21_百川族長熊_10100.jpg' },
+                { id: 'light-moth', name: '領航巨熊', imageUrl: 'media/image/big5/22_領航巨熊_10101.jpg' },
+                { id: 'stone-beetle', name: '壁壘築巢松鼠', imageUrl: 'media/image/big5/23_壁壘築巢松鼠_10110.jpg' },
+                { id: 'harmony-cicada', name: '蒼穹巨匠鳥', imageUrl: 'media/image/big5/24_蒼穹巨匠鳥_10111.jpg' },
+                { id: 'mirror-swan', name: '慶典樂猴', imageUrl: 'media/image/big5/25_慶典樂猴_11000.jpg' },
+                { id: 'gale-rabbit', name: '尋奇靈猴', imageUrl: 'media/image/big5/26_尋奇靈猴_11001.jpg' },
+                { id: 'stargazing-raccoon', name: '光塵絨兔', imageUrl: 'media/image/big5/27_光塵絨兔_11010.jpg' },
+                { id: 'branch-raven', name: '絮語風猴', imageUrl: 'media/image/big5/28_絮語風猴_11011.jpg' },
+                { id: 'deep-duck', name: '磐石社鹿', imageUrl: 'media/image/big5/29_磐石社鹿_11100.jpg' },
+                { id: 'patrolling-panda', name: '社群酋長鹿', imageUrl: 'media/image/big5/30_社群酋長鹿_11101.jpg' },
+                { id: 'coral-crab', name: '築巢守衛松鼠', imageUrl: 'media/image/big5/31_築巢守衛松鼠_11110.jpg' },
+                { id: 'crimson-rooster', name: '萬華晶鹿', imageUrl: 'media/image/big5/32_萬華晶鹿_11111.jpg' }
+            ];
+
+            const myAnimal = 'stone-bear'; // The current user's animal
+
+            const collectedFriends = [
+                {
+                    friendName: '小明',
+                    friendAnimalId: 'pathfinder-fox',
+                    relationship: {
+                        title: '石熊 ╳ 符文拾荒貓',
+                        subtitle: '大地守護者與神秘拾荒者',
+                        coreDynamic: '石熊的穩定給了符文拾荒貓安心探索的勇氣；而符文拾荒貓帶回的神秘故事，則豐富了石熊的寧靜世界。你們是一個結合了安穩與神秘的完美搭檔。',
+                        tip: '下次見面，可以嘗試去一個你們都沒去過的古蹟或博物館，結合彼此對安穩與神秘的需求。'
+                    }
+                }
+            ];
+
+            // --- RENDER ATLAS GRID ---
+            const grid = document.getElementById('atlas-grid');
+            const unlockedAnimalIds = new Set(collectedFriends.map(f => f.friendAnimalId));
+            unlockedAnimalIds.add(myAnimal); // Add my own animal as unlocked
+
+            allAnimals.forEach(animal => {
+                const card = document.createElement('div');
+                const isUnlocked = unlockedAnimalIds.has(animal.id);
+                
+                card.className = `animal-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+                if (isUnlocked) {
+                    card.dataset.animalId = animal.id;
+                }
+
+                if (isUnlocked) {
+                    card.innerHTML = `
+                        <img src="${animal.imageUrl}" alt="${animal.name}">
+                        <p>${animal.name}</p>
+                    `;
+                } else {
+                     card.innerHTML = `
+                        <div class="placeholder-icon"><span>❓</span></div>
+                        <p>未知的夥伴</p>
+                    `;
+                }
+                grid.appendChild(card);
+            });
+
+            // --- MODAL LOGIC ---
+            const modal = document.getElementById('friendsModal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            grid.addEventListener('click', function(e) {
+                const card = e.target.closest('.animal-card.unlocked');
+                if (!card) return;
+
+                const animalId = card.dataset.animalId;
+                const animalInfo = allAnimals.find(a => a.id === animalId);
+                const friendsWithThisAnimal = collectedFriends.filter(f => f.friendAnimalId === animalId);
+
+                modalImage.src = animalInfo.imageUrl;
+                modalImage.alt = animalInfo.name;
+                modalTitle.textContent = animalInfo.name;
+                modalContent.innerHTML = ''; // Clear previous content
+
+                if (animalId === myAnimal) {
+                     modalContent.innerHTML = `<div class="p-4 bg-green-50 rounded-lg text-center text-gray-700">這就是你自己！穩重而可靠的大地守護者。</div>`;
+                } else if (friendsWithThisAnimal.length > 0) {
+                    friendsWithThisAnimal.forEach(friend => {
+                        const reportHTML = `
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-5 bg-white">
+                                <p class="font-bold text-gray-800 text-lg">你與 ${friend.friendName} 的關係洞察</p>
+                                <hr class="my-2">
+                                <h4 class="font-bold text-center text-md text-[#9A6A4D]">${friend.relationship.title}</h4>
+                                <p class="text-center text-xs text-gray-500 mb-3">${friend.relationship.subtitle}</p>
+                                <div class="space-y-2 text-gray-700 text-sm">
+                                   <p><strong>核心動力：</strong>${friend.relationship.coreDynamic}</p>
+                                   <p><strong>相處提示：</strong>${friend.relationship.tip}</p>
+                                </div>
+                            </div>
+                        `;
+                        modalContent.innerHTML += reportHTML;
+                    });
+                } else {
+                    // This case is for unlocked animals that are not the user and not a friend, which shouldn't happen with current logic.
+                    modalContent.innerHTML = `<p class="text-gray-500">關於這位夥伴的更多資訊，需要你與擁有此特質的朋友連結來解鎖喔！</p>`;
+                }
+
+                modal.classList.add('active');
+            });
+
+            function closeModal() {
+                modal.classList.remove('active');
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

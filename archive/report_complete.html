@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的森林人格 - 無憂石熊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+        }
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 320px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 280px;
+                width: 280px;
+            }
+        }
+        .map-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        .map-marker span {
+            font-size: 20px;
+            display: block;
+        }
+        /* 護照樣式 */
+        .passport {
+            background-color: #FDFBF5;
+            border: 1px solid #EAE3D4;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .passport-header {
+            text-align: center;
+            border-bottom: 2px dashed #D1C7B3;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            color: #5D5448;
+        }
+        .passport-content {
+            display: flex;
+            gap: 20px;
+        }
+        .passport-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .passport-details p {
+            margin: 0;
+            font-size: 14px;
+            color: #6B5F51;
+            line-height: 1.8;
+        }
+        .passport-details p strong {
+            color: #3E3830;
+        }
+        .passport-stamp {
+            border-left: 2px dashed #D1C7B3;
+            padding-left: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .stamp-circle {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #B8A990;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #C9BDB0;
+            font-size: 12px;
+        }
+        /* 印記收集區 */
+        .stamp-collection {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #EAE3D4;
+        }
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .stamp {
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #F0EBE4;
+            color: #C9BDB0;
+            filter: grayscale(80%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .stamp.unlocked {
+            filter: grayscale(0%);
+            opacity: 1;
+            background-color: #E2D9C8;
+            color: #6B5F51;
+        }
+        .stamp span {
+            font-size: 24px;
+        }
+        .stamp p {
+            font-size: 10px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+        .friendship-atlas {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #EAE3D4;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
+    <main class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+        <!-- 頂部：動物圖片區域 -->
+        <div class="relative bg-gradient-to-b from-[#4A5C43] to-[#3A4A35] h-64 sm:h-80 overflow-hidden">
+            <img src="media/image/big5/01_無憂石熊_00000.jpg" alt="無憂石熊" class="w-full h-full object-cover opacity-90">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+                <h1 class="text-3xl sm:text-4xl font-bold mb-2">無憂石熊</h1>
+                <p class="text-lg opacity-90">Grounded Guardian | 沉穩的守護者</p>
+            </div>
+        </div>
+
+        <!-- 主要內容區域 -->
+        <div class="p-6 sm:p-8 lg:p-10">
+            <!-- 森林的悄悄話 -->
+            <section class="mb-8 bg-green-50/50 p-4 rounded-lg">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                    森林的悄悄話
+                </h3>
+                <p class="text-gray-600 italic leading-relaxed">
+                    「你的溫柔，如森林厚實的苔蘚，無聲地承接一切，讓萬物得以安歇。」
+                </p>
+            </section>
+
+            <!-- 描述文字 -->
+            <section class="mb-8">
+                <p class="text-gray-600 leading-relaxed">
+                    如同棲息在寧靜森林深處的石熊，你擁有穩定而溫和的內心。你看重和諧與平靜，總能給周遭帶來安定的力量。對你而言，最舒適的狀態便是在熟悉的環境中，享受簡單而純粹的快樂。
+                </p>
+            </section>
+            
+            <!-- 專屬療癒時刻 -->
+            <section class="mb-8">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M10 8l6 4-6 4V8z"></path></svg>
+                    你的專屬療癒時刻
+                </h3>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-semibold text-gray-700">《石熊的大地呼吸》</p>
+                    <p class="text-sm text-gray-500 mb-3">閉上眼，讓聲音引導你回歸內在的安穩。</p>
+                    <audio controls class="w-full">
+                        <!-- 這裡是音檔連結，目前為空 -->
+                        <source src="" type="audio/mpeg">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                </div>
+            </section>
+
+            <!-- 專屬園區療癒地圖 -->
+            <section class="mb-8">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    你的專屬園區療癒地圖
+                </h3>
+                <div class="relative w-full rounded-lg overflow-hidden shadow-md">
+                    <img src="media/image/map/B3A700DA-6EFB-4A9B-9126-9F4DBEB17014.PNG" alt="園區地圖" class="w-full h-auto">
+                    <div class="map-marker" style="top: 45%; left: 30%;" title="溫暖營火"><span role="img" aria-label="營火">🔥</span></div>
+                    <div class="map-marker" style="top: 78%; left: 38%;" title="寧靜池塘"><span role="img" aria-label="池塘">💧</span></div>
+                    <div class="map-marker" style="top: 85%; left: 80%;" title="放鬆熱水浴"><span role="img" aria-label="熱水浴">♨️</span></div>
+                    <div class="map-marker" style="top: 60%; left: 60%;" title="露台午茶"><span role="img" aria-label="茶">🍵</span></div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2 text-center">為你標示了最能補充能量的地點！</p>
+            </section>
+
+            <!-- 森林五維特質 -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold text-gray-700 mb-4 text-center">森林五維特質</h2>
+                <div class="flex justify-center">
+                    <div class="chart-container">
+                        <canvas id="personalityChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 詳細特質分析 -->
+            <section class="space-y-6 mb-8">
+                <div>
+                    <h3 class="font-bold text-lg text-[#4A5C43] flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        石熊的天賦
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-1">
+                        <strong>情緒穩定：</strong> 像大地一樣穩固，不容易被外界的風雨動搖。<br>
+                        <strong>高度親和：</strong> 溫暖而富有同理心，是森林中值得信賴的夥伴。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-[#6E7B6C] flex items-center">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        適合的森林夥伴
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-1">
+                        與充滿好奇心的「尋路靈狐」或目標明確的「築巢河狸」同行，能為彼此帶來啟發與支持。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 森林護照 -->
+            <section class="mb-8">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    你的靜謐森林護照
+                </h3>
+                <div class="passport">
+                    <div class="passport-header">OFFICIAL PASSPORT OF THE TRANQUIL FOREST</div>
+                    <div class="passport-content">
+                        <div class="passport-avatar">
+                            <img src="media/image/big5/01_無憂石熊_00000.jpg" alt="石熊頭像" class="w-full h-full object-cover">
+                        </div>
+                        <div class="passport-details">
+                            <p><strong>姓名 | NAME</strong><br>無憂石熊</p>
+                            <p><strong>森林編號 | FOREST ID</strong><br><span id="forest-id"></span></p>
+                            <p><strong>首次入境 | FIRST ENTRY</strong><br><span id="entry-date"></span></p>
+                            <p><strong>靈魂棲息地 | HABITAT</strong><br>靜謐森林屋</p>
+                        </div>
+                        <div class="passport-stamp">
+                            <div class="stamp-circle">園區印章</div>
+                            <p class="text-xs text-gray-500 mt-2">憑此護照兌換<br>專屬實體印章</p>
+                        </div>
+                    </div>
+                    <div class="stamp-collection">
+                        <p class="text-sm text-center text-gray-600 mb-3"><b>園區限定：</b>掃描QR Code解鎖你的四個靈魂姿態！</p>
+                        <div class="stamp-grid">
+                            <div class="stamp" title="休憩"><span>😴</span><p>休憩</p></div>
+                            <div class="stamp" title="進食"><span>🍯</span><p>進食</p></div>
+                            <div class="stamp" title="漫步"><span>🚶</span><p>漫步</p></div>
+                            <div class="stamp" title="沉思"><span>🧘</span><p>沉思</p></div>
+                        </div>
+                    </div>
+                    <div class="friendship-atlas">
+                        <p class="text-sm text-center text-gray-600 mb-3 mt-3"><b>線上收集：</b>與朋友交換友誼碼，點亮夥伴圖鑑！</p>
+                        <div class="stamp-grid">
+                            <div class="stamp" title="尋路靈狐"><span>🦊</span></div>
+                            <div class="stamp" title="築巢河狸"><span>🦫</span></div>
+                            <div class="stamp" title="高山雄鷹"><span>🦅</span></div>
+                            <div class="stamp" title="智慧靈龜"><span>🐢</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 建議行程 -->
+            <section class="mb-8 bg-gray-50 p-4 rounded-lg">
+                <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M16 4.5l-4 4L8 4.5"></path><path d="M12 9V2"></path><path d="M12 22v-3"></path><path d="M17 19l-5-3-5 3"></path></svg>
+                    石熊的寧靜午後 (建議行程)
+                </h3>
+                <ul class="space-y-2 text-gray-600 list-inside">
+                    <li><strong>14:00 | 露台午茶：</strong> 在小屋露台下方的野餐桌，享用溫暖的花草茶與點心，感受微風。</li>
+                    <li><strong>15:30 | 池畔時光：</strong> 漫步到寧靜的池塘邊，坐下看著水面倒影，什麼都不做也很好。</li>
+                    <li><strong>17:00 | 熱水浴放鬆：</strong> 讓溫熱的水流洗去疲憊，為身體徹底充電。</li>
+                    <li><strong>19:00 | 營火邊的溫暖：</strong> 圍著營火，感受火焰的溫暖與跳動，享受最純粹的平靜。</li>
+                </ul>
+            </section>
+
+            <!-- 探索你的內在森林 -->
+            <section class="mb-8 bg-gray-50 p-4 rounded-lg">
+                <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path></svg>
+                    探索你的內在森林
+                </h3>
+                <div class="space-y-2 text-gray-600">
+                   <p><strong>給安於現狀的你：</strong> 嘗試走出舒適圈，探索森林中未知的風景，或許會有新的發現。</p>
+                   <ul class="list-disc list-inside pl-2 space-y-1">
+                       <li><strong>走一條新的小徑：</strong> 週末去一個從未去過的地方散步，感受不同的風景。</li>
+                       <li><strong>嚐嚐陌生的漿果：</strong> 學習一項簡單的新技能，例如一道新菜或一首樂曲。</li>
+                       <li><strong>聆聽風的聲音：</strong> 每天留出10分鐘，不帶目的地靜坐，單純地感受當下。</li>
+                   </ul>
+                </div>
+            </section>
+            
+            <!-- 森林的祝福 -->
+            <section class="mb-8 text-center">
+                 <h3 class="font-bold text-lg text-gray-700 flex items-center justify-center mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M14.5 13.5c-1.28 1-2.72 1-4 0"></path><path d="M8.83 17.17a5 5 0 0 1-1.66-2.33L4 10l7-7 7 7-3.17 4.84a5 5 0 0 1-1.66 2.33l-.01.01"></path><path d="M12 4v.01"></path></svg>
+                    森林的祝福
+                </h3>
+                <p class="text-gray-600">願你總能找到屬於你的那塊安穩的岩石，安然入睡。你的幸運物是「<span class="font-semibold text-[#4A5C43]">圓潤的溪石</span>」，它提醒你，溫和的力量足以抵擋時間的洪流。</p>
+            </section>
+
+            <!-- 專屬優惠 -->
+            <footer class="mt-8 border-t pt-8">
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-5 text-center bg-amber-50/50">
+                    <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        一份來自森林的贈禮
+                    </h3>
+                    <p class="text-gray-600">親愛的無憂石熊，感謝你為世界帶來穩定與溫暖。憑此報告畫面來到「靜謐森林屋」，我們將為您獻上：</p>
+                    <p class="my-3 font-semibold text-lg text-[#4A5C43]">
+                        「幸運溪石一顆 & 手沖暖心花草茶一杯」
+                    </p>
+                    <p class="text-sm text-gray-500">讓森林的禮物，陪伴你度過寧靜的午後。</p>
+                </div>
+                <div class="mt-8 text-center">
+                    <button id="shareButton" class="bg-[#4A5C43] text-white font-bold py-3 px-8 rounded-full hover:bg-[#3A4A35] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4A5C43]">
+                        分享我的森林人格
+                    </button>
+                    <p id="copyMessage" class="text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-300">報告連結已複製！</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 雷達圖數據
+            const data = {
+                labels: [
+                    ['經驗', '開放性 (O)'],
+                    ['盡責性', '(C)'],
+                    ['外向性', '(E)'],
+                    ['親和性', '(A)'],
+                    ['情緒', '不穩定性 (N)']
+                ],
+                datasets: [{
+                    label: '人格特質分數',
+                    data: [30, 75, 40, 85, 20], 
+                    fill: true,
+                    backgroundColor: 'rgba(74, 92, 67, 0.2)',
+                    borderColor: 'rgb(74, 92, 67)',
+                    pointBackgroundColor: 'rgb(74, 92, 67)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(74, 92, 67)'
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: { line: { borderWidth: 3 } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: {
+                                font: { size: 12, family: "'Inter', 'Noto Sans TC', sans-serif" },
+                                color: '#374151'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                color: '#6b7280',
+                                stepSize: 25,
+                                font: { size: 10 }
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    },
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+                }
+            };
+            
+            const ctx = document.getElementById('personalityChart');
+            if(ctx) { new Chart(ctx, config); }
+
+            // 護照資訊生成
+            const today = new Date();
+            const dateString = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            document.getElementById('entry-date').textContent = dateString;
+            
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const forestId = `SB-${today.getFullYear().toString().slice(-2)}${String(today.getMonth() + 1).padStart(2, '0')}-${randomNum}`;
+            document.getElementById('forest-id').textContent = forestId;
+
+            // 分享按鈕
+            const shareButton = document.getElementById('shareButton');
+            const copyMessage = document.getElementById('copyMessage');
+            if(shareButton && copyMessage) {
+                shareButton.addEventListener('click', () => {
+                    const url = window.location.href;
+                    const textArea = document.createElement("textarea");
+                    textArea.value = url;
+                    textArea.style.position = "fixed"; 
+                    textArea.style.left = "-9999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyMessage.style.opacity = '1';
+                        setTimeout(() => { copyMessage.style.opacity = '0'; }, 2000);
+                    } catch (err) {
+                        console.error('無法複製連結: ', err);
+                    }
+                    document.body.removeChild(textArea);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

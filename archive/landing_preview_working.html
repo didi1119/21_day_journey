@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐森林 · Serene Forest - 品牌入口</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-content.active {
+            max-height: 500px;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-icon.rotated {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 森林背景元素 -->
+    <div class="forest-backdrop">
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/40 via-background to-background"></div>
+            <svg class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1600px] h-[520px] opacity-60" viewBox="0 0 1600 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#064E3B" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </linearGradient>
+                </defs>
+                <path d="M0 420 C 200 360, 400 420, 600 380 S 1000 420, 1600 420 V 520 H 0 Z" fill="url(#grad)" />
+                <path d="M0 432 C 200 370, 400 432, 600 392 S 1000 430, 1600 432 V 520 H 0 Z" fill="url(#grad)" />
+                <path d="M0 444 C 200 380, 400 444, 600 404 S 1000 440, 1600 444 V 520 H 0 Z" fill="url(#grad)" />
+                <path d="M0 456 C 200 390, 400 456, 600 416 S 1000 450, 1600 456 V 520 H 0 Z" fill="url(#grad)" />
+                <path d="M0 468 C 200 400, 400 468, 600 428 S 1000 460, 1600 468 V 520 H 0 Z" fill="url(#grad)" />
+                <path d="M0 480 C 200 410, 400 480, 600 440 S 1000 470, 1600 480 V 520 H 0 Z" fill="url(#grad)" />
+                <path d="M0 492 C 200 420, 400 492, 600 452 S 1000 480, 1600 492 V 520 H 0 Z" fill="url(#grad)" />
+            </svg>
+            <div class="absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full blur-3xl bg-emerald-500/20"></div>
+            <div class="absolute -left-24 top-32 w-[360px] h-[360px] rounded-full blur-3xl bg-teal-500/20"></div>
+        </div>
+    </div>
+
+    <!-- 主要內容 -->
+    <div class="min-h-screen bg-white text-gray-900">
+      <!-- NAV -->
+      <header class="sticky top-0 z-30 backdrop-blur bg-white/80 border-b">
+        <div class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <!-- Trees Icon -->
+            <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/>
+              <path d="M7 16v6"/>
+              <path d="M13 19v3"/>
+              <path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/>
+            </svg>
+            <span class="font-semibold tracking-tight">靜謐森林 · Serene Forest</span>
+            <span class="ml-2 hidden sm:inline-flex px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">品牌入口</span>
+          </div>
+          <div class="hidden sm:flex items-center gap-2">
+            <button class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors" data-scroll-to="brand">品牌是什麼？</button>
+            <button class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors" data-scroll-to="value">你會得到</button>
+            <button class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors" data-scroll-to="how">怎麼運作</button>
+            <button class="px-4 py-2 text-sm font-medium text-white bg-black hover:bg-gray-800 rounded-md transition-colors" onclick="joinLine()" data-testid="btn-join-line-nav">加入 LINE</button>
+            <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-md transition-colors" onclick="startQuiz()" data-testid="btn-start-quiz-nav">開始測驗</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO / Above the Fold -->
+      <div class="relative">
+        <section id="hero" class="py-12 sm:py-16 pt-10 sm:pt-16 pb-6">
+          <div class="mx-auto max-w-6xl px-4 grid sm:grid-cols-2 gap-8 items-center">
+            <div>
+              <div>
+                <h1 id="headline" class="text-3xl sm:text-5xl font-semibold leading-tight tracking-tight" data-testid="headline">
+                  不只是包棟民宿，<br class="hidden sm:block" />我們是一個幫你修復三種連結的療癒品牌。
+                </h1>
+                <p id="subheadline" class="mt-3 text-base sm:text-lg text-gray-600" data-testid="subheadline">
+                  連結自我、他人、自然：先在日常被陪伴，再把旅程走回真實的森林。加入 LINE 立刻領取入林禮。
+                </p>
+              </div>
+
+              <!-- CTA Row -->
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <button class="h-11 px-6 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition-colors flex items-center justify-center" onclick="joinLine()" data-testid="btn-join-line-hero">
+                  加入 LINE 領取入林禮 
+                  <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </button>
+                <button class="h-11 px-6 bg-white border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors" onclick="startQuiz()" data-testid="btn-start-quiz-hero">
+                  先做 60 秒測驗
+                </button>
+              </div>
+
+              <!-- Risk reducers -->
+              <div class="flex flex-wrap items-center gap-3 text-xs text-gray-600 mt-3" data-testid="risk-row">
+                <div class="flex items-center gap-1">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  免費加入
+                </div>
+                <div class="flex items-center gap-1">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  可隨時退出
+                </div>
+                <div class="flex items-center gap-1">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  無推銷干擾
+                </div>
+              </div>
+
+              <!-- Proof & Time -->
+              <div class="mt-6 flex items-center gap-6 text-sm text-gray-600" data-testid="proof-time">
+                <div class="flex flex-col items-center sm:items-start">
+                  <div id="today-count" class="text-2xl font-semibold tracking-tight">180 人</div>
+                  <div class="text-xs text-gray-500 mt-1">今日已互動</div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12,6 12,12 16,14"/>
+                  </svg>
+                  60 秒開始 · 3 分鐘拿到第一份祝福音 · 30 天內可兌換小禮
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual — Share card preview -->
+            <div class="relative">
+              <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-emerald-200/60 to-teal-100/40 p-3 shadow-inner overflow-hidden">
+                <div class="h-full w-full rounded-2xl bg-white/70 border flex items-center justify-center">
+                  <div class="w-[92%] max-w-xl aspect-[16/10] rounded-2xl border bg-gradient-to-br from-emerald-50 to-white p-4 flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                        分享卡示例
+                      </span>
+                      <div class="text-xs text-gray-500">可下載分享卡</div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                      <div class="w-20 h-20 rounded-xl bg-emerald-200/80 flex items-center justify-center">
+                        <svg class="w-10 h-10 text-emerald-700" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-lg font-semibold">領航巨熊 · Explorer Bear</div>
+                        <div class="text-sm text-gray-500">沉著 · 保護 · 向內對齊</div>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div class="text-xs text-gray-500">sereneforest.tw/quiz</div>
+                      <button class="h-8 px-3 text-sm border border-gray-300 bg-white text-gray-700 rounded-md hover:bg-gray-50 transition-colors flex items-center">
+                        <svg class="w-3.5 h-3.5 mr-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                          <polyline points="16,6 12,2 8,6"/>
+                          <line x1="12" x2="12" y1="2" y2="15"/>
+                        </svg>
+                        預覽分享
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Brand: What we are -->
+      <section id="brand" class="py-12 sm:py-16 bg-gray-50/50">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">靜謐森林是什麼？</span>
+          </div>
+          <h3 class="text-xl font-semibold tracking-tight">一個幫你修復三種連結的療癒品牌</h3>
+          <p class="mt-2 text-sm text-gray-600 max-w-3xl">不再只是包棟民宿。我們以森林為隱喻與場域，讓你在日常中被陪伴，在社群裡被看見，最後把旅程走回山林。</p>
+          <div class="grid sm:grid-cols-3 gap-4 mt-6">
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+              <div class="p-4 flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                  <path d="M5 3v4"/>
+                  <path d="M19 17v4"/>
+                  <path d="M3 5h4"/>
+                  <path d="M17 19h4"/>
+                </svg>
+                <h4 class="text-base font-semibold">與自我的連結</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">每週祝福音、精選電子報、日常小任務，練習在場與覺察。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+              <div class="p-4 flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 6 12 12"/>
+                  <path d="M21 6v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  <path d="M9 10h6"/>
+                </svg>
+                <h4 class="text-base font-semibold">與他人的連結</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">線上社群、夥伴相容小測驗，彼此支持、被看見。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+              <div class="p-4 flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/>
+                  <path d="M7 16v6"/>
+                  <path d="M13 19v3"/>
+                  <path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/>
+                </svg>
+                <h4 class="text-base font-semibold">與自然的連結</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">線上護照 × 園區印記：把獲得帶回真實的森林，形成往返。</div>
+            </div>
+          </div>
+          <div class="mt-5 flex gap-3">
+            <button class="px-4 py-2 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition-colors" onclick="joinLine()" data-testid="btn-join-line-brand">加入 LINE 領取入林禮</button>
+            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors" onclick="startQuiz()" data-testid="btn-start-quiz-brand">先做 60 秒測驗</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Value: What you get -->
+      <section id="value" class="py-12 sm:py-16 bg-gray-100/40">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="flex items-center gap-2 mb-6">
+            <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">你會得到</span>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <div class="p-4 flex items-center gap-3">
+                <div class="rounded-xl bg-emerald-50 p-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/>
+                  </svg>
+                </div>
+                <h4 class="text-base font-semibold">森林祝福音</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">30–60 秒專屬聲景，作為你的每日對齊提醒。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <div class="p-4 flex items-center gap-3">
+                <div class="rounded-xl bg-emerald-50 p-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="3" height="8" x="13" y="2" rx="1.5"/>
+                    <path d="M19 8.5V10h1.5A1.5 1.5 0 1 0 19 8.5"/>
+                    <rect width="3" height="8" x="8" y="14" rx="1.5"/>
+                    <path d="M5 15.5V14H3.5A1.5 1.5 0 1 0 5 15.5"/>
+                    <rect width="8" height="3" x="14" y="13" rx="1.5"/>
+                    <path d="M15.5 19H14v1.5a1.5 1.5 0 1 0 1.5-1.5"/>
+                    <rect width="8" height="3" x="2" y="8" rx="1.5"/>
+                    <path d="M8.5 5H10V3.5A1.5 1.5 0 1 0 8.5 5"/>
+                  </svg>
+                </div>
+                <h4 class="text-base font-semibold">靜謐森林護照</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">解鎖首枚印記，到園區可兌換限定小禮。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <div class="p-4 flex items-center gap-3">
+                <div class="rounded-xl bg-emerald-50 p-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="m19 9 2 2-2 2"/>
+                    <path d="M21 11H9"/>
+                  </svg>
+                </div>
+                <h4 class="text-base font-semibold">夥伴相容小測驗</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">與朋友互測相容性，形成自然分享與話題擴散。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <div class="p-4 flex items-center gap-3">
+                <div class="rounded-xl bg-emerald-50 p-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                  </svg>
+                </div>
+                <h4 class="text-base font-semibold">專屬角色報告</h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">個性標籤、力量與陰影、行動建議，一眼讀懂你的森林氣質。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how" class="py-12 sm:py-16">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="flex items-center gap-2 mb-8">
+            <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">三步驟，開始你的旅程</span>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+              <div class="p-4">
+                <h4 class="text-base font-semibold flex items-center gap-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  1. 加入 LINE，領取入林禮
+                </h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">一鍵加入，獲得祝福音 + 護照首枚印記；完全免費，可隨時退出。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+              <div class="p-4">
+                <h4 class="text-base font-semibold flex items-center gap-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12,6 12,12 16,14"/>
+                  </svg>
+                  2. 60 秒小測驗
+                </h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">完成 10 題立即出結果；下載分享卡、解鎖完整祝福音與護照功能。</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+              <div class="p-4">
+                <h4 class="text-base font-semibold flex items-center gap-2">
+                  <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 6 12 12"/>
+                    <path d="M21 6v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <path d="M9 10h6"/>
+                  </svg>
+                  3. 帶著護照走進森林
+                </h4>
+              </div>
+              <div class="px-4 pb-4 text-sm text-gray-600">到園區掃描印記換小禮，查看檔期或私訊預約住宿體驗。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Proof / Risk Reducers -->
+      <section id="proof" class="py-12 sm:py-16 bg-gray-100/40">
+        <div class="mx-auto max-w-6xl px-4 grid lg:grid-cols-2 gap-6 items-center">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">使用者回饋</span>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+                <h5 class="text-base font-semibold">「睡前聽祝福音，真的比較安定了。」</h5>
+                <p class="text-sm text-gray-600 mt-1">— Sherry，行銷 PM</p>
+              </div>
+              <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+                <h5 class="text-base font-semibold">「帶朋友一起玩測驗，週末就決定去森林走走。」</h5>
+                <p class="text-sm text-gray-600 mt-1">— Leo，產品設計</p>
+              </div>
+              <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+                <h5 class="text-base font-semibold">「護照兌換小禮很可愛，會想再回來。」</h5>
+                <p class="text-sm text-gray-600 mt-1">— Vivian，自由工作者</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+                <h5 class="text-base font-semibold flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  免費加入、隨時退出
+                </h5>
+                <p class="text-sm text-gray-600 mt-1">不綁定、不打擾；你可以只拿入林禮與祝福音。</p>
+              </div>
+              <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+                <h5 class="text-base font-semibold flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  隱私友善
+                </h5>
+                <p class="text-sm text-gray-600 mt-1">我們尊重你的步調與資料權；你可一鍵取消訂閱。</p>
+              </div>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <button class="px-4 py-2 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition-colors" onclick="joinLine()">加入 LINE</button>
+              <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors" onclick="startQuiz()">先做 60 秒測驗</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta" class="py-12 sm:py-16">
+        <div class="mx-auto max-w-6xl px-4 text-center">
+          <h3 class="text-2xl font-semibold tracking-tight">加入 LINE，開始你的森林旅程</h3>
+          <p class="mt-2 text-sm text-gray-600">入林禮：祝福音 + 護照印記｜也可先做 60 秒小測驗</p>
+          <div class="mt-5 flex justify-center gap-3">
+            <button class="h-11 px-6 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition-colors flex items-center" onclick="joinLine()" data-testid="btn-join-line-cta">
+              加入 LINE 
+              <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </button>
+            <button class="h-11 px-6 bg-white border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors" onclick="startQuiz()" data-testid="btn-start-quiz-cta">先做 60 秒測驗</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-12 sm:py-16 bg-gray-100/40">
+        <div class="mx-auto max-w-6xl px-4 grid lg:grid-cols-2 gap-6 items-start">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">常見問題</span>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-white rounded-lg border border-gray-200">
+                <button class="w-full p-4 text-left font-medium flex justify-between items-center accordion-toggle" onclick="toggleAccordion(this)">
+                  這個 LP 和官網有什麼不同？
+                  <svg class="w-5 h-5 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6,9 12,15 18,9"/>
+                  </svg>
+                </button>
+                <div class="accordion-content px-4 pb-4">
+                  <p class="text-sm text-gray-600">LP 專注於引流、自然分享與名單收集；官網聚焦空間介紹、房型價格與訂房流程。</p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg border border-gray-200">
+                <button class="w-full p-4 text-left font-medium flex justify-between items-center accordion-toggle" onclick="toggleAccordion(this)">
+                  不住宿也可以參與嗎？
+                  <svg class="w-5 h-5 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6,9 12,15 18,9"/>
+                  </svg>
+                </button>
+                <div class="accordion-content px-4 pb-4">
+                  <p class="text-sm text-gray-600">可以。先從線上開始：加入 LINE、聽祝福音、做小測驗、加入社群。</p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg border border-gray-200">
+                <button class="w-full p-4 text-left font-medium flex justify-between items-center accordion-toggle" onclick="toggleAccordion(this)">
+                  如何兌換園區小禮？
+                  <svg class="w-5 h-5 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6,9 12,15 18,9"/>
+                  </svg>
+                </button>
+                <div class="accordion-content px-4 pb-4">
+                  <p class="text-sm text-gray-600">於結果頁生成你的「靜謐森林護照」，到園區掃描指定印記即可兌換，效期 30 天。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-4 h-full">
+              <h5 class="text-base font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                訂閱電子報
+              </h5>
+              <p class="text-sm text-gray-600 mt-1">每週一次，精選森林洞見與音景；你可以隨時取消。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="border-t">
+        <div class="mx-auto max-w-6xl px-4 py-10 grid sm:grid-cols-2 gap-4 items-center">
+          <div class="text-sm text-gray-600">© 2024 靜謐森林 Serene Forest. All rights reserved.</div>
+          <div class="flex sm:justify-end gap-4 text-sm">
+            <a class="text-gray-600 hover:underline" href="/privacy">隱私</a>
+            <a class="text-gray-600 hover:underline" href="/terms">條款</a>
+            <a class="text-gray-600 hover:underline" href="/">官網</a>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Mobile sticky CTA -->
+      <div class="fixed bottom-3 left-0 right-0 z-40 px-3 sm:hidden">
+        <div class="mx-auto max-w-md rounded-2xl shadow-lg border bg-white/95 backdrop-blur p-2 flex gap-2">
+          <button class="flex-1 py-3 px-4 bg-black text-white font-medium rounded-xl" onclick="joinLine()">加入 LINE</button>
+          <button class="py-3 px-4 border border-gray-300 text-gray-700 font-medium rounded-xl" onclick="startQuiz()">測驗</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        // Analytics helper
+        const pushEvent = (name, data = {}) => {
+            if (typeof window !== "undefined") {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: name, ...data });
+            }
+        };
+
+        const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        // 檢查 URL 參數決定標題版本
+        function getVariant() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const v = urlParams.get('v');
+            return v === 'B' ? 'B' : 'A';
+        }
+
+        // 按鈕功能
+        const joinLine = () => {
+            pushEvent("line_subscribe_click", { source: "hero" });
+            window.location.href = "https://lin.ee/your_line_link"; // TODO: 置換為你的 LINE 官方連結
+        };
+
+        const startQuiz = () => {
+            pushEvent("quiz_start", { source: "hero" });
+            window.location.href = "/quiz?src=lp-cro";
+        };
+
+        // 手風琴功能
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.accordion-icon');
+            
+            content.classList.toggle('active');
+            icon.classList.toggle('rotated');
+        }
+
+        // 頁面初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 設置標題版本
+            const variant = getVariant();
+            const headlineElement = document.getElementById('headline');
+            const subheadlineElement = document.getElementById('subheadline');
+            
+            if (variant === 'B') {
+                headlineElement.innerHTML = '7 天建立更穩定的內在節奏，<br class="hidden sm:block" />從線上開始、把旅程走回森林。';
+                subheadlineElement.textContent = '免費加入 LINE，立即獲得「祝福音 + 護照首枚印記」，60 秒小測驗隨時可做。';
+            } else {
+                headlineElement.innerHTML = '不只是包棟民宿，<br class="hidden sm:block" />我們是一個幫你修復三種連結的療癒品牌。';
+                subheadlineElement.textContent = '連結自我、他人、自然：先在日常被陪伴，再把旅程走回真實的森林。加入 LINE 立刻領取入林禮。';
+            }
+
+            // 動畫計數器
+            const base = 180 + Math.floor(Math.random() * 120);
+            let i = 0;
+            const countElement = document.getElementById('today-count');
+            const interval = setInterval(() => {
+                i += Math.ceil(base / 24);
+                const currentCount = Math.min(i, base);
+                countElement.textContent = `${currentCount} 人`;
+                if (i >= base) clearInterval(interval);
+            }, 40);
+
+            // 發送頁面瀏覽事件
+            pushEvent("lp_view", { path: "/lp-cro" });
+
+            // 平滑滾動功能
+            document.querySelectorAll('[data-scroll-to]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-scroll-to');
+                    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

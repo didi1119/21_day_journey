@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐森林 · Serene Forest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Replicating Framer Motion animations with CSS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in-scale {
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+
+        /* Basic styles for accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <div class="min-h-screen">
+        <!-- NAV -->
+        <header class="sticky top-0 z-30 backdrop-blur border-b" style="background-color: rgba(255, 255, 255, 0.6);">
+            <div class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="trees" class="w-5 h-5 text-emerald-600"></i>
+                    <span class="font-semibold tracking-tight">靜謐森林 · Serene Forest</span>
+                    <span class="ml-2 hidden sm:inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">品牌入口</span>
+                </div>
+                <div class="hidden sm:flex items-center gap-2">
+                    <a href="#brand" class="inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 hover:bg-gray-100">品牌是什麼？</a>
+                    <a href="#value" class="inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 hover:bg-gray-100">你會得到</a>
+                    <a href="#how" class="inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 hover:bg-gray-100">怎麼運作</a>
+                    <button id="btn-join-line-nav" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-gray-900 text-white h-10 px-4 py-2">加入 LINE</button>
+                    <button id="btn-start-quiz-nav" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-white hover:bg-gray-100 h-10 px-4 py-2">開始測驗</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO / Above the Fold -->
+        <div class="relative">
+            <div class="absolute inset-0 -z-10 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/40 via-white to-white"></div>
+                <svg class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1600px] h-[520px] opacity-60" viewBox="0 0 1600 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#064E3B" />
+                            <stop offset="100%" stopColor="transparent" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M0 432 C 200 370, 400 432, 600 392 S 1000 430, 1600 432 V 520 H 0 Z" fill="url(#grad)" />
+                    <path d="M0 444 C 200 382, 400 444, 600 404 S 1000 442, 1600 444 V 520 H 0 Z" fill="url(#grad)" />
+                    <path d="M0 456 C 200 394, 400 456, 600 416 S 1000 454, 1600 456 V 520 H 0 Z" fill="url(#grad)" />
+                </svg>
+                <div class="absolute -right-24 -top-24 w-[420px] h-[420px] rounded-full blur-3xl bg-emerald-500/20"></div>
+                <div class="absolute -left-24 top-32 w-[360px] h-[360px] rounded-full blur-3xl bg-teal-500/20"></div>
+            </div>
+            <section id="hero" class="py-12 sm:py-16 pt-10 sm:pt-16 pb-6">
+                <div class="mx-auto max-w-6xl px-4 grid sm:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="animate-fade-in-up">
+                            <h1 id="headline" class="text-3xl sm:text-5xl font-semibold leading-tight tracking-tight"></h1>
+                            <p id="subheadline" class="mt-3 text-base sm:text-lg text-gray-600"></p>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 更快靜下來</span>
+                            <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600"><i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i> 關係更靠近</span>
+                            <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600"><i data-lucide="trees" class="w-3.5 h-3.5"></i> 週末真的走進森林</span>
+                        </div>
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                            <button id="btn-join-line-hero" class="inline-flex items-center justify-center rounded-md text-base font-medium bg-gray-900 text-white h-11 px-6">加入 LINE 拿迎新禮 <i data-lucide="chevron-right" class="w-5 h-5 ml-2"></i></button>
+                            <button id="btn-start-quiz-hero" class="inline-flex items-center justify-center rounded-md text-base font-medium border border-gray-200 bg-white hover:bg-gray-100 h-11 px-6">先做 60 秒測驗</button>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3 text-xs text-gray-600 mt-3">
+                            <div class="flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4"></i> 免費加入</div>
+                            <div class="flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4"></i> 可隨時退出</div>
+                            <div class="flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4"></i> 不打擾、不推銷</div>
+                        </div>
+                        <div class="mt-6 flex items-center gap-6 text-sm text-gray-600">
+                            <div class="flex flex-col items-center sm:items-start">
+                                <div id="today-count" class="text-2xl font-semibold tracking-tight">0 人</div>
+                                <div class="text-xs text-gray-500 mt-1">今日已互動</div>
+                            </div>
+                            <div class="flex items-center gap-2"><i data-lucide="timer" class="w-4 h-4"></i> 60 秒開始 · 3 分鐘聽到第一份祝福音 · 7 天形成節奏</div>
+                        </div>
+                    </div>
+                    <div class="relative animate-fade-in-scale">
+                        <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-emerald-200/60 to-teal-100/40 p-3 shadow-inner overflow-hidden">
+                            <div class="h-full w-full rounded-2xl bg-white/70 border flex items-center justify-center">
+                                <div class="w-[92%] max-w-xl aspect-[16/10] rounded-2xl border bg-gradient-to-br from-emerald-50 to-white p-4 flex flex-col justify-between">
+                                    <div class="flex items-center justify-between">
+                                        <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600"><i data-lucide="star" class="w-3.5 h-3.5"></i> 分享卡示例</span>
+                                        <div class="text-xs text-gray-500">可下載分享卡</div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-20 h-20 rounded-xl bg-emerald-200/80 flex items-center justify-center"><i data-lucide="leaf" class="w-10 h-10 text-emerald-700"></i></div>
+                                        <div>
+                                            <div class="text-lg font-semibold">領航巨熊 · Explorer Bear</div>
+                                            <div class="text-sm text-gray-600">沉著 · 保護 · 向內對齊</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-xs text-gray-500">sereneforest.tw/quiz</div>
+                                        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-white hover:bg-gray-100 h-8 px-3"><i data-lucide="share-2" class="w-3.5 h-3.5 mr-1"></i> 預覽分享</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sections -->
+        <section id="brand" class="py-12 sm:py-16 bg-gray-50">
+             <div class="mx-auto max-w-6xl px-4">
+                <div class="flex items-center gap-2 mb-3"><span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">靜謐森林是什麼？</span></div>
+                <h3 class="text-xl font-semibold tracking-tight">把森林帶進生活的療癒品牌</h3>
+                <p class="mt-2 text-sm text-gray-600 max-w-3xl">我們用「聲景、儀式、小任務」幫你在忙亂裡安定下來；也用「護照與印記」把線上收穫帶回實際旅程。</p>
+                <div class="grid sm:grid-cols-3 gap-4 mt-6">
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="flex flex-col space-y-1.5 p-6 py-4"><h3 class="text-base font-semibold leading-none tracking-tight flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i> 自我：更穩、更清楚</h3></div><div class="p-6 pt-0 -mt-2 text-sm text-gray-600">每日 3 分鐘聲景與小任務，幫你重啟內在節奏。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="flex flex-col space-y-1.5 p-6 py-4"><h3 class="text-base font-semibold leading-none tracking-tight flex items-center gap-2"><i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-600"></i> 他人：更靠近</h3></div><div class="p-6 pt-0 -mt-2 text-sm text-gray-600">夥伴小測驗與分享卡，讓對話更自然。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="flex flex-col space-y-1.5 p-6 py-4"><h3 class="text-base font-semibold leading-none tracking-tight flex items-center gap-2"><i data-lucide="trees" class="w-4 h-4 text-emerald-600"></i> 自然：更常相遇</h3></div><div class="p-6 pt-0 -mt-2 text-sm text-gray-600">護照 × 園區印記，真的走進森林，收集回憶。</div></div>
+                </div>
+                <div class="mt-5 flex gap-3">
+                    <button id="btn-join-line-brand" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-gray-900 text-white h-10 px-4 py-2">加入 LINE 拿迎新禮</button>
+                    <button id="btn-start-quiz-brand" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-white hover:bg-gray-100 h-10 px-4 py-2">先做 60 秒測驗</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="value" class="py-12 sm:py-16 bg-gray-100/80">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="flex items-center gap-2 mb-6"><span class="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-gray-600">加入後，你會立刻得到</span></div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm hover:shadow-md transition-all"><div class="flex flex-row items-center gap-3 p-6 py-4"><div class="rounded-xl bg-emerald-50 p-2"><i data-lucide="music-4" class="w-5 h-5 text-emerald-600"></i></div><h3 class="text-base font-semibold">森林祝福音</h3></div><div class="p-6 pt-0 text-sm text-gray-600 -mt-2 pb-5">30–60 秒專屬聲景，幫你更快靜下來。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm hover:shadow-md transition-all"><div class="flex flex-row items-center gap-3 p-6 py-4"><div class="rounded-xl bg-emerald-50 p-2"><i data-lucide="stamp" class="w-5 h-5 text-emerald-600"></i></div><h3 class="text-base font-semibold">數位護照首枚印記</h3></div><div class="p-6 pt-0 text-sm text-gray-600 -mt-2 pb-5">到園區可兌換小禮，讓線上成果延伸到現實。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm hover:shadow-md transition-all"><div class="flex flex-row items-center gap-3 p-6 py-4"><div class="rounded-xl bg-emerald-50 p-2"><i data-lucide="users" class="w-5 h-5 text-emerald-600"></i></div><h3 class="text-base font-semibold">夥伴相容小測驗</h3></div><div class="p-6 pt-0 text-sm text-gray-600 -mt-2 pb-5">和重要的人一起玩，讓關係更靠近。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm hover:shadow-md transition-all"><div class="flex flex-row items-center gap-3 p-6 py-4"><div class="rounded-xl bg-emerald-50 p-2"><i data-lucide="leaf" class="w-5 h-5 text-emerald-600"></i></div><h3 class="text-base font-semibold">專屬角色報告</h3></div><div class="p-6 pt-0 text-sm text-gray-600 -mt-2 pb-5">用簡單標籤理解自己，帶走明天可做的一步。</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" class="py-12 sm:py-16">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="flex items-center gap-2 mb-8"><span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">三步驟，開始你的旅程</span></div>
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6"><h3 class="text-lg font-semibold leading-none tracking-tight flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i> 1. 加入 LINE 拿迎新禮</h3></div><div class="p-6 pt-0 text-sm text-gray-600">免費加入、可隨時退出；先領祝福音與護照印記。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6"><h3 class="text-lg font-semibold leading-none tracking-tight flex items-center gap-2"><i data-lucide="timer" class="w-5 h-5 text-emerald-600"></i> 2. 60 秒小測驗</h3></div><div class="p-6 pt-0 text-sm text-gray-600">完成 10 題立即出結果；下載分享卡，一起玩更好玩。</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6"><h3 class="text-lg font-semibold leading-none tracking-tight flex items-center gap-2"><i data-lucide="trees" class="w-5 h-5 text-emerald-600"></i> 3. 走進真正的森林</h3></div><div class="p-6 pt-0 text-sm text-gray-600">帶著護照到園區掃描印記換小禮，收集回憶。</div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="proof" class="py-12 sm:py-16 bg-gray-100/80">
+            <div class="mx-auto max-w-6xl px-4 grid lg:grid-cols-2 gap-6 items-center">
+                <div>
+                    <div class="flex items-center gap-2 mb-3"><span class="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-gray-600">使用者回饋</span></div>
+                    <div class="mb-3 rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6 py-4"><h3 class="text-base font-semibold">「睡前聽祝福音，心就慢慢安靜下來了。」</h3></div><div class="p-6 pt-0 text-sm text-gray-600">— Sherry，行銷 PM</div></div>
+                    <div class="mb-3 rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6 py-4"><h3 class="text-base font-semibold">「和伴侶玩小測驗，聊出了很久沒聊的事。」</h3></div><div class="p-6 pt-0 text-sm text-gray-600">— Leo，產品設計</div></div>
+                    <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6 py-4"><h3 class="text-base font-semibold">「護照換到的小禮很可愛，想再回來。」</h3></div><div class="p-6 pt-0 text-sm text-gray-600">— Vivian，自由工作者</div></div>
+                </div>
+                <div>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6 py-4"><h3 class="text-base font-semibold flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i> 免費加入、隨時退出</h3></div><div class="p-6 pt-0 -mt-2 text-sm text-gray-600">不綁定、不打擾；只想拿迎新禮也可以。</div></div>
+                        <div class="rounded-xl border bg-white text-gray-800 shadow-sm"><div class="p-6 py-4"><h3 class="text-base font-semibold flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i> 隱私友善</h3></div><div class="p-6 pt-0 -mt-2 text-sm text-gray-600">資料僅用於提供服務；你可一鍵取消。</div></div>
+                    </div>
+                    <div class="mt-4 flex gap-3">
+                        <button class="btn-join-line inline-flex items-center justify-center rounded-md text-sm font-medium bg-gray-900 text-white h-10 px-4 py-2">加入 LINE</button>
+                        <button class="btn-start-quiz inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-white hover:bg-gray-100 h-10 px-4 py-2">先做 60 秒測驗</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="py-12 sm:py-16">
+            <div class="mx-auto max-w-6xl px-4 text-center">
+                <h3 class="text-2xl font-semibold tracking-tight">現在就把森林帶進生活</h3>
+                <p class="mt-2 text-sm text-gray-600">加入 LINE 拿迎新禮；想先體驗也可以做 60 秒小測驗。</p>
+                <div class="mt-5 flex justify-center gap-3">
+                    <button class="btn-join-line inline-flex items-center justify-center rounded-md text-lg font-medium bg-gray-900 text-white h-12 px-8">加入 LINE <i data-lucide="chevron-right" class="w-5 h-5 ml-2"></i></button>
+                    <button class="btn-start-quiz inline-flex items-center justify-center rounded-md text-lg font-medium border border-gray-200 bg-white hover:bg-gray-100 h-12 px-8">先做 60 秒測驗</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-12 sm:py-16 bg-gray-100/80">
+            <div class="mx-auto max-w-6xl px-4">
+                <div class="flex items-center gap-2 mb-3"><span class="inline-flex items-center rounded-md bg-white px-2 py-1 text-xs font-medium text-gray-600">常見問題</span></div>
+                <div class="w-full">
+                    <div class="border-b">
+                        <button class="accordion-trigger flex w-full items-center justify-between py-4 text-sm font-medium">
+                            這個 LP 和官網有什麼不同？
+                            <i data-lucide="chevron-down" class="h-4 w-4 shrink-0 transition-transform duration-200"></i>
+                        </button>
+                        <div class="accordion-content text-sm text-gray-600 pb-4">LP 專注於引流與體驗；官網聚焦空間介紹、房型與訂房流程。</div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-trigger flex w-full items-center justify-between py-4 text-sm font-medium">
+                            不住宿也可以參與嗎？
+                            <i data-lucide="chevron-down" class="h-4 w-4 shrink-0 transition-transform duration-200"></i>
+                        </button>
+                        <div class="accordion-content text-sm text-gray-600 pb-4">可以。你可以只使用線上內容（祝福音、電子報、小測驗）。</div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-trigger flex w-full items-center justify-between py-4 text-sm font-medium">
+                            如何兌換園區小禮？
+                            <i data-lucide="chevron-down" class="h-4 w-4 shrink-0 transition-transform duration-200"></i>
+                        </button>
+                        <div class="accordion-content text-sm text-gray-600 pb-4">在結果頁生成「數位護照」，到園區掃描指定印記即可兌換，效期 30 天。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t">
+            <div class="mx-auto max-w-6xl px-4 py-10 grid sm:grid-cols-2 gap-4 items-center">
+                <div class="text-sm text-gray-600">© <span id="footer-year"></span> 靜謐森林 Serene Forest. All rights reserved.</div>
+                <div class="flex sm:justify-end gap-4 text-sm">
+                    <a class="text-gray-600 hover:underline" href="/privacy">隱私</a>
+                    <a class="text-gray-600 hover:underline" href="/terms">條款</a>
+                    <a class="text-gray-600 hover:underline" href="/">官網</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Mobile sticky CTA -->
+        <div class="fixed bottom-3 left-0 right-0 z-40 px-3 sm:hidden">
+            <div class="mx-auto max-w-md rounded-2xl shadow-lg border bg-white/95 backdrop-blur p-2 flex gap-2">
+                <button class="btn-join-line flex-1 inline-flex items-center justify-center rounded-md text-lg font-medium bg-gray-900 text-white h-12 px-8">加入 LINE</button>
+                <button class="btn-start-quiz inline-flex items-center justify-center rounded-md text-lg font-medium border border-gray-200 bg-white hover:bg-gray-100 h-12 px-8">測驗</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Helper Functions ---
+            const pushEvent = (name, data = {}) => {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: name, ...data });
+                console.log('Event Pushed:', name, data);
+            };
+
+            const joinLine = () => {
+                pushEvent("line_subscribe_click", { source: "hero" });
+                window.location.href = "https://lin.ee/your_line_link"; // 替換成你的 LINE 官方連結
+            };
+
+            const startQuiz = () => {
+                pushEvent("quiz_start", { source: "hero" });
+                window.location.href = "/quiz?src=lp-cro-copy-v2";
+            };
+
+            // --- A/B Test Variant ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const variant = urlParams.get('v') === 'B' ? 'B' : 'A';
+            const headlineEl = document.getElementById('headline');
+            const subheadlineEl = document.getElementById('subheadline');
+
+            if (variant === 'B') {
+                headlineEl.textContent = '每天 3 分鐘，把一片森林帶進生活。';
+                subheadlineEl.textContent = '加入 LINE 立刻啟動 7 天體驗：聲景＋小任務，讓你更快靜下來、與重要的人更靠近，也更願意走進真正的森林。';
+            } else {
+                headlineEl.textContent = '當生活太吵，給自己一片森林。';
+                subheadlineEl.textContent = '立即加入 LINE，拿到迎新禮（祝福音＋數位護照），讓你更快安定、和人更靠近，假日真的走進森林。';
+            }
+
+            // --- Today's Count Animation ---
+            const todayCountEl = document.getElementById('today-count');
+            const base = 220 + Math.floor(Math.random() * 140);
+            let currentCount = 0;
+            const interval = setInterval(() => {
+                currentCount += Math.ceil(base / 24);
+                if (currentCount >= base) {
+                    currentCount = base;
+                    clearInterval(interval);
+                }
+                todayCountEl.textContent = `${currentCount} 人`;
+            }, 40);
+
+            // --- Event Listeners for CTAs ---
+            document.querySelectorAll('.btn-join-line').forEach(btn => btn.addEventListener('click', joinLine));
+            document.querySelectorAll('.btn-start-quiz').forEach(btn => btn.addEventListener('click', startQuiz));
+            document.getElementById('btn-join-line-nav').addEventListener('click', joinLine);
+            document.getElementById('btn-start-quiz-nav').addEventListener('click', startQuiz);
+            document.getElementById('btn-join-line-hero').addEventListener('click', joinLine);
+            document.getElementById('btn-start-quiz-hero').addEventListener('click', startQuiz);
+            document.getElementById('btn-join-line-brand').addEventListener('click', joinLine);
+            document.getElementById('btn-start-quiz-brand').addEventListener('click', startQuiz);
+
+
+            // --- Accordion Logic ---
+            document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const content = trigger.nextElementSibling;
+                    const icon = trigger.querySelector('i');
+                    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+                    // Close all other accordions
+                    document.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
+                        if (otherTrigger !== trigger) {
+                            otherTrigger.setAttribute('aria-expanded', 'false');
+                            otherTrigger.nextElementSibling.style.maxHeight = null;
+                            otherTrigger.querySelector('i').classList.remove('rotate-180');
+                        }
+                    });
+
+                    // Toggle current accordion
+                    if (isOpen) {
+                        trigger.setAttribute('aria-expanded', 'false');
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        trigger.setAttribute('aria-expanded', 'true');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // --- Footer Year ---
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+            // --- Initialize Icons ---
+            lucide.createIcons();
+
+            // --- Smoke Tests ---
+            setTimeout(() => {
+                try {
+                    const headline = document.getElementById("headline");
+                    const sub = document.getElementById("subheadline");
+                    console.assert(!!headline && !!sub, "首屏標題或副標缺失");
+                    console.assert(sub.innerText.includes("讓你"), "副標需包含『讓你』（so that）表述");
+                } catch (e) {
+                    console.warn("Smoke tests warning: ", e);
+                }
+            }, 0);
+        });
+    </script>
+</body>
+</html>

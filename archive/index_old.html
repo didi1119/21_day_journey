@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>你的森林人格 - 無憂石熊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+        }
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 320px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 280px;
+                width: 280px;
+                margin: 0 auto;
+            }
+            
+            /* 確保圖表容器不被切掉 */
+            .chart-section {
+                padding: 1rem;
+                overflow: visible;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chart-container {
+                height: 240px;
+                width: 240px;
+                margin: 0 auto;
+            }
+        }
+
+        /* 護照樣式 */
+        .passport {
+            background-color: #FDFBF5;
+            border: 1px solid #EAE3D4;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .passport-header {
+            text-align: center;
+            border-bottom: 2px dashed #D1C7B3;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            color: #5D5448;
+        }
+        .passport-content {
+            display: flex;
+            gap: 20px;
+        }
+        .passport-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .passport-qr {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: white;
+            padding: 2px;
+            border-radius: 4px 0 0 0;
+            cursor: pointer;
+        }
+        .passport-details p {
+            margin: 0;
+            font-size: 14px;
+            color: #6B5F51;
+            line-height: 1.8;
+        }
+        .passport-details p strong {
+            color: #3E3830;
+        }
+        .passport-stamp {
+            border-left: 2px dashed #D1C7B3;
+            padding-left: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .stamp-circle {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #B8A990;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #C9BDB0;
+            font-size: 12px;
+        }
+        /* 印記收集區 */
+        .stamp-collection {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #EAE3D4;
+        }
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .stamp {
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #F0EBE4;
+            color: #C9BDB0;
+            filter: grayscale(80%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .stamp.unlocked {
+            filter: grayscale(0%);
+            opacity: 1;
+            background-color: #E2D9C8;
+            color: #6B5F51;
+            border: 2px solid #9A6A4D;
+            box-shadow: 0 4px 12px rgba(154, 106, 77, 0.3);
+        }
+        .stamp img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .stamp .stamp-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px;
+            text-align: center;
+            font-size: 8px;
+            font-weight: 500;
+        }
+        .stamp span {
+            font-size: 24px;
+        }
+        .stamp p {
+            font-size: 10px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+        .friendship-atlas {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #EAE3D4;
+        }
+        /* 輪播樣式 */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 50%, transparent 70%);
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            opacity: 0.95;
+            transition: opacity 0.3s ease;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.15));
+        }
+        
+        /* 手機版直屏大圖展示 */
+        @media (max-width: 640px) and (orientation: portrait) {
+            .mobile-portrait-container {
+                height: 85vh;
+                min-height: 500px;
+                max-height: 850px;
+                /* 確保輪播容器內的圖片填滿 */
+                overflow: hidden;
+            }
+            .carousel-slide img {
+                object-fit: cover;
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+                /* 微調縮放確保填滿 */
+                transform: scale(1.02);
+            }
+            .carousel-slide {
+                background: linear-gradient(135deg, rgba(74, 92, 67, 0.1) 0%, rgba(58, 74, 53, 0.1) 100%);
+                overflow: hidden;
+            }
+            /* 調整指示點位置 */
+            .carousel-indicators {
+                bottom: 70px;
+            }
+            /* 調整角色資訊卡位置 */
+            .character-info-mobile {
+                background: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(25px);
+            }
+        }
+        
+        /* 極小螢幕優化 */
+        @media (max-width: 480px) and (orientation: portrait) {
+            .mobile-portrait-container {
+                height: 80vh;
+                min-height: 450px;
+                max-height: 750px;
+                overflow: hidden;
+            }
+            .carousel-slide img {
+                object-fit: cover;
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+                transform: scale(1.02);
+            }
+            .carousel-slide {
+                overflow: hidden;
+            }
+        }
+        
+        /* 超高螢幕優化 */
+        @media (max-width: 640px) and (orientation: portrait) and (min-height: 800px) {
+            .mobile-portrait-container {
+                height: 90vh;
+                max-height: 950px;
+            }
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) scale(1.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .carousel-nav.prev {
+            left: 15px;
+        }
+        .carousel-nav.next {
+            right: 15px;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .carousel-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-indicator.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.4);
+        }
+        .carousel-info {
+            position: absolute;
+            bottom: 6px;
+            left: 6px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        /* 觸控優化 */
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* 手機版優化 */
+        @media (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+            /* 直屏時減少頂部間距 */
+            @media (orientation: portrait) {
+                body {
+                    padding: 0.25rem;
+                }
+            }
+            /* 輪播優化 */
+            .carousel-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(15px);
+            }
+            .carousel-nav.prev {
+                left: 10px;
+            }
+            .carousel-nav.next {
+                right: 10px;
+            }
+            .carousel-indicators {
+                bottom: 90px;
+                gap: 5px;
+                padding: 8px 14px;
+                background: rgba(0, 0, 0, 0.25);
+                backdrop-filter: blur(15px);
+            }
+            /* 手機版橫屏時保持原有間距 */
+            @media (orientation: landscape) {
+                .carousel-indicators {
+                    bottom: 90px !important;
+                }
+            }
+            .carousel-indicator {
+                width: 6px;
+                height: 6px;
+            }
+            .carousel-info {
+                bottom: 6px;
+                left: 6px;
+                font-size: 11px;
+                padding: 4px 8px;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+            }
+            
+            /* 角色資訊卡片 */
+            .character-info-mobile {
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            
+            /* 內容區域 */
+            .mobile-section {
+                padding: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* 圖表容器 - 已在上方定義，避免重複 */
+            
+            /* 按鈕優化 */
+            .mobile-button {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+                min-height: 48px;
+            }
+            
+            /* 護照優化 */
+            .passport-mobile {
+                padding: 1rem;
+            }
+            .passport-content {
+                flex-direction: row;
+                gap: 1rem;
+                align-items: center;
+            }
+            @media (max-width: 480px) {
+                .passport-content {
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+            
+            /* 文字優化 */
+            .mobile-text {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            .mobile-heading {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            /* 印記收集區優化 */
+            .stamp-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+            .stamp {
+                padding: 8px;
+                border-radius: 8px;
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            .stamp span {
+                font-size: 20px;
+            }
+            .stamp p {
+                font-size: 9px;
+                margin-top: 4px;
+            }
+            
+            /* 滑動優化 */
+            .carousel-container {
+                touch-action: pan-x;
+            }
+            
+            /* 文字選擇優化 */
+            .carousel-slide {
+                user-select: none;
+                -webkit-user-select: none;
+            }
+        }
+        
+        /* 更小螢幕優化 */
+        @media (max-width: 480px) {
+            .carousel-indicators {
+                bottom: 85px;
+                padding: 6px 10px;
+                gap: 4px;
+            }
+            .carousel-indicator {
+                width: 5px;
+                height: 5px;
+            }
+            /* 圖表容器已在上方統一定義 */
+            .mobile-section {
+                padding: 1rem;
+            }
+            .stamp-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+        }
+        
+        /* 橫向模式優化 */
+        @media (max-width: 896px) and (orientation: landscape) {
+            .carousel-indicators {
+                bottom: 60px;
+            }
+            .character-info-mobile {
+                padding: 0.75rem 1rem;
+            }
+        }
+
+        /* 收合功能 */
+        .details-toggle {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .details-toggle:hover {
+            background: #e9ecef;
+        }
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .details-content.expanded {
+            max-height: 2000px;
+        }
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
+    <main class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+        <!-- 頂部：動物圖片輪播區域 -->
+        <div class="mobile-portrait-container relative bg-gradient-to-br from-[#4A5C43] via-[#5A6B52] to-[#3A4A35] h-96 sm:h-[32rem] lg:h-[36rem] overflow-hidden">
+            <div class="carousel-container" id="characterCarousel">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <!-- 32張角色圖片 -->
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/01_無憂石熊_00000.jpg" alt="無憂石熊">
+                        <div class="carousel-info">1/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/02_符文拾荒貓_00001.jpg" alt="符文拾荒貓">
+                        <div class="carousel-info">2/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/03_穴居偏執狐_00010.jpg" alt="穴居偏執狐">
+                        <div class="carousel-info">3/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/04_幽影頑狐_00011.jpg" alt="幽影頑狐">
+                        <div class="carousel-info">4/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/05_蟻工隱狐_00100.jpg" alt="蟻工隱狐">
+                        <div class="carousel-info">5/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/06_玄鐵智梟_00101.jpg" alt="玄鐵智梟">
+                        <div class="carousel-info">6/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/07_盔甲工蟻熊_00110.jpg" alt="盔甲工蟻熊">
+                        <div class="carousel-info">7/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/08_秘儀巧熊_00111.jpg" alt="秘儀巧熊">
+                        <div class="carousel-info">8/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/09_靜心龜象_01000.jpg" alt="靜心龜象">
+                        <div class="carousel-info">9/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/10_觀星智象_01001.jpg" alt="觀星智象">
+                        <div class="carousel-info">10/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/11_含羞樹懶_01010.jpg" alt="含羞樹懶">
+                        <div class="carousel-info">11/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/12_奇想隱士鹿_01011.jpg" alt="奇想隱士鹿">
+                        <div class="carousel-info">12/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/13_星河織壩狸_01100.jpg" alt="星河織壩狸">
+                        <div class="carousel-info">13/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/14_靜溪靈海狸_01101.jpg" alt="靜溪靈海狸">
+                        <div class="carousel-info">14/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/15_靜默園丁鹿_01110.jpg" alt="靜默園丁鹿">
+                        <div class="carousel-info">15/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/16_書庫螢兔_01111.jpg" alt="書庫螢兔">
+                        <div class="carousel-info">16/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/17_孤岩歌鳥_10000.jpg" alt="孤岩歌鳥">
+                        <div class="carousel-info">17/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/18_狂想畫猴_10001.jpg" alt="狂想畫猴">
+                        <div class="carousel-info">18/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/19_躁衛亂雀_10010.jpg" alt="躁衛亂雀">
+                        <div class="carousel-info">19/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/20_風羽智鴉_10011.jpg" alt="風羽智鴉">
+                        <div class="carousel-info">20/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/21_百川族長熊_10100.jpg" alt="百川族長熊">
+                        <div class="carousel-info">21/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/22_領航巨熊_10101.jpg" alt="領航巨熊">
+                        <div class="carousel-info">22/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/23_壁壘築巢松鼠_10110.jpg" alt="壁壘築巢松鼠">
+                        <div class="carousel-info">23/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/24_蒼穹巨匠鳥_10111.jpg" alt="蒼穹巨匠鳥">
+                        <div class="carousel-info">24/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/25_慶典樂猴_11000.jpg" alt="慶典樂猴">
+                        <div class="carousel-info">25/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/26_尋奇靈猴_11001.jpg" alt="尋奇靈猴">
+                        <div class="carousel-info">26/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/27_光塵絨兔_11010.jpg" alt="光塵絨兔">
+                        <div class="carousel-info">27/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/28_絮語風猴_11011.jpg" alt="絮語風猴">
+                        <div class="carousel-info">28/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/29_磐石社鹿_11100.jpg" alt="磐石社鹿">
+                        <div class="carousel-info">29/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/30_社群酋長鹿_11101.jpg" alt="社群酋長鹿">
+                        <div class="carousel-info">30/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/31_築巢守衛松鼠_11110.jpg" alt="築巢守衛松鼠">
+                        <div class="carousel-info">31/32</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="media/image/big5/32_萬華晶鹿_11111.jpg" alt="萬華晶鹿">
+                        <div class="carousel-info">32/32</div>
+                    </div>
+                </div>
+                
+                <!-- 導航按鈕 -->
+                <button class="carousel-nav prev" id="prevBtn">‹</button>
+                <button class="carousel-nav next" id="nextBtn">›</button>
+                
+                <!-- 指示點 -->
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-6 left-4 right-4 sm:left-6 sm:right-6 text-white pointer-events-none">
+                <div class="character-info-mobile bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10">
+                    <h1 class="text-xl sm:text-2xl lg:text-4xl font-bold mb-1 leading-tight" id="characterName">無憂石熊</h1>
+                    <p class="text-xs sm:text-sm lg:text-lg opacity-90 leading-relaxed" id="characterSubtitle">Grounded Guardian | 沉穩的守護者</p>
+                </div>
+            </div>
+        </div>
+
+                <!-- 主要內容區域 -->
+        <div class="mobile-section p-4 sm:p-6 lg:p-10">
+            <!-- 森林的悄悄話 -->
+            <section class="mobile-section mb-6 sm:mb-8 bg-green-50/50 p-3 sm:p-4 rounded-lg">
+                <h3 class="mobile-heading font-bold text-base sm:text-lg text-[#4A5C43] flex items-center mb-2 sm:mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4 sm:h-5 sm:w-5"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                    森林的悄悄話
+                </h3>
+                <p class="mobile-text text-gray-600 italic leading-relaxed text-sm sm:text-base">
+                    「你的溫柔，如森林厚實的苔蘚，無聲地承接一切，讓萬物得以安歇。」
+                </p>
+            </section>
+
+            <!-- 描述文字 -->
+            <section class="mobile-section mb-6 sm:mb-8">
+                <p class="mobile-text text-gray-600 leading-relaxed text-sm sm:text-base">
+                        如同棲息在寧靜森林深處的石熊，你擁有穩定而溫和的內心。你看重和諧與平靜，總能給周遭帶來安定的力量。對你而言，最舒適的狀態便是在熟悉的環境中，享受簡單而純粹的快樂。
+                    </p>
+                </section>
+
+                <!-- 森林五維特質 -->
+                <section class="mb-8 chart-section">
+                    <h2 class="text-xl font-bold text-gray-700 mb-4 text-center">森林五維特質</h2>
+                    <div class="flex justify-center px-4">
+                        <div class="chart-container">
+                            <canvas id="personalityChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+            <!-- 詳細特質分析 -->
+            <section class="space-y-6 mb-8">
+                <div>
+                    <h3 class="font-bold text-lg text-[#4A5C43] flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        石熊的天賦
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-1">
+                        <strong>情緒穩定：</strong> 像大地一樣穩固，不容易被外界的風雨動搖。<br>
+                        <strong>高度親和：</strong> 溫暖而富有同理心，是森林中值得信賴的夥伴。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-[#6E7B6C] flex items-center">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        適合的森林夥伴
+                    </h3>
+                    <p class="mt-2 text-gray-600 pl-1">
+                        與充滿好奇心的「尋路靈狐」或目標明確的「築巢河狸」同行，能為彼此帶來啟發與支持。
+                    </p>
+                </div>
+            </section>
+            
+            <!-- 專屬療癒時刻 -->
+            <section class="mb-8">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M10 8l6 4-6 4V8z"></path></svg>
+                    你的專屬療癒時刻
+                </h3>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-semibold text-gray-700">《石熊的大地呼吸》</p>
+                    <p class="text-sm text-gray-500 mb-3">閉上眼，讓聲音引導你回歸內在的安穩。</p>
+                    <audio controls class="w-full">
+                        <!-- 這裡是音檔連結，目前為空 -->
+                        <source src="" type="audio/mpeg">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                </div>
+            </section>
+
+            <!-- 專屬園區療癒地圖 -->
+            <section class="mb-8">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    你的專屬園區療癒地圖
+                </h3>
+                <div class="relative w-full rounded-lg overflow-hidden shadow-md">
+                    <img src="media/image/map/B3A700DA-6EFB-4A9B-9126-9F4DBEB17014.PNG" alt="園區地圖" class="w-full h-auto">
+                </div>
+            </section>
+
+            <!-- 建議行程 -->
+            <section class="mb-8 bg-gray-50 p-4 rounded-lg">
+                <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M16 4.5l-4 4L8 4.5"></path><path d="M12 9V2"></path><path d="M12 22v-3"></path><path d="M17 19l-5-3-5 3"></path></svg>
+                    石熊的寧靜午後 (建議行程)
+                </h3>
+                <ul class="space-y-2 text-gray-600 list-inside">
+                    <li><strong>14:00 | 露台午茶：</strong> 在小屋露台下方的野餐桌，享用溫暖的花草茶與點心，感受微風。</li>
+                    <li><strong>15:30 | 池畔時光：</strong> 漫步到寧靜的池塘邊，坐下看著水面倒影，什麼都不做也很好。</li>
+                    <li><strong>17:00 | 熱水浴放鬆：</strong> 讓溫熱的水流洗去疲憊，為身體徹底充電。</li>
+                    <li><strong>19:00 | 營火邊的溫暖：</strong> 圍著營火，感受火焰的溫暖與跳動，享受最純粹的平靜。</li>
+                </ul>
+                </section>
+                
+                <!-- 森林護照 -->
+            <section class="mobile-section mb-6 sm:mb-8">
+                <h3 class="mobile-heading font-bold text-base sm:text-lg text-[#4A5C43] flex items-center mb-3 sm:mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4 sm:h-5 sm:w-5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    你的靜謐森林護照
+                </h3>
+                <div class="passport passport-mobile">
+                    <div class="passport-header text-xs sm:text-sm">OFFICIAL PASSPORT OF THE TRANQUIL FOREST</div>
+                    <div class="passport-content">
+                        <div class="passport-avatar mx-auto sm:mx-0">
+                            <img src="media/image/big5/01_無憂石熊_00000.jpg" alt="石熊頭像" class="w-full h-full object-cover">
+                            <div class="passport-qr" title="我的友誼碼">
+                                <img src="https://placehold.co/32x32/FFFFFF/000000?text=QR" alt="友誼碼" class="w-6 h-6">
+                            </div>
+                        </div>
+                        <div class="passport-details">
+                            <p class="mobile-text"><strong>姓名:</strong> 無憂石熊</p>
+                            <p class="mobile-text"><strong>森林ID:</strong> <span id="forest-id"></span></p>
+                            <p class="mobile-text"><strong>首次入境:</strong> <span id="entry-date"></span></p>
+                        </div>
+                    </div>
+                        <div class="stamp-collection">
+                        <p class="text-xs sm:text-sm text-center text-gray-600 mb-3"><b>園區限定：</b>掃描QR Code解鎖你的四個靈魂姿態！</p>
+                             <div class="stamp-grid">
+                                <div class="stamp unlocked" title="休憩">
+                                    <img src="media/image/big5/01/a.jpeg" alt="休憩姿態">
+                                    <div class="stamp-overlay">休憩</div>
+                                </div>
+                                <div class="stamp unlocked" title="進食">
+                                    <img src="media/image/big5/01/b.jpeg" alt="進食姿態">
+                                    <div class="stamp-overlay">進食</div>
+                                </div>
+                                <div class="stamp unlocked" title="漫步">
+                                    <img src="media/image/big5/01/c.jpeg" alt="漫步姿態">
+                                    <div class="stamp-overlay">漫步</div>
+                                </div>
+                                <div class="stamp unlocked" title="沉思">
+                                    <img src="media/image/big5/01/d.jpeg" alt="沉思姿態">
+                                    <div class="stamp-overlay">沉思</div>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="friendship-atlas">
+                            <p class="text-xs sm:text-sm text-center text-gray-600 mb-2"><b>森林夥伴關係圖鑑</b></p>
+                            <p class="text-xs text-center text-gray-500 mb-3">邀請朋友測驗，解鎖你們之間獨一無二的關係洞察！</p>
+                            <a href="partner_atlas.html" class="w-full block text-center bg-[#9A6A4D] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#835A40] transition-colors duration-300 text-sm">
+                                查看我的夥伴圖鑑 (已解鎖 1/32)
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 探索你的內在森林 -->
+                <section class="mb-8 bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path></svg>
+                        探索你的內在森林
+                    </h3>
+                    <div class="space-y-3 text-gray-600">
+                        <p class="mb-4">
+                            <strong class="text-gray-700">成長的課題：</strong> 有時可能會過於安於現狀，嘗試走出舒適圈，探索森林中未知的風景，或許會有新的發現。
+                        </p>
+                        <div class="space-y-2">
+                            <p><strong class="text-gray-700">走一條新的小徑：</strong> 週末去一個從未去過的地方散步，感受不同的風景。</p>
+                            <p><strong class="text-gray-700">嚐嚐陌生的漿果：</strong> 學習一項簡單的新技能，例如一道新菜或一首樂曲。</p>
+                            <p><strong class="text-gray-700">聆聽風的聲音：</strong> 每天留出10分鐘，不帶目的地靜坐，單純地感受當下。</p>
+                        </div>
+                    </div>
+                </section>
+            
+            <!-- 森林的祝福 -->
+            <section class="mb-8 text-center">
+                 <h3 class="font-bold text-lg text-gray-700 flex items-center justify-center mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M14.5 13.5c-1.28 1-2.72 1-4 0"></path><path d="M8.83 17.17a5 5 0 0 1-1.66-2.33L4 10l7-7 7 7-3.17 4.84a5 5 0 0 1-1.66 2.33l-.01.01"></path><path d="M12 4v.01"></path></svg>
+                    森林的祝福
+                </h3>
+                <p class="text-gray-600">願你總能找到屬於你的那塊安穩的岩石，安然入睡。你的幸運物是「<span class="font-semibold text-[#4A5C43]">圓潤的溪石</span>」，它提醒你，溫和的力量足以抵擋時間的洪流。</p>
+                </section>
+
+            <!-- 21天旅程入口 -->
+            <section class="mb-8 bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border-2 border-dashed border-green-300">
+                <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    專屬你的 21 天內在森林之旅
+                </h3>
+                <p class="text-gray-700 mb-4">
+                    基於你的森林人格，我們為你準備了一趟專屬的心靈旅程。每天只需 5-10 分鐘，
+                    透過聽覺引導、微小行動與內在探索，幫助你建立內心的寧靜森林。
+                </p>
+                <a href="journey.html" class="inline-block bg-[#4A5C43] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#3A4A35] transition-colors duration-300">
+                    開始我的 21 天旅程 →
+                </a>
+            </section>
+
+                <!-- 專屬優惠 -->
+                <footer class="mt-8 border-t pt-8">
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-5 text-center bg-amber-50/50">
+                    <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center justify-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        一份來自森林的贈禮
+                    </h3>
+                    <p class="text-gray-600">親愛的無憂石熊，感謝你為世界帶來穩定與溫暖。憑此報告畫面來到「靜謐森林屋」，我們將為您獻上：</p>
+                        <p class="my-3 font-semibold text-lg text-[#4A5C43]">
+                        「幸運溪石一顆 & 手沖暖心花草茶一杯」
+                        </p>
+                    <p class="text-sm text-gray-500">讓森林的禮物，陪伴你度過寧靜的午後。</p>
+                    </div>
+                                    <div class="mt-6 sm:mt-8 text-center px-4">
+                    <button id="shareButton" class="mobile-button bg-[#4A5C43] text-white font-bold py-3 px-6 sm:py-3 sm:px-8 rounded-full hover:bg-[#3A4A35] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4A5C43] w-full sm:w-auto text-sm sm:text-base">
+                        分享我的森林人格
+                    </button>
+                    <p id="copyMessage" class="text-xs sm:text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-300">報告連結已複製！</p>
+                    </div>
+                </footer>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 角色資料
+            const characters = [
+                { name: '無憂石熊', subtitle: 'Grounded Guardian | 沉穩的守護者' },
+                { name: '符文拾荒貓', subtitle: 'Mystical Scavenger | 神秘的拾荒者' },
+                { name: '穴居偏執狐', subtitle: 'Paranoid Dweller | 偏執的居者' },
+                { name: '幽影頑狐', subtitle: 'Shadow Trickster | 陰影的玩家' },
+                { name: '蟻工隱狐', subtitle: 'Worker Fox | 工作的狐狸' },
+                { name: '玄鐵智梟', subtitle: 'Iron Wise Owl | 鋼鐵智者' },
+                { name: '盔甲工蟻熊', subtitle: 'Armored Worker | 裝甲工作者' },
+                { name: '秘儀巧熊', subtitle: 'Mystical Artisan | 神秘工匠' },
+                { name: '靜心龜象', subtitle: 'Tranquil Sage | 寧靜智者' },
+                { name: '觀星智象', subtitle: 'Star Gazer | 觀星者' },
+                { name: '含羞樹懶', subtitle: 'Shy Sloth | 害羞的樹懶' },
+                { name: '奇想隱士鹿', subtitle: 'Whimsical Hermit | 奇想隱士' },
+                { name: '星河織壩狸', subtitle: 'Cosmic Weaver | 宇宙織者' },
+                { name: '靜溪靈海狸', subtitle: 'Stream Spirit | 溪流精靈' },
+                { name: '靜默園丁鹿', subtitle: 'Silent Gardener | 靜默園丁' },
+                { name: '書庫螢兔', subtitle: 'Library Keeper | 圖書管理員' },
+                { name: '孤岩歌鳥', subtitle: 'Lone Songbird | 孤獨歌者' },
+                { name: '狂想畫猴', subtitle: 'Fantasy Artist | 幻想藝術家' },
+                { name: '躁衛亂雀', subtitle: 'Restless Guardian | 不安的守衛' },
+                { name: '風羽智鴉', subtitle: 'Wind Sage | 風之智者' },
+                { name: '百川族長熊', subtitle: 'River Chief | 河流族長' },
+                { name: '領航巨熊', subtitle: 'Navigator Giant | 領航巨人' },
+                { name: '壁壘築巢松鼠', subtitle: 'Fortress Builder | 堡壘建造者' },
+                { name: '蒼穹巨匠鳥', subtitle: 'Sky Craftsman | 天空工匠' },
+                { name: '慶典樂猴', subtitle: 'Festival Celebrant | 慶典慶祝者' },
+                { name: '尋奇靈猴', subtitle: 'Wonder Seeker | 奇蹟尋求者' },
+                { name: '光塵絨兔', subtitle: 'Stardust Rabbit | 星塵兔' },
+                { name: '絮語風猴', subtitle: 'Whispering Wind | 細語之風' },
+                { name: '磐石社鹿', subtitle: 'Rock Community | 磐石社群' },
+                { name: '社群酋長鹿', subtitle: 'Community Chief | 社群酋長' },
+                { name: '築巢守衛松鼠', subtitle: 'Nest Guardian | 巢穴守衛' },
+                { name: '萬華晶鹿', subtitle: 'Crystal Monarch | 水晶君主' }
+            ];
+
+            // 輪播功能
+            let currentSlide = 0;
+            const totalSlides = 32;
+            const wrapper = document.getElementById('carouselWrapper');
+            const indicators = document.getElementById('indicators');
+            const characterName = document.getElementById('characterName');
+            const characterSubtitle = document.getElementById('characterSubtitle');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // 創建指示點
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicators.appendChild(indicator);
+            }
+
+            // 更新輪播位置和信息
+            function updateCarousel() {
+                wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // 更新指示點
+                document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+                
+                // 更新角色信息
+                characterName.textContent = characters[currentSlide].name;
+                characterSubtitle.textContent = characters[currentSlide].subtitle;
+            }
+
+            // 跳到指定幻燈片
+            function goToSlide(index) {
+                currentSlide = index;
+                updateCarousel();
+            }
+
+            // 下一張
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+
+            // 上一張
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            // 按鈕事件
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // 自動輪播
+            let autoPlayInterval;
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextSlide, 4000); // 4秒切換
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+
+            // 鼠標懸停時暫停自動播放
+            const carousel = document.getElementById('characterCarousel');
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+
+            // 觸摸/滑動支援（手機版優化）
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let touchStartY = 0;
+            let touchEndY = 0;
+            let isScrolling = false;
+
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+                isScrolling = false;
+                stopAutoPlay();
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', e => {
+                if (!touchStartX || !touchStartY) return;
+                
+                const touchCurrentX = e.changedTouches[0].screenX;
+                const touchCurrentY = e.changedTouches[0].screenY;
+                
+                const diffX = Math.abs(touchStartX - touchCurrentX);
+                const diffY = Math.abs(touchStartY - touchCurrentY);
+                
+                // 判斷是否為垂直滑動（滾動頁面）
+                if (diffY > diffX) {
+                    isScrolling = true;
+                } else if (diffX > 10) {
+                    // 水平滑動時防止頁面滾動
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            carousel.addEventListener('touchend', e => {
+                if (!isScrolling) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    touchEndY = e.changedTouches[0].screenY;
+                    handleSwipe();
+                }
+                startAutoPlay();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 30; // 降低門檻值，更靈敏
+                const diff = touchStartX - touchEndX;
+                const verticalDiff = Math.abs(touchStartY - touchEndY);
+                
+                // 確保是水平滑動而非垂直滑動
+                if (Math.abs(diff) > swipeThreshold && verticalDiff < 100) {
+                    if (diff > 0) {
+                        nextSlide(); // 向左滑動，下一張
+                    } else {
+                        prevSlide(); // 向右滑動，上一張
+                    }
+                    
+                    // 觸覺反饋（如果支援）
+                    if (navigator.vibrate) {
+                        navigator.vibrate(50);
+                    }
+                }
+            }
+
+            // 鍵盤導航
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+
+            // 手機版性能優化
+            const isMobile = window.innerWidth <= 640;
+            
+            // 根據設備調整自動播放速度
+            function startAutoPlay() {
+                const interval = isMobile ? 5000 : 4000; // 手機版稍慢一點
+                autoPlayInterval = setInterval(nextSlide, interval);
+            }
+
+            // 視窗大小改變時重新檢測
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    // 重新計算佈局
+                    updateCarousel();
+                }, 250);
+            });
+
+            // 防止雙擊縮放（手機版）
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // 啟動自動播放
+            startAutoPlay();
+
+            // 雷達圖數據
+            const data = {
+                labels: [
+                    ['經驗', '開放性 (O)'],
+                    ['盡責性', '(C)'],
+                    ['外向性', '(E)'],
+                    ['親和性', '(A)'],
+                    ['情緒', '不穩定性 (N)']
+                ],
+                datasets: [{
+                    label: '人格特質分數',
+                    data: [30, 75, 40, 85, 20], 
+                    fill: true,
+                    backgroundColor: 'rgba(74, 92, 67, 0.2)',
+                    borderColor: 'rgb(74, 92, 67)',
+                    pointBackgroundColor: 'rgb(74, 92, 67)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(74, 92, 67)'
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: { line: { borderWidth: 3 } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: {
+                                font: { size: 12, family: "'Inter', 'Noto Sans TC', sans-serif" },
+                                color: '#374151'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                color: '#6b7280',
+                                stepSize: 25,
+                                font: { size: 10 }
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    },
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+                }
+            };
+            
+            const ctx = document.getElementById('personalityChart');
+            if(ctx) { new Chart(ctx, config); }
+
+            // 護照資訊生成
+            const today = new Date();
+            const dateString = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            document.getElementById('entry-date').textContent = dateString;
+            
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const forestId = `SB-${today.getFullYear().toString().slice(-2)}${String(today.getMonth() + 1).padStart(2, '0')}-${randomNum}`;
+            document.getElementById('forest-id').textContent = forestId;
+
+            // 分享按鈕
+            const shareButton = document.getElementById('shareButton');
+            const copyMessage = document.getElementById('copyMessage');
+            if(shareButton && copyMessage) {
+                shareButton.addEventListener('click', () => {
+                    const url = window.location.href;
+                    const textArea = document.createElement("textarea");
+                    textArea.value = url;
+                    textArea.style.position = "fixed"; 
+                    textArea.style.left = "-9999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyMessage.style.opacity = '1';
+                        setTimeout(() => { copyMessage.style.opacity = '0'; }, 2000);
+                    } catch (err) {
+                        console.error('無法複製連結: ', err);
+                    }
+                    document.body.removeChild(textArea);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

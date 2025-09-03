@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 18: 你並不孤單｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest-green': '#2E4F4F',
+            'forest-cta': '#C87D54',
+            'forest-cta-dark': '#B56A40',
+            'forest-bg': '#F9F7F3',
+            'forest-card-bg': '#FFFFFF',
+            'forest-text-dark': '#3A3A3A',
+            'forest-text-light': '#6B6B6B',
+            'forest-border': '#EAE5E0',
+            'forest-highlight': '#E4EFE7',
+          },
+          boxShadow: {
+            'soft': '0 4px 15px rgba(46, 79, 79, 0.06)',
+            'soft-lg': '0 10px 30px rgba(46, 79, 79, 0.08)'
+          },
+          borderRadius: {
+            'xl2': '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2E4F4F; }
+    .prose blockquote {
+        border-left-color: #C87D54;
+        padding-left: 1em;
+        font-style: italic;
+        color: #6B6B6B;
+    }
+  </style>
+</head>
+<body class="bg-forest-bg text-forest-text-light antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header with Journey Map -->
+    <header class="space-y-6">
+      <div class="text-center">
+        <p class="text-lg text-forest-green font-semibold mb-2">Day 18 / 21</p>
+        <h1 class="text-3xl sm:text-4xl font-bold text-forest-text-dark">你並不孤單</h1>
+      </div>
+      <!-- Mini Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border border-forest-border shadow-soft flex items-center gap-2">
+        <!-- Day 1-17 Done -->
+        <div class="w-[80.92%] h-2 bg-forest-green rounded-full"></div>
+        <!-- Day 18 Current -->
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <!-- Rest of the journey -->
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 1. 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的林間絮語</h2>
+      </div>
+      <div class="prose max-w-none">
+        <p>旅人，你好。</p>
+        <p>昨天整理小屋時，我在訪客的留言本裡，讀到了一段話。那是一位和你有著相似特質——「領航巨熊」——的旅人留下的。讀著他的文字，我彷彿能感受到他當時坐在露台，看著陽光的心情。那份感動，我想與你分享。</p>
+        <p>有時候，我們會覺得自己的感受很獨特，自己的掙扎無人能懂。但其實，在這片森林裡，有許多和你一樣的靈魂，也曾走過相似的路，感受過相似的迷惘與平靜。你並不孤單，我們都在這條路上，彼此陪伴，互相照亮。</p>
+        
+        <blockquote class="mt-6">
+          <p>「上週末在靜謐森林度過了兩天，那裡的寧靜超乎想像。最難忘的是清晨在露台喝咖啡時，看到陽光穿透樹葉的瞬間。那份平靜，我把它帶回了城市，希望能陪伴我很久。」</p>
+          <cite class="text-sm not-italic text-forest-text-light">— 一位「領航巨熊」訪客的信</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 2. 森林的禮物 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a2.25 2.25 0 01-2.25 2.25H5.25a2.25 2.25 0 01-2.25-2.25v-8.25M12 4.875A2.625 2.625 0 1014.625 7.5H12m0 0V21m0-16.125a2.625 2.625 0 00-2.625 2.625v1.875c0 .597.237 1.17.659 1.591l.244.243c.25.25.48.54.686.857l.142.214c.142.214.214.457.214.706v.375a2.625 2.625 0 002.625 2.625H12m0 0a2.625 2.625 0 012.625-2.625h.375c.249 0 .492-.072.706-.214l.214-.142c.206-.317.436-.607.686-.857l.244-.243a2.115 2.115 0 00.659-1.591v-1.875A2.625 2.625 0 0012 4.875z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的森林贈禮</h2>
+      </div>
+      <p class="mb-6">這是旅程中的最後一張「森林祝福牌卡」。它象徵著整合與豐盛，是你走過這段路程後，內心所綻放出的獨特光芒。</p>
+      
+      <div class="bg-forest-highlight/60 rounded-xl2 p-4 sm:p-6 text-center">
+        <!-- Card Image Placeholder -->
+        <div class="w-full max-w-xs mx-auto aspect-[3/4.5] bg-white rounded-xl shadow-lg flex items-center justify-center border border-forest-border mb-6">
+            <p class="text-forest-text-light">[ 預留「豐盛」牌卡圖片 ]</p>
+        </div>
+        <h3 class="text-xl font-bold text-forest-green mb-2">祝福牌卡：《豐盛》</h3>
+        <p class="text-sm text-forest-text-light prose max-w-md mx-auto">
+          這張牌卡提醒我們，<strong>真正的豐盛，並非來自於擁有多少，而是源於我們能感受多深。</strong>當你的心因連結而變得柔軟，你將能在最平凡的事物中，看見最深刻的美；在最微小的善意裡，感受到最巨大的溫暖。這份豐盛，早已存在於你心中。
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. 今日的森林一隅 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+         <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的森林一隅</h2>
+      </div>
+      
+      <div class="prose max-w-none">
+        <p>這是一張園區訪客留下的溫暖小物照片。每一個來到這裡的人，都為這片森林，增添了一份獨一無二的溫暖印記。</p>
+        <!-- Image placeholder -->
+        <div class="w-full aspect-video bg-white rounded-xl flex items-center justify-center text-sm text-forest-text-light border border-forest-border mt-4">
+            <p>[ 預留一張園區訪客留下的溫暖小物，如手寫紙條或石頭彩繪的照片 ]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你總能記起，在這條路上，你從不孤單。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 未來可加入牌卡互動等功能
+  </script>
+</body>
+</html>

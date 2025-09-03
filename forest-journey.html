@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>靜謐森林｜21 天旅程</title>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest-green': '#2E4F4F',
+            'forest-cta': '#C87D54',
+            'forest-cta-dark': '#B56A40',
+            'forest-bg': '#F9F7F3',
+            'forest-card-bg': '#FFFFFF',
+            'forest-text-dark': '#3A3A3A',
+            'forest-text-light': '#6B6B6B',
+            'forest-border': '#EAE5E0',
+            'forest-highlight': '#E4EFE7',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.08)'
+          },
+          borderRadius: {
+            xl2: '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+    .content-card { max-width: 980px; margin: 0 auto; }
+    .prose { line-height: 1.75; }
+    .prose p { margin-bottom: 1em; }
+    .marker { transition: opacity .2s ease; }
+    .marker:hover { opacity: 0.8; }
+    .act-band { opacity: .14; }
+    .rounded-xl2 { border-radius: 1.25rem; }
+    
+    /* 載入動畫 */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(46, 79, 79, 0.3);
+      border-radius: 50%;
+      border-top-color: #2E4F4F;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* 淡入動畫 */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-forest-bg text-forest-text-light antialiased">
+  <div class="content-card px-4 py-8 sm:py-12 md:py-14 space-y-8">
+
+    <!-- Header -->
+    <header class="text-center space-y-2">
+      <p class="text-base sm:text-lg text-forest-green font-semibold">靜謐森林 · 21 天旅程</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-forest-text-dark">旅程地圖 × 三幕劇 × 日卡框架</h1>
+      <p class="text-sm">點擊地圖上的任一日，即可在下方切換內容（儲存在本機）。</p>
+    </header>
+
+    <!-- Journey Map (SVG with 21 markers) -->
+    <section class="bg-forest-card-bg p-4 sm:p-6 rounded-2xl border border-forest-border shadow-soft">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-xl font-bold text-forest-text-dark">旅程地圖</h2>
+        <div class="text-sm">當前：<span id="label-day" class="text-forest-green font-semibold">Day 1</span>／21</div>
+      </div>
+      
+      <div class="relative">
+        <!-- Act bands -->
+        <div class="absolute inset-0 pointer-events-none">
+          <svg viewBox="0 0 1000 210" class="w-full h-[180px]">
+            <rect x="0" y="0" width="333" height="210" fill="#2E4F4F" class="act-band"/>
+            <rect x="333" y="0" width="334" height="210" fill="#C87D54" class="act-band"/>
+            <rect x="667" y="0" width="333" height="210" fill="#6B6B6B" class="act-band"/>
+          </svg>
+        </div>
+        
+        <svg id="journey" viewBox="0 0 1000 210" class="w-full h-[180px]">
+          <defs>
+            <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#9CC9B1"/>
+              <stop offset="100%" stop-color="#CBB08C"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- S-curve route -->
+          <path id="route" d="M20,150 C200,70 380,230 520,110 S840,40 980,120" fill="none" stroke="url(#routeGrad)" stroke-width="6" stroke-linecap="round"/>
+          <!-- Markers injected by JS -->
+          <g id="markers"></g>
+        </svg>
+        
+        <!-- 旅程階段標題 -->
+        <div class="grid grid-cols-3 gap-2 text-xs mt-2 text-center">
+          <div>
+            <b class="text-sm text-forest-text-dark">旅程的起點</b>
+            <span class="block text-forest-text-light">連結自我 (Day 1–7)</span>
+          </div>
+          <div>
+            <b class="text-sm text-forest-text-dark">深入寧靜森林</b>
+            <span class="block text-forest-text-light">連結他人 (Day 8–14)</span>
+          </div>
+          <div>
+            <b class="text-sm text-forest-text-dark">帶一片森林回家</b>
+            <span class="block text-forest-text-light">連結自然 (Day 15–21)</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-4 flex items-center justify-between">
+        <div class="flex items-center gap-3 text-xs">
+          <span class="inline-flex items-center gap-1">
+            <span class="inline-block w-3 h-3 rounded-full bg-forest-green"></span> 已完成
+          </span>
+          <span class="inline-flex items-center gap-1">
+            <span class="inline-block w-3 h-3 rounded-full bg-forest-cta"></span> 今天
+          </span>
+          <span class="inline-flex items-center gap-1">
+            <span class="inline-block w-3 h-3 rounded-full bg-gray-300"></span> 尚未
+          </span>
+        </div>
+        <button id="mark-complete" class="px-4 py-2 bg-forest-cta text-white rounded-lg shadow hover:bg-forest-cta-dark transition text-sm">
+          標記今日完成
+        </button>
+      </div>
+    </section>
+
+    <!-- 旅程階段引導區塊 -->
+    <section class="bg-forest-highlight/50 p-6 rounded-xl2 border border-forest-border/50">
+      <div class="flex items-start sm:items-center gap-4">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 6h16M4 12h10M4 18h7"/>
+        </svg>
+        <div>
+          <h2 id="act-title" class="text-xl font-bold text-forest-text-dark"></h2>
+          <p id="act-lead" class="text-sm text-forest-text-light mt-1"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 載入指示器 -->
+    <div id="loading-indicator" class="hidden text-center py-8">
+      <div class="loading mx-auto mb-4"></div>
+      <p class="text-forest-text-light">載入中...</p>
+    </div>
+
+    <!-- Day card container -->
+    <section id="day-card" class="space-y-6"></section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-6">
+      <p class="text-xs text-gray-400">© 2025 靜謐森林. 本頁採用模組化架構，支援未來功能擴展。</p>
+    </footer>
+  </div>
+
+  <script>
+    /**
+     * 靜謐森林 21 天旅程 - 簡化版主應用程式
+     */
+    class ForestJourney {
+      constructor() {
+        // 基本配置
+        this.config = {
+          totalDays: 21,
+          basePath: './21-day-journey/'
+        };
+        
+        // 三幕劇配置
+        this.actConfig = {
+          1: { title: '旅程的起點：走入林間小徑', lead: '讓我們一起，先為內心找到一個安穩的角落，感受森林的歡迎。' },
+          2: { title: '旅程的中途：深入寧靜森林', lead: '當你安頓下來，便能看見森林更深處的風景，以及內心同樣深邃的樣貌。' },
+          3: { title: '旅程的尾聲：帶一片森林回家', lead: '是時候了，讓我們一起將森林的智慧，編織回你的日常生活中。' }
+        };
+
+        // 進度管理
+        this.progress = this.loadProgress();
+        
+        // DOM 元素參考
+        this.elements = {
+          actTitle: document.getElementById('act-title'),
+          actLead: document.getElementById('act-lead'),
+          labelDay: document.getElementById('label-day'),
+          dayCard: document.getElementById('day-card'),
+          loadingIndicator: document.getElementById('loading-indicator'),
+          markCompleteBtn: document.getElementById('mark-complete'),
+          markersGroup: document.getElementById('markers'),
+          route: document.getElementById('route')
+        };
+
+        // 初始化應用程式
+        this.init();
+      }
+
+      async init() {
+        try {
+          // 設定事件監聽器
+          this.setupEventListeners();
+          
+          // 初始化地圖
+          this.renderMap();
+          
+          // 載入當前日期內容
+          const currentDay = this.progress.current || 1;
+          await this.loadDay(currentDay);
+          
+          console.log('Forest Journey initialized successfully');
+        } catch (error) {
+          console.error('Initialization failed:', error);
+          this.showError('初始化失敗', error.message);
+        }
+      }
+
+      setupEventListeners() {
+        // 標記完成按鈕
+        this.elements.markCompleteBtn.addEventListener('click', () => {
+          this.markCurrentDayComplete();
+        });
+      }
+
+      async loadDay(day) {
+        try {
+          this.showLoading(true);
+          
+          // 設定當前日期
+          this.progress.current = day;
+          this.saveProgress();
+          
+          // 載入內容
+          const content = await this.loadDayContent(day);
+          
+          // 渲染內容
+          this.renderDayContent(content, day);
+          
+          // 更新三幕劇引導
+          this.updateActLead(day);
+          
+          // 更新日期標籤
+          this.elements.labelDay.textContent = `Day ${day}`;
+          
+          // 更新地圖
+          this.renderMap();
+          
+        } catch (error) {
+          console.error(`Failed to load day ${day}:`, error);
+          this.showError('載入失敗', error.message);
+        } finally {
+          this.showLoading(false);
+        }
+      }
+
+      async loadDayContent(day) {
+        const fileName = `day${day}.html`;
+        const fullPath = this.config.basePath + fileName;
+        
+        try {
+          // 檢測運行環境
+          const isLocalFile = window.location.protocol === 'file:';
+          const isHttpServer = window.location.protocol.startsWith('http');
+          
+          if (isLocalFile) {
+            // 本地檔案模式：顯示提示
+            return this.createLocalFileContent(day);
+          }
+          
+          const response = await fetch(fullPath);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+          
+          let content = await response.text();
+          
+          // 如果是完整的 HTML 檔案，提取 body 內容
+          const bodyMatch = content.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+          if (bodyMatch) {
+            content = bodyMatch[1];
+          }
+          
+          // 移除不必要的 script 和 style 標籤
+          content = content.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+          content = content.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+          
+          return content;
+          
+        } catch (error) {
+          console.warn(`Failed to load ${fileName}:`, error);
+          return this.createErrorContent(day, error);
+        }
+      }
+
+      renderDayContent(content, day) {
+        // 清空現有內容
+        this.elements.dayCard.innerHTML = '';
+        
+        // 創建容器並插入內容
+        const container = document.createElement('div');
+        container.innerHTML = content;
+        container.className = 'fade-in';
+        
+        // 處理動態功能
+        this.processDynamicContent(container, day);
+        
+        // 插入到頁面
+        this.elements.dayCard.appendChild(container);
+      }
+
+      processDynamicContent(container, day) {
+        // 處理日誌儲存
+        const journalElements = container.querySelectorAll('[data-journal]');
+        journalElements.forEach(element => {
+          this.setupJournalSaving(element, day);
+        });
+      }
+
+      async setupJournalSaving(element, day) {
+        const textarea = element.querySelector('textarea');
+        const saveBtn = element.querySelector('[data-save]');
+        const successMsg = element.querySelector('[data-success]');
+        
+        if (!textarea || !saveBtn) return;
+
+        // 載入已儲存的內容
+        const savedContent = this.loadJournal(day);
+        if (savedContent) {
+          textarea.value = savedContent;
+          if (successMsg) successMsg.classList.remove('hidden');
+        }
+
+        // 設定儲存功能
+        saveBtn.addEventListener('click', () => {
+          try {
+            this.saveJournal(day, textarea.value);
+            if (successMsg) {
+              successMsg.classList.remove('hidden');
+              setTimeout(() => successMsg.classList.add('hidden'), 3000);
+            }
+          } catch (error) {
+            console.error('Failed to save journal:', error);
+          }
+        });
+      }
+
+      renderMap() {
+        const g = this.elements.markersGroup;
+        g.innerHTML = '';
+        
+        const route = this.elements.route;
+        const totalLength = route.getTotalLength();
+        const steps = this.config.totalDays;
+        
+        for (let i = 0; i < steps; i++) {
+          const t = i / (steps - 1);
+          const point = route.getPointAtLength(totalLength * t);
+          const day = i + 1;
+          
+          const isCurrent = (day === this.progress.current);
+          const isCompleted = this.progress.completed.includes(day);
+          
+          let fill = '#CBD5D1'; // 預設
+          if (isCurrent) fill = '#C87D54'; // 當前
+          else if (isCompleted) fill = '#2E4F4F'; // 已完成
+          
+          const radius = isCurrent ? 9 : 7;
+          const glow = isCurrent ? 'filter:url(#glow)' : 'none';
+          
+          const marker = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          marker.setAttribute('class', 'marker cursor-pointer');
+          marker.setAttribute('transform', `translate(${point.x},${point.y})`);
+          marker.innerHTML = `
+            <circle r="${radius + 4}" fill="white" opacity="0.8"></circle>
+            <circle r="${radius}" fill="${fill}" style="${glow}"></circle>
+            <text y="-16" text-anchor="middle" fill="#6B6B6B" font-size="10">${day}</text>
+          `;
+          
+          marker.addEventListener('click', () => this.loadDay(day));
+          g.appendChild(marker);
+        }
+      }
+
+      updateActLead(day) {
+        const act = this.getActByDay(day);
+        const actData = this.actConfig[act];
+        
+        this.elements.actTitle.textContent = actData.title;
+        this.elements.actLead.textContent = actData.lead;
+      }
+
+      getActByDay(day) {
+        if (day <= 7) return 1;
+        if (day <= 14) return 2;
+        return 3;
+      }
+
+      markCurrentDayComplete() {
+        const currentDay = this.progress.current;
+        if (!this.progress.completed.includes(currentDay)) {
+          this.progress.completed.push(currentDay);
+          this.progress.completed.sort((a, b) => a - b);
+        }
+        
+        this.saveProgress();
+        this.renderMap();
+        
+        // 顯示完成提示
+        console.log(`Day ${currentDay} marked as completed`);
+      }
+
+      // 本機儲存相關方法
+      loadProgress() {
+        try {
+          const stored = localStorage.getItem('forest_progress');
+          if (stored) {
+            return JSON.parse(stored);
+          }
+        } catch (error) {
+          console.warn('Failed to load progress:', error);
+        }
+        
+        return {
+          current: 1,
+          completed: []
+        };
+      }
+
+      saveProgress() {
+        try {
+          localStorage.setItem('forest_progress', JSON.stringify(this.progress));
+        } catch (error) {
+          console.error('Failed to save progress:', error);
+        }
+      }
+
+      loadJournal(day) {
+        try {
+          return localStorage.getItem(`forest_journal_day_${day}`) || '';
+        } catch (error) {
+          console.warn('Failed to load journal:', error);
+          return '';
+        }
+      }
+
+      saveJournal(day, content) {
+        try {
+          localStorage.setItem(`forest_journal_day_${day}`, content.trim());
+        } catch (error) {
+          console.error('Failed to save journal:', error);
+          throw error;
+        }
+      }
+
+      // UI 相關方法
+      showLoading(show) {
+        if (show) {
+          this.elements.loadingIndicator.classList.remove('hidden');
+          this.elements.dayCard.style.opacity = '0.5';
+        } else {
+          this.elements.loadingIndicator.classList.add('hidden');
+          this.elements.dayCard.style.opacity = '1';
+        }
+      }
+
+      showError(title, message) {
+        // 簡單的錯誤顯示
+        this.elements.dayCard.innerHTML = `
+          <div class="text-center py-12 bg-red-50 rounded-xl border border-red-200">
+            <h2 class="text-xl font-bold text-red-800 mb-4">${title}</h2>
+            <p class="text-red-600 mb-6">${message}</p>
+            <button onclick="location.reload()" class="px-4 py-2 bg-red-100 text-red-800 rounded-lg hover:bg-red-200 transition">
+              重新載入
+            </button>
+          </div>
+        `;
+      }
+
+      createErrorContent(day, error) {
+        return `
+          <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
+            <h3 class="text-lg font-semibold text-red-800 mb-2">Day ${day} 內容載入失敗</h3>
+            <p class="text-red-600 text-sm mb-4">${error.message}</p>
+            <p class="text-gray-600 text-sm">請檢查 21-day-journey/day${day}.html 檔案是否存在。</p>
+          </div>
+        `;
+      }
+      
+      createLocalFileContent(day) {
+        return `
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-8">
+            <h2 class="text-2xl font-bold text-forest-text-dark mb-4">Day ${day} - 需要啟動本地伺服器</h2>
+            <div class="text-amber-700 mb-6">
+              <p class="mb-4">由於瀏覽器安全限制，直接開啟檔案無法載入每日內容。</p>
+              <p class="font-semibold mb-2">請選擇以下任一方式：</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-white rounded-lg p-4">
+                <h3 class="font-semibold text-forest-green mb-2">方式一：Python 伺服器</h3>
+                <ol class="text-sm text-gray-600 space-y-1">
+                  <li>1. 開啟終端機</li>
+                  <li>2. cd 到此檔案目錄</li>
+                  <li>3. 執行：<code class="bg-gray-100 px-2 py-1 rounded text-xs">python3 -m http.server 8000</code></li>
+                  <li>4. 訪問：<a href="http://localhost:8000/forest-journey.html" class="text-forest-cta underline">localhost:8000/forest-journey.html</a></li>
+                </ol>
+              </div>
+              <div class="bg-white rounded-lg p-4">
+                <h3 class="font-semibold text-forest-green mb-2">方式二：VS Code Live Server</h3>
+                <ol class="text-sm text-gray-600 space-y-1">
+                  <li>1. 安裝 Live Server 擴充套件</li>
+                  <li>2. 右鍵點擊 forest-journey.html</li>
+                  <li>3. 選擇 "Open with Live Server"</li>
+                  <li>4. 自動在瀏覽器開啟</li>
+                </ol>
+              </div>
+            </div>
+            <div class="mt-6 p-4 bg-forest-highlight/30 rounded-lg">
+              <p class="text-sm text-forest-text-dark">
+                <strong>部署說明：</strong>當檔案部署到網路伺服器（如 GitHub Pages、Netlify、Vercel 等）後，
+                將自動正常載入所有內容，無需額外設定。
+              </p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // 等待 DOM 載入完成後初始化應用程式
+    document.addEventListener('DOMContentLoaded', () => {
+      window.forestJourney = new ForestJourney();
+    });
+  </script>
+</body>
+</html>

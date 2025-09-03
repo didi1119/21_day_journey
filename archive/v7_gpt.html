@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每天 3 分鐘｜7 天有感，21 天平靜養成｜靜謐森林</title>
+  <meta name="description" content="加入 LINE：60 秒小測驗 → 專屬祝福音 → 每日 3 分鐘練習。7 天看見變化，21 天養成屬於你的平靜節奏。" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --sf-ink:#0f2f27;      /* 深森綠，文字 */
+      --sf-accent:#1a5c4a;   /* 強調綠 */
+      --sf-soft:#d4b28a;     /* 柔金色，CTA */
+      --sf-bg:#f7f5f2;       /* 紙色背景 */
+      --sf-card:#ffffff;     /* 卡片底色 */
+      --sf-line:#e8e5e1;     /* 細線 */
+    }
+    body{ font-family:'Inter','Noto Sans TC',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--sf-ink); background:var(--sf-bg); }
+    .hero-title{ font-family:'Noto Serif TC','Noto Sans TC',serif; }
+    .btn-primary{ background: linear-gradient(135deg, var(--sf-soft), #b58f64); color:#fff; box-shadow:0 6px 24px rgba(181,143,100,.28); transition:transform .2s ease, box-shadow .2s ease; }
+    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(181,143,100,.38); }
+    .btn-ghost{ border:1px solid rgba(15,47,39,.18); color:var(--sf-ink); background:transparent; }
+    .tag{ border:1px solid rgba(15,47,39,.14); background:#fff; }
+    .card{ background:var(--sf-card); border:1px solid var(--sf-line); }
+    .fade-up{ opacity:0; transform:translateY(8px); animation:fadeUp .7s ease forwards; }
+    @keyframes fadeUp{ to{ opacity:1; transform:none; } }
+  </style>
+
+  <script>
+    // Analytics placeholder
+    window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); }
+  </script>
+</head>
+<body>
+
+  <!-- 簡潔導覽列 -->
+  <header class="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-[color:var(--sf-line)]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between py-3">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full" style="background:var(--sf-accent)"></div>
+          <div class="text-base font-semibold tracking-wide" style="color:var(--sf-ink)">靜謐森林</div>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm text-black/70">
+          <a href="#value" class="hover:text-black">你會得到</a>
+          <a href="#how" class="hover:text-black">如何開始</a>
+          <a href="#stories" class="hover:text-black">使用回饋</a>
+          <a href="#faq" class="hover:text-black">常見問題</a>
+        </nav>
+        <div class="hidden md:block">
+          <button class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold" onclick="joinLINE('nav')">立即免費開始</button>
+        </div>
+        <button class="md:hidden btn-primary px-4 py-2 rounded-lg text-sm" onclick="joinLINE('nav-mobile')">開始</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 首屏：乾淨底色、右側示意 -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-6 lg:px-8 min-h-[82vh] flex items-center">
+      <div class="grid lg:grid-cols-12 gap-10 w-full py-10 lg:py-16">
+        <!-- Left copy -->
+        <div class="lg:col-span-6 xl:col-span-5 flex flex-col justify-center gap-7">
+          <div class="inline-flex items-center gap-2 text-sm" style="color:var(--sf-accent)">
+            <span class="w-2 h-2 rounded-full" style="background:var(--sf-accent)"></span>
+            1000+ 人已加入每日 3 分鐘練習
+          </div>
+
+          <header>
+            <h1 class="hero-title text-4xl lg:text-6xl font-semibold leading-[1.12] tracking-tight fade-up" style="animation-delay:.05s">
+              每天 3 分鐘，<span style="color:var(--sf-accent)">7 天有感</span>，21 天平靜養成
+            </h1>
+            <p class="mt-5 text-lg lg:text-xl text-black/70 leading-relaxed fade-up" style="animation-delay:.15s">
+              60 秒小測驗 → 專屬祝福音 → 每日 3 分鐘。更快靜下來、關係更靠近，把練習帶回生活與森林。
+            </p>
+          </header>
+
+          <div class="flex flex-wrap gap-2 fade-up" style="animation-delay:.25s">
+            <span class="tag px-3 py-1.5 rounded-full text-sm">更快靜下來</span>
+            <span class="tag px-3 py-1.5 rounded-full text-sm">關係更靠近</span>
+            <span class="tag px-3 py-1.5 rounded-full text-sm">把練習帶回生活</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 fade-up" style="animation-delay:.35s">
+            <button class="btn-primary px-7 py-4 rounded-xl text-base font-semibold inline-flex items-center justify-center gap-3" onclick="joinLINE('hero-primary')">
+              立即免費開始（加入 LINE）
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <button class="btn-ghost px-7 py-4 rounded-xl text-base font-medium inline-flex items-center justify-center gap-2 hover:bg-black/[.02]" onclick="startQuiz('hero-secondary')">
+              先做 60 秒測驗
+            </button>
+          </div>
+
+          <div class="flex items-center gap-5 text-sm text-black/60 fade-up" style="animation-delay:.45s">
+            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-black/30"></span> 免費加入</div>
+            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-black/30"></span> 可隨時退出</div>
+            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-black/30"></span> 無推銷干擾</div>
+          </div>
+        </div>
+
+        <!-- Right visual phone -->
+        <div class="lg:col-span-6 xl:col-span-7">
+          <div class="relative mx-auto max-w-md">
+            <div class="rounded-[2.4rem] p-2 bg-black/5 backdrop-blur-sm border border-[color:var(--sf-line)]">
+              <div class="rounded-[2rem] h-[560px] overflow-hidden card">
+                <div class="p-6 h-full flex flex-col">
+                  <div class="text-center mb-6">
+                    <h3 class="text-base font-semibold">你的專屬祝福音</h3>
+                    <p class="text-sm text-black/55">《夜晚的森林擁抱》</p>
+                  </div>
+                  <div class="flex-1 flex items-center justify-center mb-6">
+                    <div class="w-44 h-44 rounded-2xl" style="background:linear-gradient(135deg,#dbefe8,#e9f3ec)">
+                      <div class="w-full h-full rounded-2xl grid place-items-center" style="background:repeating-linear-gradient(45deg, rgba(26,92,74,.08) 0 8px, rgba(26,92,74,.0) 8px 16px)">
+                        <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--sf-accent)"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rounded-xl p-4 card">
+                    <div class="flex items-center gap-3">
+                      <button class="w-11 h-11 rounded-full" style="background:var(--sf-accent); color:white">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                      </button>
+                      <div class="flex-1">
+                        <div class="text-sm font-medium">正在播放…</div>
+                        <div class="text-xs text-black/55">感受內在的穩定力量</div>
+                      </div>
+                    </div>
+                    <div class="mt-3 h-1 bg-black/10 rounded-full overflow-hidden"><div class="h-full" style="width:33%; background:linear-gradient(90deg,var(--sf-soft),#b58f64)"></div></div>
+                    <div class="mt-1.5 flex justify-between text-xs text-black/50"><span>0:45</span><span>3:00</span></div>
+                  </div>
+                  <div class="mt-4 rounded-xl p-3" style="background:#fbf6ef; border:1px dashed #eadfce">
+                    <div class="flex items-center gap-2 text-sm">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke="var(--sf-soft)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <span class="font-medium">護照首枚印記已解鎖</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 你會得到（完整解法） | Dream Outcome 具體化 -->
+  <section id="value" class="py-18 lg:py-24">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="hero-title text-3xl lg:text-4xl font-semibold tracking-tight">一整套的平靜養成系統</h2>
+        <p class="mt-3 text-black/70">加入後你將立即獲得與持續擁有的內容</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card rounded-xl p-6"><div class="font-semibold mb-1">森林祝福音</div><p class="text-sm text-black/65">30–60 秒專屬聲景，快速回到當下。</p></div>
+        <div class="card rounded-xl p-6"><div class="font-semibold mb-1">數位護照</div><p class="text-sm text-black/65">首枚印記解鎖，到園區可兌換小禮。</p></div>
+        <div class="card rounded-xl p-6"><div class="font-semibold mb-1">森林角色報告</div><p class="text-sm text-black/65">了解你的力量、陰影與下一步。</p></div>
+        <div class="card rounded-xl p-6"><div class="font-semibold mb-1">夥伴相容小測驗</div><p class="text-sm text-black/65">和重要的人更靠近，帶動自然分享。</p></div>
+        <div class="card rounded-xl p-6"><div class="font-semibold mb-1">森林洞察電子報</div><p class="text-sm text-black/65">每週一次，輕量可讀、可實踐。</p></div>
+        <div class="card rounded-xl p-6"><div class="font-semibold mb-1">線上社群陪伴</div><p class="text-sm text-black/65">被看見、被支持，持續前進。</p></div>
+      </div>
+      <div class="text-center mt-10">
+        <button class="btn-primary px-8 py-4 rounded-xl text-base font-semibold inline-flex items-center gap-3" onclick="joinLINE('value-section')">立即免費開始<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+        <p class="text-sm text-black/55 mt-3">無需信用卡｜可隨時退出｜立即獲得專屬祝福音</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 如何運作 | 降低努力與時間量化 -->
+  <section id="how" class="py-18 lg:py-22">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="hero-title text-3xl lg:text-4xl font-semibold tracking-tight">簡單三步，今天就開始</h2>
+        <p class="mt-3 text-black/70">我們已設計好節奏，你只要說「好」並按下開始</p>
+      </div>
+      <ol class="max-w-4xl mx-auto space-y-8">
+        <li class="card rounded-xl p-6">
+          <h3 class="text-lg font-semibold">1）加入 LINE，領迎新禮</h3>
+          <p class="text-sm text-black/65 mt-1">免費加入、可隨時退出。立即領取祝福音與護照印記。</p>
+        </li>
+        <li class="card rounded-xl p-6">
+          <h3 class="text-lg font-semibold">2）做 60 秒小測驗</h3>
+          <p class="text-sm text-black/65 mt-1">10 題直覺式問題，馬上得到角色報告與分享卡。</p>
+        </li>
+        <li class="card rounded-xl p-6">
+          <h3 class="text-lg font-semibold">3）每天 3 分鐘，養成 21 天</h3>
+          <p class="text-sm text-black/65 mt-1">在你設定的時間自動推送祝福音；週末帶著護照走進森林。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 社會證明 | 數字 + 短證言 -->
+  <section id="stories" class="py-18 lg:py-22">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div class="card rounded-xl p-6"><div class="text-3xl font-semibold">1000+</div><div class="text-sm text-black/60 mt-1">位使用者</div></div>
+        <div class="card rounded-xl p-6"><div class="text-3xl font-semibold">87%</div><div class="text-sm text-black/60 mt-1">7 天內感受平靜</div></div>
+        <div class="card rounded-xl p-6"><div class="text-3xl font-semibold">93%</div><div class="text-sm text-black/60 mt-1">睡眠品質改善</div></div>
+        <div class="card rounded-xl p-6"><div class="text-3xl font-semibold">40%</div><div class="text-sm text-black/60 mt-1">壓力指數下降</div></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto mt-10">
+        <figure class="card rounded-xl p-6"><blockquote class="italic text-[15px] leading-relaxed text-black/80">睡前聽 3 分鐘，心真的慢下來了。</blockquote><figcaption class="mt-3 text-sm text-black/55">Sherry，行銷 PM</figcaption></figure>
+        <figure class="card rounded-xl p-6"><blockquote class="italic text-[15px] leading-relaxed text-black/80">一起玩小測驗，聊到很久沒聊的話題。</blockquote><figcaption class="mt-3 text-sm text-black/55">Leo，產品設計</figcaption></figure>
+        <figure class="card rounded-xl p-6"><blockquote class="italic text-[15px] leading-relaxed text-black/80">護照換到的小禮很可愛，想再回來。</blockquote><figcaption class="mt-3 text-sm text-black/55">Vivian，自由工作者</figcaption></figure>
+      </div>
+      <div class="text-center mt-10">
+        <button class="btn-primary px-8 py-4 rounded-xl text-base font-semibold inline-flex items-center gap-3" onclick="joinLINE('proof-section')">加入 LINE 免費開始<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-18 lg:py-22">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="hero-title text-3xl lg:text-4xl font-semibold tracking-tight">你可能會想知道...</h2>
+        <p class="mt-3 text-black/70">常見疑慮一次說清楚，降低風險與不確定</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion">
+        <div class="card rounded-xl overflow-hidden">
+          <button class="accordion-header w-full flex justify-between items-center p-5 text-left hover:bg-black/[.02]">
+            <span class="text-base font-semibold">我很忙，真的只需要 3 分鐘嗎？</span>
+            <svg class="accordion-icon w-5 h-5 text-black/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content overflow-hidden max-h-0">
+            <div class="p-5 pt-0 text-sm text-black/70">是的！祝福音設計為 30–60 秒，加上深呼吸不超過 3 分鐘。你可以在通勤、休息時間或睡前進行。</div>
+          </div>
+        </div>
+
+        <div class="card rounded-xl overflow-hidden">
+          <button class="accordion-header w-full flex justify-between items-center p-5 text-left hover:bg-black/[.02]">
+            <span class="text-base font-semibold">這和其他冥想 App 有什麼不同？</span>
+            <svg class="accordion-icon w-5 h-5 text-black/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content overflow-hidden max-h-0">
+            <div class="p-5 pt-0 text-sm text-black/70">最大的不同是個人化與完整體驗：根據你的森林角色推薦專屬內容，並連結到真實的森林屋體驗。</div>
+          </div>
+        </div>
+
+        <div class="card rounded-xl overflow-hidden">
+          <button class="accordion-header w-full flex justify-between items-center p-5 text-left hover:bg-black/[.02]">
+            <span class="text-base font-semibold">如果我不喜歡怎麼辦？</span>
+            <svg class="accordion-icon w-5 h-5 text-black/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content overflow-hidden max-h-0">
+            <div class="p-5 pt-0 text-sm text-black/70">完全沒問題！你可隨時在 LINE 中輸入「取消」。不會有任何推銷騷擾，已獲得的內容仍可使用。</div>
+          </div>
+        </div>
+
+        <div class="card rounded-xl overflow-hidden">
+          <button class="accordion-header w-full flex justify-between items-center p-5 text-left hover:bg-black/[.02]">
+            <span class="text-base font-semibold">真的完全免費嗎？後續有什麼費用？</span>
+            <svg class="accordion-icon w-5 h-5 text-black/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content overflow-hidden max-h-0">
+            <div class="p-5 pt-0 text-sm text-black/70">測驗、祝福音、護照系統完全免費。唯一的付費是自願性的森林屋住宿體驗。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA：乾淨底色，無素材背景 -->
+  <section class="py-24 text-center">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto card rounded-2xl p-10">
+        <h2 class="hero-title text-3xl lg:text-4xl font-semibold tracking-tight">準備好開始你的 21 天平靜養成了嗎？</h2>
+        <p class="mt-3 text-black/70">從今天起，讓生活回到更穩、更溫柔的節奏。</p>
+        <div class="mt-6">
+          <button class="btn-primary px-8 py-4 rounded-xl text-base font-semibold inline-flex items-center gap-3" onclick="joinLINE('final-cta')">
+            立即免費開始（1 分鐘完成）
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="mt-3 text-sm text-black/55">分批開放新成員（維持個人化品質）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky CTA (mobile) -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/95 backdrop-blur border-t border-[color:var(--sf-line)] lg:hidden">
+    <button class="btn-primary w-full py-4 rounded-xl text-base font-semibold flex items-center justify-center gap-2" onclick="joinLINE('mobile-sticky')">
+      立即免費開始 21 天平靜養成
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <script>
+    // CTA handlers
+    function joinLINE(source){ gtag('event','cta_click',{source,type:'join_line'}); window.open('https://lin.ee/your_line_link','_blank'); showToast('請在 LINE 完成加入，啟動 7 天體驗'); }
+    function startQuiz(source){ gtag('event','quiz_start',{source}); location.href='quiz.html?source='+encodeURIComponent(source); }
+    function showToast(t){ const el=document.createElement('div'); el.className='fixed bottom-6 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 rounded-lg shadow-lg z-50'; el.textContent=t; document.body.appendChild(el); setTimeout(()=>el.remove(),2400); }
+
+    // FAQ accordion
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelectorAll('#faq-accordion .accordion-header').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const content=btn.nextElementSibling; const icon=btn.querySelector('.accordion-icon');
+          const open = content.style.maxHeight && content.style.maxHeight !== '0px';
+          document.querySelectorAll('#faq-accordion .accordion-content').forEach(c=>{ c.style.maxHeight=null; c.previousElementSibling.querySelector('.accordion-icon').classList.remove('rotate-180'); });
+          if(!open){ content.style.maxHeight = content.scrollHeight + 'px'; icon.classList.add('rotate-180'); }
+        });
+      });
+    });
+  </script>
+
+  <!-- Google Analytics (replace) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script> window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config','GA_MEASUREMENT_ID'); </script>
+</body>
+</html>
+
+

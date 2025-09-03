@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21天重建內在平靜 | 靜謐森林療癒之旅</title>
+    <meta name="description" content="1000+都市人已找回內在平靜。60秒測驗→專屬療癒音景→21天轉化之旅。完全免費開始，立即獲得個人化祝福音。">
+    <meta name="theme-color" content="#4A5C43">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:title" content="21天重建內在平靜｜靜謐森林療癒之旅">
+    <meta property="og:description" content="60秒測驗→專屬療癒音景→21天轉化之旅。免費開始，立即獲得個人化祝福音。">
+    <meta property="og:image" content="media/image/big5/01_無憂石熊_00000.jpg">
+    <meta property="og:image:alt" content="靜謐森林品牌影像">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'forest-green': '#4A5C43',
+                'forest-green-dark': '#3A4A35',
+                'forest-sand': '#F4F3F1',
+                'forest-card-border': '#EAE3D4',
+                'forest-brown': '#6B5F51',
+                'forest-accent': '#A8D5BA',
+                'sunlight-gold': '#D4A574',
+                'deep-moss': '#2E3D32',
+                'morning-mist': '#BCC1BA',
+              }
+            }
+          }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Styles from v6_gpt.html for the new hero section */
+        :root{
+          --sf-ink:#0f2f27;      /* 深森綠，文字 */
+          --sf-accent:#1a5c4a;   /* 強調綠 */
+          --sf-soft:#d4b28a;     /* 柔金色，CTA */
+          --sf-bg:#f7f5f2;       /* 紙色背景 */
+          --sf-card:#ffffff;     /* 卡片底色 */
+          --sf-line:#e8e5e1;     /* 細線 */
+        }
+        .serene-paper{
+          background: radial-gradient(1200px 600px at 10% 0%, rgba(26,92,74,.06) 0%, rgba(26,92,74,0) 60%),
+                      radial-gradient(1000px 500px at 90% 20%, rgba(212,178,138,.08) 0%, rgba(212,178,138,0) 65%),
+                      linear-gradient(180deg, #faf8f5 0%, #f6f4f1 100%);
+        }
+        .hero-title{ font-family:'Noto Serif TC','Noto Sans TC',serif; }
+        .btn-primary{ background: linear-gradient(135deg, var(--sf-soft), #b58f64); color:#fff; box-shadow:0 6px 24px rgba(181,143,100,.35); transition:transform .2s ease, box-shadow .2s ease; }
+        .btn-primary:hover{ transform:translateY(-px); box-shadow:0 10px 28px rgba(181,143,100,.45); }
+        .btn-ghost{ border:1px solid rgba(15,47,39,.18); color:var(--sf-ink); background:transparent; }
+        .tag{ border:1px solid rgba(15,47,39,.14); background:rgba(255,255,255,.6); }
+        .v6-card{ background:var(--sf-card); border:1px solid var(--sf-line); } /* Renamed to avoid conflict */
+        .v6-fade-up{ opacity:0; transform:translateY(8px); animation:v6-fadeUp .7s ease forwards; }
+        @keyframes v6-fadeUp{ to{ opacity:1; transform:none; } }
+        /* End of styles from v6_gpt.html */
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+            color: #374151; /* Default text color */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, .display-serif {
+            font-family: 'Noto Serif TC', 'Inter', serif;
+            letter-spacing: 0.02em; /* Slightly wider for elegance */
+            color: #2E3D32; /* deep-moss */
+        }
+        
+        /* V5: Subtler gradient for a gentle, premium feel */
+        .gradient-bg {
+            background: linear-gradient(135deg, #3A4A35 0%, #2E3D32 100%);
+        }
+        
+        /* V5: Softer pulse for CTAs and highlights */
+        .pulse-gentle {
+            animation: pulse-gentle 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-gentle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
+        }
+        
+        /* V5: Smoother floating animation */
+        .float-animation {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        /* V5: Refined card styles */
+        .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid transparent;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border-color: #A8D5BA; /* forest-accent */
+        }
+        
+        /* V5: Enhanced CTA button with sunlight-gold */
+        .cta-button {
+            background: linear-gradient(135deg, #E6C08E 0%, #D4A574 100%);
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.25);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.35);
+        }
+        
+        /* V5: High-quality paper texture background */
+        .paper-texture {
+            /* [MEDIA NEEDED]: A subtle, high-quality seamless paper texture image */
+            background-image: url('media/image/textures/paper_texture.png');
+        }
+
+        /* V5: Hero video background styles */
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .hero-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-video-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 243, 241, 0.4); /* Overlay to ensure text readability */
+            background: linear-gradient(0deg, rgba(244,243,241,1) 0%, rgba(244,243,241,0.5) 40%, rgba(244,243,241,0.3) 100%);
+        }
+        
+        /* V5: Parallax scrolling container */
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* V5: Header styles with glassmorphism effect */
+        #site-header { transition: all 300ms ease; }
+        #site-header.scrolled {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+            border-bottom: 1px solid rgba(234, 227, 212, 0.9);
+        }
+
+        /* V5: Gentle fade-in animation for elements on scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Focus styles */
+        :focus-visible { outline: 3px solid #A8D5BA; outline-offset: 3px; border-radius: 8px; }
+
+        /* Reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+    
+    <!-- Analytics & Tracking -->
+    <script>
+        // Google Analytics / GTM would go here
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+    </script>
+</head>
+
+<body class="bg-forest-sand">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 bg-white text-forest-green px-4 py-2 rounded-lg shadow-lg z-50">跳到主要內容</a>
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-40">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <a href="#" class="flex items-center gap-3 group">
+                    <!-- V5: Updated logo icon, to be replaced by an SVG/Image -->
+                    <!-- It will overlap slightly with the text area for a more organic feel -->
+                    <!-- [MEDIA NEEDED]: A refined illustration of the forest character -->
+                    <div class="w-10 h-10 rounded-full bg-forest-green text-white grid place-items-center shadow-sm transition-transform duration-300 group-hover:scale-110">
+                        <!-- [MEDIA NEEDED]: A more symbolic logo, e.g., a leaf or tree ring icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-deep-moss text-lg font-semibold tracking-wide">靜謐森林</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-8 text-sm text-forest-brown font-medium">
+                    <a href="#how" class="hover:text-forest-green transition-colors">如何運作</a>
+                    <a href="#value" class="hover:text-forest-green transition-colors">我們的價值</a>
+                    <a href="#stories" class="hover:text-forest-green transition-colors">轉化故事</a>
+                    <a href="#faq" class="hover:text-forest-green transition-colors">常見問題</a>
+                </nav>
+                <div class="hidden md:block">
+                    <button class="cta-button text-white font-semibold py-2.5 px-6 rounded-xl" onclick="joinLINE('nav')">立即免費開始</button>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-forest-green-dark">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section from v6_gpt.html -->
+    <section class="serene-paper relative overflow-hidden">
+        <div id="main" class="container mx-auto px-6 lg:px-8 min-h-[86vh] flex items-center">
+          <div class="grid lg:grid-cols-12 gap-10 w-full py-16">
+            <!-- Left copy -->
+            <div class="lg:col-span-6 xl:col-span-6 flex flex-col justify-center gap-8">
+              <div class="inline-flex items-center gap-2 text-sm text-[color:var(--sf-accent)]">
+                <span class="w-2 h-2 rounded-full" style="background:var(--sf-accent)"></span>
+                1000+ 人已加入每日 3 分鐘練習
+        </div>
+
+              <header>
+                <h1 class="hero-title text-4xl lg:text-6xl font-semibold leading-[1.12] tracking-tight v6-fade-up" style="animation-delay:.05s">
+                  每天 3 分鐘，
+                  <span class="text-[color:var(--sf-accent)]">7 天有感</span>，
+                  21 天平靜養成
+                            </h1>
+                <p class="mt-5 text-lg lg:text-xl text-black/70 leading-relaxed v6-fade-up" style="animation-delay:.15s">
+                  加入 LINE 立即開始：60 秒小測驗 → 專屬祝福音 → 每日 3 分鐘，
+                  讓你更快靜下來、與重要的人更靠近，也更願意走進真正的森林。
+                </p>
+              </header>
+    
+              <div class="flex flex-wrap gap-2 v6-fade-up" style="animation-delay:.25s">
+                <span class="tag px-3 py-1.5 rounded-full text-sm">更快靜下來</span>
+                <span class="tag px-3 py-1.5 rounded-full text-sm">關係更靠近</span>
+                <span class="tag px-3 py-1.5 rounded-full text-sm">把練習帶回生活</span>
+                        </div>
+                        
+              <div class="flex flex-col sm:flex-row gap-3 v6-fade-up" style="animation-delay:.35s">
+                <button class="btn-primary px-7 py-4 rounded-xl text-base font-semibold inline-flex items-center justify-center gap-3" onclick="joinLINE('hero-primary')">
+                  立即免費開始（加入 LINE）
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn-ghost px-7 py-4 rounded-xl text-base font-medium inline-flex items-center justify-center gap-2 hover:bg-black/[.02]" onclick="startQuiz('hero-secondary')">
+                  先做 60 秒測驗
+                </button>
+                        </div>
+                        
+              <div class="flex items-center gap-5 text-sm text-black/60 v6-fade-up" style="animation-delay:.45s">
+                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-black/30"></span> 免費加入</div>
+                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-black/30"></span> 可隨時退出</div>
+                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-black/30"></span> 無推銷干擾</div>
+                        </div>
+                    </div>
+                    
+            <!-- Right visual phone -->
+            <div class="lg:col-span-6 xl:col-span-6">
+              <div class="relative mx-auto max-w-md">
+                <!-- subtle halo -->
+                <div class="absolute -inset-8 -z-10 rounded-[2.5rem]" style="background:radial-gradient(60% 60% at 50% 40%, rgba(26,92,74,.12), transparent 60%)"></div>
+                <div class="rounded-[2.4rem] p-2 bg-black/5 backdrop-blur-sm border border-[color:var(--sf-line)]">
+                  <div class="rounded-[2rem] h-[560px] overflow-hidden v6-card">
+                    <div class="p-6 h-full flex flex-col">
+                      <div class="text-center mb-6">
+                        <h3 class="text-base font-semibold">你的專屬祝福音</h3>
+                        <p class="text-sm text-black/55">《夜晚的森林擁抱》</p>
+                      </div>
+                      <div class="flex-1 flex items-center justify-center mb-6">
+                        <div class="w-44 h-44 rounded-2xl" style="background:linear-gradient(135deg,#dbefe8,#e9f3ec)">
+                          <div class="w-full h-full rounded-2xl grid place-items-center" style="background:repeating-linear-gradient(45deg, rgba(26,92,74,.08) 0 8px, rgba(26,92,74,.0) 8px 16px)">
+                            <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--sf-accent)"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rounded-xl p-4 v6-card">
+                        <div class="flex items-center gap-3">
+                          <button class="w-11 h-11 rounded-full" style="background:var(--sf-accent); color:white">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                          <div class="flex-1">
+                            <div class="text-sm font-medium">正在播放…</div>
+                            <div class="text-xs text-black/55">感受內在的穩定力量</div>
+                    </div>
+                        </div>
+                        <div class="mt-3 h-1 bg-black/10 rounded-full overflow-hidden"><div class="h-full" style="width:33%; background:linear-gradient(90deg,var(--sf-soft),#b58f64)"></div></div>
+                        <div class="mt-1.5 flex justify-between text-xs text-black/50"><span>0:45</span><span>3:00</span></div>
+                        </div>
+                      <div class="mt-4 rounded-xl p-3" style="background:#fbf6ef; border:1px dashed #eadfce">
+                        <div class="flex items-center gap-2 text-sm">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke="var(--sf-soft)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                          <span class="font-medium">護照首枚印記已解鎖</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+          </div>
+        </div>
+    </section>
+    
+    <!-- 社會證明放大區域 -->
+    <section class="py-20 bg-forest-sand" id="stories">
+        <div class="container mx-auto px-6 lg:px-8">
+            
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+                <div class="text-center fade-in-up">
+                    <div class="text-5xl font-bold text-deep-moss mb-2" data-counter="1000">0</div>
+                    <div class="text-gray-600">位使用者</div>
+                </div>
+                <div class="text-center fade-in-up" style="transition-delay: 100ms;">
+                    <div class="text-5xl font-bold text-deep-moss mb-2">40%</div>
+                    <div class="text-gray-600">壓力指數下降</div>
+                </div>
+                <div class="text-center fade-in-up" style="transition-delay: 200ms;">
+                    <div class="text-5xl font-bold text-deep-moss mb-2">93%</div>
+                    <div class="text-gray-600">睡眠品質改善</div>
+                </div>
+                <div class="text-center fade-in-up" style="transition-delay: 300ms;">
+                    <div class="text-5xl font-bold text-deep-moss mb-2">87%</div>
+                    <div class="text-gray-600">7天內感受平靜</div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl lg:text-5xl font-bold text-deep-moss mb-4">真實的轉化故事</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">看看其他都市人如何在 21 天內，找回內在的森林</p>
+            </div>
+            
+            <!-- V5: Asymmetrical layout for testimonials -->
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-2xl p-6 shadow-lg fade-in-up">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Sarah Chen" class="w-12 h-12 rounded-full">
+                        <div>
+                            <div class="font-semibold text-deep-moss">Sarah Chen</div>
+                            <div class="text-sm text-gray-600">產品經理 • 使用 28 天</div>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 mb-4 text-base">
+                        "每天下班後聽 3 分鐘祝福音，不到一週就明顯感受到內心的平靜。現在睡眠品質好很多，工作壓力也不再壓垮我了。"
+                    </blockquote>
+                    <div class="flex items-center gap-1.5 mb-2">
+                        <span class="text-sm text-gray-600">壓力指數：</span>
+                        <span class="text-sm font-medium text-red-500">8/10</span>
+                        <span class="text-sm text-gray-400">→</span>
+                        <span class="text-sm font-medium text-green-500">4/10</span>
+                    </div>
+                    <div class="flex text-sunlight-gold">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-2xl p-6 shadow-lg md:mt-12 fade-in-up" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="David Liu" class="w-12 h-12 rounded-full">
+                        <div>
+                            <div class="font-semibold text-deep-moss">David Liu</div>
+                            <div class="text-sm text-gray-600">創業者 • 使用 45 天</div>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 mb-4 text-base">
+                        "我試過很多冥想 App，但都堅持不久。靜謐森林的個人化體驗讓我終於找到適合自己的節奏。現在每天都期待聽祝福音的時光。"
+                    </blockquote>
+                    <div class="flex items-center gap-1.5 mb-2">
+                        <span class="text-sm text-gray-600">焦慮頻率：</span>
+                        <span class="text-sm font-medium text-red-500">每天</span>
+                        <span class="text-sm text-gray-400">→</span>
+                        <span class="text-sm font-medium text-green-500">每週1-2次</span>
+                    </div>
+                    <div class="flex text-sunlight-gold">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-2xl p-6 shadow-lg fade-in-up" style="transition-delay: 400ms;">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="Emily Wu" class="w-12 h-12 rounded-full">
+                        <div>
+                            <div class="font-semibold text-deep-moss">Emily Wu</div>
+                            <div class="text-sm text-gray-600">設計師 • 使用 60 天</div>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 mb-4 text-base">
+                        "最愛的是夥伴測驗功能！和男友一起做後發現我們的相容度很高，關係變得更親密。後來還一起去森林屋住了兩天，超療癒的。"
+                    </blockquote>
+                    <div class="flex items-center gap-1.5 mb-2">
+                        <span class="text-sm text-gray-600">關係滿意度：</span>
+                        <span class="text-sm font-medium text-orange-500">6/10</span>
+                        <span class="text-sm text-gray-400">→</span>
+                        <span class="text-sm font-medium text-green-500">9/10</span>
+                    </div>
+                    <div class="flex text-sunlight-gold">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 價值主張詳述 -->
+    <section class="py-20 bg-forest-sand" id="value">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-forest-card-border shadow-2xl relative overflow-hidden">
+                <!-- V5: Decorative background elements REMOVED -->
+                <div class="text-center mb-16 relative fade-in-up">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-deep-moss mb-4">重建三種連結，找回完整的自己</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">不只是聆聽聲音，這是一套完整的內在生態重建系統</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-8 lg:gap-12 relative">
+                    <!-- 與自我的連結 -->
+                    <div class="bg-forest-sand/60 border border-forest-card-border rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:border-forest-accent hover:bg-white fade-in-up" style="transition-delay: 200ms;">
+                        <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md transition-transform duration-300 hover:scale-110">
+                             <!-- [MEDIA NEEDED]: Icon for "Connection with Self" -->
+                            <img src="media/image/icons/connect_self.png" class="w-10 h-10" alt="與自我的連結">
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-moss mb-4">與自我的連結</h3>
+                        <ul class="space-y-3 text-gray-600 text-left">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>每週個人化祝福音（30-60秒）</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>精選森林洞察電子報</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>專屬森林角色分析報告</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>日常覺察練習提醒</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 與他人的連結 -->
+                    <div class="bg-forest-sand/60 border border-forest-card-border rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:border-forest-accent hover:bg-white fade-in-up" style="transition-delay: 400ms;">
+                        <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md transition-transform duration-300 hover:scale-110">
+                            <!-- [MEDIA NEEDED]: Icon for "Connection with Others" -->
+                            <img src="media/image/icons/connect_other.png" class="w-10 h-10" alt="與他人的連結">
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-moss mb-4">與他人的連結</h3>
+                        <ul class="space-y-3 text-gray-600 text-left">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>夥伴相容性小測驗</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>專屬線上社群支持</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>分享卡自動生成功能</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>森林夥伴關係圖鑑</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 與自然的連結 -->
+                    <div class="bg-forest-sand/60 border border-forest-card-border rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:border-forest-accent hover:bg-white fade-in-up" style="transition-delay: 600ms;">
+                        <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md transition-transform duration-300 hover:scale-110">
+                             <!-- [MEDIA NEEDED]: Icon for "Connection with Nature" -->
+                            <img src="media/image/icons/connect_nature.png" class="w-10 h-10" alt="與自然的連結">
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-moss mb-4">與自然的連結</h3>
+                        <ul class="space-y-3 text-gray-600 text-left">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>靜謐森林護照系統</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>園區限定印記收集</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>實體森林屋體驗機會</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-forest-accent flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span>限定小禮兌換服務</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="text-center mt-16 relative">
+                    <button class="cta-button text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-3 group" onclick="joinLINE('value-section')">
+                        立即開始建立三種連結
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <p class="text-sm text-gray-500 mt-3">完全免費，無需信用卡，立即獲得專屬祝福音</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 如何運作 - 降低努力感知 -->
+    <section class="py-20 bg-forest-sand" id="how">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-forest-card-border shadow-2xl">
+                <div class="text-center mb-20 fade-in-up">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-deep-moss mb-4">簡單 3 步，喚醒內在嚮導</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">我們設計了一條溫柔的路徑，你只需帶著好奇心前行</p>
+                </div>
+                
+                <!-- V5: Winding path timeline -->
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- The winding path SVG REMOVED -->
+                    <!-- Step 1 -->
+                    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-24 relative z-10 fade-in-up">
+                        <div class="lg:w-1/2 lg:pr-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-forest-accent/50 text-deep-moss rounded-full flex items-center justify-center font-bold text-2xl border-2 border-white shadow-md">1</div>
+                                <h3 class="text-2xl font-semibold text-deep-moss">60 秒找到森林角色</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                完成 10 道直覺式問題，立即獲得專屬的森林角色分析。這不是心理測驗，而是一面映照你內在狀態的鏡子。
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <div class="bg-forest-sand/60 rounded-2xl p-6 border border-forest-card-border shadow-lg transition-transform duration-300 hover:scale-105">
+                                <div class="space-y-4">
+                                    <div class="text-center">
+                                        <div class="text-lg font-semibold text-forest-brown mb-2">問題 1 / 10</div>
+                                        <div class="h-1.5 bg-gray-200 rounded-full mb-4">
+                                            <div class="h-1.5 bg-forest-accent rounded-full w-[10%]"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-4 border border-forest-card-border">
+                                        <p class="text-gray-700 mb-4 font-medium">在森林中，你最想做什麼？</p>
+                                        <div class="space-y-2">
+                                            <button class="w-full text-left p-3 bg-white rounded-lg border border-forest-card-border hover:border-forest-green hover:bg-forest-sand/50 transition-all text-sm">🧘‍♀️ 找個安靜角落冥想</button>
+                                            <button class="w-full text-left p-3 bg-white rounded-lg border border-forest-card-border hover:border-forest-green hover:bg-forest-sand/50 transition-all text-sm">🚶‍♂️ 沿著小徑慢慢散步</button>
+                                            <button class="w-full text-left p-3 bg-white rounded-lg border border-forest-card-border hover:border-forest-green hover:bg-forest-sand/50 transition-all text-sm">🎨 用自然材料創作藝術</button>
+                                            <button class="w-full text-left p-3 bg-white rounded-lg border border-forest-card-border hover:border-forest-green hover:bg-forest-sand/50 transition-all text-sm">📚 躺在樹下閱讀</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12 mb-24 relative z-10 fade-in-up">
+                        <div class="lg:w-1/2 lg:pl-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-forest-accent/50 text-deep-moss rounded-full flex items-center justify-center font-bold text-2xl border-2 border-white shadow-md">2</div>
+                                <h3 class="text-2xl font-semibold text-deep-moss">每天 3 分鐘自動接收</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                系統會在你設定的時間，自動推送專屬祝福音到 LINE。像收到朋友的問候一樣自然，無需刻意練習。
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <div class="bg-forest-sand/60 rounded-2xl p-6 border border-forest-card-border shadow-lg transition-transform duration-300 hover:scale-105">
+                                <div class="bg-white rounded-xl p-4 shadow-sm border border-forest-card-border">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div class="w-10 h-10 bg-forest-green rounded-full flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.477 0 10c0 2.357.826 4.634 2.33 6.414L0 24l8.464-2.652C9.556 21.766 10.749 22 12 22c6.627 0 12-4.477 12-10S18.627 0 12 0z"/></svg>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-forest-brown">靜謐森林</div>
+                                            <div class="text-xs text-gray-500">今天 19:00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-green-50/50 rounded-lg p-3 mb-3 border border-green-200/80">
+                                        <p class="text-sm text-gray-700">🌲 晚安，領航巨熊</p>
+                                        <p class="text-sm text-gray-700 mt-1">今晚的祝福音已為你準備好：</p>
+                                        <p class="text-sm font-medium text-forest-green">《夜晚的森林擁抱》</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button class="flex-1 bg-forest-green text-white text-sm py-2 rounded-lg hover:bg-forest-green-dark transition-colors">🎵 立即聆聽 (3:12)</button>
+                                        <button class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 hover:bg-red-50 hover:border-red-200 transition-colors">
+                                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10 fade-in-up">
+                        <div class="lg:w-1/2 lg:pr-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-forest-accent/50 text-deep-moss rounded-full flex items-center justify-center font-bold text-2xl border-2 border-white shadow-md">3</div>
+                                <h3 class="text-2xl font-semibold text-deep-moss">走向真實的森林</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                當你準備好時，我們會引導你到真實的森林屋。帶著你的數位護照，將線上的平靜，轉化為與自然真實的連結。
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <!-- [MEDIA NEEDED]: A collage of high-quality forest house photos -->
+                            <div class="aspect-w-4 aspect-h-3 relative group overflow-hidden rounded-2xl shadow-xl border-4 border-white">
+                                <img src="media/image/forest_house_collage.jpg" alt="森林小屋拼貼" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <p class="font-semibold text-lg">真實森林屋體驗</p>
+                                    <p class="text-sm opacity-90">將數位療癒帶入現實</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 常見疑慮處理 -->
+    <section class="py-20 bg-forest-sand" id="faq">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-forest-card-border shadow-2xl">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-16 fade-in-up">
+                        <h2 class="text-4xl lg:text-5xl font-bold text-deep-moss mb-4">你可能會想知道...</h2>
+                        <p class="text-lg text-gray-600">我們理解你的好奇與猶豫，這裡有些常見的分享</p>
+                    </div>
+                    
+                    <div class="space-y-4" id="faq-accordion">
+                        <!-- FAQ 1 -->
+                        <div class="border border-forest-card-border rounded-xl bg-white/50 overflow-hidden fade-in-up" style="transition-delay: 100ms;">
+                            <button class="accordion-header w-full flex justify-between items-center p-6 text-left hover:bg-forest-sand/50 transition-colors">
+                                <span class="text-lg font-semibold text-forest-brown">我很忙，真的只需要 3 分鐘嗎？</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-500 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 pt-0 text-gray-600 prose">
+                                    <p>是的！我們的祝福音設計為 30-60 秒，加上簡單的深呼吸練習，總共不超過 3 分鐘。你可以在通勤、休息時間，甚至睡前進行。許多用戶反映，這 3 分鐘是他們一天中最高品質的寧靜時光。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 2 -->
+                        <div class="border border-forest-card-border rounded-xl bg-white/50 overflow-hidden fade-in-up" style="transition-delay: 200ms;">
+                            <button class="accordion-header w-full flex justify-between items-center p-6 text-left hover:bg-forest-sand/50 transition-colors">
+                                <span class="text-lg font-semibold text-forest-brown">這和其他冥想 App 有什麼不同？</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-500 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 pt-0 text-gray-600 prose">
+                                   <p>最大的不同是<strong>個人化</strong>和<strong>完整體驗</strong>。其他 App 提供通用內容，我們根據你的森林角色推薦專屬內容。更重要的是，我們不只停留在線上，而是連結到真實的森林體驗，形成完整的療癒循環。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 3 -->
+                        <div class="border border-forest-card-border rounded-xl bg-white/50 overflow-hidden fade-in-up" style="transition-delay: 300ms;">
+                            <button class="accordion-header w-full flex justify-between items-center p-6 text-left hover:bg-forest-sand/50 transition-colors">
+                                <span class="text-lg font-semibold text-forest-brown">如果我不喜歡怎麼辦？</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-500 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 pt-0 text-gray-600 prose">
+                                    <p>完全沒問題！你可以隨時在 LINE 中輸入「取消」停止接收內容。我們不會有任何推銷電話或郵件騷擾。同時，你已獲得的祝福音和護照功能仍然可以繼續使用。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 4 -->
+                        <div class="border border-forest-card-border rounded-xl bg-white/50 overflow-hidden fade-in-up" style="transition-delay: 400ms;">
+                            <button class="accordion-header w-full flex justify-between items-center p-6 text-left hover:bg-forest-sand/50 transition-colors">
+                                <span class="text-lg font-semibold text-forest-brown">真的完全免費嗎？後續有什麼費用？</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-500 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 pt-0 text-gray-600 prose">
+                                    <p>測驗、祝福音、護照系統完全免費。唯一的付費項目是森林屋的住宿體驗（就像普通民宿一樣），但這完全是自願的。許多用戶只使用線上功能就已經獲得很大的幫助。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 5 -->
+                        <div class="border border-forest-card-border rounded-xl bg-white/50 overflow-hidden fade-in-up" style="transition-delay: 500ms;">
+                            <button class="accordion-header w-full flex justify-between items-center p-6 text-left hover:bg-forest-sand/50 transition-colors">
+                                <span class="text-lg font-semibold text-forest-brown">我從來沒做過冥想，適合我嗎？</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-500 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 pt-0 text-gray-600 prose">
+                                    <p>完全適合！我們 87% 的用戶都是冥想新手。我們的設計理念就是「讓完全不懂冥想的人也能輕鬆開始」。你不需要學習任何複雜的技巧，只需要靜靜聆聽即可。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 最後推動 - 急迫性和稀缺性 -->
+    <section class="py-20 bg-forest-sand">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-forest-card-border shadow-2xl text-center relative overflow-hidden">
+                <!-- V5: Decorative foliage REMOVED as requested -->
+                <div class="relative">
+                <!-- Urgency Timer -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 bg-amber-100/50 text-amber-800 border border-amber-200/80 fade-in-up">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12,6 12,12 16,14"/>
+                    </svg>
+                    今天已有 <span id="today-joined" class="font-bold">127</span> 人開始轉化之旅
+                </div>
+                
+                    <h2 class="text-4xl lg:text-5xl font-bold text-deep-moss mb-4 fade-in-up" style="transition-delay: 100ms;">
+                        準備好踏上你的內在旅程了嗎？
+                </h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto fade-in-up" style="transition-delay: 200ms;">
+                        這是一封來自森林的邀請函，它將引導你找回內心的平靜與力量
+                </p>
+                
+                <!-- Final CTA -->
+                    <div class="space-y-4 mb-8 fade-in-up" style="transition-delay: 300ms;">
+                        <button class="cta-button text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-3 group text-lg" onclick="joinLINE('final-cta')">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.373 0 0 4.477 0 10c0 2.357.826 4.634 2.33 6.414L0 24l8.464-2.652C9.556 21.766 10.749 22 12 22c6.627 0 12-4.477 12-10S18.627 0 12 0z"/>
+                        </svg>
+                            接受邀請，免費開始
+                            <svg class="w-5 h-5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="text-sm text-gray-500">
+                            本季度的森林旅程，還剩下 <span class="font-semibold text-forest-brown" id="remaining-spots">247</span> 位同行名額
+                    </div>
+                </div>
+                
+                <!-- Final Risk Reducers -->
+                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500 fade-in-up" style="transition-delay: 400ms;">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-forest-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        60 秒立即開始
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-forest-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        完全免費體驗
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-forest-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        隨時可以退出
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-forest-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        無推銷騷擾保證
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-transparent mt-20">
+        <div class="container mx-auto px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <a href="#" class="inline-flex items-center gap-3 mb-6 group">
+                    <div class="w-10 h-10 rounded-full bg-forest-green text-white grid place-items-center shadow-sm transition-transform duration-300 group-hover:scale-110">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-deep-moss text-lg font-semibold tracking-wide">靜謐森林</span>
+                </a>
+                <p class="text-gray-600 max-w-md mx-auto mb-8 text-sm">
+                    以自然為師，設計能被日常堅持的療癒節奏。<br>
+                    本服務僅提供身心舒緩之用途，非醫療建議或治療。
+                </p>
+                <div class="flex justify-center items-center gap-8 text-sm text-forest-brown font-medium mb-10">
+                    <a href="#how" class="hover:text-forest-green transition-colors">如何運作</a>
+                    <a href="#value" class="hover:text-forest-green transition-colors">我們的價值</a>
+                    <a href="#faq" class="hover:text-forest-green transition-colors">常見問題</a>
+                    <a href="mailto:hello@foresthouse.tw" class="hover:text-forest-green transition-colors">聯絡我們</a>
+                </div>
+                </div>
+            <div class="mt-10 pt-8 border-t border-forest-card-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <div>© <span id="year"></span> Forest House. All Rights Reserved.</div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-forest-green transition-colors">隱私權政策</a>
+                    <a href="#" class="hover:text-forest-green transition-colors">使用條款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // A/B Testing for Headlines
+        function initABTest() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const version = urlParams.get('v') || 'A';
+            
+            // Hide all versions first
+            document.querySelectorAll('.headline-version').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show selected version
+            const targetVersion = document.querySelector(`[data-version="${version}"]`);
+            if (targetVersion) {
+                targetVersion.classList.remove('hidden');
+            }
+            
+            // Track which version is shown
+            gtag('event', 'ab_test_view', {
+                'version': version,
+                'experiment_name': 'headline_test_v2'
+            });
+        }
+        
+        // Counter Animations
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+        
+        // Initialize counters when visible
+        function initCounters() {
+            const counters = document.querySelectorAll('[data-counter]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-counter'));
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounter(counter, target);
+                            observer.unobserve(counter);
+                        }
+                    });
+                });
+                observer.observe(counter);
+            });
+        }
+        
+        // Dynamic counters for social proof
+        function updateDynamicCounters() {
+            const now = new Date();
+            const hour = now.getHours();
+            const baseCount = 80 + Math.floor(Math.random() * 60); // 80-140 range
+            const dailyCount = baseCount + hour * 2; // Increases throughout day
+            
+            const dailyEl = document.getElementById('daily-counter');
+            if (dailyEl) dailyEl.textContent = dailyCount;
+            const todayEl = document.getElementById('today-joined');
+            if (todayEl) todayEl.textContent = dailyCount;
+            
+            // Update remaining spots
+            const remainingSpots = 500 - (dailyCount * 2);
+            const remainEl = document.getElementById('remaining-spots');
+            if (remainEl) remainEl.textContent = Math.max(remainingSpots, 150);
+        }
+        
+        // Main CTA Function
+        function joinLINE(source) {
+            // Track conversion
+            gtag('event', 'cta_click', {
+                'source': source,
+                'experiment_version': new URLSearchParams(window.location.search).get('v') || 'A'
+            });
+            
+            // Simulate LINE join (replace with actual LINE URL)
+            window.open('https://lin.ee/your_line_link', '_blank');
+            
+            // Optional: Show thank you modal or redirect
+            showJoinSuccessModal();
+        }
+        
+        // Quiz starter function
+        function startQuiz(source) {
+            gtag('event', 'quiz_start', {
+                'source': source
+            });
+            
+            // Redirect to quiz (replace with actual quiz URL)
+            window.location.href = 'quiz.html?source=' + source;
+        }
+        
+        // Success modal (optional enhancement)
+        function showJoinSuccessModal() {
+            // Create and show success modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl p-8 m-4 max-w-md text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">歡迎加入靜謐森林！</h3>
+                    <p class="text-gray-600 mb-6">請在 LINE 中完成測驗，立即獲得你的專屬祝福音</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-medium">我知道了</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (modal.parentElement) {
+                    modal.remove();
+                }
+            }, 5000);
+        }
+        
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initABTest();
+            initCounters();
+            updateDynamicCounters();
+            initScrollAnimations(); // V5 Init
+            
+            // Update counters every 5 minutes
+            setInterval(updateDynamicCounters, 5 * 60 * 1000);
+            
+            // Accordion functionality for FAQ
+            const accordionHeaders = document.querySelectorAll('#faq-accordion .accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.accordion-icon');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        // Close other open accordions
+                        document.querySelectorAll('#faq-accordion .accordion-content').forEach(c => {
+                            c.style.maxHeight = null;
+                            c.previousElementSibling.querySelector('.accordion-icon').classList.remove('rotate-180');
+                        });
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // Header scroll effect
+            const headerEl = document.getElementById('site-header');
+            const onScroll = () => {
+                if (window.scrollY > 8) headerEl.classList.add('scrolled');
+                else headerEl.classList.remove('scrolled');
+            };
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // Footer year
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        });
+        
+        // V5: Gentle fade-in animations on scroll
+        function initScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Page visibility tracking
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                gtag('event', 'page_hidden');
+            } else {
+                gtag('event', 'page_visible');
+            }
+        });
+        
+        // Scroll depth tracking
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+                if (maxScroll % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+                    gtag('event', 'scroll_depth', {
+                        'scroll_depth': maxScroll
+                    });
+                }
+            }
+        });
+
+        // V5: Parallax Effect
+        window.addEventListener('scroll', function() {
+            const parallaxBgs = document.querySelectorAll('.parallax-bg');
+            const speed = 0.4;
+            parallaxBgs.forEach(bg => {
+                const yPos = -(window.scrollY * speed);
+                bg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        }, { passive: true });
+    </script>
+    
+    <!-- Google Analytics / GTM (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 21: 一個新的開始｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest-green': '#2E4F4F',
+            'forest-cta': '#C87D54',
+            'forest-cta-dark': '#B56A40',
+            'forest-bg': '#F9F7F3',
+            'forest-card-bg': '#FFFFFF',
+            'forest-text-dark': '#3A3A3A',
+            'forest-text-light': '#6B6B6B',
+            'forest-border': '#EAE5E0',
+            'forest-highlight': '#E4EFE7',
+          },
+          boxShadow: {
+            'soft': '0 4px 15px rgba(46, 79, 79, 0.06)',
+            'soft-lg': '0 10px 30px rgba(46, 79, 79, 0.08)'
+          },
+          borderRadius: {
+            'xl2': '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2E4F4F; }
+    .prose a { color: #C87D54; text-decoration: underline; }
+    .prose a:hover { color: #B56A40; }
+  </style>
+</head>
+<body class="bg-forest-bg text-forest-text-light antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header with Journey Map -->
+    <header class="space-y-6">
+      <div class="text-center">
+        <p class="text-lg text-forest-green font-semibold mb-2">Day 21 / 21</p>
+        <h1 class="text-3xl sm:text-4xl font-bold text-forest-text-dark">一個新的開始</h1>
+      </div>
+      <!-- Mini Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border border-forest-border shadow-soft flex items-center gap-2">
+        <!-- Day 1-21 Done -->
+        <div class="w-full h-2 bg-forest-green rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 1. 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">最後一封，來自森林的信</h2>
+      </div>
+      <div class="prose max-w-none">
+        <p>親愛的旅人，</p>
+        <p>恭喜你，走完了這 21 天的旅程。我由衷地為你感到高興與驕傲。這不僅僅是完成了 21 個練習，更是你為自己許下的一個、關於「溫柔對待自己」的深刻承諾。</p>
+        <p>回首這三週，我們從**連結自我**開始，學習安頓、看見自己的美好；接著，我們將這份溫暖延伸，探索了與**他人**的深刻連結；最後，我們將練習帶回生活，重新感受與**真實自然**的共鳴。</p>
+        <p>這不是結束，而是一個新的開始。你已在心中，種下了一座森林。它將成為你未來生活中，一個可以隨時返回、汲取力量的內在聖殿。當你感到迷惘、疲憊時，請記得回到這裡，記得那些練習帶給你的感受，記得你已擁有的、那份安穩的力量。</p>
+        <p>為了慶祝你完成這趟旅程，我們為你準備了一份獨一無二的畢業贈禮。</p>
+      </div>
+    </section>
+
+    <!-- 2. 畢業贈禮 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a2.25 2.25 0 01-2.25 2.25H5.25a2.25 2.25 0 01-2.25-2.25v-8.25M12 4.875A2.625 2.625 0 1014.625 7.5H12m0 0V21m0-16.125a2.625 2.625 0 00-2.625 2.625v1.875c0 .597.237 1.17.659 1.591l.244.243c.25.25.48.54.686.857l.142.214c.142.214.214.457.214.706v.375a2.625 2.625 0 002.625 2.625H12m0 0a2.625 2.625 0 012.625-2.625h.375c.249 0 .492-.072.706-.214l.214-.142c.206-.317.436-.607.686-.857l.244-.243a2.115 2.115 0 00.659-1.591v-1.875A2.625 2.625 0 0012 4.875z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">你的畢業贈禮</h2>
+      </div>
+      <p class="mb-6">這是我們為你珍藏的、你過去 21 天的心靈足跡。它記錄了你的感受、你的發現、你的脆弱與堅強。這是一份只屬於你的、極其珍貴的禮物。願它能時時提醒你，你所擁有的深刻智慧，與那份溫柔對待自己的力量。</p>
+      
+      <div class="bg-forest-highlight/60 rounded-xl2 p-6 sm:p-8 text-center">
+        <div class="w-full max-w-xs mx-auto aspect-square bg-white rounded-xl shadow-lg flex items-center justify-center border border-forest-border mb-6">
+            <p class="text-forest-text-light">[ 預留「內在森林日誌」的封面圖片 ]</p>
+        </div>
+        <h3 class="text-2xl font-bold text-forest-green mb-4">你的內在森林日誌</h3>
+        <p class="text-forest-text-light prose max-w-md mx-auto mb-6">
+            點擊下方按鈕，即可下載並保存你這 21 天的完整心路歷程。
+        </p>
+        <button class="w-full sm:w-auto bg-forest-cta text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-forest-cta-dark transition-transform transform hover:scale-105">
+            下載我的日誌
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. 溫柔邀請 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+         <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">一份溫柔的邀請</h2>
+      </div>
+      
+      <div class="prose max-w-none">
+        <p>這趟線上的旅程在此告一段落，但你與森林的故事，才正要開始。</p>
+        <p>如果你想親自感受這份我們共同守護的寧靜，想真實地走在你曾聽見、看見的風景裡，靜謐森林的大門，永遠為你敞開。</p>
+        <p>這裡沒有時間表，沒有任務，只有純粹的寧靜，等待著與準備好的你相遇。</p>
+        <a href="#" class="font-semibold">點擊這裡，了解更多關於拜訪真實森林的季節與方式。</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px bg-forest-border mx-auto mb-6"></div>
+      <p class="text-2xl font-bold text-forest-green">旅途愉快</p>
+      <p class="text-forest-text-light mt-2">期待在森林的某個角落，與真實的你相遇。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 未來可加入日誌下載等互動功能
+  </script>
+</body>
+</html>

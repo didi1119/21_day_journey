@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的森林人格 - 無憂石熊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+        }
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 320px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 280px;
+                width: 280px;
+            }
+        }
+        /* 護照樣式 */
+        .passport {
+            background-color: #FDFBF5;
+            border: 1px solid #EAE3D4;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .passport-header {
+            text-align: center;
+            border-bottom: 2px dashed #D1C7B3;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            color: #5D5448;
+        }
+        .passport-content {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .passport-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .passport-qr {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: white;
+            padding: 2px;
+            border-radius: 4px 0 0 0;
+            cursor: pointer;
+        }
+        .passport-details p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #6B5F51;
+        }
+        .passport-details p strong {
+            color: #3E3830;
+        }
+        /* 印記收集區 */
+        .stamp-collection {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #EAE3D4;
+        }
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .stamp {
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #F0EBE4;
+            color: #C9BDB0;
+            filter: grayscale(80%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .stamp.unlocked {
+            filter: grayscale(0%);
+            opacity: 1;
+            background-color: #E2D9C8;
+            color: #6B5F51;
+        }
+        .stamp span {
+            font-size: 24px;
+        }
+        .stamp p {
+            font-size: 10px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+        .friendship-atlas {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #EAE3D4;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
+    <main class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300">
+        <div class="grid grid-cols-1 lg:grid-cols-5">
+            <!-- 左側：動物圖片 -->
+            <div class="lg:col-span-2 bg-[#4A5C43]">
+                <img src="https://placehold.co/600x800/4A5C43/FFFFFF?text=無憂石熊&font=noto-sans-tc" alt="無憂石熊" class="w-full h-full object-cover aspect-[4/3] lg:aspect-auto">
+            </div>
+
+            <!-- 右側：報告內容 -->
+            <div class="lg:col-span-3 p-6 sm:p-8 lg:p-10">
+                <header class="text-center lg:text-left mb-6">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">無憂石熊</h1>
+                    <p class="mt-2 text-lg text-gray-500">Grounded Guardian | 沉穩的守護者</p>
+                </header>
+
+                <!-- 第一幕：認識你的核心 -->
+                <section class="mb-8 p-4 bg-green-50/50 rounded-lg">
+                     <h3 class="font-bold text-lg text-[#4A5C43] mb-2">森林的悄悄話</h3>
+                    <p class="text-gray-600 italic">「你的溫柔，如森林厚實的苔蘚，無聲地承接一切，讓萬物得以安歇。」</p>
+                </section>
+
+                <section class="mb-8">
+                    <h3 class="font-bold text-lg text-gray-700 mb-3">石熊的天賦</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-600"><strong class="text-gray-800">情緒穩定：</strong> 像大地一樣穩固，不容易被外界的風雨動搖。</p>
+                        <p class="text-gray-600"><strong class="text-gray-800">高度親和：</strong> 溫暖而富有同理心，是森林中值得信賴的夥伴。</p>
+                    </div>
+                </section>
+                
+                <section class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-700 mb-4 text-center">森林五維特質</h2>
+                    <div class="flex justify-center">
+                        <div class="chart-container">
+                            <canvas id="personalityChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 第二幕：探索你的內在 -->
+                <section class="mb-8">
+                    <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-3">你的專屬療癒時刻</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <p class="font-semibold text-gray-700">《石熊的大地呼吸》</p>
+                        <p class="text-sm text-gray-500 mb-3">閉上眼，讓聲音引導你回歸內在的安穩。</p>
+                        <audio controls class="w-full"><source src="" type="audio/mpeg"></audio>
+                    </div>
+                </section>
+
+                <section class="mb-8 bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center mb-3">探索你的內在森林</h3>
+                    <p class="text-gray-600 mb-2"><strong>成長的課題：</strong> 有時可能會過於安於現狀，嘗試走出舒適圈，探索森林中未知的風景，或許會有新的發現。</p>
+                    <ul class="list-disc list-inside pl-2 space-y-1 text-gray-600">
+                       <li><strong>走一條新的小徑：</strong> 週末去一個從未去過的地方散步，感受不同的風景。</li>
+                       <li><strong>嚐嚐陌生的漿果：</strong> 學習一項簡單的新技能，例如一道新菜或一首樂曲。</li>
+                       <li><strong>聆聽風的聲音：</strong> 每天留出10分鐘，不帶目的地靜坐，單純地感受當下。</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                     <h3 class="font-bold text-lg text-gray-700 mb-3">適合的森林夥伴</h3>
+                     <p class="text-gray-600">與充滿好奇心的「尋路靈狐」或目標明確的「築巢河狸」同行，能為彼此帶來啟發與支持。</p>
+                </section>
+
+                <section class="text-center mb-8">
+                     <h3 class="font-bold text-lg text-gray-700 flex items-center justify-center mb-2">森林的祝福</h3>
+                    <p class="text-gray-600">願你總能找到屬於你的那塊安穩的岩石，安然入睡。你的幸運物是「<span class="font-semibold text-[#4A5C43]">圓潤的溪石</span>」，它提醒你，溫和的力量足以抵擋時間的洪流。</p>
+                </section>
+
+                <!-- 第三幕：開啟你的冒險 -->
+                <section class="mb-8">
+                     <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-4">森林靈魂印記護照</h3>
+                    <div class="passport">
+                        <div class="passport-header">OFFICIAL PASSPORT OF THE TRANQUIL FOREST</div>
+                        <div class="passport-content">
+                            <div class="passport-avatar">
+                                <img src="https://placehold.co/160x160/4A5C43/FFFFFF?text=熊&font=noto-sans-tc" alt="石熊頭像" class="w-full h-full object-cover">
+                                <div class="passport-qr" title="我的友誼碼">
+                                    <img src="https://placehold.co/32x32/FFFFFF/000000?text=QR" alt="友誼碼">
+                                </div>
+                            </div>
+                            <div class="passport-details">
+                                <p><strong>姓名:</strong> 無憂石熊</p>
+                                <p><strong>森林ID:</strong> <span id="forest-id"></span></p>
+                                <p><strong>首次入境:</strong> <span id="entry-date"></span></p>
+                            </div>
+                        </div>
+                        <div class="stamp-collection">
+                             <p class="text-sm text-center text-gray-600 mb-3"><b>園區限定：</b>掃描QR Code解鎖你的四個靈魂姿態！</p>
+                             <div class="stamp-grid">
+                                <div class="stamp" title="休憩"><span>😴</span><p>休憩</p></div>
+                                <div class="stamp" title="進食"><span>🍯</span><p>進食</p></div>
+                                <div class="stamp" title="漫步"><span>🚶</span><p>漫步</p></div>
+                                <div class="stamp" title="沉思"><span>🧘</span><p>沉思</p></div>
+                             </div>
+                        </div>
+                        <div class="friendship-atlas">
+                             <p class="text-sm text-center text-gray-600 mb-2"><b>森林夥伴關係圖鑑</b></p>
+                             <p class="text-xs text-center text-gray-500 mb-3">邀請朋友測驗，解鎖你們之間獨一無二的關係洞察！</p>
+                             <a href="partner_atlas.html" class="w-full block text-center bg-[#9A6A4D] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#835A40] transition-colors duration-300 text-sm">
+                                 查看我的夥伴圖鑑 (已解鎖 1/32)
+                             </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="mb-8">
+                    <h3 class="font-bold text-lg text-[#4A5C43] flex items-center mb-4">夥伴關係洞察 (範例)</h3>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-5 bg-amber-50/50">
+                        <h4 class="font-bold text-center text-lg text-[#9A6A4D]">石熊 ╳ 靈狐</h4>
+                        <p class="text-center text-sm text-gray-500 mb-4">大地守護者與森林探險家</p>
+                        <div class="space-y-3 text-gray-700 text-sm">
+                           <p><strong>核心動力：</strong>石熊的穩定給了靈狐安心探索的勇氣；而靈狐帶回的新奇故事，則豐富了石熊的寧靜世界。你們是一個結合了安穩與驚喜的完美搭檔。</p>
+                           <p><strong>相處提示：</strong>下次見面，可以嘗試去一個你們都沒去過的公園野餐，結合彼此對安穩與新奇的需求。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-8 bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center mb-3">石熊的寧靜午後 (建議行程)</h3>
+                    <ul class="space-y-2 text-gray-600 list-inside">
+                        <li><strong>14:00 | 露台午茶：</strong> 在小屋露台下方的野餐桌，享用溫暖的花草茶與點心，感受微風。</li>
+                        <li><strong>15:30 | 池畔時光：</strong> 漫步到寧靜的池塘邊，坐下看著水面倒影，什麼都不做也很好。</li>
+                        <li><strong>17:00 | 熱水浴放鬆：</strong> 讓溫熱的水流洗去疲憊，為身體徹底充電。</li>
+                        <li><strong>19:00 | 營火邊的溫暖：</strong> 圍著營火，感受火焰的溫暖與跳動，享受最純粹的平靜。</li>
+                    </ul>
+                </section>
+                
+                <footer class="mt-8 border-t pt-8">
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-5 text-center bg-amber-50/50">
+                        <h3 class="font-bold text-lg text-[#9A6A4D] flex items-center justify-center mb-3">來自森林的贈禮</h3>
+                        <p class="text-gray-600">親愛的無憂石熊，感謝你為世界帶來穩定與溫暖。</p>
+                        <p class="my-3 font-semibold text-lg text-[#4A5C43]">
+                           點亮任一枚園區靈魂印記，即可兌換<br>「幸運溪石一顆 & 手沖暖心花草茶一杯」
+                        </p>
+                        <p class="text-sm text-gray-500">開始你的收集之旅，更多驚喜等著你！</p>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button id="shareButton" class="bg-[#4A5C43] text-white font-bold py-3 px-8 rounded-full hover:bg-[#3A4A35] transition-colors duration-300">分享我的森林人格</button>
+                        <p id="copyMessage" class="text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-300">報告連結已複製！</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 雷達圖數據
+            const data = {
+                labels: [
+                    ['經驗', '開放性 (O)'],
+                    ['盡責性', '(C)'],
+                    ['外向性', '(E)'],
+                    ['親和性', '(A)'],
+                    ['情緒', '不穩定性 (N)']
+                ],
+                datasets: [{
+                    label: '人格特質分數',
+                    data: [30, 75, 40, 85, 20], 
+                    fill: true,
+                    backgroundColor: 'rgba(74, 92, 67, 0.2)',
+                    borderColor: 'rgb(74, 92, 67)',
+                    pointBackgroundColor: 'rgb(74, 92, 67)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(74, 92, 67)'
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: { line: { borderWidth: 3 } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: {
+                                font: { size: 12, family: "'Inter', 'Noto Sans TC', sans-serif" },
+                                color: '#374151'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                color: '#6b7280',
+                                stepSize: 25,
+                                font: { size: 10 }
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    },
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+                }
+            };
+            
+            const ctx = document.getElementById('personalityChart');
+            if(ctx) { new Chart(ctx, config); }
+
+            // 護照資訊生成
+            const today = new Date();
+            const dateString = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            document.getElementById('entry-date').textContent = dateString;
+            
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const forestId = `SB-${today.getFullYear().toString().slice(-2)}${String(today.getMonth() + 1).padStart(2, '0')}-${randomNum}`;
+            document.getElementById('forest-id').textContent = forestId;
+
+            // 分享按鈕
+            const shareButton = document.getElementById('shareButton');
+            const copyMessage = document.getElementById('copyMessage');
+            if(shareButton && copyMessage) {
+                shareButton.addEventListener('click', () => {
+                    const url = window.location.href;
+                    const textArea = document.createElement("textarea");
+                    textArea.value = url;
+                    textArea.style.position = "fixed"; 
+                    textArea.style.left = "-9999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyMessage.style.opacity = '1';
+                        setTimeout(() => { copyMessage.style.opacity = '0'; }, 2000);
+                    } catch (err) {
+                        console.error('無法複製連結: ', err);
+                    }
+                    document.body.removeChild(textArea);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+

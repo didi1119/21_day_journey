@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>你的森林人格 - 無憂石熊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #F4F3F1;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid #EAE3D4;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4A5C43;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            height: 90vh;
+            min-height: 500px;
+            max-height: 850px;
+        }
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .carousel-nav.prev { left: 15px; }
+        .carousel-nav.next { right: 15px; }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .imprint-slot {
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Accordion Styles */
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding-top 0.5s ease-out, padding-bottom 0.5s ease-out;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* A large enough value */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            transition: max-height 0.5s ease-in, padding-top 0.5s ease-in, padding-bottom 0.5s ease-in;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.open .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+    </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-8">
+
+    <div class="report-container space-y-8">
+
+        <!-- Section 1: Hero Carousel -->
+        <div class="carousel-container shadow-lg" id="characterCarousel">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <!-- Slides will be injected here by JS -->
+            </div>
+            
+            <!-- Navigation -->
+            <button class="carousel-nav prev" id="prevBtn">‹</button>
+            <button class="carousel-nav next" id="nextBtn">›</button>
+
+            <!-- Gradient Overlay & Info -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-6 left-4 right-4 sm:left-6 sm:right-6 text-white pointer-events-none">
+                <div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 leading-tight" id="characterName"></h1>
+                    <p class="text-sm sm:text-base lg:text-lg opacity-90 leading-relaxed" id="characterSubtitle"></p>
+                </div>
+            </div>
+            
+            <!-- Indicators -->
+            <div class="carousel-indicators" id="indicators"></div>
+        </div>
+
+        <!-- Section 2: Introduction - WHAT you are -->
+        <div class="card">
+            <h2 class="section-title">你在森林中的樣貌</h2>
+            <p class="text-center text-gray-500 mb-6">根據你的測驗結果，你在森林中的化身是...</p>
+            <h3 class="text-center text-3xl font-bold text-gray-800">無憂石熊</h3>
+            <blockquote class="text-center italic text-gray-500 border-l-4 border-[#A8D5BA] pl-4 py-2 max-w-2xl mx-auto my-8">
+                "你的溫柔，如森林厚實的苔蘚，無聲地承接一切，讓萬物得以安歇。"
+            </blockquote>
+            <p class="text-center text-gray-700 max-w-2xl mx-auto">
+                如同棲息在寧靜森林深處的石熊，你擁有穩定而溫和的內心。你看重和諧與平靜，總能給周遭帶來安定的力量。對你而言，最舒適的狀態便是在熟悉的環境中，享受簡單而純粹的快樂。
+            </p>
+        </div>
+
+        <!-- Section 3: Analysis & Growth -->
+        <div class="card">
+            <h2 class="section-title">特質光譜與成長路徑</h2>
+            <p class="text-center text-gray-500 max-w-2xl mx-auto mb-10">
+                你在測驗中的選擇，於五大性格維度中描繪出獨特的樣貌，讓我們看見了「無憂石熊」的沉穩與溫和。理解這些特質，將指引你探索內在的森林。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10">
+                <div>
+                    <h3 class="text-xl font-bold text-center text-[#6B5F51] mb-2">森林五維特質</h3>
+                    <canvas id="personalityChart"></canvas>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-[#6B5F51] mb-4">石熊的天賦</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-[#4A5C43] mr-2">✓</span> <strong>情緒穩定：</strong> 像大地一樣穩固，不容易被外界的風雨動搖。</li>
+                        <li class="flex items-start"><span class="text-[#4A5C43] mr-2">✓</span> <strong>高度親和：</strong> 溫暖而富有同理心，是森林中值得信賴的夥伴。</li>
+                    </ul>
+                    <h3 class="text-xl font-bold text-[#6B5F51] mt-6 mb-4">適合的森林夥伴</h3>
+                    <p class="text-gray-700">與充滿好奇心的「尋路靈狐」或目標明確的「築巢河狸」同行，能為彼此帶來啟發與支持。</p>
+                </div>
+            </div>
+            
+            <!-- Accordion for Detailed Analysis -->
+            <div class="border-t pt-8 mb-10">
+                <h3 class="text-xl font-bold text-center text-[#6B5F51] mb-6">五維特質深度解析</h3>
+                <div class="space-y-3 max-w-3xl mx-auto" id="accordion-container">
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item border rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center p-4 text-left hover:bg-gray-50">
+                            <span class="font-semibold text-gray-700">經驗開放性 (Openness) - 務實的傳統主義者</span>
+                            <svg class="accordion-icon w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="text-gray-600 text-sm">你的分數偏低，顯示你如同森林中的巨石，偏好熟悉且可預測的環境。你尊重傳統，處事踏實，相信經過時間考驗的方法。對你而言，幸福來自於深化已有的體驗，而非不斷追尋新奇。</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item border rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center p-4 text-left hover:bg-gray-50">
+                            <span class="font-semibold text-gray-700">盡責性 (Conscientiousness) - 可靠的守護者</span>
+                            <svg class="accordion-icon w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="text-gray-600 text-sm">你的分數相當高，展現了石熊一諾千金的特質。你做事有條理、認真負責，是夥伴們可以安心信賴的對象。你對自己有要求，並會努力將事情做到最好，這種堅持是你力量的來源。</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item border rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center p-4 text-left hover:bg-gray-50">
+                            <span class="font-semibold text-gray-700">外向性 (Extraversion) - 寧靜的獨處者</span>
+                            <svg class="accordion-icon w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="text-gray-600 text-sm">你的分數偏低，意味著你更傾向於從寧靜的獨處或深度的二人交流中汲取能量。你並非不善社交，而是更珍視有品質的相處時光。對你而言，熱鬧的派對不如在營火旁與摯友的一次長談。</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 4 -->
+                    <div class="accordion-item border rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center p-4 text-left hover:bg-gray-50">
+                            <span class="font-semibold text-gray-700">親和性 (Agreeableness) - 溫暖的同理者</span>
+                            <svg class="accordion-icon w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                             <p class="text-gray-600 text-sm">你的分數非常高，這正是石熊溫暖內核的體現。你天性善良、富有同理心，總是優先考慮他人的感受，致力於維護團隊的和諧。你的存在，就像森林中的暖陽，讓人感到安心與舒適。</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 5 -->
+                    <div class="accordion-item border rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center p-4 text-left hover:bg-gray-50">
+                            <span class="font-semibold text-gray-700">情緒穩定性 (Emotional Stability) - 沉穩的磐石</span>
+                            <svg class="accordion-icon w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="text-gray-600 text-sm">你的分數極低（代表情緒穩定性高），代表你擁有卓越的情緒穩定性。面對壓力和挑戰，你總能像大地一樣穩固，不容易陷入焦慮或擔憂。這種內在的平靜，是你給予自己和他人最珍貴的禮物。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t pt-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-3">成長的課題</h3>
+                        <p class="text-gray-700">有時可能會過於安於現狀，嘗試走出舒適圈，探索森林中未知的風景，或許會有新的發現。</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-3">給安於現狀的你：</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><strong>走一條新的小徑：</strong> 週末去一個從未去過的地方散步。</li>
+                            <li><strong>嚐嚐陌生的漿果：</strong> 學習一項簡單的新技能，例如一道新菜。</li>
+                            <li><strong>聆聽風的聲音：</strong> 每天留出10分鐘，不帶目的地靜坐。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Inner World -->
+        <div class="card">
+            <h2 class="section-title">你的專屬療癒時刻</h2>
+            <div class="max-w-md mx-auto text-center">
+                <p class="font-semibold text-gray-700">《石熊的大地呼吸》</p>
+                <p class="text-sm text-gray-500 mb-4">閉上眼，讓聲音引導你回歸內在的安穩。</p>
+                <audio controls class="w-full">
+                    <source src="" type="audio/mpeg">
+                    您的瀏覽器不支援音訊播放。
+                </audio>
+            </div>
+        </div>
+        
+        <div class="card text-center">
+             <h2 class="section-title">森林的祝福</h2>
+             <p class="text-gray-700 max-w-xl mx-auto">願你總能找到屬於你的那塊安穩的岩石，安然入睡。你的幸運物是「圓潤的溪石」，它提醒你，溫和的力量足以抵擋時間的洪流。</p>
+        </div>
+
+        <!-- Section 5: Outer World (Passport & Park) -->
+        <div class="card">
+            <h2 class="section-title">你的靜謐森林護照</h2>
+            <!-- Integrated Passport Design A-3 -->
+            <div class="max-w-sm mx-auto bg-[#FDFBF5] p-6 rounded-2xl shadow-lg border border-[#EAE3D4]">
+                <div class="text-center pb-4 mb-4 border-b-2 border-dashed border-[#D1C7B3]">
+                    <h3 class="text-lg font-semibold text-[#5D5448]">靜謐森林官方護照</h3>
+                </div>
+                <div class="text-center space-y-4">
+                    <img src="https://placehold.co/120x120/A8D5BA/333333?text=石熊" alt="石熊頭像" class="rounded-full w-32 h-32 object-cover flex-shrink-0 mx-auto">
+                    <div class="text-md text-[#6B5F51] space-y-1">
+                        <p><strong>姓名:</strong> 無憂石熊</p>
+                        <p><strong>森林ID:</strong> <span id="forest-id"></span></p>
+                        <p><strong>首次入境:</strong> <span id="entry-date"></span></p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-6 border-t border-dashed border-[#D1C7B3]">
+                    <h4 class="font-bold text-sm text-center text-gray-700 mb-2">園區限定印記</h4>
+                    <div class="grid grid-cols-4 gap-3">
+                        <div class="imprint-slot bg-[#E2D9C8] rounded-full"><span title="休憩">😴</span></div>
+                        <div class="imprint-slot border-2 border-dashed border-gray-300 rounded-full"><span class="opacity-50" title="進食">🍯</span></div>
+                        <div class="imprint-slot border-2 border-dashed border-gray-300 rounded-full"><span class="opacity-50" title="漫步">🚶</span></div>
+                        <div class="imprint-slot border-2 border-dashed border-gray-300 rounded-full"><span class="opacity-50" title="沉思">🧘</span></div>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between gap-4">
+                    <a href="partner_atlas.html" class="flex-grow text-center bg-[#9A6A4D] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#835A40] transition-colors text-sm">夥伴圖鑑 (1/32)</a>
+                    <img src="https://placehold.co/48x48/FFFFFF/000000?text=QR" alt="友誼碼" class="w-12 h-12 rounded-md flex-shrink-0">
+                </div>
+            </div>
+            <!-- End Integrated Passport Design -->
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">石熊的寧靜午後 (建議行程)</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <img src="https://placehold.co/600x400/D1E7DD/4A5C43?text=園區地圖" alt="園區地圖" class="w-full h-auto rounded-lg">
+                <ul class="space-y-3">
+                    <li><strong>14:00 | 露台午茶：</strong> 在小屋露台下方，享用溫暖的花草茶與點心。</li>
+                    <li><strong>15:30 | 池畔時光：</strong> 漫步到寧靜的池塘邊，坐下看著水面倒影。</li>
+                    <li><strong>17:00 | 熱水浴放鬆：</strong> 讓溫熱的水流洗去疲憊，為身體充電。</li>
+                    <li><strong>19:00 | 營火邊的溫暖：</strong> 感受火焰的跳動，享受最純粹的平靜。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 6: Call to Action -->
+        <div class="card text-center bg-amber-50/50">
+            <h2 class="section-title">一份來自森林的贈禮</h2>
+            <p class="text-gray-600">親愛的無憂石熊，感謝你為世界帶來穩定與溫暖。憑此報告畫面來到「靜謐森林屋」，我們將為您獻上：</p>
+            <p class="my-3 font-semibold text-lg text-[#4A5C43]">「幸運溪石一顆 & 手沖暖心花草茶一杯」</p>
+            <p class="text-sm text-gray-500">讓森林的禮物，陪伴你度過寧靜的午後。</p>
+            <div class="mt-6">
+                <button id="shareButton" class="bg-[#4A5C43] text-white font-bold py-3 px-8 rounded-full hover:bg-[#3A4A35] transition-colors duration-300">
+                    分享我的森林人格
+                </button>
+                <p id="copyMessage" class="text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-300">報告連結已複製！</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const characters = [
+                { name: '無憂石熊', subtitle: 'Grounded Guardian | 沉穩的守護者', image: 'https://placehold.co/800x1200/A8D5BA/333333?text=無憂石熊' },
+                { name: '符文拾荒貓', subtitle: 'Mystical Scavenger | 神秘的拾荒者', image: 'https://placehold.co/800x1200/C8A2C8/333333?text=符文拾荒貓' },
+                { name: '穴居偏執狐', subtitle: 'Paranoid Dweller | 偏執的居者', image: 'https://placehold.co/800x1200/FFD700/333333?text=穴居偏執狐' },
+                // ... add all 32 characters here for the carousel
+                { name: '幽影頑狐', subtitle: 'Shadow Trickster | 陰影的玩家', image: 'https://placehold.co/800x1200/808080/FFFFFF?text=幽影頑狐' },
+                { name: '蟻工隱狐', subtitle: 'Worker Fox | 工作的狐狸', image: 'https://placehold.co/800x1200/B5651D/FFFFFF?text=蟻工隱狐' },
+                { name: '玄鐵智梟', subtitle: 'Iron Wise Owl | 鋼鐵智者', image: 'https://placehold.co/800x1200/4682B4/FFFFFF?text=玄鐵智梟' },
+                { name: '盔甲工蟻熊', subtitle: 'Armored Worker | 裝甲工作者', image: 'https://placehold.co/800x1200/C0C0C0/000000?text=盔甲工蟻熊' },
+                { name: '秘儀巧熊', subtitle: 'Mystical Artisan | 神秘工匠', image: 'https://placehold.co/800x1200/8A2BE2/FFFFFF?text=秘儀巧熊' },
+                { name: '靜心龜象', subtitle: 'Tranquil Sage | 寧靜智者', image: 'https://placehold.co/800x1200/2E8B57/FFFFFF?text=靜心龜象' },
+                { name: '觀星智象', subtitle: 'Star Gazer | 觀星者', image: 'https://placehold.co/800x1200/191970/FFFFFF?text=觀星智象' },
+                { name: '含羞樹懶', subtitle: 'Shy Sloth | 害羞的樹懶', image: 'https://placehold.co/800x1200/D2B48C/000000?text=含羞樹懶' },
+                { name: '奇想隱士鹿', subtitle: 'Whimsical Hermit | 奇想隱士', image: 'https://placehold.co/800x1200/DA70D6/000000?text=奇想隱士鹿' },
+                { name: '星河織壩狸', subtitle: 'Cosmic Weaver | 宇宙織者', image: 'https://placehold.co/800x1200/483D8B/FFFFFF?text=星河織壩狸' },
+                { name: '靜溪靈海狸', subtitle: 'Stream Spirit | 溪流精靈', image: 'https://placehold.co/800x1200/00FFFF/000000?text=靜溪靈海狸' },
+                { name: '靜默園丁鹿', subtitle: 'Silent Gardener | 靜默園丁', image: 'https://placehold.co/800x1200/556B2F/FFFFFF?text=靜默園丁鹿' },
+                { name: '書庫螢兔', subtitle: 'Library Keeper | 圖書管理員', image: 'https://placehold.co/800x1200/F5DEB3/000000?text=書庫螢兔' },
+                { name: '孤岩歌鳥', subtitle: 'Lone Songbird | 孤獨歌者', image: 'https://placehold.co/800x1200/87CEEB/000000?text=孤岩歌鳥' },
+                { name: '狂想畫猴', subtitle: 'Fantasy Artist | 幻想藝術家', image: 'https://placehold.co/800x1200/FF69B4/000000?text=狂想畫猴' },
+                { name: '躁衛亂雀', subtitle: 'Restless Guardian | 不安的守衛', image: 'https://placehold.co/800x1200/FF4500/FFFFFF?text=躁衛亂雀' },
+                { name: '風羽智鴉', subtitle: 'Wind Sage | 風之智者', image: 'https://placehold.co/800x1200/A9A9A9/000000?text=風羽智鴉' },
+                { name: '百川族長熊', subtitle: 'River Chief | 河流族長', image: 'https://placehold.co/800x1200/4169E1/FFFFFF?text=百川族長熊' },
+                { name: '領航巨熊', subtitle: 'Navigator Giant | 領航巨人', image: 'https://placehold.co/800x1200/00008B/FFFFFF?text=領航巨熊' },
+                { name: '壁壘築巢松鼠', subtitle: 'Fortress Builder | 堡壘建造者', image: 'https://placehold.co/800x1200/8B4513/FFFFFF?text=壁壘築巢松鼠' },
+                { name: '蒼穹巨匠鳥', subtitle: 'Sky Craftsman | 天空工匠', image: 'https://placehold.co/800x1200/B0E0E6/000000?text=蒼穹巨匠鳥' },
+                { name: '慶典樂猴', subtitle: 'Festival Celebrant | 慶典慶祝者', image: 'https://placehold.co/800x1200/FFD700/000000?text=慶典樂猴' },
+                { name: '尋奇靈猴', subtitle: 'Wonder Seeker | 奇蹟尋求者', image: 'https://placehold.co/800x1200/32CD32/FFFFFF?text=尋奇靈猴' },
+                { name: '光塵絨兔', subtitle: 'Stardust Rabbit | 星塵兔', image: 'https://placehold.co/800x1200/E6E6FA/000000?text=光塵絨兔' },
+                { name: '絮語風猴', subtitle: 'Whispering Wind | 細語之風', image: 'https://placehold.co/800x1200/AFEEEE/000000?text=絮語風猴' },
+                { name: '磐石社鹿', subtitle: 'Rock Community | 磐石社群', image: 'https://placehold.co/800x1200/708090/FFFFFF?text=磐石社鹿' },
+                { name: '社群酋長鹿', subtitle: 'Community Chief | 社群酋長', image: 'https://placehold.co/800x1200/CD853F/FFFFFF?text=社群酋長鹿' },
+                { name: '築巢守衛松鼠', subtitle: 'Nest Guardian | 巢穴守衛', image: 'https://placehold.co/800x1200/D2691E/FFFFFF?text=築巢守衛松鼠' },
+                { name: '萬華晶鹿', subtitle: 'Crystal Monarch | 水晶君主', image: 'https://placehold.co/800x1200/ADD8E6/000000?text=萬華晶鹿' }
+            ];
+
+            const wrapper = document.getElementById('carouselWrapper');
+            const indicatorsContainer = document.getElementById('indicators');
+            const characterNameEl = document.getElementById('characterName');
+            const characterSubtitleEl = document.getElementById('characterSubtitle');
+            
+            // Populate Carousel
+            characters.forEach((char, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `<img src="${char.image}" alt="${char.name}">`;
+                wrapper.appendChild(slide);
+
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator';
+                indicator.dataset.index = index;
+                indicatorsContainer.appendChild(indicator);
+            });
+
+            let currentSlide = 0; // Assuming the user is the first character
+            const totalSlides = characters.length;
+            const indicators = document.querySelectorAll('.carousel-indicator');
+
+            function updateCarousel() {
+                wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+                characterNameEl.textContent = characters[currentSlide].name;
+                characterSubtitleEl.textContent = characters[currentSlide].subtitle;
+            }
+
+            function goToSlide(index) {
+                currentSlide = (index + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+            document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', (e) => goToSlide(parseInt(e.target.dataset.index)));
+            });
+            
+            updateCarousel(); // Initial setup
+
+             const data = {
+                labels: ['開放性', '盡責性', '外向性', '親和性', '情緒穩定'],
+                datasets: [{
+                    label: '人格特質分數',
+                    data: [30, 75, 40, 85, 20], 
+                    backgroundColor: 'rgba(74, 92, 67, 0.2)',
+                    borderColor: 'rgb(74, 92, 67)',
+                    pointBackgroundColor: 'rgb(74, 92, 67)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(74, 92, 67)'
+                }]
+            };
+
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: { r: { min: 0, max: 100, pointLabels: { font: { size: 12 } }, ticks: { stepSize: 25 } } },
+                    plugins: { legend: { display: false } }
+                }
+            };
+            
+            new Chart(document.getElementById('personalityChart'), config);
+
+            // Accordion Logic
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    header.classList.toggle('open');
+                    content.classList.toggle('open');
+                });
+            });
+
+            const today = new Date();
+            const dateString = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            const entryDateEl = document.getElementById('entry-date');
+            if (entryDateEl) {
+                entryDateEl.textContent = dateString;
+            }
+            
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const forestId = `SB-${today.getFullYear().toString().slice(-2)}${String(today.getMonth() + 1).padStart(2, '0')}-${randomNum}`;
+            const forestIdEl = document.getElementById('forest-id');
+            if(forestIdEl) {
+                forestIdEl.textContent = forestId;
+            }
+
+            const shareButton = document.getElementById('shareButton');
+            const copyMessage = document.getElementById('copyMessage');
+            if(shareButton && copyMessage){
+                shareButton.addEventListener('click', () => {
+                    const url = window.location.href;
+                     const textArea = document.createElement("textarea");
+                    textArea.value = url;
+                    textArea.style.position = "fixed"; 
+                    textArea.style.left = "-9999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyMessage.style.opacity = '1';
+                        setTimeout(() => { copyMessage.style.opacity = '0'; }, 2000);
+                    } catch (err) {
+                        console.error('無法複製連結: ', err);
+                    }
+                    document.body.removeChild(textArea);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

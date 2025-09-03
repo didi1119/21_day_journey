@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 6: 森林的贈禮｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest-green': '#2E4F4F',
+            'forest-cta': '#C87D54',
+            'forest-cta-dark': '#B56A40',
+            'forest-bg': '#F9F7F3',
+            'forest-card-bg': '#FFFFFF',
+            'forest-text-dark': '#3A3A3A',
+            'forest-text-light': '#6B6B6B',
+            'forest-border': '#EAE5E0',
+            'forest-highlight': '#E4EFE7',
+          },
+          boxShadow: {
+            'soft': '0 4px 15px rgba(46, 79, 79, 0.06)',
+            'soft-lg': '0 10px 30px rgba(46, 79, 79, 0.08)'
+          },
+          borderRadius: {
+            'xl2': '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2E4F4F; }
+    .prose a { color: #C87D54; text-decoration: underline; }
+    .prose a:hover { color: #B56A40; }
+  </style>
+</head>
+<body class="bg-forest-bg text-forest-text-light antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header with Journey Map -->
+    <header class="space-y-6">
+      <div class="text-center">
+        <p class="text-lg text-forest-green font-semibold mb-2">Day 6 / 21</p>
+        <h1 class="text-3xl sm:text-4xl font-bold text-forest-text-dark">森林的贈禮</h1>
+      </div>
+      <!-- Mini Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border border-forest-border shadow-soft flex items-center gap-2">
+        <!-- Day 1-5 Done -->
+        <div class="w-[23.8%] h-2 bg-forest-green rounded-full"></div>
+        <!-- Day 6 Current -->
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <!-- Rest of the journey -->
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 1. 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的林間絮語</h2>
+      </div>
+      <div class="prose max-w-none">
+        <p>旅人，日安。</p>
+        <p>有時，森林會悄悄地在你意想不到的地方，塞給你一些驚喜。可能是一片形狀奇特的葉子，一陣帶來花香的微風，或是一段從林間深處傳來的鳥鳴。這些禮物，往往在我們不刻意追尋時，才會悄然現身。</p>
+        <p>今天的旅程也是如此。我們沒有需要完成的任務，也沒有需要回答的問題。今天，只有一份來自森林的祝福，希望能為你帶來片刻的喜悅與啟發。請放鬆心情，單純地接收這份禮物吧。</p>
+      </div>
+    </section>
+
+    <!-- 2. 森林的禮物 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a2.25 2.25 0 01-2.25 2.25H5.25a2.25 2.25 0 01-2.25-2.25v-8.25M12 4.875A2.625 2.625 0 1014.625 7.5H12m0 0V21m0-16.125a2.625 2.625 0 00-2.625 2.625v1.875c0 .597.237 1.17.659 1.591l.244.243c.25.25.48.54.686.857l.142.214c.142.214.214.457.214.706v.375a2.625 2.625 0 002.625 2.625H12m0 0a2.625 2.625 0 012.625-2.625h.375c.249 0 .492-.072.706-.214l.214-.142c.206-.317.436-.607.686-.857l.244-.243a2.115 2.115 0 00.659-1.591v-1.875A2.625 2.625 0 0012 4.875z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的森林贈禮</h2>
+      </div>
+      <p class="mb-6">這是 21 天旅程中的第一張「森林祝福牌卡」。它對應著第一週「連結自我」的核心。請靜下心，看看它想帶給你什麼訊息。</p>
+      
+      <div class="bg-forest-highlight/60 rounded-xl2 p-4 sm:p-6 text-center">
+        <!-- Card Image Placeholder -->
+        <div class="w-full max-w-xs mx-auto aspect-[3/4.5] bg-white rounded-xl shadow-lg flex items-center justify-center border border-forest-border mb-6">
+            <p class="text-forest-text-light">[ 預留「獨處的智慧」牌卡圖片 ]</p>
+        </div>
+        <h3 class="text-xl font-bold text-forest-green mb-2">祝福牌卡：《獨處的智慧》</h3>
+        <p class="text-sm text-forest-text-light prose max-w-md mx-auto">
+          這張牌卡提醒我們，<strong>獨處，是為了與自己重逢。</strong>它不是孤單，而是一種有意識的選擇——選擇暫時遠離外界的喧囂，回到內在的寧靜，去傾聽那些平時被忽略的、來自靈魂深處的聲音。在這份寧靜中，你會找到最真實的力量與智慧。
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. 森林的智慧 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+         <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a15.045 15.045 0 01-7.5 0C4.508 19.662 2.25 17.444 2.25 15c0-1.35.61-2.593 1.548-3.39a9.042 9.042 0 012.452-1.123M15.75 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">森林的療癒秘密</h2>
+      </div>
+      
+      <div class="prose max-w-none">
+        <h3 class="text-xl font-bold text-forest-text-dark !mb-2">「獨處」與「孤獨」的科學</h3>
+        <p>這兩個詞常被混用，但在心理學上，它們截然不同：</p>
+        <ul>
+            <li><strong>獨處 (Solitude)</strong> 是一種<strong>主動選擇</strong>的狀態。它是一種高品質的自我陪伴，能幫助我們整理思緒、恢復心力、激發創造力。選擇獨處的人，通常能從中獲得能量。</li>
+            <li><strong>孤獨 (Loneliness)</strong> 則是一種<strong>被動的、負面的感受</strong>。它源於對社交連結的渴望未能被滿足，是一種令人痛苦的情緒狀態，並可能消耗我們的能量。</li>
+        </ul>
+        <p>今天的祝福，是邀請你擁抱「獨處」的力量。學會與自己和平共處，是建立深刻自我連結的第一步，也是療癒孤獨感的最佳解藥。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你享受這份，只屬於你一人的寧靜時光。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 未來可加入牌卡互動等功能
+  </script>
+</body>
+</html>

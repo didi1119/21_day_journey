@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>靜謐森林｜21 天旅程框架</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest-green': '#2E4F4F',
+            'forest-cta': '#C87D54',
+            'forest-cta-dark': '#B56A40',
+            'forest-bg': '#F9F7F3',
+            'forest-card-bg': '#FFFFFF',
+            'forest-text-dark': '#3A3A3A',
+            'forest-text-light': '#6B6B6B',
+            'forest-border': '#EAE5E0',
+            'forest-highlight': '#E4EFE7',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.08)'
+          },
+          borderRadius: {
+            xl2: '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter','Noto Sans TC',sans-serif}
+    .content-card{max-width:980px;margin:0 auto}
+    .prose{line-height:1.75}
+    .prose p{margin-bottom:1em}
+    .marker{transition:opacity .2s ease}
+    .marker:hover{opacity:0.8}
+    .act-band{opacity:.14}
+    .rounded-xl2{border-radius:1.25rem}
+  </style>
+</head>
+<body class="bg-forest-bg text-forest-text-light antialiased">
+  <div class="content-card px-4 py-8 sm:py-12 md:py-14 space-y-8">
+
+    <!-- Header -->
+    <header class="text-center space-y-2">
+      <p class="text-base sm:text-lg text-forest-green font-semibold">靜謐森林 · 21 天旅程</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-forest-text-dark">旅程地圖 × 三幕劇 × 日卡框架</h1>
+      <p class="text-sm">點擊地圖上的任一日，即可在下方切換內容（儲存在本機）。</p>
+    </header>
+
+    <!-- Journey Map (SVG with 21 markers) -->
+    <section class="bg-forest-card-bg p-4 sm:p-6 rounded-2xl border border-forest-border shadow-soft">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-xl font-bold text-forest-text-dark">旅程地圖</h2>
+        <div class="text-sm">當前：<span id="label-day" class="text-forest-green font-semibold">Day 1</span>／21</div>
+      </div>
+      <div class="relative">
+        <!-- Act bands -->
+        <div class="absolute inset-0 pointer-events-none">
+          <svg viewBox="0 0 1000 210" class="w-full h-[180px]">
+            <rect x="0" y="0" width="333" height="210" fill="#2E4F4F" class="act-band"/>
+            <rect x="333" y="0" width="334" height="210" fill="#C87D54" class="act-band"/>
+            <rect x="667" y="0" width="333" height="210" fill="#6B6B6B" class="act-band"/>
+          </svg>
+        </div>
+        <svg id="journey" viewBox="0 0 1000 210" class="w-full h-[180px]">
+          <defs>
+            <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#9CC9B1"/>
+              <stop offset="100%" stop-color="#CBB08C"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- S-curve route -->
+          <path id="route" d="M20,150 C200,70 380,230 520,110 S840,40 980,120" fill="none" stroke="url(#routeGrad)" stroke-width="6" stroke-linecap="round"/>
+          <!-- Markers injected by JS -->
+          <g id="markers"></g>
+        </svg>
+        <!-- 【優化】旅程階段標題，並連結核心承諾 -->
+        <div class="grid grid-cols-3 gap-2 text-xs mt-2 text-center">
+          <div>
+            <b class="text-sm text-forest-text-dark">旅程的起點</b>
+            <span class="block text-forest-text-light">連結自我 (Day 1–7)</span>
+          </div>
+          <div>
+            <b class="text-sm text-forest-text-dark">深入寧靜森林</b>
+            <span class="block text-forest-text-light">連結他人 (Day 8–14)</span>
+          </div>
+          <div>
+            <b class="text-sm text-forest-text-dark">帶一片森林回家</b>
+            <span class="block text-forest-text-light">連結自然 (Day 15–21)</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 flex items-center justify-between">
+        <div class="flex items-center gap-3 text-xs">
+          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full bg-forest-green"></span> 已完成</span>
+          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full bg-forest-cta"></span> 今天</span>
+          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full bg-gray-300"></span> 尚未</span>
+        </div>
+        <button id="mark-complete" class="px-4 py-2 bg-forest-cta text-white rounded-lg shadow hover:bg-forest-cta-dark transition text-sm">標記今日完成</button>
+      </div>
+    </section>
+
+    <!-- 【優化】旅程階段引導區塊 -->
+    <section class="bg-forest-highlight/50 p-6 rounded-xl2 border border-forest-border/50">
+      <div class="flex items-start sm:items-center gap-4">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+        <div>
+          <h2 id="act-title" class="text-xl font-bold text-forest-text-dark"></h2>
+          <p id="act-lead" class="text-sm text-forest-text-light mt-1"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Day card container -->
+    <section id="day-card" class="space-y-6"></section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-6">
+      <p class="text-xs text-gray-400">© 2025 靜謐森林. 本頁僅示範框架，內容儲存在本機。</p>
+    </footer>
+  </div>
+
+  <script>
+    // ===== Data: Three-act copy and day scripts =====
+    const ACT_COPY = {
+      1: { title: '旅程的起點：走入林間小徑', lead: '讓我們一起，先為內心找到一個安穩的角落，感受森林的歡迎。' },
+      2: { title: '旅程的中途：深入寧靜森林', lead: '當你安頓下來，便能看見森林更深處的風景，以及內心同樣深邃的樣貌。' },
+      3: { title: '旅程的尾聲：帶一片森林回家', lead: '是時候了，讓我們一起將森林的智慧，編織回你的日常生活中。' }
+    };
+
+    const ICONS = {
+      narrative: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" /></svg>`,
+      audio: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z" /><path d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.75 6.75 0 11-13.5 0v-1.5A.75.75 0 016 10.5z" /></svg>`,
+      micro: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clip-rule="evenodd" /></svg>`,
+      journal: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 00.5.707A9.735 9.735 0 006 21a9.707 9.707 0 005.25-1.533" /><path d="M12.75 4.533A9.707 9.707 0 0118 3a9.735 9.735 0 013.25.555.75.75 0 01.5.707v14.25a.75.75 0 01-.5.707A9.735 9.735 0 0118 21a9.707 9.707 0 01-5.25-1.533" /></svg>`,
+      wisdom: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M14.447 3.027a.75.75 0 01.527.92l-4.5 16.5a.75.75 0 01-1.448-.394l4.5-16.5a.75.75 0 01.921-.526zM18.75 9.75a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zM18.75 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zM18.75 14.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zM18.75 16.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zM4.75 9.75A.75.75 0 015.5 9h.008A.75.75 0 016.25 9.75v.008a.75.75 0 01-.75.75H5.5a.75.75 0 01-.75-.75v-.008zM4.75 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.5a.75.75 0 01-.75-.75v-.008zM4.75 14.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.5a.75.75 0 01-.75-.75v-.008zM4.75 16.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.5a.75.75 0 01-.75-.75v-.008z" clip-rule="evenodd" /></svg>`,
+      gift: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 9a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0v-5.5A.75.75 0 0112 9z" /><path fill-rule="evenodd" d="M9.344 3.002c.092-.512.624-.827 1.122-.686l.555.152c1.412.386 2.585 1.559 2.97 2.97l.152.555c.141.498-.174 1.03-.686 1.122l-1.09.197a3.375 3.375 0 00-2.585 2.585l-.197 1.09c-.092.512-.624.827-1.122.686l-.555-.152a3.375 3.375 0 01-2.97-2.97l-.152-.555C2.174 10.37 2.49 9.838 3 9.746l1.09-.197a3.375 3.375 0 002.585-2.585l.197-1.09c.092-.512.624-.827 1.122-.686zM15.02 14.156a3.375 3.375 0 012.585 2.585l.197 1.09c.092.512.624.827 1.122.686l.555-.152c.498-.141.813-.674.686-1.122l-.152-.555a3.375 3.375 0 00-2.97-2.97l-.555-.152c-.498-.141-1.03.174-1.122.686l-.197 1.09a3.375 3.375 0 01-2.585 2.585l-1.09.197c-.512.092-.827.624-.686 1.122l.152.555c.141.498.674.813 1.122.686l.555-.152a3.375 3.375 0 002.97-2.97l.152-.555c.141-.498-.174-1.03-.686-1.122l-1.09-.197z" clip-rule="evenodd" /></svg>`,
+      scene: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" /></svg>`,
+      create: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 1.5a.75.75 0 01.75.75V7.5h-1.5V2.25A.75.75 0 0112 1.5zM12 16.5a.75.75 0 01.75.75v5.25h-1.5V17.25a.75.75 0 01.75-.75zM7.5 12a.75.75 0 01.75-.75h5.25v-1.5H8.25a.75.75 0 01-.75-.75zM16.5 12a.75.75 0 01.75-.75h5.25v-1.5H17.25a.75.75 0 01-.75-.75zM2.25 12a.75.75 0 01.75-.75H7.5v-1.5H3a.75.75 0 01-.75-.75zM12 7.5a.75.75 0 01.75.75v5.25h-1.5V8.25a.75.75 0 01.75-.75z" /></svg>`,
+      conclusion: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" /></svg>`,
+    };
+    //【優化】復原卡片標題為對內用語
+    const CARD_TITLES = {
+        narrative: '主理人筆記', audio: '聽覺引導', micro: '微小行動', journal: '內在探索',
+        wisdom: '森林的智慧', gift: '森林的禮物', scene: '今日的森林一隅', create: '創造與表達',
+        conclusion: '今日結語'
+    };
+
+    // ===== Data: day scripts (concise, from your outline) =====
+    // Each day selects from 10 elements: narrative, audio, micro, journal, wisdom, gift, scene, create
+    const DAYS = {
+      1: {
+        narrative: '歡迎信：介紹旅程與「森林的低語」。',
+        audio: { title:'你的專屬祝福音', src:'#' },
+        micro: '邀請你建立一個「寧靜角落」。',
+        journal: '今天，你在哪個瞬間，感受到了內心的安穩？',
+      },
+      2: {
+        narrative: '早安，讓我們從一個簡單的深呼吸開始。',
+        audio: { title:'通用音頻《晨間的喚醒》', src:'#' },
+        scene: { type:'image', caption:'園區清晨陽光', src:'' }
+      },
+      3: {
+        narrative: '你是否曾好奇，為何走進森林總讓人平靜？',
+        audio: { title:'通用音頻', src:'#' },
+        wisdom: '關於「芬多精」的知識小卡。'
+      },
+      4: {
+        narrative: '與真實世界的連結，能帶來意想不到的能量。',
+        audio: { title:'通用音頻', src:'#' },
+        micro: '為你的「寧靜角落」增添一樣自然物（石頭／葉子），感受它的質地。'
+      },
+      5: {
+        narrative: '真正的看見，是向內觀看。',
+        audio: { title:'你的專屬祝福音（複習）', src:'#' },
+        journal: '此刻，你最想對自己說的一句話是什麼？'
+      },
+      6: {
+        narrative: '有時，森林會悄悄塞給你一些驚喜。',
+        gift: '第一張「森林祝福牌卡」。',
+        scene: { type:'video', caption:'15 秒溪流', src:'' }
+      },
+      7: {
+        narrative: '回顧第一週的旅程：給予肯定與鼓勵（影音形式）。',
+        audio: { title:'通用音頻《安頓的呼吸》', src:'#' },
+        journal: '這週，哪一件小事讓你最感到安穩？'
+      },
+      8: {
+        narrative: '當心安頓下來，便能聽見更細微的聲音。',
+        audio: { title:'通用音頻', src:'#' },
+        journal: '今天，你聽見了哪一個細微的聲音？'
+      },
+      9: {
+        narrative: '有時，感受無法用言語形容。',
+        audio: { title:'通用音頻', src:'#' },
+        create: '今天練習後，你內心的天氣是什麼？用色塊畫下來（線上畫板）。'
+      },
+      10: {
+        narrative: '你的護照印記，對應著園區裡一個真實的角落……',
+        audio: { title:'通用音頻', src:'#' },
+        scene: { type:'image', caption:'對應地點的實景照片', src:'' }
+      },
+      11: {
+        narrative: '將練習帶入生活，是旅程中最重要的一步。',
+        audio: { title:'通用音頻', src:'#' },
+        micro: '午餐後，找一個能看到天空的地方，安靜地觀看雲的移動，持續三分鐘。'
+      },
+      12: {
+        narrative: '森林的祝福，總在不經意間到來。',
+        audio: { title:'你的專屬祝福音（複習）', src:'#' },
+        gift: '第二張「森林祝福牌卡」。'
+      },
+      13: {
+        narrative: '關於這片土地的一個故事（真實故事碎片）。',
+        audio: { title:'通用音頻', src:'#' },
+        journal: '這個故事，讓你想到自己生命中的哪個片段？'
+      },
+      14: {
+        narrative: '我們的平靜，也與身邊的人息息相關。',
+        audio: { title:'通用音頻', src:'#' },
+        journal: '今天，你想向誰表達感謝？為什麼？'
+      },
+      15: {
+        narrative: '重複的力量，遠比我們想像的強大。',
+        audio: { title:'通用音頻', src:'#' },
+        wisdom: '關於「習慣養成」的心理學知識。'
+      },
+      16: {
+        narrative: '森林的慷慨，在於分享（季節限定風景）。',
+        audio: { title:'通用音頻', src:'#' },
+        micro: '今天，與一位朋友分享一件你在自然中發現的美好事物。'
+      },
+      17: {
+        narrative: '旅程中的感受，都是珍貴的印記。',
+        audio: { title:'通用音頻', src:'#' },
+        create: '回想這趟旅程，哪個片刻最深？用畫板畫出那個「感覺」。'
+      },
+      18: {
+        narrative: '你並不孤單，許多人都在這條路上（分享訪客的信）。',
+        gift: '第三張「森林祝福牌卡」。',
+        scene: { type:'image', caption:'訪客留下的溫暖小物', src:'' }
+      },
+      19: {
+        narrative: '當旅程接近尾聲，我們開始望向未來。',
+        audio: { title:'你的專屬祝福音（最後一次複習）', src:'#' },
+        journal: '未來一週，你想保留哪一個微習慣？'
+      },
+      20: {
+        narrative: '感謝與回顧的感性獨白（語音形式）。',
+        audio: { title:'通用音頻《寧靜的延續》', src:'#' },
+        scene: { type:'image', caption:'通往森林深處、充滿希望的小徑照片', src:'' }
+      },
+      21: {
+        narrative: '這不是結束，而是一個新的開始。',
+        gift: '你的完整「內在森林日誌」匯整。',
+        micro: '用 1 句話寫下：你想把哪把「森林的鑰匙」帶回日常？'
+      },
+    };
+
+    // ===== State =====
+    const progress = JSON.parse(localStorage.getItem('forest_progress')||'{}'); // { completed:[1,2,...], current: n }
+    if(!progress.completed){ progress.completed = []; }
+    if(!progress.current){ progress.current = 1; }
+
+    // ===== Helpers =====
+    const $ = (q,root=document) => root.querySelector(q);
+    const $$ = (q,root=document) => Array.from(root.querySelectorAll(q));
+
+    function actOf(day){ if(day<=7) return 1; if(day<=14) return 2; return 3; }
+
+    function setActLead(day){
+      const act = actOf(day);
+      $('#act-title').textContent = ACT_COPY[act].title;
+      $('#act-lead').textContent = ACT_COPY[act].lead;
+    }
+
+    function renderMap(){
+      const svg = $('#journey');
+      const route = $('#route');
+      const g = $('#markers');
+      g.innerHTML = '';
+      const L = route.getTotalLength();
+      const steps = 21;
+      for(let i=0;i<steps;i++){
+        const t = i/(steps-1);
+        const p = route.getPointAtLength(L * t);
+        const day = i+1;
+        const isCurrent = (day===progress.current);
+        const isDone = progress.completed.includes(day);
+        const fill = isCurrent? '#C87D54' : isDone? '#2E4F4F' : '#CBD5D1';
+        const r = isCurrent? 9 : 7;
+        const glow = isCurrent? 'filter:url(#glow)' : 'none';
+        const node = document.createElementNS('http://www.w3.org/2000/svg','g');
+        node.setAttribute('class','marker cursor-pointer');
+        node.setAttribute('transform',`translate(${p.x},${p.y})`);
+        node.innerHTML = `
+          <circle r="${r+4}" fill="white" opacity="0.8"></circle>
+          <circle r="${r}" fill="${fill}" style="${glow}"></circle>
+          <text y="-16" text-anchor="middle" fill="#6B6B6B" font-size="10">${day}</text>
+        `;
+        node.addEventListener('click',()=> selectDay(day));
+        g.appendChild(node);
+      }
+      $('#label-day').textContent = `Day ${progress.current}`;
+    }
+
+    function selectDay(day){
+      progress.current = day;
+      localStorage.setItem('forest_progress', JSON.stringify(progress));
+      renderMap();
+      setActLead(day);
+      renderDayCard(day);
+    }
+
+    function toggleComplete(){
+      const d = progress.current;
+      if(!progress.completed.includes(d)) progress.completed.push(d);
+      localStorage.setItem('forest_progress', JSON.stringify(progress));
+      renderMap();
+    }
+
+    function card(type, inner){
+      const el = document.createElement('section');
+      const title = CARD_TITLES[type];
+      const icon = ICONS[type];
+      const borderClass = type === 'journal' ? 'border-2 border-dashed border-forest-cta/50' : 'border border-forest-border';
+      
+      el.className = `bg-forest-card-bg p-6 sm:p-8 rounded-xl2 ${borderClass} shadow-soft`;
+      el.innerHTML = `
+        <div class="flex items-center gap-4 mb-4 text-forest-green">
+          ${icon}
+          <h2 class="text-xl font-bold text-forest-text-dark">${title}</h2>
+        </div>
+        <div class="prose text-forest-text-light max-w-none">${inner}</div>
+      `;
+      return el;
+    }
+
+    function renderDayCard(day){
+      const host = $('#day-card');
+      host.innerHTML = '';
+      const data = DAYS[day] || {};
+
+      // 主理人筆記（Narrative）
+      if(data.narrative){ host.appendChild(card('narrative', `<p>${data.narrative}</p>`)); }
+
+      // 聽覺引導（Audio）
+      if(data.audio){
+        host.appendChild(card('audio', `
+          <p class="mb-3">${data.audio.title}</p>
+          <audio controls preload="none" class="w-full">
+            <source src="${data.audio.src||'#'}" type="audio/mpeg" />
+          </audio>
+        `));
+      }
+
+      // 微小行動（Micro Action）
+      if(data.micro){ host.appendChild(card('micro', `<p>${data.micro}</p>`)); }
+
+      // 內在探索（Journal）
+      if(data.journal){
+        const sec = document.createElement('section');
+        sec.className = 'bg-forest-card-bg p-6 sm:p-8 rounded-2xl border-2 border-dashed border-forest-cta/50 shadow-soft';
+        sec.innerHTML = `
+          <div class="flex items-center gap-3 mb-3">
+            <svg class="w-7 h-7 text-forest-green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"/></svg>
+            <h2 class="text-xl font-bold text-forest-text-dark">內在探索</h2>
+          </div>
+          <p class="mb-4">${data.journal}</p>
+          <textarea id="journal" rows="4" class="w-full p-3 border border-forest-border rounded-lg focus:ring-2 focus:ring-forest-cta focus:border-forest-cta transition" placeholder="在這裡寫下你的感受…（僅儲存在本機）"></textarea>
+          <button id="save" class="mt-4 w-full bg-forest-cta text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-forest-cta-dark transition">儲存今日紀錄</button>
+          <div id="ok" class="hidden text-center mt-4 text-forest-green">紀錄已珍藏。</div>
+        `;
+        host.appendChild(sec);
+
+        // wire journal storage after insert
+        const key = `forest_journal_day_${day}`;
+        const ta = $('#journal', sec);
+        const ok = $('#ok', sec);
+        const btn = $('#save', sec);
+        const saved = localStorage.getItem(key);
+        if(saved){ ta.value = saved; ok.classList.remove('hidden'); }
+        btn.addEventListener('click', ()=>{
+          localStorage.setItem(key, ta.value.trim());
+          ok.classList.remove('hidden');
+        });
+      }
+
+      // 森林的智慧（Knowledge）
+      if(data.wisdom){ host.appendChild(card('wisdom', `<p>${data.wisdom}</p>`)); }
+
+      // 森林的禮物（Gift）
+      if(data.gift){ host.appendChild(card('gift', `<p>${data.gift}</p>`)); }
+
+      // 今日的森林一隅（Scene）
+      if(data.scene){
+        const s = data.scene;
+        host.appendChild(card('scene', `<div class='space-y-3'>
+          <div class='w-full aspect-video bg-forest-highlight/50 rounded-xl flex items-center justify-center text-sm text-forest-text-light'>${s.type==='video'?'（預留 15 秒影片）':'（預留照片）'}</div>
+          <p class='text-center text-xs text-forest-text-light'>${s.caption||''}</p>
+        </div>`));
+      }
+
+      // 創造與表達（Create）
+      if(data.create){ host.appendChild(card('create', `<p>${data.create}</p><div class='w-full h-40 rounded-xl border border-forest-border bg-white/70 flex items-center justify-center text-sm'>（簡易畫板預留區）</div>`)); }
+
+      // 結語
+      host.appendChild(card('conclusion', `<p>你做得很好。我們明天見。</p>`));
+    }
+
+    // ===== Init =====
+    $('#mark-complete').addEventListener('click', toggleComplete);
+    setActLead(progress.current);
+    renderMap();
+    renderDayCard(progress.current);
+  </script>
+</body>
+</html>

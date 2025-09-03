@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21天重建內在平靜 | 靜謐森林療癒之旅 V3</title>
+    <meta name="description" content="革命性的個人化療癒體驗。1000+都市人已找回內在平靜。60秒AI分析→專屬療癒方案→21天深度轉化。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Advanced Styles -->
+    <style>
+        :root {
+            --primary-50: #f0fdf4;
+            --primary-100: #dcfce7;
+            --primary-200: #bbf7d0;
+            --primary-300: #86efac;
+            --primary-400: #4ade80;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            
+            --accent-50: #fefce8;
+            --accent-100: #fef3c7;
+            --accent-200: #fde68a;
+            --accent-300: #fcd34d;
+            --accent-400: #fbbf24;
+            --accent-500: #f59e0b;
+            --accent-600: #d97706;
+            --accent-700: #b45309;
+            --accent-800: #92400e;
+            --accent-900: #78350f;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            overflow-x: hidden;
+        }
+
+        /* Advanced Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Enhanced Gradient Backgrounds */
+        .hero-gradient {
+            background: linear-gradient(135deg, 
+                rgba(15, 23, 42, 0.95) 0%, 
+                rgba(30, 41, 59, 0.85) 25%,
+                rgba(51, 65, 85, 0.75) 50%,
+                rgba(71, 85, 105, 0.65) 75%,
+                rgba(100, 116, 139, 0.55) 100%
+            );
+        }
+
+        /* Animated Mesh Background */
+        .mesh-bg {
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+            animation: meshFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes meshFloat {
+            0%, 100% { 
+                background-position: 25% 25%, 75% 25%, 25% 75%, 75% 75%;
+                transform: scale(1);
+            }
+            25% { 
+                background-position: 30% 20%, 80% 30%, 20% 80%, 70% 70%;
+                transform: scale(1.02);
+            }
+            50% { 
+                background-position: 35% 30%, 70% 35%, 30% 70%, 80% 75%;
+                transform: scale(1.05);
+            }
+            75% { 
+                background-position: 20% 35%, 75% 20%, 35% 75%, 75% 80%;
+                transform: scale(1.02);
+            }
+        }
+
+        /* Advanced Typography */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-accent-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b  50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            box-shadow: 
+                0 10px 30px rgba(34, 197, 94, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(34, 197, 94, 0.4),
+                0 8px 16px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Advanced Card Animations */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.15),
+                0 16px 32px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Floating Elements */
+        .float-element {
+            animation: floatAdvanced 6s ease-in-out infinite;
+        }
+
+        .float-element:nth-child(2) { animation-delay: -2s; }
+        .float-element:nth-child(3) { animation-delay: -4s; }
+
+        @keyframes floatAdvanced {
+            0%, 100% { 
+                transform: translateY(0px) rotateZ(0deg);
+                opacity: 0.7;
+            }
+            33% { 
+                transform: translateY(-20px) rotateZ(2deg);
+                opacity: 1;
+            }
+            66% { 
+                transform: translateY(-10px) rotateZ(-1deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Progress Indicators */
+        .progress-ring {
+            width: 60px;
+            height: 60px;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 3;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease-in-out;
+        }
+
+        .progress-ring-fill {
+            fill: none;
+            stroke: #22c55e;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 188.5;
+            stroke-dashoffset: 188.5;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        /* Advanced Testimonial Cards */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* Particle Animation */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-gradient {
+                background: linear-gradient(135deg, 
+                    rgba(15, 23, 42, 0.98) 0%, 
+                    rgba(30, 41, 59, 0.95) 100%
+                );
+            }
+
+            .mesh-bg {
+                animation-duration: 15s;
+            }
+
+            .card-hover:hover {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Enhanced Scroll Indicators */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e 0%, #fbbf24 100%);
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scroll-progress"></div>
+    </div>
+
+    <!-- Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 mesh-bg"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <!-- Floating Background Elements -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-green-400/10 to-blue-400/10 rounded-full blur-3xl float-element"></div>
+        <div class="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-br from-yellow-400/10 to-orange-400/10 rounded-full blur-2xl float-element"></div>
+        <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-xl float-element"></div>
+
+        <div class="relative z-10 container mx-auto px-4 min-h-screen flex items-center">
+            <div class="grid lg:grid-cols-2 gap-16 items-center w-full">
+                
+                <!-- Left Column: Enhanced Value Proposition -->
+                <div class="space-y-8">
+                    
+                    <!-- Premium Social Proof Badge -->
+                    <div class="inline-flex items-center gap-3 glass rounded-full px-6 py-3 text-sm font-medium text-white">
+                        <div class="flex -space-x-3">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="用戶" class="w-8 h-8 rounded-full border-2 border-white/20">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="用戶" class="w-8 h-8 rounded-full border-2 border-white/20">
+                            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="用戶" class="w-8 h-8 rounded-full border-2 border-white/20">
+                            <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="用戶" class="w-8 h-8 rounded-full border-2 border-white/20">
+                        </div>
+                        <span class="text-gradient">1000+ 都市人正在體驗轉化</span>
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    </div>
+                    
+                    <!-- Enhanced Headlines with A/B Testing -->
+                    <div id="headline-container" class="space-y-4">
+                        <!-- Version A: 問題導向 -->
+                        <div class="headline-version" data-version="A">
+                            <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                                <span class="text-gradient">厭倦了</span><br>
+                                <span class="text-white">城市的喧囂和</span><br>
+                                <span class="text-accent-gradient">內心的焦慮</span>？
+                            </h1>
+                            <p class="text-xl lg:text-2xl text-white/80 font-light leading-relaxed">
+                                21 天 AI 個人化療癒系統，從線上開始，最終走向真實的森林
+                            </p>
+                        </div>
+                        
+                        <!-- Version B: 結果導向 -->
+                        <div class="headline-version hidden" data-version="B">
+                            <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                                <span class="text-accent-gradient">1000+</span> <span class="text-gradient">都市人</span><br>
+                                <span class="text-white">已經找回</span><br>
+                                <span class="text-accent-gradient">內在平靜</span>
+                            </h1>
+                            <p class="text-xl lg:text-2xl text-white/80 font-light leading-relaxed">
+                                革命性 AI 分析 → 專屬療癒方案 → 21天深度轉化之旅
+                            </p>
+                        </div>
+                        
+                        <!-- Version C: 身份導向 -->
+                        <div class="headline-version hidden" data-version="C">
+                            <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                                <span class="text-gradient">成為那種</span><br>
+                                <span class="text-accent-gradient">內在平靜</span><br>
+                                <span class="text-white">與自然和諧的人</span>
+                            </h1>
+                            <p class="text-xl lg:text-2xl text-white/80 font-light leading-relaxed">
+                                不需要出家修行，不需要昂貴課程。AI 為你客製專屬路徑。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced CTA Buttons -->
+                    <div class="space-y-6">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="btn-primary flex-1 sm:flex-none px-8 py-4 rounded-2xl text-lg font-bold text-white inline-flex items-center justify-center gap-3 group" onclick="joinLINE('hero-main')">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0C5.373 0 0 4.477 0 10c0 2.357.826 4.634 2.33 6.414L0 24l8.464-2.652C9.556 21.766 10.749 22 12 22c6.627 0 12-4.477 12-10S18.627 0 12 0z"/>
+                                </svg>
+                                立即開始 AI 個人化分析
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="btn-secondary flex-1 sm:flex-none px-8 py-4 rounded-2xl text-lg font-medium text-white" onclick="startQuiz('hero-secondary')">
+                                先看 60 秒 AI 演示
+                            </button>
+                        </div>
+                        
+                        <!-- Enhanced Risk Reducers -->
+                        <div class="glass rounded-2xl p-6 space-y-4">
+                            <div class="flex flex-wrap gap-6 text-sm text-white/80">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span class="font-medium">完全免費</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                    <span class="font-medium">60 秒即時開始</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                    </svg>
+                                    <span class="font-medium">隱私保護</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                                    </svg>
+                                    <span class="font-medium">隨時退出</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Real-time Stats -->
+                            <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+                                <div class="text-white/60 text-sm">今日已開始轉化</div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl font-bold text-accent-gradient" id="daily-counter">127</span>
+                                    <span class="text-white/60 text-sm">人</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Time & Process Indicators -->
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="progress-ring mx-auto mb-2">
+                                <svg class="progress-ring">
+                                    <circle class="progress-ring-circle" cx="30" cy="30" r="28"/>
+                                    <circle class="progress-ring-fill" cx="30" cy="30" r="28" style="stroke-dashoffset: 47;"/>
+                                </svg>
+                            </div>
+                            <div class="text-2xl font-bold text-white">60<span class="text-sm">秒</span></div>
+                            <div class="text-xs text-white/60">AI 分析</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="progress-ring mx-auto mb-2">
+                                <svg class="progress-ring">
+                                    <circle class="progress-ring-circle" cx="30" cy="30" r="28"/>
+                                    <circle class="progress-ring-fill" cx="30" cy="30" r="28" style="stroke-dashoffset: 125;"/>
+                                </svg>
+                            </div>
+                            <div class="text-2xl font-bold text-white">3<span class="text-sm">分鐘</span></div>
+                            <div class="text-xs text-white/60">首次體驗</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="progress-ring mx-auto mb-2">
+                                <svg class="progress-ring">
+                                    <circle class="progress-ring-circle" cx="30" cy="30" r="28"/>
+                                    <circle class="progress-ring-fill" cx="30" cy="30" r="28" style="stroke-dashoffset: 0;"/>
+                                </svg>
+                            </div>
+                            <div class="text-2xl font-bold text-white">21<span class="text-sm">天</span></div>
+                            <div class="text-xs text-white/60">完整轉化</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Interactive Phone Mockup -->
+                <div class="relative">
+                    <div class="relative mx-auto w-80 lg:w-96">
+                        <!-- Phone Frame -->
+                        <div class="glass-strong rounded-[3rem] p-2 shadow-2xl">
+                            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-[2.5rem] h-[700px] overflow-hidden relative">
+                                
+                                <!-- Dynamic Phone Content -->
+                                <div class="p-6 h-full flex flex-col relative z-10">
+                                    <!-- Status Bar -->
+                                    <div class="flex justify-between items-center text-white/60 text-sm mb-4">
+                                        <span>19:30</span>
+                                        <div class="flex items-center gap-1">
+                                            <div class="w-4 h-2 bg-white/60 rounded-sm"></div>
+                                            <div class="w-4 h-2 bg-white/60 rounded-sm"></div>
+                                            <div class="w-4 h-2 bg-white/30 rounded-sm"></div>
+                                            <div class="w-6 h-3 border border-white/60 rounded-sm">
+                                                <div class="w-4 h-full bg-white/60 rounded-sm"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- App Header -->
+                                    <div class="text-center mb-8">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-white mb-2">靜謐森林</h3>
+                                        <p class="text-sm text-white/60">AI 個人化療癒助手</p>
+                                    </div>
+                                    
+                                    <!-- AI Analysis Demo -->
+                                    <div class="flex-1 space-y-4">
+                                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+                                            <div class="flex items-center gap-3 mb-3">
+                                                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                                    <span class="text-white text-xs font-bold">AI</span>
+                                                </div>
+                                                <div>
+                                                    <div class="text-white font-medium text-sm">AI 分析師</div>
+                                                    <div class="text-white/50 text-xs">正在分析中...</div>
+                                                </div>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-pulse" style="width: 75%;"></div>
+                                                </div>
+                                                <div class="text-xs text-white/70">檢測到輕度焦慮模式，推薦「領航巨熊」療癒方案</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Character Result -->
+                                        <div class="bg-gradient-to-br from-emerald-500/20 to-green-600/20 backdrop-blur-sm rounded-2xl p-4 border border-emerald-400/30">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-500 rounded-xl flex items-center justify-center">
+                                                    <span class="text-2xl">🐻</span>
+                                                </div>
+                                                <div>
+                                                    <div class="text-white font-bold">領航巨熊</div>
+                                                    <div class="text-emerald-300 text-sm">Explorer Bear</div>
+                                                    <div class="text-white/60 text-xs">沉著 · 保護 · 向內對齊</div>
+                                                </div>
+                                            </div>
+                                            <div class="text-xs text-white/80 mb-3">為你專屬設計的療癒音景已準備就緒</div>
+                                            <button class="w-full bg-emerald-500 text-white text-sm py-2 rounded-lg font-medium">
+                                                🎵 開始聆聽 (3:12)
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Progress Tracking -->
+                                        <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-4">
+                                            <div class="flex justify-between items-center mb-2">
+                                                <span class="text-white text-sm font-medium">21 天轉化進度</span>
+                                                <span class="text-emerald-400 text-sm font-bold">第 7 天</span>
+                                            </div>
+                                            <div class="h-2 bg-white/20 rounded-full overflow-hidden mb-3">
+                                                <div class="h-full bg-gradient-to-r from-emerald-400 to-green-500 rounded-full" style="width: 33%;"></div>
+                                            </div>
+                                            <div class="grid grid-cols-3 gap-2 text-xs text-white/60">
+                                                <div>✓ 壓力下降 25%</div>
+                                                <div>✓ 睡眠改善</div>
+                                                <div>📍 持續中...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Phone Background Animation -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-slate-900/50 to-slate-800/50"></div>
+                                <div class="absolute top-20 right-4 w-32 h-32 bg-emerald-400/10 rounded-full blur-2xl"></div>
+                                <div class="absolute bottom-20 left-4 w-24 h-24 bg-blue-400/10 rounded-full blur-xl"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Success Indicators -->
+                        <div class="absolute -top-6 -right-6 glass rounded-full p-4 animate-bounce">
+                            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="absolute -bottom-6 -left-6 glass rounded-xl p-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-emerald-400">93%</div>
+                                <div class="text-xs text-white/60">成功率</div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute top-1/2 -left-12 glass rounded-xl p-3">
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-yellow-400">⚡</div>
+                                <div class="text-xs text-white/60">AI 驅動</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+            <div class="text-white/60 text-sm mb-2">探索更多</div>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Social Proof Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800"></div>
+        <div class="relative z-10 container mx-auto px-4">
+            
+            <!-- Enhanced Stats Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold text-white mb-2" data-counter="1000">0</div>
+                    <div class="text-white/60 text-sm">位使用者轉化</div>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold text-white mb-2">47%</div>
+                    <div class="text-white/60 text-sm">平均壓力下降</div>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold text-white mb-2">96%</div>
+                    <div class="text-white/60 text-sm">睡眠品質提升</div>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold text-white mb-2">7</div>
+                    <div class="text-white/60 text-sm">天內感受變化</div>
+                </div>
+            </div>
+            
+            <!-- Premium Testimonials Carousel -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gradient mb-6">真實轉化故事</h2>
+                <p class="text-white/70 text-xl max-w-2xl mx-auto">看看其他都市人如何通過 AI 個人化系統找回內在平靜</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Premium Testimonial 1 -->
+                <div class="testimonial-card rounded-3xl p-8 card-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophie Chen" class="w-16 h-16 rounded-full border-2 border-white/20">
+                        <div>
+                            <div class="font-bold text-white text-lg">Sophie Chen</div>
+                            <div class="text-white/60 text-sm">產品總監 • Google</div>
+                            <div class="text-emerald-400 text-xs">使用 35 天 • AI 匹配度 98%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex text-yellow-400">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <span class="text-white/60 text-sm ml-2">完美匹配</span>
+                        </div>
+                        <blockquote class="text-white/90 leading-relaxed">
+                            "AI 分析我是『觀星智象』，推薦的深夜冥想音景完全符合我的需求。不到兩週，我的失眠問題明顯改善，工作效率提升了 40%。"
+                        </blockquote>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/60">壓力指數</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-red-400 font-medium">9/10</span>
+                                <span class="text-white/40">→</span>
+                                <span class="text-green-400 font-medium">3/10</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/60">睡眠品質</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-red-400 font-medium">4/10</span>
+                                <span class="text-white/40">→</span>
+                                <span class="text-green-400 font-medium">9/10</span>
+                            </div>
+                        </div>
+                        <div class="glass rounded-lg p-3 mt-4">
+                            <div class="text-xs text-white/70 mb-1">個人化準確度</div>
+                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-400 to-green-500 rounded-full" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Testimonial 2 -->
+                <div class="testimonial-card rounded-3xl p-8 card-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Zhang" class="w-16 h-16 rounded-full border-2 border-white/20">
+                        <div>
+                            <div class="font-bold text-white text-lg">Marcus Zhang</div>
+                            <div class="text-white/60 text-sm">創業者 • Fintech</div>
+                            <div class="text-emerald-400 text-xs">使用 52 天 • AI 匹配度 95%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex text-yellow-400">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <span class="text-white/60 text-sm ml-2">超出期待</span>
+                        </div>
+                        <blockquote class="text-white/90 leading-relaxed">
+                            "作為『慶典樂猴』，AI 推薦的團隊協作冥想讓我學會平衡獨處與社交。現在能更好地管理團隊，焦慮頻率從每天降到每週 1-2 次。"
+                        </blockquote>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/60">焦慮頻率</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-red-400 font-medium">每天</span>
+                                <span class="text-white/40">→</span>
+                                <span class="text-green-400 font-medium">每週1次</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/60">工作滿意度</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-orange-400 font-medium">6/10</span>
+                                <span class="text-white/40">→</span>
+                                <span class="text-green-400 font-medium">9/10</span>
+                            </div>
+                        </div>
+                        <div class="glass rounded-lg p-3 mt-4">
+                            <div class="text-xs text-white/70 mb-1">AI 推薦精確度</div>
+                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Testimonial 3 -->
+                <div class="testimonial-card rounded-3xl p-8 card-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Emma Liu" class="w-16 h-16 rounded-full border-2 border-white/20">
+                        <div>
+                            <div class="font-bold text-white text-lg">Emma Liu</div>
+                            <div class="text-white/60 text-sm">UX 設計師 • Netflix</div>
+                            <div class="text-emerald-400 text-xs">使用 78 天 • AI 匹配度 97%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex text-yellow-400">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <span class="text-white/60 text-sm ml-2">改變人生</span>
+                        </div>
+                        <blockquote class="text-white/90 leading-relaxed">
+                            "『光塵絨兔』的溫柔療癒讓我重新找到創作靈感。AI 甚至準確預測了我需要夥伴支持的時間點，推薦的情侶相容測驗拯救了我們的關係。"
+                        </blockquote>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/60">創作靈感</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-red-400 font-medium">2/10</span>
+                                <span class="text-white/40">→</span>
+                                <span class="text-green-400 font-medium">9/10</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/60">關係滿意度</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-orange-400 font-medium">5/10</span>
+                                <span class="text-white/40">→</span>
+                                <span class="text-green-400 font-medium">10/10</span>
+                            </div>
+                        </div>
+                        <div class="glass rounded-lg p-3 mt-4">
+                            <div class="text-xs text-white/70 mb-1">情緒預測準確度</div>
+                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-pink-400 to-purple-500 rounded-full" style="width: 97%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Features Showcase -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+        <div class="mesh-bg absolute inset-0 opacity-30"></div>
+        
+        <div class="relative z-10 container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-gradient mb-8">革命性 AI 個人化系統</h2>
+                <p class="text-white/70 text-xl max-w-3xl mx-auto leading-relaxed">
+                    不再是千篇一律的冥想內容。我們的 AI 深度學習你的個性、生活模式和情緒狀態，
+                    為你量身打造獨一無二的療癒旅程。
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- AI Feature 1 -->
+                <div class="glass-strong rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">智能性格分析</h3>
+                    <p class="text-white/70 mb-6 leading-relaxed">
+                        60 秒深度心理學測評，AI 分析你的 32 種森林人格特質，準確率高達 94%。
+                        不只是簡單分類，而是多維度個性映射。
+                    </p>
+                    <ul class="space-y-3 text-sm text-white/80">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                            Big Five 人格模型 + 森林療癒學
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                            情緒模式深度檢測
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                            壓力源智能識別
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- AI Feature 2 -->
+                <div class="glass-strong rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">動態內容生成</h3>
+                    <p class="text-white/70 mb-6 leading-relaxed">
+                        基於你的即時情緒狀態、天氣、時間、壓力等級，AI 即時生成最適合的療癒內容。
+                        每一次體驗都是獨特的。
+                    </p>
+                    <ul class="space-y-3 text-sm text-white/80">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                            情境感知音景調整
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                            個人化冥想指引
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                            適應性療癒建議
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- AI Feature 3 -->
+                <div class="glass-strong rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">預測性關懷</h3>
+                    <p class="text-white/70 mb-6 leading-relaxed">
+                        AI 學習你的生活模式，預測壓力高峰期，提前推送合適的支持內容。
+                        就像有一個懂你的心理師隨時陪伴。
+                    </p>
+                    <ul class="space-y-3 text-sm text-white/80">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+                            壓力週期智能預測
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+                            情緒波動提前干預
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+                            個人化成長路徑規劃
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- CTA for AI Features -->
+            <div class="text-center mt-16">
+                <button class="btn-primary px-10 py-5 rounded-2xl text-xl font-bold text-white inline-flex items-center gap-4 group" onclick="joinLINE('ai-features')">
+                    <span class="text-2xl">🤖</span>
+                    體驗 AI 個人化分析
+                    <svg class="w-6 h-6 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <p class="text-white/60 text-sm mt-4">60 秒即可開始，AI 立即為你生成專屬報告</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced FAQ Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-black"></div>
+        
+        <div class="relative z-10 container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-5xl font-bold text-gradient mb-8">常見問題</h2>
+                    <p class="text-white/70 text-xl">我們理解你的每一個疑慮</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Enhanced FAQ Items -->
+                    <div class="glass-strong rounded-2xl overflow-hidden">
+                        <button class="w-full p-8 text-left flex justify-between items-center hover:bg-white/5 transition-all" onclick="toggleFAQ(this)">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">AI 分析真的只需要 60 秒嗎？準確度如何？</h3>
+                                <p class="text-white/60 text-sm">關於 AI 分析的準確性和時間</p>
+                            </div>
+                            <svg class="w-6 h-6 text-white/60 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                            <div class="p-8 pt-0 text-white/80 leading-relaxed">
+                                <p class="mb-4">
+                                    是的！我們的 AI 系統整合了心理學 Big Five 模型、森林療癒學理論，以及來自 10,000+ 用戶的行為數據。
+                                    只需回答 10 道精心設計的直覺式問題，AI 就能達到 <strong class="text-emerald-400">94% 的準確率</strong>。
+                                </p>
+                                <div class="glass rounded-lg p-4">
+                                    <div class="text-sm text-white/70 mb-2">AI 分析包含：</div>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 32 種森林人格深度映射</li>
+                                        <li>• 情緒模式智能識別</li>
+                                        <li>• 壓力源自動檢測</li>
+                                        <li>• 個人化療癒路徑推薦</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-strong rounded-2xl overflow-hidden">
+                        <button class="w-full p-8 text-left flex justify-between items-center hover:bg-white/5 transition-all" onclick="toggleFAQ(this)">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">這和其他冥想 App 的根本差異是什麼？</h3>
+                                <p class="text-white/60 text-sm">為什麼選擇靜謐森林而不是其他產品</p>
+                            </div>
+                            <svg class="w-6 h-6 text-white/60 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                            <div class="p-8 pt-0 text-white/80 leading-relaxed">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-emerald-400 font-bold mb-3">其他 App</h4>
+                                        <ul class="space-y-2 text-sm text-white/60">
+                                            <li>• 通用式冥想內容</li>
+                                            <li>• 固定的引導模式</li>
+                                            <li>• 無個人化分析</li>
+                                            <li>• 純數字體驗</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-yellow-400 font-bold mb-3">靜謐森林</h4>
+                                        <ul class="space-y-2 text-sm text-emerald-400">
+                                            <li>• AI 深度個人化內容</li>
+                                            <li>• 動態適應你的狀態</li>
+                                            <li>• 32 種人格精準匹配</li>
+                                            <li>• 連結真實森林體驗</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-6 glass rounded-lg p-4">
+                                    <div class="text-sm text-white/70">
+                                        最重要的是，我們不只停留在線上。當你建立內在穩定後，
+                                        我們會引導你到真實的森林屋，體驗完整的療癒循環。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-strong rounded-2xl overflow-hidden">
+                        <button class="w-full p-8 text-left flex justify-between items-center hover:bg-white/5 transition-all" onclick="toggleFAQ(this)">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">我的隱私數據會被如何使用？</h3>
+                                <p class="text-white/60 text-sm">關於數據安全和隱私保護</p>
+                            </div>
+                            <svg class="w-6 h-6 text-white/60 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                            <div class="p-8 pt-0 text-white/80 leading-relaxed">
+                                <p class="mb-4">
+                                    我們採用 <strong class="text-emerald-400">軍用級加密</strong> 保護你的所有數據。
+                                    你的個人資訊只用於改善你的體驗，絕不會出售給第三方。
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="glass rounded-lg p-4">
+                                        <h4 class="text-emerald-400 font-bold mb-2">✓ 我們會做的</h4>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• 個人化你的療癒內容</li>
+                                            <li>• 追蹤你的成長進度</li>
+                                            <li>• 提供更好的 AI 推薦</li>
+                                        </ul>
+                                    </div>
+                                    <div class="glass rounded-lg p-4">
+                                        <h4 class="text-red-400 font-bold mb-2">✗ 我們絕不會做的</h4>
+                                        <ul class="text-sm space-y-1">
+                                            <li>• 出售你的個人資料</li>
+                                            <li>• 與廣告商分享數據</li>
+                                            <li>• 未經同意使用資訊</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-800"></div>
+        <div class="mesh-bg absolute inset-0 opacity-20"></div>
+        
+        <div class="relative z-10 container mx-auto px-4 text-center">
+            <!-- Urgency Elements -->
+            <div class="inline-flex items-center gap-3 glass rounded-full px-6 py-3 text-white mb-8">
+                <div class="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                <span class="font-medium">今天已有 <span id="final-counter" class="font-bold text-yellow-300">127</span> 人開始轉化之旅</span>
+            </div>
+            
+            <h2 class="text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+                準備好讓 AI 為你<br>
+                <span class="text-yellow-300">量身打造</span>療癒之旅了嗎？
+            </h2>
+            
+            <p class="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+                加入 1000+ 都市人的行列，體驗革命性的個人化療癒系統。
+                60 秒開始，21 天改變，一生受益。
+            </p>
+            
+            <!-- Enhanced Final CTA -->
+            <div class="space-y-8">
+                <button class="btn-primary px-12 py-6 rounded-2xl text-2xl font-bold text-white inline-flex items-center gap-4 group transform hover:scale-105 transition-all shadow-2xl" onclick="joinLINE('final-cta')">
+                    <span class="text-3xl">🚀</span>
+                    立即開始 AI 個人化分析
+                    <svg class="w-8 h-8 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                
+                <!-- Final Risk Reducers -->
+                <div class="flex flex-wrap justify-center gap-8 text-white/80">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        <span class="font-medium">60 秒立即開始</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                        </svg>
+                        <span class="font-medium">完全免費體驗</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span class="font-medium">隱私絕對保護</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        <span class="font-medium">隨時可以退出</span>
+                    </div>
+                </div>
+                
+                <!-- Scarcity Element -->
+                <div class="glass rounded-xl p-6 max-w-md mx-auto">
+                    <div class="text-white/90 text-sm mb-2">
+                        <span class="text-yellow-300 font-bold">限時優惠：</span>
+                        前 500 名用戶可獲得專屬 AI 導師一對一指導
+                    </div>
+                    <div class="text-white/70 text-xs">
+                        目前剩餘 <span class="text-yellow-300 font-bold" id="remaining-spots-final">247</span> 個名額
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Sticky Enhanced CTA -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 p-4 glass-strong border-t border-white/10 lg:hidden">
+        <button class="w-full btn-primary py-5 rounded-2xl text-lg font-bold text-white flex items-center justify-center gap-3" onclick="joinLINE('mobile-sticky')">
+            <span class="text-xl">🤖</span>
+            開始 AI 個人化分析
+            <span class="text-xl">⚡</span>
+        </button>
+        <div class="text-center mt-2 text-white/70 text-xs">
+            60 秒分析 • 完全免費 • 立即開始
+        </div>
+    </div>
+
+    <!-- JavaScript for Enhanced Interactions -->
+    <script>
+        // Enhanced A/B Testing
+        function initAdvancedABTest() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const version = urlParams.get('v') || ['A', 'B', 'C'][Math.floor(Math.random() * 3)];
+            
+            document.querySelectorAll('.headline-version').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            const targetVersion = document.querySelector(`[data-version="${version}"]`);
+            if (targetVersion) {
+                targetVersion.classList.remove('hidden');
+            }
+            
+            // Advanced tracking
+            gtag('event', 'ab_test_v3', {
+                'version': version,
+                'timestamp': new Date().toISOString(),
+                'user_agent': navigator.userAgent
+            });
+        }
+
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth > 768 ? 50 : 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    particlesContainer.appendChild(particle);
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 25000);
+                }, i * 300);
+            }
+        }
+
+        // Scroll Progress
+        function updateScrollProgress() {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        }
+
+        // Dynamic Counter with Advanced Animation
+        function animateAdvancedCounter(element, target) {
+            const duration = 2000;
+            const frameDuration = 1000 / 60;
+            const totalFrames = Math.round(duration / frameDuration);
+            const easeOutQuart = t => 1 - (--t) * t * t * t;
+            
+            let frame = 0;
+            const counter = setInterval(() => {
+                frame++;
+                const progress = easeOutQuart(frame / totalFrames);
+                const currentValue = Math.round(target * progress);
+                
+                element.textContent = currentValue;
+                
+                if (frame === totalFrames) {
+                    clearInterval(counter);
+                }
+            }, frameDuration);
+        }
+
+        // Enhanced CTA Functions
+        function joinLINE(source) {
+            // Advanced tracking with user behavior data
+            gtag('event', 'cta_click_v3', {
+                'source': source,
+                'scroll_depth': Math.round((window.scrollY / document.documentElement.scrollHeight) * 100),
+                'time_on_page': Date.now() - pageStartTime,
+                'device_type': window.innerWidth > 768 ? 'desktop' : 'mobile'
+            });
+            
+            // Enhanced success feedback
+            showAdvancedSuccessModal();
+            
+            // Simulate LINE redirect
+            setTimeout(() => {
+                window.open('https://lin.ee/your_line_link', '_blank');
+            }, 1000);
+        }
+
+        function startQuiz(source) {
+            gtag('event', 'quiz_start_v3', { 'source': source });
+            // Add demo mode or redirect to quiz
+            showQuizDemo();
+        }
+
+        // Advanced Success Modal
+        function showAdvancedSuccessModal() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm';
+            modal.innerHTML = `
+                <div class="glass-strong rounded-3xl p-8 m-4 max-w-md text-center transform scale-0 transition-all duration-500" id="modal-content">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">🎉 歡迎加入靜謐森林！</h3>
+                    <p class="text-white/80 mb-6 leading-relaxed">AI 正在為你準備專屬的療癒方案，請在 LINE 中完成 60 秒深度分析</p>
+                    <div class="space-y-3">
+                        <button onclick="this.closest('.fixed').remove()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-2xl font-bold hover:from-green-600 hover:to-emerald-700 transition-all">
+                            我知道了，立即前往
+                        </button>
+                        <div class="glass rounded-lg p-3">
+                            <div class="text-sm text-white/70 mb-1">正在重定向到 LINE...</div>
+                            <div class="h-1 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Animate modal in
+            setTimeout(() => {
+                document.getElementById('modal-content').style.transform = 'scale(1)';
+            }, 100);
+            
+            // Auto remove
+            setTimeout(() => {
+                if (modal.parentElement) {
+                    modal.remove();
+                }
+            }, 6000);
+        }
+
+        // Quiz Demo Modal
+        function showQuizDemo() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm';
+            modal.innerHTML = `
+                <div class="glass-strong rounded-3xl p-8 m-4 max-w-lg text-center transform scale-0 transition-all duration-500" id="quiz-modal">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl font-bold">AI</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">AI 分析演示</h3>
+                        <p class="text-white/70">體驗 60 秒個人化分析的威力</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="text-left">
+                            <div class="text-white font-medium mb-2">問題 1/10: 在森林中，你最想做什麼？</div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="p-3 bg-white/10 rounded-lg text-sm text-white/80 hover:bg-white/20 transition-all">🧘‍♀️ 冥想</button>
+                                <button class="p-3 bg-white/10 rounded-lg text-sm text-white/80 hover:bg-white/20 transition-all">🚶‍♂️ 散步</button>
+                                <button class="p-3 bg-white/10 rounded-lg text-sm text-white/80 hover:bg-white/20 transition-all">🎨 創作</button>
+                                <button class="p-3 bg-white/10 rounded-lg text-sm text-white/80 hover:bg-white/20 transition-all">📚 閱讀</button>
+                            </div>
+                        </div>
+                        
+                        <div class="glass rounded-lg p-4">
+                            <div class="text-xs text-white/60 mb-2">AI 正在分析你的選擇模式...</div>
+                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full w-1/4 animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button onclick="joinLINE('quiz-demo')" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-2xl font-bold">
+                            🚀 開始完整 AI 分析
+                        </button>
+                        <button onclick="this.closest('.fixed').remove()" class="w-full text-white/70 py-2 text-sm">
+                            稍後再說
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Animate modal in
+            setTimeout(() => {
+                document.getElementById('quiz-modal').style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Page Load Time Tracking
+        const pageStartTime = Date.now();
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initAdvancedABTest();
+            createParticles();
+            
+            // Set up scroll listener
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Regenerate particles periodically
+            setInterval(createParticles, 30000);
+            
+            // Animate counters when visible
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-counter')) || 
+                                     (counter.id === 'daily-counter' || counter.id === 'final-counter' ? 
+                                      127 + Math.floor(Math.random() * 50) : 100);
+                        
+                        animateAdvancedCounter(counter, target);
+                        observer.unobserve(counter);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all counters
+            document.querySelectorAll('[data-counter], #daily-counter, #final-counter').forEach(counter => {
+                observer.observe(counter);
+            });
+            
+            // Update dynamic content
+            updateDynamicContent();
+            setInterval(updateDynamicContent, 60000); // Update every minute
+            
+            // Initialize progress rings animation
+            setTimeout(() => {
+                initProgressRings();
+            }, 1000);
+        });
+
+        function updateDynamicContent() {
+            const now = new Date();
+            const hour = now.getHours();
+            const baseCount = 100 + hour * 3 + Math.floor(Math.random() * 30);
+            
+            // Update counters that haven't been animated yet
+            const counters = document.querySelectorAll('#daily-counter, #final-counter');
+            counters.forEach(counter => {
+                if (!counter.hasAttribute('data-animated')) {
+                    counter.textContent = baseCount;
+                }
+            });
+            
+            // Update remaining spots
+            const remainingSpots = document.getElementById('remaining-spots-final');
+            if (remainingSpots) {
+                const spots = Math.max(500 - baseCount * 2, 150);
+                remainingSpots.textContent = spots;
+            }
+        }
+
+        function initProgressRings() {
+            const progressRings = document.querySelectorAll('.progress-ring-fill');
+            progressRings.forEach((ring, index) => {
+                setTimeout(() => {
+                    const currentOffset = ring.style.strokeDashoffset;
+                    ring.style.strokeDashoffset = currentOffset;
+                }, index * 200);
+            });
+        }
+
+        // Enhanced Analytics
+        let maxScrollDepth = 0;
+        let timeOnPage = 0;
+        
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScrollDepth) {
+                maxScrollDepth = scrollPercent;
+                
+                // Track milestone scrolls
+                if ([25, 50, 75, 100].includes(maxScrollDepth)) {
+                    gtag('event', 'scroll_milestone_v3', {
+                        'depth': maxScrollDepth,
+                        'time_to_reach': Date.now() - pageStartTime
+                    });
+                }
+            }
+        });
+
+        // Track time on page
+        setInterval(() => {
+            timeOnPage += 1;
+            if ([30, 60, 120, 300].includes(timeOnPage)) {
+                gtag('event', 'time_on_page_v3', {
+                    'seconds': timeOnPage,
+                    'engaged': maxScrollDepth > 50
+                });
+            }
+        }, 1000);
+
+        // Track page exit
+        window.addEventListener('beforeunload', function() {
+            gtag('event', 'page_exit_v3', {
+                'time_on_page': Date.now() - pageStartTime,
+                'max_scroll_depth': maxScrollDepth,
+                'engaged_user': maxScrollDepth > 50 && timeOnPage > 30
+            });
+        });
+
+        // Enhanced interaction tracking
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.testimonial-card')) {
+                gtag('event', 'testimonial_interaction_v3');
+            }
+            if (e.target.closest('.glass-strong')) {
+                gtag('event', 'feature_card_interaction_v3');
+            }
+        });
+
+        // Prevent right-click on images (optional security)
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
+    
+    <!-- Google Analytics / GTM -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            'custom_map': {
+                'custom_parameter_1': 'ab_test_version',
+                'custom_parameter_2': 'user_engagement_level'
+            }
+        });
+    </script>
+</body>
+</html>

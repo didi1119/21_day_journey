@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 3: 森林的療癒秘密｜靜謐森林</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest-green': '#2E4F4F',
+            'forest-cta': '#C87D54',
+            'forest-cta-dark': '#B56A40',
+            'forest-bg': '#F9F7F3',
+            'forest-card-bg': '#FFFFFF',
+            'forest-text-dark': '#3A3A3A',
+            'forest-text-light': '#6B6B6B',
+            'forest-border': '#EAE5E0',
+            'forest-highlight': '#E4EFE7',
+          },
+          boxShadow: {
+            'soft': '0 4px 15px rgba(46, 79, 79, 0.06)',
+            'soft-lg': '0 10px 30px rgba(46, 79, 79, 0.08)'
+          },
+          borderRadius: {
+            'xl2': '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+    .content-container { max-width: 700px; margin: 0 auto; }
+    .prose { line-height: 1.8; }
+    .prose p { margin-bottom: 1.25em; }
+    .prose strong { color: #2E4F4F; }
+    .prose a { color: #C87D54; text-decoration: underline; }
+    .prose a:hover { color: #B56A40; }
+  </style>
+</head>
+<body class="bg-forest-bg text-forest-text-light antialiased">
+  <div class="content-container px-4 py-8 sm:py-12 md:py-16 space-y-10">
+
+    <!-- Header with Journey Map -->
+    <header class="space-y-6">
+      <div class="text-center">
+        <p class="text-lg text-forest-green font-semibold mb-2">Day 3 / 21</p>
+        <h1 class="text-3xl sm:text-4xl font-bold text-forest-text-dark">森林的療癒秘密</h1>
+      </div>
+      <!-- Mini Journey Map -->
+      <div class="w-full bg-forest-card-bg p-3 rounded-full border border-forest-border shadow-soft flex items-center gap-2">
+        <!-- Day 1-2 Done -->
+        <div class="w-[9.52%] h-2 bg-forest-green rounded-full"></div>
+        <!-- Day 3 Current -->
+        <div class="w-[4.76%] h-2 bg-forest-cta rounded-full"></div>
+        <!-- Rest of the journey -->
+        <div class="flex-1 h-2 bg-gray-200 rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- 1. 主理人筆記 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w.g.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的林間絮語</h2>
+      </div>
+      <div class="prose max-w-none">
+        <p>旅人，日安。</p>
+        <p>你是否曾好奇，為何只是單純地走進一座森林，就能讓緊繃的身心不自覺地鬆弛下來？那份難以言喻的平靜，幾乎是瞬間發生的。彷彿我們的身體，天生就知道如何與森林對話。</p>
+        <p>這不僅僅是心理作用。森林裡確實存在著一種「魔法」—— 一種看不見、卻能被我們身體深切感受到的力量。今天，我想與你分享這個秘密，一個由科學證實、卻又充滿詩意的療癒之謎。</p>
+      </div>
+    </section>
+
+    <!-- 2. 聽覺引導 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border border-forest-border shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+        <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">今日的聲音祝福</h2>
+      </div>
+      <p class="mb-6">今天的聲音練習，將引導你透過呼吸，去想像、去感受那份來自森林的清新氣息。即使身處室內，我們依然可以透過意念，與這股療癒的力量連結。</p>
+      
+      <div class="bg-forest-highlight/60 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <p class="font-semibold text-forest-green">通用音頻《芬多精的氣息》</p>
+          <span class="text-sm text-forest-text-light">3:30</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="bg-forest-green text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 hover:bg-forest-green/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+          </button>
+          <div class="w-full bg-white rounded-full h-2">
+            <div class="bg-forest-green h-2 rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 森林的智慧 -->
+    <section class="bg-forest-card-bg p-6 sm:p-8 rounded-xl2 border-2 border-dashed border-forest-cta/50 shadow-soft-lg">
+      <div class="flex items-center gap-4 mb-6">
+         <svg class="w-8 h-8 text-forest-green flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a15.045 15.045 0 01-7.5 0C4.508 19.662 2.25 17.444 2.25 15c0-1.35.61-2.593 1.548-3.39a9.042 9.042 0 012.452-1.123M15.75 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        <h2 class="text-2xl font-bold text-forest-text-dark">森林的智慧</h2>
+      </div>
+      
+      <div class="prose max-w-none">
+        <h3 class="text-xl font-bold text-forest-text-dark !mb-2">芬多精 (Phytoncide)：樹木的贈禮</h3>
+        <p>你聞到的「森林味」，其實是樹木與植物為了保護自己而散發出的揮發性化合物，科學家稱之為**芬多精**。當我們吸入這些芬多精時，奇妙的事情就發生了。</p>
+        <ul>
+          <li><strong>降低壓力：</strong> 研究證實，芬多精能顯著降低我們體內的壓力荷爾蒙（皮質醇），讓我們感到放鬆與平靜。</li>
+          <li><strong>提升免疫：</strong> 它可以活化我們體內的「自然殺手細胞」(NK Cell)，幫助我們抵抗病毒與不好的細胞。</li>
+          <li><strong>改善情緒：</strong> 森林浴 (Shinrin-yoku) 已被證實能有效減輕焦慮、憂鬱與憤怒的情緒。</li>
+        </ul>
+        <p>所以，當你感到平靜時，那不只是感覺。那是你的身體，正在接收一份來自森林的、真實的化學贈禮。這份連結，是深刻且科學的。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pt-8">
+      <div class="w-16 h-px bg-forest-border mx-auto mb-6"></div>
+      <p class="text-lg">願你今天，也能呼吸到一絲來自森林的清新。</p>
+      <p class="text-forest-text-light mt-2">我們明天見。</p>
+      <p class="text-xs text-gray-400 mt-12">© 2025 靜謐森林. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 未來可加入音檔播放等互動功能
+  </script>
+</body>
+</html>
