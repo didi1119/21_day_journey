@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐森林 5 天體驗旅程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background: linear-gradient(to bottom, #f5f3f0, #e8e4de);
+        }
+        h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+        
+        /* 動畫效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        .pulse { animation: pulse 2s infinite; }
+        .slide-in { animation: slideIn 0.5s ease-out; }
+        
+        /* 森林色系 */
+        .forest-green { color: #2F4858; }
+        .bg-forest-green { background-color: #2F4858; }
+        .bg-forest-light { background-color: #E4EFE7; }
+        .forest-brown { color: #8B7E74; }
+        .bg-forest-brown { background-color: #8B7E74; }
+        
+        /* 卡片效果 */
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 進度條樣式 */
+        .progress-step {
+            transition: all 0.3s;
+        }
+        
+        .progress-step.active {
+            background-color: #2F4858;
+            transform: scale(1.2);
+        }
+        
+        .progress-step.completed {
+            background-color: #8B7E74;
+        }
+        
+        /* 徽章樣式 */
+        .badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .badge.earned {
+            background: linear-gradient(135deg, #8B7E74, #C87D54);
+            box-shadow: 0 4px 15px rgba(139, 126, 116, 0.4);
+        }
+        
+        .badge.locked {
+            background-color: #e0e0e0;
+            opacity: 0.5;
+        }
+        
+        /* 隱藏滾動條但保持滾動功能 */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- 開始頁面 -->
+    <div id="welcomePage" class="min-h-screen flex items-center justify-center p-4">
+        <div class="card max-w-lg w-full p-8 text-center fade-in">
+            <h1 class="text-3xl md:text-4xl font-bold forest-green mb-4">靜謐森林</h1>
+            <p class="text-lg text-gray-600 mb-2">5 天體驗旅程</p>
+            <p class="text-sm text-gray-500 mb-8">每天只需 5 分鐘，開啟內在的寧靜之門</p>
+            
+            <div class="mb-8">
+                <img src="https://placehold.co/300x200/8B7E74/FFFFFF?text=Forest" alt="森林" class="w-full rounded-lg mb-4">
+                <p class="text-sm text-gray-600">在這片森林裡，你將找到屬於自己的寧靜角落</p>
+            </div>
+            
+            <button onclick="startJourney()" class="bg-forest-green text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-opacity-90 transition pulse">
+                開始旅程
+            </button>
+        </div>
+    </div>
+
+    <!-- 選擇嚮導動物 -->
+    <div id="animalSelection" class="min-h-screen flex items-center justify-center p-4 hidden">
+        <div class="card max-w-2xl w-full p-8 fade-in">
+            <h2 class="text-2xl md:text-3xl font-bold forest-green mb-2 text-center">選擇你的森林嚮導</h2>
+            <p class="text-gray-600 text-center mb-8">牠將陪伴你走過這五天的旅程</p>
+            
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <div onclick="selectAnimal('bear', '沉穩石熊')" class="animal-card cursor-pointer text-center p-4 rounded-lg hover:bg-forest-light transition">
+                    <div class="text-4xl mb-2">🐻</div>
+                    <p class="text-sm font-medium">沉穩石熊</p>
+                    <p class="text-xs text-gray-500">穩重、包容</p>
+                </div>
+                <div onclick="selectAnimal('deer', '優雅鹿靈')" class="animal-card cursor-pointer text-center p-4 rounded-lg hover:bg-forest-light transition">
+                    <div class="text-4xl mb-2">🦌</div>
+                    <p class="text-sm font-medium">優雅鹿靈</p>
+                    <p class="text-xs text-gray-500">敏銳、優雅</p>
+                </div>
+                <div onclick="selectAnimal('owl', '智慧貓頭鷹')" class="animal-card cursor-pointer text-center p-4 rounded-lg hover:bg-forest-light transition">
+                    <div class="text-4xl mb-2">🦉</div>
+                    <p class="text-sm font-medium">智慧貓頭鷹</p>
+                    <p class="text-xs text-gray-500">洞察、智慧</p>
+                </div>
+                <div onclick="selectAnimal('fox', '靈巧狐狸')" class="animal-card cursor-pointer text-center p-4 rounded-lg hover:bg-forest-light transition">
+                    <div class="text-4xl mb-2">🦊</div>
+                    <p class="text-sm font-medium">靈巧狐狸</p>
+                    <p class="text-xs text-gray-500">機智、適應</p>
+                </div>
+                <div onclick="selectAnimal('rabbit', '溫柔兔子')" class="animal-card cursor-pointer text-center p-4 rounded-lg hover:bg-forest-light transition">
+                    <div class="text-4xl mb-2">🐰</div>
+                    <p class="text-sm font-medium">溫柔兔子</p>
+                    <p class="text-xs text-gray-500">溫暖、細膩</p>
+                </div>
+                <div onclick="selectAnimal('wolf', '堅毅狼魂')" class="animal-card cursor-pointer text-center p-4 rounded-lg hover:bg-forest-light transition">
+                    <div class="text-4xl mb-2">🐺</div>
+                    <p class="text-sm font-medium">堅毅狼魂</p>
+                    <p class="text-xs text-gray-500">勇敢、忠誠</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要旅程頁面 -->
+    <div id="journeyPage" class="min-h-screen hidden">
+        <!-- 頂部進度條 -->
+        <div class="bg-white shadow-sm sticky top-0 z-10">
+            <div class="max-w-4xl mx-auto p-4">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium forest-green">5 天旅程</h3>
+                    <div class="flex items-center gap-2">
+                        <span id="animalEmoji" class="text-2xl">🐻</span>
+                        <span id="animalName" class="text-sm text-gray-600">沉穩石熊</span>
+                    </div>
+                </div>
+                
+                <!-- 進度指示器 -->
+                <div class="flex items-center justify-between">
+                    <div class="progress-step w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" id="step1">1</div>
+                    <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                    <div class="progress-step w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" id="step2">2</div>
+                    <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                    <div class="progress-step w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" id="step3">3</div>
+                    <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                    <div class="progress-step w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" id="step4">4</div>
+                    <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                    <div class="progress-step w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" id="step5">5</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 內容區域 -->
+        <div class="max-w-4xl mx-auto p-4 py-8">
+            <!-- Day 1 內容 -->
+            <div id="day1" class="day-content">
+                <div class="card p-6 md:p-8 mb-6 fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="badge earned text-white text-2xl">1</div>
+                        <div>
+                            <h2 class="text-2xl font-bold forest-green">Day 1: 初見森林</h2>
+                            <p class="text-sm text-gray-500">與內在相遇</p>
+                        </div>
+                    </div>
+                    
+                    <div class="prose max-w-none mb-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            歡迎來到靜謐森林。今天，我們將透過簡單的呼吸練習，幫助你暫時放下外在的喧囂，回到內在的寧靜。
+                        </p>
+                    </div>
+
+                    <!-- 呼吸練習 -->
+                    <div class="bg-forest-light rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold forest-green mb-3">3 分鐘呼吸覺察</h3>
+                        <p class="text-sm text-gray-600 mb-4">跟隨下方的節奏，進行深呼吸練習</p>
+                        
+                        <div id="breathingCircle" class="w-32 h-32 mx-auto mb-4 rounded-full bg-forest-green opacity-30 transition-all duration-4000"></div>
+                        
+                        <div class="text-center">
+                            <button onclick="startBreathing()" class="bg-forest-green text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">
+                                開始練習
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 今日反思 -->
+                    <div class="border-t pt-6">
+                        <h3 class="font-semibold forest-green mb-3">今日反思</h3>
+                        <textarea 
+                            id="day1Journal"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-green focus:border-transparent resize-none"
+                            rows="3"
+                            placeholder="在練習後，你感受到了什麼？"
+                        ></textarea>
+                        <button onclick="completeDay(1)" class="mt-3 bg-forest-brown text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">
+                            完成今日練習
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 內容 -->
+            <div id="day2" class="day-content hidden">
+                <div class="card p-6 md:p-8 mb-6 fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="badge earned text-white text-2xl">2</div>
+                        <div>
+                            <h2 class="text-2xl font-bold forest-green">Day 2: 聆聽寧靜</h2>
+                            <p class="text-sm text-gray-500">培養專注力</p>
+                        </div>
+                    </div>
+                    
+                    <div class="prose max-w-none mb-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            今天，讓我們練習聆聽。在看似平凡的環境中，其實藏著許多細微的聲音，等待被發現。
+                        </p>
+                    </div>
+
+                    <!-- 聲音冥想 -->
+                    <div class="bg-forest-light rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold forest-green mb-3">聲音冥想</h3>
+                        <p class="text-sm text-gray-600 mb-4">閉上眼睛，專注於周圍的聲音</p>
+                        
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 text-forest-green">
+                                <span class="text-gray-700">我聽見了遠處的聲音</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 text-forest-green">
+                                <span class="text-gray-700">我聽見了近處的聲音</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 text-forest-green">
+                                <span class="text-gray-700">我聽見了自己的呼吸聲</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 記錄平靜的聲音 -->
+                    <div class="border-t pt-6">
+                        <h3 class="font-semibold forest-green mb-3">記錄一個讓你平靜的聲音</h3>
+                        <input 
+                            type="text"
+                            id="day2Sound"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-green focus:border-transparent"
+                            placeholder="例如：雨聲、鳥鳴、風聲..."
+                        >
+                        <button onclick="completeDay(2)" class="mt-3 bg-forest-brown text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">
+                            完成今日練習
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 內容 -->
+            <div id="day3" class="day-content hidden">
+                <div class="card p-6 md:p-8 mb-6 fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="badge earned text-white text-2xl">3</div>
+                        <div>
+                            <h2 class="text-2xl font-bold forest-green">Day 3: 自然連結</h2>
+                            <p class="text-sm text-gray-500">發現身邊的自然</p>
+                        </div>
+                    </div>
+                    
+                    <div class="prose max-w-none mb-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            自然無處不在。即使在城市中，也能找到生命的痕跡。今天，讓我們用心觀察身邊的自然元素。
+                        </p>
+                    </div>
+
+                    <!-- 觀察練習 -->
+                    <div class="bg-forest-light rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold forest-green mb-3">觀察一個自然元素</h3>
+                        <p class="text-sm text-gray-600 mb-4">可以是一片葉子、一朵雲、甚至是陽光的影子</p>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg text-center">
+                                <div class="text-3xl mb-2">🌿</div>
+                                <p class="text-sm">植物</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg text-center">
+                                <div class="text-3xl mb-2">☁️</div>
+                                <p class="text-sm">天空</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg text-center">
+                                <div class="text-3xl mb-2">🌊</div>
+                                <p class="text-sm">水</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg text-center">
+                                <div class="text-3xl mb-2">🪨</div>
+                                <p class="text-sm">石頭</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 描述發現 -->
+                    <div class="border-t pt-6">
+                        <h3 class="font-semibold forest-green mb-3">描述你的發現</h3>
+                        <textarea 
+                            id="day3Discovery"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-green focus:border-transparent resize-none"
+                            rows="3"
+                            placeholder="我觀察到了..."
+                        ></textarea>
+                        <button onclick="completeDay(3)" class="mt-3 bg-forest-brown text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">
+                            完成今日練習
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 內容 -->
+            <div id="day4" class="day-content hidden">
+                <div class="card p-6 md:p-8 mb-6 fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="badge earned text-white text-2xl">4</div>
+                        <div>
+                            <h2 class="text-2xl font-bold forest-green">Day 4: 感恩時刻</h2>
+                            <p class="text-sm text-gray-500">培養感恩心</p>
+                        </div>
+                    </div>
+                    
+                    <div class="prose max-w-none mb-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            感恩是一種強大的力量。當我們將注意力放在美好的事物上，生命也會回應以更多的美好。
+                        </p>
+                    </div>
+
+                    <!-- 感恩練習 -->
+                    <div class="bg-forest-light rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold forest-green mb-3">寫下三個感恩</h3>
+                        <p class="text-sm text-gray-600 mb-4">可以是很小的事，重要的是真心感受</p>
+                        
+                        <div class="space-y-3">
+                            <input type="text" class="w-full p-3 bg-white rounded-lg" placeholder="1. 我感恩...">
+                            <input type="text" class="w-full p-3 bg-white rounded-lg" placeholder="2. 我感恩...">
+                            <input type="text" class="w-full p-3 bg-white rounded-lg" placeholder="3. 我感恩...">
+                        </div>
+                    </div>
+
+                    <!-- 送出祝福 -->
+                    <div class="border-t pt-6">
+                        <h3 class="font-semibold forest-green mb-3">選擇一個人送出祝福</h3>
+                        <input 
+                            type="text"
+                            id="day4Blessing"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-green focus:border-transparent"
+                            placeholder="我想祝福..."
+                        >
+                        <button onclick="completeDay(4)" class="mt-3 bg-forest-brown text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">
+                            完成今日練習
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 內容 -->
+            <div id="day5" class="day-content hidden">
+                <div class="card p-6 md:p-8 mb-6 fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="badge earned text-white text-2xl">5</div>
+                        <div>
+                            <h2 class="text-2xl font-bold forest-green">Day 5: 內在之光</h2>
+                            <p class="text-sm text-gray-500">認識自我價值</p>
+                        </div>
+                    </div>
+                    
+                    <div class="prose max-w-none mb-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            最後一天，讓我們回到自己。你已經走過了四天的旅程，是時候認識並肯定自己的價值了。
+                        </p>
+                    </div>
+
+                    <!-- 自我肯定練習 -->
+                    <div class="bg-forest-light rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold forest-green mb-3">自我肯定練習</h3>
+                        <p class="text-sm text-gray-600 mb-4">大聲或在心中對自己說這些話</p>
+                        
+                        <div class="space-y-2 text-center text-lg">
+                            <p class="forest-green">我值得被愛</p>
+                            <p class="forest-green">我有能力面對挑戰</p>
+                            <p class="forest-green">我的存在本身就有價值</p>
+                            <p class="forest-green">我正在成為更好的自己</p>
+                        </div>
+                    </div>
+
+                    <!-- 給未來的訊息 -->
+                    <div class="border-t pt-6">
+                        <h3 class="font-semibold forest-green mb-3">寫給未來自己的一句話</h3>
+                        <textarea 
+                            id="day5Message"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest-green focus:border-transparent resize-none"
+                            rows="3"
+                            placeholder="親愛的自己..."
+                        ></textarea>
+                        <button onclick="completeJourney()" class="mt-3 bg-gradient-to-r from-forest-green to-forest-brown text-white px-8 py-3 rounded-full hover:opacity-90 transition text-lg font-medium">
+                            完成 5 天旅程
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 徽章收集區 -->
+            <div class="card p-6 mb-6">
+                <h3 class="text-lg font-semibold forest-green mb-4">我的森林徽章</h3>
+                <div class="flex justify-around">
+                    <div class="text-center">
+                        <div id="badge1" class="badge locked mx-auto mb-2">🌱</div>
+                        <p class="text-xs text-gray-600">初見</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="badge2" class="badge locked mx-auto mb-2">👂</div>
+                        <p class="text-xs text-gray-600">聆聽</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="badge3" class="badge locked mx-auto mb-2">🌿</div>
+                        <p class="text-xs text-gray-600">連結</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="badge4" class="badge locked mx-auto mb-2">💝</div>
+                        <p class="text-xs text-gray-600">感恩</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="badge5" class="badge locked mx-auto mb-2">✨</div>
+                        <p class="text-xs text-gray-600">綻放</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 完成頁面 -->
+    <div id="completionPage" class="min-h-screen flex items-center justify-center p-4 hidden">
+        <div class="card max-w-lg w-full p-8 text-center fade-in">
+            <div class="text-6xl mb-4">🎊</div>
+            <h2 class="text-3xl font-bold forest-green mb-4">恭喜完成旅程！</h2>
+            <p class="text-gray-600 mb-6">你已經成功完成了 5 天的靜謐森林體驗旅程</p>
+            
+            <div class="bg-forest-light rounded-lg p-6 mb-6">
+                <h3 class="font-semibold forest-green mb-3">你的旅程成就</h3>
+                <div class="flex justify-around text-3xl mb-4">
+                    <span>🌱</span>
+                    <span>👂</span>
+                    <span>🌿</span>
+                    <span>💝</span>
+                    <span>✨</span>
+                </div>
+                <p class="text-sm text-gray-600">收集了全部 5 個森林徽章</p>
+            </div>
+            
+            <div class="space-y-3">
+                <button onclick="downloadCertificate()" class="w-full bg-forest-green text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition">
+                    下載成就證書
+                </button>
+                <button onclick="shareJourney()" class="w-full bg-white text-forest-green border-2 border-forest-green px-6 py-3 rounded-full hover:bg-forest-light transition">
+                    分享我的旅程
+                </button>
+                <a href="forest-journey.html" class="block w-full bg-forest-brown text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition">
+                    繼續 21 天深度旅程
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化資料
+        let journeyData = {
+            animal: null,
+            animalName: null,
+            currentDay: 1,
+            completedDays: [],
+            journals: {},
+            badges: []
+        };
+
+        // 從 LocalStorage 讀取進度
+        function loadProgress() {
+            const saved = localStorage.getItem('fiveDayJourney');
+            if (saved) {
+                journeyData = JSON.parse(saved);
+                updateUI();
+            }
+        }
+
+        // 儲存進度
+        function saveProgress() {
+            localStorage.setItem('fiveDayJourney', JSON.stringify(journeyData));
+        }
+
+        // 開始旅程
+        function startJourney() {
+            document.getElementById('welcomePage').classList.add('hidden');
+            document.getElementById('animalSelection').classList.remove('hidden');
+        }
+
+        // 選擇動物
+        function selectAnimal(animal, name) {
+            journeyData.animal = animal;
+            journeyData.animalName = name;
+            
+            // 更新動物顯示
+            const animalEmojis = {
+                'bear': '🐻',
+                'deer': '🦌',
+                'owl': '🦉',
+                'fox': '🦊',
+                'rabbit': '🐰',
+                'wolf': '🐺'
+            };
+            
+            document.getElementById('animalEmoji').textContent = animalEmojis[animal];
+            document.getElementById('animalName').textContent = name;
+            
+            // 顯示主頁面
+            document.getElementById('animalSelection').classList.add('hidden');
+            document.getElementById('journeyPage').classList.remove('hidden');
+            
+            // 顯示第一天內容
+            showDay(1);
+            saveProgress();
+        }
+
+        // 顯示指定天數的內容
+        function showDay(day) {
+            // 隱藏所有天數內容
+            document.querySelectorAll('.day-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // 顯示當前天數
+            document.getElementById(`day${day}`).classList.remove('hidden');
+            
+            // 更新進度條
+            updateProgressBar();
+        }
+
+        // 更新進度條
+        function updateProgressBar() {
+            for (let i = 1; i <= 5; i++) {
+                const step = document.getElementById(`step${i}`);
+                if (journeyData.completedDays.includes(i)) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (i === journeyData.currentDay) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            }
+        }
+
+        // 完成某一天
+        function completeDay(day) {
+            // 儲存日誌內容
+            const journalInput = document.getElementById(`day${day}Journal`) || 
+                               document.getElementById(`day${day}Sound`) || 
+                               document.getElementById(`day${day}Discovery`) || 
+                               document.getElementById(`day${day}Blessing`);
+            
+            if (journalInput && journalInput.value) {
+                journeyData.journals[`day${day}`] = journalInput.value;
+            }
+            
+            // 標記完成
+            if (!journeyData.completedDays.includes(day)) {
+                journeyData.completedDays.push(day);
+                journeyData.badges.push(day);
+                
+                // 更新徽章顯示
+                document.getElementById(`badge${day}`).classList.remove('locked');
+                document.getElementById(`badge${day}`).classList.add('earned');
+            }
+            
+            // 進入下一天
+            if (day < 5) {
+                journeyData.currentDay = day + 1;
+                showDay(day + 1);
+            }
+            
+            saveProgress();
+        }
+
+        // 開始呼吸練習
+        function startBreathing() {
+            const circle = document.getElementById('breathingCircle');
+            let scale = 1;
+            let growing = true;
+            
+            const interval = setInterval(() => {
+                if (growing) {
+                    scale += 0.01;
+                    if (scale >= 1.5) growing = false;
+                } else {
+                    scale -= 0.01;
+                    if (scale <= 1) growing = true;
+                }
+                circle.style.transform = `scale(${scale})`;
+            }, 40);
+            
+            // 3分鐘後停止
+            setTimeout(() => {
+                clearInterval(interval);
+                circle.style.transform = 'scale(1)';
+            }, 180000);
+        }
+
+        // 完成整個旅程
+        function completeJourney() {
+            // 儲存最後一天的訊息
+            const message = document.getElementById('day5Message').value;
+            if (message) {
+                journeyData.journals.day5 = message;
+            }
+            
+            // 完成第5天
+            completeDay(5);
+            
+            // 顯示完成頁面
+            document.getElementById('journeyPage').classList.add('hidden');
+            document.getElementById('completionPage').classList.remove('hidden');
+            
+            saveProgress();
+        }
+
+        // 下載證書（模擬）
+        function downloadCertificate() {
+            alert('成就證書生成中...\n\n' + journeyData.animalName + ' 已完成 5 天靜謐森林旅程！');
+        }
+
+        // 分享功能（模擬）
+        function shareJourney() {
+            const shareText = `我剛完成了靜謐森林 5 天體驗旅程！\n與我的森林嚮導 ${journeyData.animalName} 一起，收集了全部 5 個森林徽章 🌱👂🌿💝✨`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: '靜謐森林旅程',
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                alert('分享文字已複製：\n\n' + shareText);
+            }
+        }
+
+        // 更新 UI
+        function updateUI() {
+            if (journeyData.animal) {
+                // 如果已經選擇動物，直接顯示旅程頁面
+                document.getElementById('welcomePage').classList.add('hidden');
+                document.getElementById('animalSelection').classList.add('hidden');
+                document.getElementById('journeyPage').classList.remove('hidden');
+                
+                // 更新動物顯示
+                const animalEmojis = {
+                    'bear': '🐻',
+                    'deer': '🦌',
+                    'owl': '🦉',
+                    'fox': '🦊',
+                    'rabbit': '🐰',
+                    'wolf': '🐺'
+                };
+                
+                document.getElementById('animalEmoji').textContent = animalEmojis[journeyData.animal];
+                document.getElementById('animalName').textContent = journeyData.animalName;
+                
+                // 更新徽章
+                journeyData.badges.forEach(day => {
+                    document.getElementById(`badge${day}`).classList.remove('locked');
+                    document.getElementById(`badge${day}`).classList.add('earned');
+                });
+                
+                // 顯示當前天數
+                showDay(journeyData.currentDay);
+                
+                // 如果已完成所有天數，顯示完成頁面
+                if (journeyData.completedDays.length === 5) {
+                    document.getElementById('journeyPage').classList.add('hidden');
+                    document.getElementById('completionPage').classList.remove('hidden');
+                }
+            }
+        }
+
+        // 頁面載入時初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+        });
+    </script>
+</body>
+</html>

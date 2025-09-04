@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐森林 - 五日仙境之旅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Noto Sans TC', sans-serif;
+            background: #0a0a0a;
+            color: #f5f3f0;
+        }
+        
+        h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
+        
+        /* 深度體驗的暗色系設計 */
+        .fade-in {
+            animation: fadeIn 2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes breathing {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .breathing {
+            animation: breathing 4s ease-in-out infinite;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        /* 黑暗模式卡片 */
+        .dark-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* 發光效果 */
+        .glow {
+            text-shadow: 0 0 20px rgba(200, 125, 84, 0.5);
+        }
+        
+        .key-glow {
+            box-shadow: 0 0 30px rgba(200, 125, 84, 0.3);
+        }
+        
+        /* 音頻視覺化 */
+        .audio-wave {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .audio-bar {
+            width: 3px;
+            background: #C87D54;
+            animation: wave 1s ease-in-out infinite;
+        }
+        
+        .audio-bar:nth-child(1) { animation-delay: 0s; height: 20px; }
+        .audio-bar:nth-child(2) { animation-delay: 0.1s; height: 30px; }
+        .audio-bar:nth-child(3) { animation-delay: 0.2s; height: 25px; }
+        .audio-bar:nth-child(4) { animation-delay: 0.3s; height: 35px; }
+        .audio-bar:nth-child(5) { animation-delay: 0.4s; height: 20px; }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+        
+        /* 文字打字機效果 */
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        /* 自定義滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(200, 125, 84, 0.5);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+    
+    <!-- 開始畫面 -->
+    <div id="startScreen" class="min-h-screen flex items-center justify-center p-4 fade-in">
+        <div class="text-center max-w-2xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-8 glow">靜謐森林</h1>
+            <p class="text-xl mb-2 text-gray-400">五日仙境之旅</p>
+            <p class="text-sm text-gray-500 mb-12">一趟深入內心的愛麗絲夢遊</p>
+            
+            <div class="breathing text-gray-600 mb-12">
+                <p>時間在這裡，沒有意義。</p>
+                <p>你準備好，跌落了嗎？</p>
+            </div>
+            
+            <button onclick="startJourney()" class="bg-transparent border border-gray-600 text-gray-300 px-8 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition duration-1000">
+                深呼吸，然後進入
+            </button>
+        </div>
+    </div>
+
+    <!-- Day 1: 跌入樹洞 -->
+    <div id="day1" class="hidden">
+        <!-- 墜落儀式 -->
+        <div id="day1-falling" class="min-h-screen bg-black flex items-center justify-center">
+            <div class="text-center">
+                <div class="w-8 h-8 bg-white rounded-full opacity-10 mx-auto mb-8 breathing"></div>
+                <p class="text-gray-500 mb-8">戴上耳機，聆聽墜落的聲音...</p>
+                
+                <!-- 音頻視覺化 -->
+                <div class="audio-wave justify-center mb-8">
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                </div>
+                
+                <div id="falling-text" class="text-gray-400 space-y-4 max-w-md mx-auto">
+                    <p class="fade-in">現在... 寂靜開始了...</p>
+                    <p class="fade-in" style="animation-delay: 2s">感覺你的名字... 它像一件穿了很久的外套...</p>
+                    <p class="fade-in" style="animation-delay: 4s">從你的肩膀輕輕滑落...</p>
+                    <p class="fade-in" style="animation-delay: 6s">你的煩惱... 你的計畫... 都化作細小的塵埃...</p>
+                    <p class="fade-in" style="animation-delay: 8s">剩下的... 只有你的呼吸...</p>
+                </div>
+                
+                <button onclick="day1Land()" class="mt-12 text-gray-600 border border-gray-800 px-6 py-2 rounded-full hover:border-gray-600 transition opacity-0 fade-in" style="animation-delay: 10s">
+                    著陸
+                </button>
+            </div>
+        </div>
+
+        <!-- 林中醒來 -->
+        <div id="day1-forest" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <p class="text-gray-400 mb-6">你安全抵達了。</p>
+                    <p class="text-xl mb-8">這裡是你的靜謐森林，一個時間凝結之地。</p>
+                    
+                    <div class="border-l-2 border-gray-700 pl-6 mb-8">
+                        <p class="mb-4">在這裡，我們不用眼睛『看』，而是用整個生命去『凝視』。</p>
+                        <p class="mb-4">你的第一個任務，已經在你身邊等待。</p>
+                        <p class="text-gray-400">請在你的世界裡，尋找一個來自自然的『微小存在』。</p>
+                        <p class="text-gray-400">一片葉子、一顆石頭、一根羽毛、一朵乾枯的花瓣...</p>
+                    </div>
+                    
+                    <button onclick="day1Found()" class="border border-gray-600 text-gray-300 px-6 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        我找到了，它就在這裡
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 凝視與捕獲 -->
+        <div id="day1-gaze" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h3 class="text-2xl font-serif mb-6">凝視的儀式</h3>
+                    
+                    <div class="space-y-4 text-gray-400 mb-8">
+                        <p>現在，將你所有的注意力，都給予這個微小的生命。</p>
+                        <p>接下來的 15 分鐘，只屬於你和它。</p>
+                        
+                        <div class="pl-6 space-y-2 text-sm">
+                            <p>• 用指尖，感受它千萬年演化而來的紋理</p>
+                            <p>• 將它湊近耳邊，在寂靜中，聽聽它是否有聲音</p>
+                            <p>• 深呼吸，聞一聞它身上，屬於太陽、泥土或雨水的氣味</p>
+                            <p>• 轉動它，觀察光線如何在它的稜角與弧度之間流轉</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-700 border-dashed rounded-xl p-8 mb-6 text-center">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <p class="text-gray-500 mb-4">為它拍下一張特寫照片</p>
+                        <input type="file" id="day1Photo" accept="image/*" class="hidden" onchange="day1PhotoUploaded(event)">
+                        <label for="day1Photo" class="cursor-pointer text-gray-400 border border-gray-700 px-4 py-2 rounded-full hover:bg-white hover:bg-opacity-5 transition">
+                            點此上傳靈魂的肖像
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 鑄造鑰匙 -->
+        <div id="day1-key" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div id="uploadedPhotoContainer" class="mb-8"></div>
+                    
+                    <p class="text-gray-400 mb-4">你做得很好。你沒有『看』它，你『見到』了它。</p>
+                    <p class="mb-6">看著這張照片，再次感受你與它的連結。</p>
+                    
+                    <div class="border-l-2 border-orange-800 pl-6 mb-8">
+                        <p class="mb-4">現在，最重要的一步來了。</p>
+                        <p class="mb-4">如果這個微小的存在，它的整個生命、它的故事、它給你的感覺，</p>
+                        <p class="mb-4">只能濃縮成<span class="text-orange-400 font-bold">『一個詞』</span>來命名它的本質...</p>
+                        <p class="text-xl">那個詞，會是什麼？</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <input type="text" id="keyWord" placeholder="輸入那個詞..." 
+                               class="w-full bg-transparent border-b border-gray-600 py-3 text-center text-xl focus:outline-none focus:border-orange-400 transition">
+                    </div>
+                    
+                    <button onclick="forgeKey()" class="w-full bg-gradient-to-r from-orange-900 to-orange-800 text-white py-3 rounded-full hover:from-orange-800 hover:to-orange-700 transition key-glow">
+                        鑄造鑰匙
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 開啟內在之門 -->
+        <div id="day1-door" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4 floating">🗝️</div>
+                        <p class="text-xl text-orange-400" id="keyDisplay"></p>
+                    </div>
+                    
+                    <div class="space-y-4 text-gray-400 mb-8">
+                        <p>鑰匙，轉動了。</p>
+                        <p>門，開了一條縫。</p>
+                        <p>這把鑰匙所開啟的，是你內心一座塵封已久的房間。</p>
+                        <p>在你看見房間全貌之前...</p>
+                        <p>你先聞到了一股氣味... 或聽到了一段旋律... 或感覺到了一種溫度...</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="text-gray-500 text-sm">那是什麼被遺忘的感覺？是哪個被深藏的記憶的片段？</label>
+                        <textarea id="day1Memory" rows="4" placeholder="讓答案自己流淌出來..." 
+                                  class="w-full bg-transparent border border-gray-700 rounded-lg p-4 mt-2 focus:outline-none focus:border-orange-400 transition"></textarea>
+                    </div>
+                    
+                    <button onclick="completeDay1()" class="w-full border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        完成第一天
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 2: 遇見毛毛蟲 -->
+    <div id="day2" class="hidden">
+        <!-- 晨光中的倒影 -->
+        <div id="day2-reflection" class="min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <p class="text-gray-400 mb-4">森林在你沉睡時，下了一夜的雨。</p>
+                    <p class="mb-6">你昨天鑄造的鑰匙，<span class="text-orange-400" id="day2KeyReminder"></span>，在你手中依然溫熱。</p>
+                    
+                    <div class="text-center my-12">
+                        <div class="text-8xl mb-6">🐛</div>
+                        <p class="text-gray-500 mb-2">在林間空地的一片水窪旁，</p>
+                        <p class="text-gray-500 mb-4">你看到一隻正在吞雲吐霧的毛毛蟲。</p>
+                        <p class="text-2xl font-serif">「你，是誰？」</p>
+                    </div>
+                    
+                    <button onclick="day2Mirror()" class="w-full border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        回應祂的提問
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 鏡像書寫 -->
+        <div id="day2-writing" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h3 class="text-2xl font-serif mb-6">我是...</h3>
+                    
+                    <div class="text-gray-400 mb-8">
+                        <p class="mb-2">規則很簡單：</p>
+                        <ul class="space-y-1 text-sm pl-6">
+                            <li>• 不要停頓</li>
+                            <li>• 不要思考</li>
+                            <li>• 不要評判</li>
+                            <li>• 寫下所有浮現的答案</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="iAmList" class="space-y-2 mb-8">
+                        <input type="text" placeholder="我是..." class="w-full bg-transparent border-b border-gray-700 py-2 focus:outline-none focus:border-orange-400" onkeypress="addIAm(event)">
+                    </div>
+                    
+                    <button onclick="day2Sort()" class="w-full border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        我寫完了，這是我所有的答案
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分揀絲線 -->
+        <div id="day2-threads" class="hidden min-h-screen p-4">
+            <div class="max-w-4xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <p class="text-center text-gray-400 mb-8">毛毛蟲從口中，吐出兩根不同顏色的絲線。</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- 金色絲線 -->
+                        <div class="border border-yellow-900 rounded-xl p-6">
+                            <h4 class="text-yellow-600 font-serif text-xl mb-2">金色的絲線</h4>
+                            <p class="text-gray-500 text-sm mb-4">這是世界「給」你的</p>
+                            <div id="goldThreads" class="space-y-2 min-h-[200px]"></div>
+                        </div>
+                        
+                        <!-- 銀色絲線 -->
+                        <div class="border border-gray-600 rounded-xl p-6">
+                            <h4 class="text-gray-400 font-serif text-xl mb-2">銀色的絲線</h4>
+                            <p class="text-gray-500 text-sm mb-4">這是我與生「俱」來的</p>
+                            <div id="silverThreads" class="space-y-2 min-h-[200px]"></div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="day2Record()" class="w-full mt-8 border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        我已分揀完成
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 捕獲頻率 -->
+        <div id="day2-frequency" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <p class="text-gray-400 mb-6">毛毛蟲再次凝視著你：「文字，是外衣。但你真實的聲音，是什麼？」</p>
+                    
+                    <div class="space-y-4 text-gray-500 mb-8">
+                        <p>請放下手機，找一個安靜的空間。</p>
+                        <p>閉上眼睛，將注意力帶回你的身體。</p>
+                        <p>讓你內在最深處的那個『你』，發出一聲最誠實的嘆息、輕哼或音節。</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="recordBtn" onclick="toggleRecording()" class="w-32 h-32 rounded-full border-2 border-red-800 text-red-400 hover:bg-red-900 hover:bg-opacity-20 transition">
+                            <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="8"/>
+                            </svg>
+                            <p class="text-sm mt-2">按住錄音</p>
+                        </button>
+                    </div>
+                    
+                    <button onclick="completeDay2()" class="w-full mt-8 border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        完成第二天
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 3: 瘋帽匠的茶會 -->
+    <div id="day3" class="hidden">
+        <!-- 茶會邀請 -->
+        <div id="day3-invitation" class="min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <p class="text-gray-400 mb-4">森林的深處，有些不一樣了。</p>
+                        <p class="text-xl mb-6">歡迎來到瘋帽匠的茶會。</p>
+                        <div class="text-6xl mb-6">🫖 ☕ 🎩</div>
+                    </div>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="border-l-2 border-gray-700 pl-6">
+                            <h4 class="text-orange-400 mb-2">【登山者】</h4>
+                            <p class="text-gray-500 text-sm">永遠望著更高山峰、堅韌、務實的你</p>
+                        </div>
+                        <div class="border-l-2 border-gray-700 pl-6">
+                            <h4 class="text-green-400 mb-2">【牧神】</h4>
+                            <p class="text-gray-500 text-sm">渴望赤腳奔跑、享受純粹喜悅的你</p>
+                        </div>
+                        <div class="border-l-2 border-gray-700 pl-6">
+                            <h4 class="text-blue-400 mb-2">【守望者】</h4>
+                            <p class="text-gray-500 text-sm">在靜謐中深刻感受一切的你</p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="day3Gifts()" class="w-full border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        我的客人們，已全部入座
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 禮物交換 -->
+        <div id="day3-gifts" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h3 class="text-2xl font-serif mb-6">禮物交換儀式</h3>
+                    
+                    <div class="space-y-4 text-gray-400 mb-8">
+                        <p>瘋帽匠的茶會，有一個奇怪的規矩：</p>
+                        <p>不聊空話，只交換禮物。</p>
+                        
+                        <div class="bg-gray-900 rounded-lg p-4 space-y-2 text-sm">
+                            <p>• 【登山者】要送一份禮物給【牧神】</p>
+                            <p>• 【牧神】要送一份禮物給【守望者】</p>
+                            <p>• 【守望者】要送一份禮物給【登山者】</p>
+                        </div>
+                        
+                        <p class="text-gray-500">請在房間裡找三樣真實的物品，擺放好並拍照。</p>
+                    </div>
+                    
+                    <div class="border border-gray-700 border-dashed rounded-xl p-8 mb-6 text-center">
+                        <input type="file" id="day3Photo" accept="image/*" class="hidden" onchange="day3PhotoUploaded(event)">
+                        <label for="day3Photo" class="cursor-pointer text-gray-400 border border-gray-700 px-4 py-2 rounded-full hover:bg-white hover:bg-opacity-5 transition">
+                            上傳我的茶會合照
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 無聲對話 -->
+        <div id="day3-dialogue" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div id="day3PhotoContainer" class="mb-8"></div>
+                    
+                    <h3 class="text-2xl font-serif mb-6">無聲的對話</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="text-orange-400 text-sm">登山者送出禮物時，想對牧神說：</label>
+                            <input type="text" id="day3msg1" class="w-full bg-transparent border-b border-gray-700 py-2 mt-2 focus:outline-none focus:border-orange-400">
+                        </div>
+                        <div>
+                            <label class="text-green-400 text-sm">牧神送出禮物時，想對守望者說：</label>
+                            <input type="text" id="day3msg2" class="w-full bg-transparent border-b border-gray-700 py-2 mt-2 focus:outline-none focus:border-green-400">
+                        </div>
+                        <div>
+                            <label class="text-blue-400 text-sm">守望者送出禮物時，想對登山者說：</label>
+                            <input type="text" id="day3msg3" class="w-full bg-transparent border-b border-gray-700 py-2 mt-2 focus:outline-none focus:border-blue-400">
+                        </div>
+                    </div>
+                    
+                    <button onclick="day3KeyGiving()" class="w-full mt-8 border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        完成對話翻譯
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 鑰匙歸宿 -->
+        <div id="day3-keygiving" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4 floating">🗝️</div>
+                        <p class="text-xl text-orange-400" id="day3KeyDisplay"></p>
+                    </div>
+                    
+                    <p class="text-gray-400 mb-6">這把鑰匙所代表的力量，此刻，他們三人中，誰最需要它？</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <button onclick="giveKeyTo('登山者')" class="p-4 border border-gray-700 rounded-lg hover:bg-orange-900 hover:bg-opacity-20 transition">
+                            <div class="text-3xl mb-2">⛰️</div>
+                            <p class="text-sm">登山者</p>
+                        </button>
+                        <button onclick="giveKeyTo('牧神')" class="p-4 border border-gray-700 rounded-lg hover:bg-green-900 hover:bg-opacity-20 transition">
+                            <div class="text-3xl mb-2">🌿</div>
+                            <p class="text-sm">牧神</p>
+                        </button>
+                        <button onclick="giveKeyTo('守望者')" class="p-4 border border-gray-700 rounded-lg hover:bg-blue-900 hover:bg-opacity-20 transition">
+                            <div class="text-3xl mb-2">👁️</div>
+                            <p class="text-sm">守望者</p>
+                        </button>
+                    </div>
+                    
+                    <div id="keyGivingReason" class="hidden">
+                        <label class="text-gray-500 text-sm">當你把鑰匙交給祂，祂的生命會發生什麼改變？</label>
+                        <textarea id="day3Change" rows="3" class="w-full bg-transparent border border-gray-700 rounded-lg p-4 mt-2 focus:outline-none focus:border-orange-400"></textarea>
+                        
+                        <button onclick="completeDay3()" class="w-full mt-4 border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                            完成第三天
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 4: 紅心皇后的花園 -->
+    <div id="day4" class="hidden">
+        <!-- 完美花園 -->
+        <div id="day4-garden" class="min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4">♠️ ♥️ ♣️ ♦️</div>
+                        <p class="text-xl mb-2">紅心皇后的玫瑰花園</p>
+                        <p class="text-gray-500">這裡的一切，都完美得令人窒息</p>
+                    </div>
+                    
+                    <p class="text-gray-400 mb-6">皇后的聲音在你腦中響起：「Off with their heads!」</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <p>請寫下三條你內心「紅心皇后」頒布的絕對法則：</p>
+                        <input type="text" id="law1" placeholder="法則一..." class="w-full bg-transparent border-b border-red-900 py-2 focus:outline-none">
+                        <input type="text" id="law2" placeholder="法則二..." class="w-full bg-transparent border-b border-red-900 py-2 focus:outline-none">
+                        <input type="text" id="law3" placeholder="法則三..." class="w-full bg-transparent border-b border-red-900 py-2 focus:outline-none">
+                    </div>
+                    
+                    <button onclick="day4BodyMap()" class="w-full border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        這就是我的三條法則
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 身體牢籠 -->
+        <div id="day4-body" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h3 class="text-2xl font-serif mb-6">身體的牢籠</h3>
+                    
+                    <p class="text-gray-400 mb-8">默念每條法則，感受它在你身體的哪個部位製造了緊縮：</p>
+                    
+                    <div class="space-y-6" id="lawsWithBody"></div>
+                    
+                    <button onclick="day4Release()" class="w-full mt-8 border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        我已標記出枷鎖的位置
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 釋放儀式 -->
+        <div id="day4-release" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h3 class="text-2xl font-serif mb-6">身體的革命</h3>
+                    
+                    <div class="space-y-4 text-gray-400 mb-8">
+                        <p>現在，我們要發起一場身體的革命。</p>
+                        <p>請找一個絕對私密、安全的空間。</p>
+                        
+                        <div class="bg-gray-900 rounded-lg p-4 space-y-2 text-sm">
+                            <p>你可以：</p>
+                            <p>• 用力捶打枕頭，釋放壓力</p>
+                            <p>• 做無聲的吶喊，繃緊後放鬆</p>
+                            <p>• 溫柔擁抱緊縮的部位，允許顫抖</p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="day4Rewrite()" class="w-full border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        我已完成釋放
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重寫法則 -->
+        <div id="day4-rewrite" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <p class="text-gray-400 mb-6">運用茶會朋友們的力量，改寫你的舊法則：</p>
+                    
+                    <div class="space-y-6" id="lawsRewrite"></div>
+                    
+                    <button onclick="completeDay4()" class="w-full mt-8 bg-gradient-to-r from-red-900 to-orange-900 text-white py-3 rounded-full hover:from-red-800 hover:to-orange-800 transition">
+                        完成改寫，解除魔咒
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 5: 醒來 -->
+    <div id="day5" class="hidden">
+        <!-- 花園醒來 -->
+        <div id="day5-awake" class="min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <p class="text-gray-400 mb-4">昨夜的雨，洗淨了整個世界。</p>
+                        <p class="text-xl mb-2">你睜開眼睛，發現自己正躺在自己的花園裡。</p>
+                        <p class="text-gray-500">這裡，只剩下寧靜，和你自己。</p>
+                    </div>
+                    
+                    <div class="border-l-2 border-gray-700 pl-6 mb-8">
+                        <p class="mb-4">請你暫時離開螢幕。</p>
+                        <p class="mb-4">走到窗邊，或踏出家門。</p>
+                        <p class="mb-4">用這四天被喚醒的所有感官...</p>
+                        <p>去『第一次』看見一件你早已習以為常的事物。</p>
+                    </div>
+                    
+                    <div class="border border-gray-700 border-dashed rounded-xl p-8 text-center">
+                        <input type="file" id="day5Photo" accept="image/*" class="hidden" onchange="day5PhotoUploaded(event)">
+                        <label for="day5Photo" class="cursor-pointer text-gray-400 border border-gray-700 px-4 py-2 rounded-full hover:bg-white hover:bg-opacity-5 transition">
+                            我看見了，並已拍下醒來的證明
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 愛麗絲地圖 -->
+        <div id="day5-map" class="hidden min-h-screen p-4">
+            <div class="max-w-4xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h2 class="text-3xl font-serif text-center mb-8">你的愛麗絲地圖</h2>
+                    
+                    <div class="space-y-6" id="aliceMap"></div>
+                    
+                    <button onclick="day5Letter()" class="w-full mt-8 border border-gray-600 text-gray-300 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition">
+                        檢視完整地圖
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 時空信 -->
+        <div id="day5-letter" class="hidden min-h-screen p-4">
+            <div class="max-w-3xl mx-auto py-12">
+                <div class="dark-card rounded-2xl p-8 md:p-12">
+                    <h3 class="text-2xl font-serif mb-6">給未來自己的時空信</h3>
+                    
+                    <div class="mb-8">
+                        <p class="text-gray-400 mb-4">為一個月後的自己，寫一封簡短的信：</p>
+                        <textarea id="futureLetter" rows="6" placeholder="親愛的自己..." 
+                                  class="w-full bg-transparent border border-gray-700 rounded-lg p-4 focus:outline-none focus:border-orange-400"></textarea>
+                    </div>
+                    
+                    <button onclick="completeJourney()" class="w-full bg-gradient-to-r from-gray-800 to-gray-700 text-white py-3 rounded-full hover:from-gray-700 hover:to-gray-600 transition">
+                        封存這封時空信，寄往未來
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 結束畫面 -->
+        <div id="day5-end" class="hidden min-h-screen flex items-center justify-center p-4">
+            <div class="text-center max-w-2xl fade-in">
+                <p class="text-gray-400 mb-4">親愛的旅人，我們的旅程，到此結束了。</p>
+                <p class="text-xl mb-8">但你的旅程，才正要開始。</p>
+                
+                <div class="my-12">
+                    <p class="text-gray-500 mb-4">毛毛蟲最後的提問，不是「你是誰？」</p>
+                    <p class="text-2xl font-serif glow">「現在，你要去創造什麼？」</p>
+                </div>
+                
+                <p class="text-gray-600">靜謐森林永遠為你敞開。</p>
+                <p class="text-gray-600">再會。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 儲存旅程資料
+        let journeyData = {
+            day1: {},
+            day2: {},
+            day3: {},
+            day4: {},
+            day5: {},
+            currentDay: 0
+        };
+
+        // 從 localStorage 載入進度
+        function loadProgress() {
+            const saved = localStorage.getItem('aliceJourney');
+            if (saved) {
+                journeyData = JSON.parse(saved);
+            }
+        }
+
+        // 儲存進度
+        function saveProgress() {
+            localStorage.setItem('aliceJourney', JSON.stringify(journeyData));
+        }
+
+        // 開始旅程
+        function startJourney() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('day1').classList.remove('hidden');
+            document.getElementById('day1-falling').classList.remove('hidden');
+            journeyData.currentDay = 1;
+            saveProgress();
+        }
+
+        // Day 1 Functions
+        function day1Land() {
+            document.getElementById('day1-falling').classList.add('hidden');
+            document.getElementById('day1-forest').classList.remove('hidden');
+        }
+
+        function day1Found() {
+            document.getElementById('day1-forest').classList.add('hidden');
+            document.getElementById('day1-gaze').classList.remove('hidden');
+        }
+
+        function day1PhotoUploaded(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    journeyData.day1.photo = e.target.result;
+                    document.getElementById('day1-gaze').classList.add('hidden');
+                    document.getElementById('day1-key').classList.remove('hidden');
+                    
+                    // 顯示照片
+                    document.getElementById('uploadedPhotoContainer').innerHTML = 
+                        `<img src="${e.target.result}" class="w-full rounded-lg mb-4">`;
+                    saveProgress();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function forgeKey() {
+            const keyWord = document.getElementById('keyWord').value;
+            if (keyWord) {
+                journeyData.day1.key = keyWord;
+                document.getElementById('day1-key').classList.add('hidden');
+                document.getElementById('day1-door').classList.remove('hidden');
+                document.getElementById('keyDisplay').textContent = keyWord;
+                saveProgress();
+            }
+        }
+
+        function completeDay1() {
+            const memory = document.getElementById('day1Memory').value;
+            journeyData.day1.memory = memory;
+            journeyData.currentDay = 2;
+            saveProgress();
+            
+            // 轉到第二天
+            document.getElementById('day1').classList.add('hidden');
+            document.getElementById('day2').classList.remove('hidden');
+            document.getElementById('day2-reflection').classList.remove('hidden');
+            
+            // 顯示鑰匙提醒
+            document.getElementById('day2KeyReminder').textContent = journeyData.day1.key;
+        }
+
+        // Day 2 Functions
+        function day2Mirror() {
+            document.getElementById('day2-reflection').classList.add('hidden');
+            document.getElementById('day2-writing').classList.remove('hidden');
+        }
+
+        function addIAm(event) {
+            if (event.key === 'Enter' && event.target.value) {
+                const list = document.getElementById('iAmList');
+                const newDiv = document.createElement('div');
+                newDiv.className = 'p-2 bg-gray-900 rounded cursor-move';
+                newDiv.textContent = '我是' + event.target.value;
+                newDiv.draggable = true;
+                list.insertBefore(newDiv, list.lastElementChild);
+                event.target.value = '';
+            }
+        }
+
+        function day2Sort() {
+            const items = document.querySelectorAll('#iAmList div');
+            journeyData.day2.statements = Array.from(items).map(i => i.textContent);
+            
+            document.getElementById('day2-writing').classList.add('hidden');
+            document.getElementById('day2-threads').classList.remove('hidden');
+            
+            // 顯示所有陳述供分類
+            items.forEach(item => {
+                item.onclick = function() {
+                    if (this.parentElement.id === 'goldThreads') {
+                        document.getElementById('silverThreads').appendChild(this);
+                    } else {
+                        document.getElementById('goldThreads').appendChild(this);
+                    }
+                };
+            });
+        }
+
+        function day2Record() {
+            document.getElementById('day2-threads').classList.add('hidden');
+            document.getElementById('day2-frequency').classList.remove('hidden');
+        }
+
+        function toggleRecording() {
+            // 模擬錄音
+            const btn = document.getElementById('recordBtn');
+            btn.classList.toggle('bg-red-900');
+            btn.classList.toggle('bg-opacity-30');
+        }
+
+        function completeDay2() {
+            journeyData.currentDay = 3;
+            saveProgress();
+            
+            document.getElementById('day2').classList.add('hidden');
+            document.getElementById('day3').classList.remove('hidden');
+            document.getElementById('day3-invitation').classList.remove('hidden');
+        }
+
+        // Day 3 Functions
+        function day3Gifts() {
+            document.getElementById('day3-invitation').classList.add('hidden');
+            document.getElementById('day3-gifts').classList.remove('hidden');
+        }
+
+        function day3PhotoUploaded(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    journeyData.day3.photo = e.target.result;
+                    document.getElementById('day3-gifts').classList.add('hidden');
+                    document.getElementById('day3-dialogue').classList.remove('hidden');
+                    
+                    document.getElementById('day3PhotoContainer').innerHTML = 
+                        `<img src="${e.target.result}" class="w-full rounded-lg mb-4">`;
+                    saveProgress();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function day3KeyGiving() {
+            journeyData.day3.messages = {
+                msg1: document.getElementById('day3msg1').value,
+                msg2: document.getElementById('day3msg2').value,
+                msg3: document.getElementById('day3msg3').value
+            };
+            
+            document.getElementById('day3-dialogue').classList.add('hidden');
+            document.getElementById('day3-keygiving').classList.remove('hidden');
+            document.getElementById('day3KeyDisplay').textContent = journeyData.day1.key;
+            saveProgress();
+        }
+
+        function giveKeyTo(recipient) {
+            journeyData.day3.keyRecipient = recipient;
+            document.getElementById('keyGivingReason').classList.remove('hidden');
+            saveProgress();
+        }
+
+        function completeDay3() {
+            journeyData.day3.change = document.getElementById('day3Change').value;
+            journeyData.currentDay = 4;
+            saveProgress();
+            
+            document.getElementById('day3').classList.add('hidden');
+            document.getElementById('day4').classList.remove('hidden');
+            document.getElementById('day4-garden').classList.remove('hidden');
+        }
+
+        // Day 4 Functions
+        function day4BodyMap() {
+            const laws = [
+                document.getElementById('law1').value,
+                document.getElementById('law2').value,
+                document.getElementById('law3').value
+            ];
+            
+            journeyData.day4.laws = laws;
+            
+            document.getElementById('day4-garden').classList.add('hidden');
+            document.getElementById('day4-body').classList.remove('hidden');
+            
+            const container = document.getElementById('lawsWithBody');
+            container.innerHTML = laws.map((law, i) => `
+                <div>
+                    <p class="text-red-400 mb-2">法則 ${i+1}: ${law}</p>
+                    <input type="text" id="body${i}" placeholder="身體感受..." 
+                           class="w-full bg-transparent border-b border-gray-700 py-2 focus:outline-none">
+                </div>
+            `).join('');
+            
+            saveProgress();
+        }
+
+        function day4Release() {
+            journeyData.day4.bodyFeelings = [
+                document.getElementById('body0').value,
+                document.getElementById('body1').value,
+                document.getElementById('body2').value
+            ];
+            
+            document.getElementById('day4-body').classList.add('hidden');
+            document.getElementById('day4-release').classList.remove('hidden');
+            saveProgress();
+        }
+
+        function day4Rewrite() {
+            document.getElementById('day4-release').classList.add('hidden');
+            document.getElementById('day4-rewrite').classList.remove('hidden');
+            
+            const container = document.getElementById('lawsRewrite');
+            container.innerHTML = journeyData.day4.laws.map((law, i) => `
+                <div>
+                    <p class="text-red-400 mb-2">舊法則: ${law}</p>
+                    <textarea id="newLaw${i}" rows="2" placeholder="運用朋友們的力量，改寫為..." 
+                              class="w-full bg-transparent border border-gray-700 rounded-lg p-3 focus:outline-none"></textarea>
+                </div>
+            `).join('');
+        }
+
+        function completeDay4() {
+            journeyData.day4.newLaws = [
+                document.getElementById('newLaw0').value,
+                document.getElementById('newLaw1').value,
+                document.getElementById('newLaw2').value
+            ];
+            journeyData.currentDay = 5;
+            saveProgress();
+            
+            document.getElementById('day4').classList.add('hidden');
+            document.getElementById('day5').classList.remove('hidden');
+            document.getElementById('day5-awake').classList.remove('hidden');
+        }
+
+        // Day 5 Functions
+        function day5PhotoUploaded(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    journeyData.day5.photo = e.target.result;
+                    document.getElementById('day5-awake').classList.add('hidden');
+                    document.getElementById('day5-map').classList.remove('hidden');
+                    
+                    // 生成地圖
+                    generateAliceMap();
+                    saveProgress();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function generateAliceMap() {
+            const mapContainer = document.getElementById('aliceMap');
+            mapContainer.innerHTML = `
+                <div class="border-l-2 border-gray-700 pl-6">
+                    <h4 class="text-orange-400 mb-2">🕳️ 兔子洞入口</h4>
+                    <p class="text-gray-400">你帶著名為「${journeyData.day1.key}」的鑰匙跌入...</p>
+                </div>
+                <div class="border-l-2 border-gray-700 pl-6">
+                    <h4 class="text-green-400 mb-2">🐛 毛毛蟲的蘑菇</h4>
+                    <p class="text-gray-400">區分了金色與銀色的絲線...</p>
+                </div>
+                <div class="border-l-2 border-gray-700 pl-6">
+                    <h4 class="text-purple-400 mb-2">🎩 瘋帽匠的茶桌</h4>
+                    <p class="text-gray-400">三位朋友交換了禮物，鑰匙交給了${journeyData.day3.keyRecipient}...</p>
+                </div>
+                <div class="border-l-2 border-gray-700 pl-6">
+                    <h4 class="text-red-400 mb-2">♥️ 紅心皇后的花園</h4>
+                    <p class="text-gray-400">改寫了內心的法則...</p>
+                </div>
+                <div class="border-l-2 border-gray-700 pl-6">
+                    <h4 class="text-blue-400 mb-2">🌅 花園的出口</h4>
+                    <img src="${journeyData.day5.photo}" class="w-32 h-32 object-cover rounded-lg mt-2">
+                </div>
+            `;
+        }
+
+        function day5Letter() {
+            document.getElementById('day5-map').classList.add('hidden');
+            document.getElementById('day5-letter').classList.remove('hidden');
+        }
+
+        function completeJourney() {
+            journeyData.day5.letter = document.getElementById('futureLetter').value;
+            journeyData.completed = true;
+            saveProgress();
+            
+            document.getElementById('day5-letter').classList.add('hidden');
+            document.getElementById('day5-end').classList.remove('hidden');
+            
+            // 30天後發送提醒（實際應用需要後端支援）
+            console.log('Journey completed!', journeyData);
+        }
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            
+            // 如果有進度，恢復到當前天數
+            if (journeyData.currentDay > 0) {
+                // 實現進度恢復邏輯
+            }
+        });
+    </script>
+</body>
+</html>
