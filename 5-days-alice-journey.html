@@ -690,6 +690,9 @@
             day5: {},
             currentDay: 0
         };
+        
+        // Debug 模式
+        const DEBUG = true;
 
         // 從 localStorage 載入進度
         function loadProgress() {
@@ -858,7 +861,14 @@
             
             document.getElementById('day3-dialogue').classList.add('hidden');
             document.getElementById('day3-keygiving').classList.remove('hidden');
-            document.getElementById('day3KeyDisplay').textContent = journeyData.day1.key;
+            
+            // 確保有 key 才顯示
+            if (journeyData.day1 && journeyData.day1.key) {
+                document.getElementById('day3KeyDisplay').textContent = journeyData.day1.key;
+            } else {
+                document.getElementById('day3KeyDisplay').textContent = '你的鑰匙';
+            }
+            
             saveProgress();
         }
 
@@ -869,13 +879,26 @@
         }
 
         function completeDay3() {
-            journeyData.day3.change = document.getElementById('day3Change').value;
+            if (DEBUG) console.log('Completing Day 3...');
+            
+            const changeElement = document.getElementById('day3Change');
+            if (changeElement) {
+                journeyData.day3.change = changeElement.value;
+            }
+            
             journeyData.currentDay = 4;
             saveProgress();
             
-            document.getElementById('day3').classList.add('hidden');
-            document.getElementById('day4').classList.remove('hidden');
-            document.getElementById('day4-garden').classList.remove('hidden');
+            if (DEBUG) console.log('Journey Data:', journeyData);
+            
+            // 確保元素存在再隱藏/顯示
+            const day3Element = document.getElementById('day3');
+            const day4Element = document.getElementById('day4');
+            const day4GardenElement = document.getElementById('day4-garden');
+            
+            if (day3Element) day3Element.classList.add('hidden');
+            if (day4Element) day4Element.classList.remove('hidden');
+            if (day4GardenElement) day4GardenElement.classList.remove('hidden');
         }
 
         // Day 4 Functions
