@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心靈之森 - 一趟為期七日的重逢之旅 | 靜謐森林</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Root Variables - Based on Style Guide */
+        :root {
+            /* Primary Colors */
+            --forest-mist-white: #F5F5F3;
+            --deep-forest-green: #2F4858;
+            --rock-gray: #3A3A3A;
+            --warm-wood-brown: #C87D54;
+            --dawn-beige: #EAE5E0;
+            
+            /* Additional Colors for interactions */
+            --warm-wood-hover: #B56A40;
+            --transparent-white: rgba(255, 255, 255, 0.05);
+            --shadow-subtle: rgba(46, 79, 79, 0.08);
+            
+            /* Typography */
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+            
+            /* Spacing */
+            --card-radius: 1.25rem;
+            --button-radius: 0.75rem;
+            
+            /* Transitions */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-gentle: all 0.5s ease-in-out;
+        }
+        
+        /* Base Body Styles */
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--forest-mist-white);
+            color: var(--rock-gray);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Typography Hierarchy */
+        h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--deep-forest-green);
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 1.75rem);
+            font-weight: 700;
+            color: var(--rock-gray);
+            line-height: 1.4;
+        }
+        
+        .quote {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--rock-gray);
+            opacity: 0.9;
+        }
+        
+        /* Container & Layout */
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        /* Card Component */
+        .card {
+            background: white;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--dawn-beige);
+            box-shadow: 0 10px 30px var(--shadow-subtle);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition-smooth);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Card Types */
+        .card-header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(135deg, var(--transparent-white), transparent);
+        }
+        
+        .card-diary {
+            position: relative;
+            background: white;
+            padding: 2.5rem;
+        }
+        
+        .card-diary::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            border: 1px dashed var(--dawn-beige);
+            border-radius: var(--card-radius);
+            pointer-events: none;
+        }
+        
+        .card-audio {
+            background: linear-gradient(135deg, white, var(--forest-mist-white));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-interactive {
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        
+        /* Card States */
+        .card.locked {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            animation: none;
+        }
+        
+        .card.unlocking {
+            animation: unlockCard 0.8s ease-out forwards;
+        }
+        
+        @keyframes unlockCard {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                max-height: 1000px;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--dawn-beige);
+            border-radius: 2px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--warm-wood-brown), var(--deep-forest-green));
+            border-radius: 2px;
+            transition: width 0.8s ease-out;
+        }
+        
+        /* Buttons */
+        .btn {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.875rem 2rem;
+            border-radius: var(--button-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1;
+        }
+        
+        .btn-primary {
+            background: var(--warm-wood-brown);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--warm-wood-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(200, 125, 84, 0.3);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--deep-forest-green);
+            border: 1px solid var(--dawn-beige);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--forest-mist-white);
+        }
+        
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Audio Player */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--forest-mist-white);
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .play-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--deep-forest-green);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+            background: var(--warm-wood-brown);
+        }
+        
+        .play-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
+        .audio-progress {
+            flex: 1;
+            height: 4px;
+            background: var(--dawn-beige);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .audio-progress-fill {
+            height: 100%;
+            background: var(--warm-wood-brown);
+            border-radius: 2px;
+            width: 0;
+            transition: width 0.1s linear;
+        }
+        
+        .audio-time {
+            font-size: 0.875rem;
+            color: var(--rock-gray);
+            min-width: 60px;
+        }
+        
+        /* Interactive Elements */
+        .breathing-light {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 125, 84, 0.3), transparent);
+            animation: breathe 4s ease-in-out infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.8;
+            }
+        }
+        
+        /* Color Palette for Emotions */
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .color-option {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.selected {
+            box-shadow: 0 0 0 3px var(--warm-wood-brown);
+        }
+        
+        .color-label {
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .color-option:hover .color-label {
+            opacity: 1;
+        }
+        
+        /* Canvas for Drawing */
+        .drawing-canvas {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            border: 1px solid var(--dawn-beige);
+            border-radius: 1rem;
+            cursor: crosshair;
+            background: var(--forest-mist-white);
+            margin: 1.5rem auto;
+            display: block;
+        }
+        
+        /* 3D Leaf Container with better 3D effect */
+        .leaf-3d-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            perspective: 1000px;
+        }
+        
+        .leaf-3d-container:active {
+            cursor: grabbing;
+        }
+        
+        .leaf-visual {
+            width: 200px;
+            height: 300px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300"><defs><linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a7c6e;stop-opacity:1" /><stop offset="100%" style="stop-color:%232F4858;stop-opacity:1" /></linearGradient></defs><path d="M100 10 Q 50 100 60 200 T 100 290 Q 140 200 150 100 T 100 10" fill="url(%23leafGradient)" opacity="0.9"/><path d="M100 10 L 100 290" stroke="%232F4858" stroke-width="2"/><path d="M100 80 L 60 60 M100 120 L 140 100 M100 160 L 70 140 M100 200 L 130 180" stroke="%232F4858" stroke-width="1" opacity="0.5"/><circle cx="120" cy="150" r="5" fill="%23000000" opacity="0.3"/></svg>') no-repeat center;
+            background-size: contain;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg) rotateX(0deg);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+        
+        /* Wind Sound Visual */
+        .wind-visual {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(47,72,88,0.05) 0%, transparent 100%);
+            border-radius: 1rem;
+        }
+        
+        .wind-symbol {
+            position: absolute;
+            opacity: 0;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            font-size: 2rem;
+            animation: floatBy 10s linear infinite;
+        }
+        
+        .wind-symbol.visible {
+            opacity: 0.7;
+        }
+        
+        .wind-symbol:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        
+        @keyframes floatBy {
+            from {
+                left: -50px;
+            }
+            to {
+                left: calc(100% + 50px);
+            }
+        }
+        
+        /* Night Sky for Blessings */
+        .night-sky {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(180deg, #0a1929 0%, #1e3a5f 100%);
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .blessing-seed {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1rem;
+            background: rgba(200, 125, 84, 0.8);
+            color: white;
+            border-radius: 2rem;
+            cursor: grab;
+            animation: glow 2s ease-in-out infinite;
+            touch-action: none;
+            user-select: none;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(200, 125, 84, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(200, 125, 84, 0.8); }
+        }
+        
+        /* Campfire Animation */
+        .campfire-container {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .campfire {
+            width: 150px;
+            height: 150px;
+            position: relative;
+        }
+        
+        .flame {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(180deg, #ff6b35, #f7931e, #fdc830);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 1.5s ease-in-out infinite;
+            filter: blur(2px);
+        }
+        
+        .flame.big {
+            width: 80px;
+            height: 120px;
+            filter: blur(3px);
+            animation: flickerBig 1s ease-in-out infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1) rotate(-2deg);
+                opacity: 0.9;
+            }
+            25% { 
+                transform: translateX(-50%) scale(1.1) rotate(2deg);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateX(-50%) scale(0.95) rotate(-1deg);
+                opacity: 0.85;
+            }
+            75% { 
+                transform: translateX(-50%) scale(1.05) rotate(1deg);
+                opacity: 0.95;
+            }
+        }
+        
+        @keyframes flickerBig {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1) rotate(-3deg);
+                opacity: 0.95;
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.1) rotate(3deg);
+                opacity: 1;
+            }
+        }
+        
+        /* Baggage Visual */
+        .baggage-visual {
+            width: 150px;
+            height: 150px;
+            margin: 2rem auto;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        .baggage-icon {
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><rect x="30" y="40" width="90" height="80" rx="10" fill="%23C87D54" opacity="0.8"/><rect x="40" y="30" width="70" height="20" rx="5" fill="%232F4858" opacity="0.6"/><circle cx="60" cy="130" r="5" fill="%23000000" opacity="0.3"/><circle cx="90" cy="130" r="5" fill="%23000000" opacity="0.3"/></svg>') no-repeat center;
+            background-size: contain;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+        }
+        
+        .baggage-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(200, 125, 84, 0.5), transparent);
+            transition: all 1s ease;
+        }
+        
+        .baggage-glow.active {
+            width: 200px;
+            height: 200px;
+        }
+        
+        /* Digital Souvenir Card */
+        .souvenir-card {
+            background: linear-gradient(135deg, white, var(--forest-mist-white));
+            border: 2px solid var(--warm-wood-brown);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .souvenir-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(200, 125, 84, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .souvenir-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .souvenir-image {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin: 1rem auto;
+            background: var(--forest-mist-white);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Practice Card */
+        .practice-card {
+            background: linear-gradient(135deg, rgba(200, 125, 84, 0.1), rgba(47, 72, 88, 0.05));
+            border-left: 4px solid var(--warm-wood-brown);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .practice-title {
+            font-weight: 600;
+            color: var(--deep-forest-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Input Styles */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid var(--dawn-beige);
+            border-radius: 0.5rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--rock-gray);
+            background: white;
+            transition: var(--transition-smooth);
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--warm-wood-brown);
+            box-shadow: 0 0 0 3px rgba(200, 125, 84, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+        
+        /* Journey Navigation */
+        .journey-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--dawn-beige);
+        }
+        
+        /* Screens */
+        .screen {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--dawn-beige);
+            border-top-color: var(--warm-wood-brown);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Signature */
+        .signature {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--warm-wood-brown);
+            margin-top: 1rem;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .card-diary {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Hidden by default */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Welcome Screen Specific */
+        .welcome-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, var(--forest-mist-white) 0%, white 100%);
+            padding: 2rem;
+        }
+        
+        .welcome-content {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .welcome-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: radial-gradient(circle, var(--deep-forest-green), var(--warm-wood-brown));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: gentlePulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        .welcome-title {
+            margin-bottom: 1rem;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.25rem;
+            color: var(--rock-gray);
+            margin-bottom: 3rem;
+            font-family: var(--font-serif);
+        }
+        
+        /* Completion animation for interaction */
+        .completion-check {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--warm-wood-brown);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 24px;
+            margin-left: 0.5rem;
+            animation: popIn 0.3s ease;
+        }
+        
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        /* Float up animation */
+        @keyframes floatUp {
+            from {
+                bottom: 20px;
+                opacity: 1;
+            }
+            to {
+                bottom: 80%;
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="screen active">
+        <div class="welcome-hero">
+            <div class="welcome-content">
+                <div class="welcome-logo">🌲</div>
+                <h1 class="welcome-title">心靈之森</h1>
+                <p class="welcome-subtitle">一趟為期七日的重逢之旅</p>
+                <p class="quote">這不是一個需要「完成」的挑戰<br>而是一趟「憶起」的旅程</p>
+                <br><br>
+                <button class="btn btn-primary" onclick="startJourney()">開始旅程</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Journey Screen -->
+    <div id="journeyScreen" class="screen">
+        <div class="container">
+            <!-- Day Content Container -->
+            <div id="dayContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Completion Screen -->
+    <div id="completionScreen" class="screen">
+        <div class="container">
+            <div class="card card-header">
+                <h1>旅程的終點，不是抵達，而是回家</h1>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <p class="quote">七天前，你帶著一身塵囂走入森林<br>
+                此刻，你內心的土壤已然鬆動，準備好長出新的風景</p>
+            </div>
+            
+            <div class="card">
+                <h2 style="text-align: center; margin-bottom: 2rem;">你唯一的行囊</h2>
+                <div class="souvenir-card">
+                    <div class="souvenir-content">
+                        <div class="souvenir-image">
+                            <div style="font-size: 4rem;">🎒</div>
+                        </div>
+                        <p id="baggageText" style="font-size: 1.25rem; color: var(--deep-forest-green); margin-top: 1rem;"></p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="saveMemento()">儲存這份力量</button>
+                </div>
+            </div>
+            
+            <div class="card" style="text-align: center;">
+                <h2>旅程之後</h2>
+                <p style="margin: 1.5rem 0;">當你準備好時，靜謐森林的小屋，永遠都在這裡，等著你回家。</p>
+                <p style="margin: 1.5rem 0;">我們不只是地圖上的一個地點，而是一份可以隨時回來的歸屬感。</p>
+                <button class="btn btn-secondary" style="margin: 0.5rem;">探索真實的森林</button>
+                <button class="btn btn-primary" style="margin: 0.5rem;">加入我們的LINE社群</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 載入外部配置 -->
+    <script src="7-day-forest-journey-v2.js"></script>
+    <script src="7-day-forest-journey-main.js"></script>
