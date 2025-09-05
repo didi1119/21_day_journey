@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靜謐森林 - 七日旅程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest-dark: #0a1f1b;
+            --forest-deep: #1a3530;
+            --forest-medium: #2d5449;
+            --forest-light: #4a7c6e;
+            --forest-mist: #7fa394;
+            --cream: #faf8f5;
+            --gold: #d4a574;
+            --moss: #8b9556;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', 'Georgia', serif;
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-deep) 100%);
+            color: var(--cream);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 背景動畫 */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px); }
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 入口頁 */
+        .welcome-screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            background: radial-gradient(circle, var(--gold) 0%, var(--moss) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            animation: breathe 4s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--moss) 100%);
+            color: var(--forest-dark);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        /* 旅程頁面 */
+        .journey-screen {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .day-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .day-number {
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .day-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .day-theme {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* 音頻播放器 */
+        .audio-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .play-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--forest-dark);
+        }
+
+        .audio-progress {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .audio-time {
+            min-width: 80px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 互動區域 */
+        .interaction-area {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 每日特定互動元件 */
+        .silence-recorder {
+            text-align: center;
+        }
+
+        .sound-wave {
+            width: 300px;
+            height: 100px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-bar {
+            position: absolute;
+            bottom: 0;
+            width: 4px;
+            background: var(--gold);
+            animation: wave 1s infinite ease-in-out;
+        }
+
+        @keyframes wave {
+            0%, 100% { height: 20%; }
+            50% { height: 80%; }
+        }
+
+        .breath-canvas {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            cursor: crosshair;
+            position: relative;
+        }
+
+        /* 分享卡片 */
+        .share-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .share-card.show {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .share-img {
+            width: 100%;
+            max-width: 350px;
+            height: 350px;
+            margin: 0 auto 20px;
+            background: var(--forest-medium);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .share-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--cream);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 練習提醒 */
+        .practice-reminder {
+            background: linear-gradient(135deg, var(--moss) 0%, var(--gold) 100%);
+            color: var(--forest-dark);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .practice-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .practice-desc {
+            line-height: 1.6;
+        }
+
+        /* 導航 */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--cream);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* 進度追蹤 */
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        .dot.completed {
+            background: var(--moss);
+        }
+
+        /* 完成畫面 */
+        .completion-screen {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .passport {
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(139, 149, 86, 0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .passport-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .stamps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .stamp {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--moss);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            opacity: 0.8;
+        }
+
+        .invite-code {
+            background: var(--forest-dark);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+        }
+        /* 音頻互動提示 */
+        @keyframes slideDown {
+            from { 
+                opacity: 0; 
+                transform: translate(-50%, -20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translate(-50%, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 載入音頻模擬器和分享卡片生成器 -->
+    <script src="./21-day-journey/days_v3/audio-simulator.js"></script>
+    <script src="./21-day-journey/days_v3/share-card-generator.js"></script>
+    <!-- 背景粒子 -->
+    <div class="bg-particles" id="particles"></div>
+
+    <div class="container">
+        <!-- 歡迎頁面 -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="logo">🌲</div>
+            <h1>靜謐森林</h1>
+            <p class="subtitle">
+                七片葉子的禮物<br>
+                每天五分鐘，遇見真實的自己
+            </p>
+            <button class="start-btn" onclick="startJourney()">開始旅程</button>
+        </div>
+
+        <!-- 旅程頁面 -->
+        <div class="journey-screen" id="journeyScreen">
+            <div class="day-header">
+                <div class="day-number" id="dayNumber">第一天</div>
+                <h2 class="day-title" id="dayTitle">聽見寂靜</h2>
+                <p class="day-theme" id="dayTheme">在噪音中找到屬於你的頻率</p>
+            </div>
+
+            <!-- 進度指示 -->
+            <div class="progress-dots">
+                <div class="dot" data-day="1"></div>
+                <div class="dot" data-day="2"></div>
+                <div class="dot" data-day="3"></div>
+                <div class="dot" data-day="4"></div>
+                <div class="dot" data-day="5"></div>
+                <div class="dot" data-day="6"></div>
+                <div class="dot" data-day="7"></div>
+            </div>
+
+            <!-- 音頻區域 -->
+            <div class="audio-section">
+                <div class="audio-player">
+                    <button class="play-btn" id="playBtn" onclick="toggleAudio()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div class="audio-progress" onclick="seekAudio(event)">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="audio-time">
+                        <span id="currentTime">0:00</span> / <span id="duration">5:00</span>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 10px; opacity: 0.7; font-size: 0.9rem;">
+                    戴上耳機，效果更佳
+                </p>
+            </div>
+
+            <!-- 互動區域 -->
+            <div class="interaction-area" id="interactionArea">
+                <!-- 動態載入每日互動內容 -->
+            </div>
+
+            <!-- 分享卡片 -->
+            <div class="share-card" id="shareCard">
+                <div class="share-img" id="shareImg">
+                    <!-- 動態生成分享圖片 -->
+                </div>
+                <p id="shareText">在寂靜中，我聽見了...</p>
+                <div class="share-buttons">
+                    <button class="share-btn" onclick="saveImage()">儲存圖片</button>
+                    <button class="share-btn" onclick="shareToSocial()">分享</button>
+                </div>
+            </div>
+
+            <!-- 每日練習 -->
+            <div class="practice-reminder">
+                <div class="practice-title">今日練習</div>
+                <div class="practice-desc" id="practiceDesc">
+                    設定3個「寂靜鬧鐘」，每次響起時停下30秒，只是聆聽
+                </div>
+            </div>
+
+            <!-- 導航 -->
+            <div class="navigation">
+                <button class="nav-btn" id="prevBtn" onclick="previousDay()" disabled>前一天</button>
+                <button class="nav-btn" id="nextBtn" onclick="completeDay()">完成今日旅程</button>
+            </div>
+        </div>
+
+        <!-- 完成畫面 -->
+        <div class="completion-screen" id="completionScreen">
+            <h1 style="margin-bottom: 30px;">恭喜完成七日旅程！</h1>
+            <div class="passport">
+                <div class="passport-title">🌲 森林護照 🌲</div>
+                <div class="stamps" id="stamps">
+                    <!-- 動態生成印章 -->
+                </div>
+                <p style="margin: 20px 0; line-height: 1.8;">
+                    你已收集七片葉子<br>
+                    每一片都是蛻變的證明
+                </p>
+                <div class="invite-code">
+                    邀請碼：FOREST7
+                </div>
+                <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
+                    分享給一個你想邀請進入森林的人
+                </p>
+            </div>
+            <button class="start-btn" style="margin-top: 40px;" onclick="enterDeepJourney()">
+                進入21天深度旅程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 初始化音頻模擬器和分享卡片生成器
+        let audioSimulator;
+        let shareCardGenerator;
+        
+        // 旅程數據
+        const journeyData = {
+            currentDay: 1,
+            completedDays: [],
+            dailyRecords: {},
+            startDate: null
+        };
+
+        // 每日內容配置
+        const dailyContent = {
+            1: {
+                number: '第一天',
+                title: '聽見寂靜',
+                theme: '在噪音中找到屬於你的頻率',
+                emoji: '🔇',
+                practice: '設定3個「寂靜鬧鐘」，每次響起時停下30秒，只是聆聽',
+                sharePrompt: '在寂靜中，我聽見了...',
+                interaction: 'silence'
+            },
+            2: {
+                number: '第二天',
+                title: '呼吸的形狀',
+                theme: '讓呼吸成為你的錨',
+                emoji: '🍃',
+                practice: '每次拿起手機前，先完成一個完整的深呼吸',
+                sharePrompt: '原來我的呼吸，是這樣的形狀',
+                interaction: 'breath'
+            },
+            3: {
+                number: '第三天',
+                title: '微觀宇宙',
+                theme: '在微小中看見浩瀚',
+                emoji: '🔍',
+                practice: '用「微觀視角」看3個平常忽略的細節',
+                sharePrompt: '在一片葉脈裡，我看見了宇宙',
+                interaction: 'micro'
+            },
+            4: {
+                number: '第四天',
+                title: '樹的智慧',
+                theme: '學習「只是存在」的力量',
+                emoji: '🌲',
+                practice: '練習「樹的站立」- 等待時不滑手機，只是站著',
+                sharePrompt: '今天，樹告訴我...',
+                interaction: 'tree'
+            },
+            5: {
+                number: '第五天',
+                title: '情緒的顏色',
+                theme: '看見並接納情緒的流動',
+                emoji: '🎨',
+                practice: '記錄3個時刻的情緒顏色變化',
+                sharePrompt: '我的一天，從這個顏色流向那個顏色',
+                interaction: 'emotion'
+            },
+            6: {
+                number: '第六天',
+                title: '感恩的迴響',
+                theme: '讓感恩產生漣漪',
+                emoji: '💫',
+                practice: '對3個人/事/物說出或默念感謝',
+                sharePrompt: '今天我想謝謝那個...',
+                interaction: 'gratitude'
+            },
+            7: {
+                number: '第七天',
+                title: '蛻變的證明',
+                theme: '看見7天的細微改變',
+                emoji: '🦋',
+                practice: '帶著「森林之眼」過完這一天',
+                sharePrompt: '七天，我收集了七片葉子',
+                interaction: 'reflection'
+            }
+        };
+
+        // 初始化
+        window.onload = function() {
+            // 初始化音頻模擬器和分享卡片生成器
+            audioSimulator = new AudioSimulator();
+            shareCardGenerator = new ShareCardGenerator();
+            
+            // 創建背景粒子
+            createParticles();
+            
+            // 載入保存的進度
+            loadProgress();
+            
+            // 監聽音頻互動事件
+            window.addEventListener('audioInteraction', handleAudioInteraction);
+            window.addEventListener('audioComplete', handleAudioComplete);
+        };
+
+        // 創建背景粒子
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // 開始旅程
+        function startJourney() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('journeyScreen').style.display = 'block';
+            
+            if (!journeyData.startDate) {
+                journeyData.startDate = new Date().toISOString();
+                saveProgress();
+            }
+            
+            loadDay(journeyData.currentDay);
+        }
+
+        // 載入特定天數
+        function loadDay(day) {
+            const content = dailyContent[day];
+            
+            // 更新頭部
+            document.getElementById('dayNumber').textContent = content.number;
+            document.getElementById('dayTitle').textContent = content.title;
+            document.getElementById('dayTheme').textContent = content.theme;
+            
+            // 更新練習描述
+            document.getElementById('practiceDesc').textContent = content.practice;
+            
+            // 更新分享文字
+            document.getElementById('shareText').textContent = content.sharePrompt;
+            
+            // 更新進度點
+            updateProgressDots();
+            
+            // 載入互動區域
+            loadInteraction(content.interaction);
+            
+            // 更新導航按鈕
+            updateNavigation();
+            
+            // 重置音頻
+            resetAudio();
+            
+            // 設置音頻模擬器的天數
+            if (audioSimulator) {
+                audioSimulator.setDay(day);
+            }
+        }
+
+        // 載入互動內容
+        function loadInteraction(type) {
+            const area = document.getElementById('interactionArea');
+            area.innerHTML = '';
+            
+            switch(type) {
+                case 'silence':
+                    area.innerHTML = `
+                        <div class="silence-recorder">
+                            <p style="margin-bottom: 20px;">正在聆聽...</p>
+                            <div class="sound-wave">
+                                ${Array(20).fill('').map((_, i) => 
+                                    `<div class="wave-bar" style="left: ${i * 15}px; animation-delay: ${i * 0.1}s;"></div>`
+                                ).join('')}
+                            </div>
+                            <input type="text" id="silenceInput" placeholder="我聽見了..." 
+                                style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); 
+                                color: white; padding: 10px 20px; border-radius: 25px; width: 300px; margin-top: 20px;">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'breath':
+                    area.innerHTML = `
+                        <canvas id="breathCanvas" class="breath-canvas"></canvas>
+                        <p style="margin-top: 20px;">用手指跟隨呼吸畫出形狀</p>
+                    `;
+                    setTimeout(initBreathCanvas, 100);
+                    break;
+                    
+                case 'micro':
+                    area.innerHTML = `
+                        <div style="text-align: center;">
+                            <div style="width: 300px; height: 300px; background: rgba(255,255,255,0.05); 
+                                border-radius: 10px; margin: 0 auto 20px; display: flex; 
+                                align-items: center; justify-content: center;">
+                                <label for="photoUpload" style="cursor: pointer;">
+                                    <div style="font-size: 48px;">📷</div>
+                                    <p>點擊拍照或上傳</p>
+                                </label>
+                                <input type="file" id="photoUpload" accept="image/*" style="display: none;" 
+                                    onchange="handlePhotoUpload(event)">
+                            </div>
+                            <div id="photoPoem" style="font-style: italic; line-height: 1.8;"></div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'tree':
+                    area.innerHTML = `
+                        <div style="text-align: center;">
+                            <div style="font-size: 80px; margin-bottom: 20px;">🌲</div>
+                            <p style="margin-bottom: 20px;">樹給你的訊息：</p>
+                            <input type="text" id="treeMessage" placeholder="慢一點，深呼吸..." 
+                                style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); 
+                                color: white; padding: 10px 20px; border-radius: 25px; width: 300px;">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'emotion':
+                    area.innerHTML = `
+                        <div style="text-align: center;">
+                            <p>選擇你此刻的顏色：</p>
+                            <div style="display: flex; gap: 10px; justify-content: center; margin: 20px 0;">
+                                ${['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8']
+                                    .map(color => `
+                                        <div onclick="selectColor('${color}')" 
+                                            style="width: 40px; height: 40px; background: ${color}; 
+                                            border-radius: 50%; cursor: pointer;"></div>
+                                    `).join('')}
+                            </div>
+                            <div id="emotionGradient" style="width: 300px; height: 100px; 
+                                border-radius: 10px; margin: 20px auto;"></div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'gratitude':
+                    area.innerHTML = `
+                        <div style="text-align: center; max-width: 400px;">
+                            <p style="margin-bottom: 20px;">寫一封30秒的感謝訊息：</p>
+                            <textarea id="gratitudeMessage" placeholder="謝謝你..." 
+                                style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); 
+                                color: white; padding: 15px; border-radius: 10px; width: 100%; height: 120px; 
+                                resize: none;"></textarea>
+                            <div style="margin-top: 20px;">
+                                <button class="share-btn" onclick="sendGratitude()">傳送</button>
+                                <button class="share-btn" onclick="keepGratitude()">保存在心裡</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'reflection':
+                    area.innerHTML = `
+                        <div style="text-align: center;">
+                            <p style="margin-bottom: 20px;">寫給21天後的自己：</p>
+                            <textarea id="futureLetter" placeholder="親愛的未來的我..." 
+                                style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); 
+                                color: white; padding: 15px; border-radius: 10px; width: 100%; max-width: 400px; 
+                                height: 150px; resize: none;"></textarea>
+                        </div>
+                    `;
+                    break;
+            }
+        }
+
+        // 初始化呼吸畫布
+        function initBreathCanvas() {
+            const canvas = document.getElementById('breathCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            let drawing = false;
+            let lastX = 0;
+            let lastY = 0;
+            
+            ctx.strokeStyle = '#d4a574';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            
+            function startDrawing(e) {
+                drawing = true;
+                const rect = canvas.getBoundingClientRect();
+                lastX = (e.clientX || e.touches[0].clientX) - rect.left;
+                lastY = (e.clientY || e.touches[0].clientY) - rect.top;
+            }
+            
+            function draw(e) {
+                if (!drawing) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                
+                lastX = x;
+                lastY = y;
+            }
+            
+            function stopDrawing() {
+                drawing = false;
+            }
+            
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('touchstart', startDrawing);
+            canvas.addEventListener('touchmove', draw);
+            canvas.addEventListener('touchend', stopDrawing);
+        }
+
+        // 音頻控制 (使用音頻模擬器)
+        function toggleAudio() {
+            if (!audioSimulator) return;
+            
+            const isPlaying = audioSimulator.toggle();
+            const btn = document.getElementById('playBtn');
+            
+            if (isPlaying) {
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            } else {
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            }
+        }
+
+        function seekAudio(event) {
+            if (!audioSimulator) return;
+            
+            const rect = event.currentTarget.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            audioSimulator.seek(percent);
+        }
+
+        function resetAudio() {
+            if (!audioSimulator) return;
+            
+            audioSimulator.reset();
+            document.getElementById('playBtn').innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+        }
+
+        // 處理音頻互動事件
+        function handleAudioInteraction(event) {
+            const { action, prompt } = event.detail;
+            
+            // 根據互動類型更新UI
+            switch(action) {
+                case 'close_notifications':
+                    // 可以添加視覺提示
+                    break;
+                case 'start_drawing':
+                    // 高亮繪畫區域
+                    const canvas = document.getElementById('breathCanvas');
+                    if (canvas) {
+                        canvas.style.border = '2px solid #d4a574';
+                        setTimeout(() => {
+                            canvas.style.border = 'none';
+                        }, 3000);
+                    }
+                    break;
+                case 'take_photo':
+                    // 高亮拍照按鈕
+                    const photoArea = document.querySelector('[for="photoUpload"]');
+                    if (photoArea) {
+                        photoArea.style.animation = 'pulse 2s';
+                    }
+                    break;
+            }
+        }
+
+        // 處理音頻完成事件
+        function handleAudioComplete(event) {
+            generateShareCard();
+        }
+
+        // 生成分享卡片
+        async function generateShareCard() {
+            if (!shareCardGenerator) {
+                // 如果生成器還沒準備好，使用原始方法
+                const card = document.getElementById('shareCard');
+                const img = document.getElementById('shareImg');
+                const day = journeyData.currentDay;
+                const content = dailyContent[day];
+                
+                img.innerHTML = `
+                    <div style="text-align: center;">
+                        <div style="font-size: 60px; margin-bottom: 20px;">${content.emoji}</div>
+                        <p style="font-size: 1.2rem;">${content.title}</p>
+                        <p style="opacity: 0.8; margin-top: 10px;">Day ${day} / 7</p>
+                    </div>
+                `;
+                
+                card.classList.add('show');
+                return;
+            }
+            
+            const card = document.getElementById('shareCard');
+            const img = document.getElementById('shareImg');
+            const day = journeyData.currentDay;
+            
+            // 收集當日數據
+            const dayData = collectDayData();
+            
+            // 生成分享卡片圖片
+            const imageUrl = await shareCardGenerator.generateCard(day, dayData);
+            
+            // 顯示生成的圖片
+            img.innerHTML = `<img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">`;
+            
+            card.classList.add('show');
+        }
+        
+        // 收集當日數據
+        function collectDayData() {
+            const day = journeyData.currentDay;
+            const data = {};
+            
+            switch(dailyContent[day].interaction) {
+                case 'silence':
+                    data.sound = document.getElementById('silenceInput')?.value || '心跳的聲音';
+                    break;
+                case 'breath':
+                    const canvas = document.getElementById('breathCanvas');
+                    if (canvas) {
+                        data.breathImage = canvas.toDataURL();
+                    }
+                    data.breathName = '如海浪般起伏';
+                    break;
+                case 'micro':
+                    data.poem = '在紋理的迷宮裡\n藏著時間的秘密';
+                    break;
+                case 'tree':
+                    data.message = document.getElementById('treeMessage')?.value || '慢一點，深呼吸';
+                    break;
+                case 'emotion':
+                    const selectedColor = document.querySelector('[data-selected-color]');
+                    data.colors = selectedColor ? [selectedColor.dataset.selectedColor] : ['#4ECDC4'];
+                    break;
+                case 'gratitude':
+                    data.gratitude = document.getElementById('gratitudeMessage')?.value || '謝謝今天的美好';
+                    break;
+                case 'reflection':
+                    data.letter = document.getElementById('futureLetter')?.value || '';
+                    break;
+            }
+            
+            return data;
+        }
+
+        // 完成當日
+        function completeDay() {
+            const day = journeyData.currentDay;
+            
+            // 保存當日記錄
+            saveDailyRecord();
+            
+            // 標記為完成
+            if (!journeyData.completedDays.includes(day)) {
+                journeyData.completedDays.push(day);
+            }
+            
+            // 生成分享卡片（如果還沒生成）
+            if (!document.getElementById('shareCard').classList.contains('show')) {
+                generateShareCard();
+            }
+            
+            // 進入下一天或完成
+            if (day < 7) {
+                journeyData.currentDay = day + 1;
+                saveProgress();
+                
+                setTimeout(() => {
+                    loadDay(journeyData.currentDay);
+                    document.getElementById('shareCard').classList.remove('show');
+                }, 1500);
+            } else {
+                // 完成整個旅程
+                setTimeout(() => {
+                    showCompletion();
+                }, 1500);
+            }
+        }
+
+        // 保存當日記錄
+        function saveDailyRecord() {
+            const day = journeyData.currentDay;
+            const record = {};
+            
+            // 根據當天類型保存不同數據
+            switch(dailyContent[day].interaction) {
+                case 'silence':
+                    record.sound = document.getElementById('silenceInput')?.value || '';
+                    break;
+                case 'breath':
+                    const canvas = document.getElementById('breathCanvas');
+                    if (canvas) {
+                        record.breathImage = canvas.toDataURL();
+                    }
+                    break;
+                case 'tree':
+                    record.message = document.getElementById('treeMessage')?.value || '';
+                    break;
+                case 'emotion':
+                    record.color = document.querySelector('[data-selected-color]')?.dataset.selectedColor || '';
+                    break;
+                case 'gratitude':
+                    record.gratitude = document.getElementById('gratitudeMessage')?.value || '';
+                    break;
+                case 'reflection':
+                    record.letter = document.getElementById('futureLetter')?.value || '';
+                    break;
+            }
+            
+            journeyData.dailyRecords[day] = record;
+            saveProgress();
+        }
+
+        // 顯示完成畫面
+        function showCompletion() {
+            document.getElementById('journeyScreen').style.display = 'none';
+            document.getElementById('completionScreen').style.display = 'block';
+            
+            // 生成印章
+            const stampsContainer = document.getElementById('stamps');
+            stampsContainer.innerHTML = '';
+            
+            for (let i = 1; i <= 7; i++) {
+                const stamp = document.createElement('div');
+                stamp.className = 'stamp';
+                stamp.innerHTML = dailyContent[i].emoji;
+                stamp.style.animationDelay = (i * 0.1) + 's';
+                stampsContainer.appendChild(stamp);
+            }
+        }
+
+        // 導航功能
+        function previousDay() {
+            if (journeyData.currentDay > 1) {
+                journeyData.currentDay--;
+                loadDay(journeyData.currentDay);
+            }
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = journeyData.currentDay === 1;
+            
+            if (journeyData.currentDay === 7) {
+                nextBtn.textContent = '完成旅程';
+            } else if (journeyData.completedDays.includes(journeyData.currentDay)) {
+                nextBtn.textContent = '下一天';
+            } else {
+                nextBtn.textContent = '完成今日旅程';
+            }
+        }
+
+        // 更新進度點
+        function updateProgressDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                const day = index + 1;
+                dot.classList.remove('active', 'completed');
+                
+                if (day === journeyData.currentDay) {
+                    dot.classList.add('active');
+                } else if (journeyData.completedDays.includes(day)) {
+                    dot.classList.add('completed');
+                }
+            });
+        }
+
+        // 其他互動功能
+        function selectColor(color) {
+            // 移除之前的選擇
+            document.querySelectorAll('[data-selected-color]').forEach(el => {
+                delete el.dataset.selectedColor;
+                el.style.border = 'none';
+            });
+            
+            // 標記新選擇
+            event.target.dataset.selectedColor = color;
+            event.target.style.border = '3px solid white';
+            
+            // 更新漸層
+            const gradient = document.getElementById('emotionGradient');
+            if (gradient) {
+                gradient.style.background = `linear-gradient(135deg, ${color} 0%, rgba(255,255,255,0.1) 100%)`;
+            }
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // 模擬AI詩意解讀
+                const poems = [
+                    '在紋理的迷宮裡\n藏著時間的秘密',
+                    '微小的宇宙\n正在悄悄呼吸',
+                    '每一道痕跡\n都是生命的簽名',
+                    '放大來看\n一切都是奇蹟'
+                ];
+                
+                const poem = poems[Math.floor(Math.random() * poems.length)];
+                document.getElementById('photoPoem').innerHTML = poem.replace(/\n/g, '<br>');
+            }
+        }
+
+        function sendGratitude() {
+            alert('感恩已傳送到宇宙中 ✨');
+            document.getElementById('gratitudeMessage').value = '';
+        }
+
+        function keepGratitude() {
+            alert('感恩已保存在心裡 💝');
+            document.getElementById('gratitudeMessage').value = '';
+        }
+
+        // 儲存和載入進度
+        function saveProgress() {
+            localStorage.setItem('forestJourney7', JSON.stringify(journeyData));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('forestJourney7');
+            if (saved) {
+                Object.assign(journeyData, JSON.parse(saved));
+            }
+        }
+
+        // 儲存圖片
+        async function saveImage() {
+            if (!shareCardGenerator) {
+                alert('圖片生成器尚未準備好');
+                return;
+            }
+            
+            const dayData = collectDayData();
+            const imageUrl = await shareCardGenerator.generateCard(journeyData.currentDay, dayData);
+            
+            // 下載圖片
+            shareCardGenerator.downloadImage(imageUrl, `forest-journey-day${journeyData.currentDay}.png`);
+        }
+
+        // 分享到社交媒體
+        function shareToSocial() {
+            const text = `我正在參與靜謐森林的7日旅程，第${journeyData.currentDay}天：${dailyContent[journeyData.currentDay].title}`;
+            const url = window.location.href;
+            
+            // 可以根據不同平台調整
+            if (navigator.share) {
+                navigator.share({
+                    title: '靜謐森林',
+                    text: text,
+                    url: url
+                });
+            } else {
+                // 複製到剪貼板
+                navigator.clipboard.writeText(text + ' ' + url);
+                alert('分享連結已複製');
+            }
+        }
+
+        // 進入深度旅程
+        function enterDeepJourney() {
+            window.location.href = './21-day-journey-v2.html';
+        }
+    </script>
+</body>
+</html>
